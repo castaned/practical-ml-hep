@@ -6,6 +6,18 @@ El procesamiento y el entrenamiento utilizan el código del repositorio principa
 
 En el [flujo general del curso](index.md#el-flujo-de-un-analisis-experimental), este ejercicio comienza antes de la extracción de observables. La selección y el procesamiento de NanoAOD permiten construir las entradas del autoencoder y seguir su origen hasta los eventos simulados.
 
+## Características del ejercicio
+
+| Aspecto | Autoencoder CMS |
+| --- | --- |
+| Datos de origen | Archivos ROOT en formato NanoAOD (`.root`) |
+| Contenido | Colecciones de partículas reconstruidas y propiedades del evento |
+| Procesamiento | Selección de eventos, reconstrucción de candidatos W/Z, cálculo de observables y conversión a HDF5 |
+| Modelo | Autoencoder entrenado con eventos del Modelo Estándar |
+| Objetivo | Estudiar eventos con errores de reconstrucción elevados |
+| Evaluación | Pérdidas y distribuciones del error de reconstrucción; W′ como referencia de evaluación |
+| Lugar en el curso | Extensión para mostrar el análisis desde NanoAOD |
+
 ## 1. Muestras y formato de origen
 
 Se utilizan simulaciones CMS disponibles en CERN Open Data, en formato **NanoAOD dentro de archivos ROOT**. Cada evento contiene colecciones de electrones, muones y jets, además de otras cantidades reconstruidas, como el momento transversal faltante.

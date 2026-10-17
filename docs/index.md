@@ -113,20 +113,6 @@ Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para 
 
 Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables ya calculadas; en CMS realizamos también la selección de eventos y la extracción de observables desde NanoAOD.
 
-| | Ejercicio 1 · ATLAS Higgs Challenge | Ejercicio 2 · Autoencoder CMS |
-| --- | --- | --- |
-| Datos de origen | Tabla CSV comprimida (`.csv.gz`) del challenge | Archivos ROOT en formato NanoAOD (`.root`) |
-| Contenido | Una fila por evento, con 30 variables físicas ya calculadas | Colecciones de partículas reconstruidas y propiedades del evento |
-| Procesamiento | Lectura de la tabla, tratamiento de valores ausentes y estandarización | Selección de eventos, reconstrucción de candidatos W/Z, cálculo de observables y conversión a HDF5 |
-| Modelo | Red completamente conectada de clasificación supervisada | Autoencoder entrenado con eventos del Modelo Estándar |
-| Objetivo | Distinguir Higgs → ττ de los procesos de fondo | Estudiar eventos con errores de reconstrucción elevados |
-| Evaluación | Curva ROC, AUC y AMS interna | Pérdidas y distribuciones del error de reconstrucción; W′ como referencia de evaluación |
-| Lugar en el curso | Actividad principal del miércoles | Extensión para mostrar el análisis desde NanoAOD |
-
-**ATLAS · Higgs:** tabla de variables → preparación en Yuca → clasificador de señal y fondo → comparación de entrenamientos y conclusiones.
-
-**CMS · Anomalías:** NanoAOD → selección y extracción de variables en Yuca → HDF5 → autoencoder → estudio del error de reconstrucción y conclusiones.
-
 [Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
 

@@ -8,6 +8,18 @@ El entrenamiento se ejecuta con los scripts del repositorio principal [ML-integr
 
 En el [flujo general del curso](index.md#el-flujo-de-un-analisis-experimental), este ejercicio comienza con observables ya calculados. La práctica se concentra en preparar esas entradas, entrenar el clasificador y comparar sus resultados.
 
+## Características del ejercicio
+
+| Aspecto | ATLAS Higgs Challenge |
+| --- | --- |
+| Datos de origen | Tabla CSV comprimida (`.csv.gz`) del challenge |
+| Contenido | Una fila por evento, con 30 variables físicas ya calculadas |
+| Procesamiento | Lectura de la tabla, tratamiento de valores ausentes y estandarización |
+| Modelo | Red completamente conectada de clasificación supervisada |
+| Objetivo | Distinguir Higgs → ττ de los procesos de fondo |
+| Evaluación | Curva ROC, AUC y AMS interna |
+| Lugar en el curso | Actividad principal del miércoles |
+
 ## 1. Procesos y variables de entrada
 
 Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.
