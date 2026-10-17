@@ -20,7 +20,7 @@ En el Higgs Challenge las treinta variables ya vienen calculadas en una tabla. A
 
 La selección de eventos con al menos tres leptones está implementada en `example_files/main_process/filterNanoAOD.py`, dentro del repositorio principal. El archivo puede consultarse para entender la selección; no es necesario editarlo. El procesamiento construye candidatos Z y W y calcula las cantidades que recibirá la red. El cutflow permite seguir cuántos eventos sobreviven a cada selección.
 
-La [guía de procesamiento CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/03_procesamiento/) contiene el procedimiento de ejecución. Los archivos originales se leen de la carpeta compartida; los productos del procesamiento se guardan en la cuenta personal.
+La [guía de procesamiento CMS](https://castaned.github.io/ML-integration-CMSSW/open-data/03_procesamiento/) contiene el procedimiento de ejecución. Los archivos originales se leen de la carpeta compartida; los productos del procesamiento se guardan en la cuenta personal.
 
 | Producto | Función en el análisis |
 | --- | --- |
@@ -60,7 +60,7 @@ python workshop/student.py files
 python workshop/student.py train --task autoencoder --role baseline
 ```
 
-Estos comandos corresponden a la configuración del ejercicio CMS. No se utiliza `atlas_baseline01.yaml` ni el script de entrenamiento ATLAS. Consultar el [procedimiento de configuración CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/05_autoencoder/) para preparar el ejemplo antes de ejecutar.
+Estos comandos corresponden a la configuración del ejercicio CMS. No se utiliza `atlas_baseline01.yaml` ni el script de entrenamiento ATLAS. Consultar el [procedimiento de configuración CMS](https://castaned.github.io/ML-integration-CMSSW/open-data/05_autoencoder/) para preparar el ejemplo antes de ejecutar.
 
 ## 5. Reproducir y comparar la referencia {#benchmark-cms}
 

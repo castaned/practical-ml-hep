@@ -9,7 +9,7 @@ Ambas son simulaciones CMS a 13 TeV, UL16 NanoAODv9. No mezclar MiniAOD, variaci
 
 ## Miércoles, primera hora: configurar el sistema y procesar eventos
 
-Comenzar con [Configuración del sistema](https://castaned.github.io/ML-integration-CMSSW/yuca-course/01_entorno/) (20 minutos) antes de abrir archivos.
+Comenzar con [Configuración del sistema](https://castaned.github.io/ML-integration-CMSSW/open-data/01_entorno/) (20 minutos) antes de abrir archivos.
 
 ### 1. Abrir Events y observar las colecciones (10 min)
 

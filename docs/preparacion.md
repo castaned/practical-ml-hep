@@ -33,8 +33,6 @@ ssh TU_USUARIO@yuca.unison.mx
 
 Sigue las indicaciones de Yuca para registrar el QR en Google Authenticator y activar la doble verificación. Después ya podrás acceder a [Open OnDemand de Yuca](http://yucaood.acarus.unison.mx) con las credenciales y el código que se soliciten.
 
-[Guía técnica del primer acceso](https://castaned.github.io/ML-integration-CMSSW/yuca-course/00_acceso/).
-
 ## 2. Terminales de Open OnDemand y JupyterLab
 
 ### Paso 1. Iniciar sesión en Open OnDemand
