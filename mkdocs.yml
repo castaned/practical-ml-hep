@@ -56,4 +56,10 @@ nav:
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
       - Conclusiones: conclusiones.md
-  - Demostración CMS: autoencoder.md
+  - CMS:
+      - Presentación del ejemplo: autoencoder.md
+      - Física y variables: cms-fisica.md
+      - Procesamiento NanoAOD: cms-procesamiento.md
+      - Autoencoder y benchmark: cms-autoencoder.md
+      - Interpretación y perspectivas: cms-resultados.md
+  - Recursos y contacto: recursos.md
