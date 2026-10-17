@@ -1,6 +1,6 @@
-# Laboratorio ATLAS: cambia, observa y explica
+# Entrenamiento con el ATLAS Higgs Challenge
 
-**Tu misión:** probar una idea sobre una red neuronal y explicar qué ocurrió usando sus curvas y resultados.
+El objetivo del laboratorio es evaluar cómo una modificación de la red neuronal afecta las curvas de aprendizaje, la discriminación entre señal y fondo y el tiempo de entrenamiento.
 
 ## Entender el problema
 
@@ -35,7 +35,7 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
 
     Si falta configurar tu cuenta, consulta el [apoyo de preparación](referencia.md#entorno-gpu-de-yuca). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
-## Tu herramienta: el YAML
+## Configuración mediante YAML
 
 Abre `hep-workshop/configs/atlas_baseline01.yaml` con el editor de **Files de Open OnDemand**. Al principio conserva la configuración de referencia.
 
@@ -59,7 +59,7 @@ Son cuatro capas ocultas. Para ensayar una red mayor, podrías cambiar solo la l
 
 ## Un experimento, una carpeta
 
-**Antes de modificar la referencia, copia su YAML con otro nombre.** Por ejemplo, `atlas_02.yaml`. Dentro de esa copia cambia una idea y elige una carpeta nueva:
+**Antes de modificar la referencia, copia su YAML con otro nombre.** Por ejemplo, `atlas_02.yaml`. Dentro de esa copia modifica un parámetro o un conjunto definido de parámetros y elige una carpeta nueva:
 
 ```yaml
 output:
@@ -94,7 +94,7 @@ Conserva el resto del archivo. Cambiar el nombre del YAML no cambia por sí solo
 
     Si hay un problema con el trabajo, consulta el [apoyo de comandos y archivos](apoyo.md). Los fragmentos YAML se editan dentro del archivo; no se ejecutan en la terminal.
 
-## Ahora mira lo que ocurrió
+## Evaluación de los resultados
 
 Abre **`training_summary.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
 
@@ -110,9 +110,9 @@ Una curva de validación que empeora mientras entrenamiento sigue mejorando sugi
 
 Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a señales. No cambia la sección eficaz física ni calcula por sí sola un límite: [explicación con un ejemplo](fisica.md#leer-una-roc-como-fisico).
 
-## Comparar y conversar
+## Comparación de configuraciones
 
-Completa la **[bitácora breve](bitacora.md)** durante la actividad. Compara con la referencia usando los mismos datos y cambiando una idea cada vez. Si hay tiempo, prueba una segunda variación o compara CPU y GPU con apoyo del docente.
+Completa la **[bitácora breve](bitacora.md)** durante la actividad. Compara con la referencia usando los mismos datos y modificando un factor por experimento. Si hay tiempo, evalúa una segunda configuración o compara CPU y GPU con apoyo del docente.
 
 Al cerrar, comparte una figura y responde: **¿qué esperabas, qué observaste y qué puedes concluir?** [Puesta en común](conclusiones.md).
 

@@ -1,12 +1,12 @@
-# Compartamos lo que aprendimos
+# Comparación y presentación de resultados
 
 **Cada grupo cuenta un pequeño experimento: qué esperaba, qué cambió y qué observó.** No buscamos entregar muchos archivos ni encontrar una red ganadora a toda costa.
 
-## 1. Elijan una comparación
+## 1. Selección de la comparación
 
 Comparen la red inicial con una variación que les parezca interesante. Puede haber mejorado, empeorado o dado prácticamente lo mismo: los tres resultados sirven para discutir.
 
-## 2. Completen su fila
+## 2. Registro en la tabla de resultados
 
 Copien esta tabla al documento compartido que se indique durante la sesión. Pueden trabajar por mesas o grupos cercanos.
 
@@ -16,7 +16,7 @@ Copien esta tabla al documento compartido que se indique durante la sesión. Pue
 
 Los números están en `metrics.json`, dentro de cada carpeta de resultados. Mantengan los mismos datos para comparar las redes. La AMS del curso es de validación interna; no equivale todavía a la evaluación privada del challenge.
 
-## 3. Compartan una figura y sus configuraciones
+## 3. Figuras y archivos de configuración
 
 En la carpeta compartida indicada en clase, suban:
 
@@ -26,7 +26,7 @@ En la carpeta compartida indicada en clase, suban:
 
 Cada grupo usa su propio espacio, sin modificar las entregas de los demás. No hace falta subir datos originales, modelos completos, todos los registros ni preparar un archivo comprimido.
 
-## 4. Expliquen su resultado en un minuto
+## 4. Discusión de los resultados
 
 Completen estas tres frases:
 

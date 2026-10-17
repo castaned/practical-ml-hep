@@ -4,7 +4,7 @@
 
 [Volver al laboratorio YAML](laboratorio.md) · [Completar la bitácora](bitacora.md)
 
-## De la colisión a lo que ve el detector
+## Proceso físico y respuesta del detector
 
 La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y neutrinos; el otro produce hadrones y un neutrino. Por eso buscamos **un leptón, un tau hadrónico y momento transversal faltante**, a veces acompañados de jets. El detector registra productos del decaimiento, no una etiqueta que diga «Higgs».
 
@@ -55,7 +55,7 @@ La predicción del Modelo Estándar para esa definición es **3.17 ± 0.09 pb**;
 
 La tabla corta de la guía solo mostraba ejemplos. **El YAML `features: all_physics` utiliza las 30 variables siguientes.** `PRI_` identifica 17 cantidades primarias y `DER_` las 13 construidas combinando otras cantidades.
 
-### Un pequeño vocabulario
+### Definición de observables
 
 - **pT:** momento perpendicular al haz, en GeV.
 - **η:** pseudorrapidez; expresa la dirección respecto al haz. Cerca de cero corresponde a la región transversal.
@@ -114,7 +114,7 @@ Resumen de la [documentación del challenge](https://opendata.cern.ch/record/329
 
 Si no hay dos jets, algunas variables no están definidas. El valor `-999` lo señala: no es una masa o un momento físico. La preparación automática lo trata antes del entrenamiento. Las columnas de etiqueta, pesos, identificador y partición no cuentan entre las 30 entradas.
 
-## Leer una ROC como físico
+## Interpretación física de la curva ROC {#leer-una-roc-como-fisico}
 
 La red asigna una puntuación. Al exigir una puntuación mayor que cierto umbral, conservamos una fracción de señal **εs** y una fracción de fondo **εb**.
 
@@ -173,3 +173,4 @@ En este taller medimos **clasificación y AMS de validación en simulación**. N
 - `challenge_visible_mass.png`: figura 1 de Adam-Bourdarios et al., [PMLR 42 (2015)](https://proceedings.mlr.press/v42/cowa14.html), con el crédito original a ATLAS-CONF-2013-108 preservado.
 
 Los diagramas de producción se obtuvieron de la publicación conjunta, porque el artículo y la documentación del challenge no contienen ese tipo de diagramas. La cadena completa H → ττ se elaboró como esquema didáctico para este curso. Ninguna de estas figuras es un resultado de nuestros entrenamientos.
+

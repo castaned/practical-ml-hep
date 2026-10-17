@@ -1,6 +1,6 @@
-# Preparación inicial: tu cuenta, tu terminal y Yuca
+# Acceso y configuración del entorno en Yuca
 
-**Este es el primer paso del curso.** Al terminar podrás abrir una terminal, activar tu ambiente y enviar un entrenamiento a los recursos de ACARUS.
+Esta sección describe el acceso al clúster Yuca, la configuración del ambiente de trabajo y el envío de entrenamientos a los recursos de ACARUS. Debe completarse antes del laboratorio.
 
 <div class="grid cards" markdown>
 
@@ -14,7 +14,7 @@
 
 - **Cada experimento**
 
-    Copiar el YAML, cambiar una idea y su carpeta de salida, enviar el entrenamiento y revisar resultados.
+    Preparar una copia del YAML, modificar los parámetros de estudio y definir una carpeta de salida independiente.
 
 </div>
 
@@ -35,7 +35,7 @@ Sigue las indicaciones de Yuca para registrar el QR en Google Authenticator y ac
 
 [Guía técnica del primer acceso](https://castaned.github.io/ML-integration-CMSSW/yuca-course/00_acceso/).
 
-## 2. Abre una terminal dentro de Yuca
+## 2. Terminales de Open OnDemand y JupyterLab
 
 Durante el curso puedes trabajar desde una **terminal de Open OnDemand** o desde una **terminal dentro de una sesión JupyterLab de Yuca**. En ambos casos los comandos deben ejecutarse en el clúster, no en la terminal de tu computadora personal.
 
@@ -55,9 +55,9 @@ pwd
 
 Una sesión JupyterLab tiene sus propios recursos. Abrir su terminal **no asigna automáticamente una GPU** al entrenamiento. El trabajo enviado con el script del curso solicitará la GPU por separado.
 
-## 3. Prepara tu cuenta una sola vez
+## 3. Configuración inicial de la cuenta
 
-### Clona la herramienta
+### Clonación del repositorio
 
 En la terminal de Yuca:
 
@@ -70,7 +70,7 @@ mkdir -p "$HOME/hep-workshop/configs" "$HOME/hep-workshop/logs"
 
 Si ya clonaste el repositorio, entra a esa carpeta y actualiza con `git pull --ff-only origin opendata_dev`; no necesitas otra copia.
 
-### Crea el ambiente de entrenamiento
+### Creación del ambiente de entrenamiento
 
 Para las GPU AMD MI210 de Yuca usamos el ambiente personal `ml-hep-gpu`. Estos comandos crean una instalación en tu cuenta:
 
@@ -85,7 +85,7 @@ python -m pip install numpy pandas scikit-learn matplotlib pyyaml h5py
 
 Si el ambiente ya existe, actívalo en lugar de crearlo otra vez. Esta combinación de PyTorch y ROCm fue probada en una MI210 de Yuca. El ambiente de procesamiento CMS `ml-open-data`, si ya lo tienes, es independiente.
 
-## 4. Al iniciar cada sesión
+## 4. Inicio de una sesión de trabajo
 
 Después de abrir una terminal en Yuca, ejecuta:
 
@@ -106,9 +106,9 @@ ls -lh /lustre/cursos/curso07/datos/ATLAS_HiggsChallenge/
 
 No necesitas descargarlos ni modificarlos. Tus YAML, registros y resultados se guardan en `hep-workshop` dentro de tu cuenta.
 
-## 5. Cómo usamos los recursos de ACARUS
+## 5. Uso de los recursos de ACARUS
 
-**Yuca organiza los trabajos con una cola.** Nosotros elegimos la red en el YAML y el script del curso solicita los recursos para ejecutarla.
+Yuca administra los trabajos mediante Slurm. La arquitectura y los parámetros de entrenamiento se definen en el archivo YAML; el script del curso solicita los recursos de cómputo necesarios.
 
 | Recurso o acción | Para qué lo usamos |
 | --- | --- |
@@ -135,7 +135,7 @@ sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
 
 El script solicita **una GPU, cuatro CPU, 16 GB de memoria y hasta 30 minutos**. No hace falta editar el script para variar la arquitectura de la red.
 
-### Esperar, observar y terminar
+### Seguimiento de los trabajos
 
 ```bash
 squeue -u "$USER"
@@ -154,7 +154,7 @@ sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
 
 `COMPLETED` con código `0:0` indica que terminó sin error. No es necesario enviar otra copia mientras la primera espera. Si necesitas cancelar una prueba, usa `scancel NUMERO_JOB` solo para el trabajo que deseas detener.
 
-## Antes de pasar al laboratorio
+## Verificación del entorno
 
 - [ ] Puedo entrar a Yuca y abrir una terminal.
 - [ ] Mi terminal muestra `(ml-hep-gpu)` y estoy en `ML-integration-CMSSW`.

@@ -1,4 +1,4 @@
-# Bitácora breve del grupo
+# Registro de experimentos
 
 **Grupo o mesa:** __________ · **Participantes:** __________
 
@@ -10,13 +10,13 @@ Elijan una variable de las [treinta entradas](fisica.md#las-30-variables-organiz
 
 **La variable __________ representa __________. En su gráfica señal y fondo __________. Creemos que podría ayudar porque __________.**
 
-## Nuestra hipótesis
+## Hipótesis de trabajo
 
 **Cambiaremos __________ de __________ a __________. Esperamos __________ porque __________.**
 
 Copien el YAML y elijan una carpeta nueva antes de modificarlo. Mantengan iguales los datos de ambas corridas.
 
-## Nuestros resultados
+## Resultados
 
 | Corrida | ¿Qué cambió? | AUC | AMS interna | Tiempo (s) | ¿Qué muestran las curvas? |
 | --- | --- | --- | --- | --- | --- |
@@ -26,7 +26,7 @@ Copien el YAML y elijan una carpeta nueva antes de modificarlo. Mantengan iguale
 
 **Carpetas de referencia y variación:** __________ / __________.
 
-## Nuestra interpretación
+## Interpretación
 
 1. ¿Se cumplió lo que esperábamos? ¿Qué número o curva lo respalda?
 2. ¿Mejoraron AUC y AMS juntas? Si no, ¿cómo lo interpretaríamos?

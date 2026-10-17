@@ -10,11 +10,11 @@ hide:
 
 <span class="eyebrow">CERN OPEN DATA · FÍSICA · EXPERIMENTACIÓN</span>
 
-# De un evento<br>a una idea.
+# Aprendizaje automático<br>en física de partículas
 
-Aprende a reconocer señales de Higgs, diseña una red neuronal y descubre qué cambia cuando la entrenas de otra forma.
+Curso práctico de clasificación de eventos del ATLAS Higgs Challenge con redes neuronales.
 
-**Un laboratorio práctico en el clúster Yuca, con preguntas de física y resultados que puedes reproducir.**
+**Entrenamiento en CPU y GPU del clúster Yuca de ACARUS, Universidad de Sonora.**
 
 [Explorar la física](fisica.md){ .md-button .md-button--primary }
 [Ir al laboratorio](laboratorio.md){ .md-button .hero-secondary }
@@ -25,7 +25,7 @@ Aprende a reconocer señales de Higgs, diseña una red neuronal y descubre qué 
 
 ![Del Higgs a un leptón, hadrones y tres neutrinos](assets/workshop/higgs_tautau_final_state.svg)
 
-<span>Una señal física. Varias pistas. Una red que aprende a combinarlas.</span>
+<span>Canal de estudio: H → ττ, con un leptón y un tau hadrónico en el estado final visible.</span>
 
 </div>
 
@@ -35,59 +35,59 @@ Aprende a reconocer señales de Higgs, diseña una red neuronal y descubre qué 
 
 <div><strong>30</strong><span>variables para explorar</span></div>
 <div><strong>250 mil</strong><span>eventos para desarrollar el modelo</span></div>
-<div><strong>CPU ↔ GPU</strong><span>misma pregunta, otro tiempo de cálculo</span></div>
+<div><strong>CPU ↔ GPU</strong><span>comparación de tiempos de entrenamiento</span></div>
 <div><strong>1 YAML</strong><span>por experimento; una carpeta por resultado</span></div>
 
 </div>
 
 !!! info "Primer paso: preparar tu acceso y tu cuenta"
-    La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Hazla una vez; después podrás concentrarte en los experimentos.
+    La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Esta preparación es necesaria antes de iniciar los ejercicios.
 
-## No venimos a acumular entrenamientos. Venimos a entenderlos.
+## Objetivos del curso
 
-Buscamos distinguir **Higgs → ττ** de procesos que se parecen en el detector. Trabajaremos con el **ATLAS Higgs Challenge**: simulaciones abiertas, variables físicas y un reto de clasificación con referencias publicadas.
+El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de los procesos de fondo mediante el **ATLAS Higgs Challenge**, un conjunto de simulaciones disponible en CERN Open Data.
 
-La red es nuestra herramienta de investigación. Tú propones un cambio, miras qué ocurrió y decides qué puedes concluir.
+Se estudiará el efecto de la arquitectura y de los parámetros de entrenamiento sobre la discriminación entre señal y fondo, el sobreajuste y el tiempo de cómputo. Cada configuración se conservará junto con sus resultados para comparar los experimentos.
 
 <div class="journey-grid" markdown>
 
 <a class="journey-card" href="fisica/">
 <span class="step-number">01 / ENTENDER</span>
-<h3>Mira la física</h3>
-<p>Señal, fondos, neutrinos y las 30 variables. ¿Qué información recibe la red?</p>
+<h3>Procesos y observables</h3>
+<p>Descripción de la señal, los procesos de fondo y las 30 variables de entrada.</p>
 <span class="card-link">Explorar el proceso →</span>
 </a>
 
 <a class="journey-card" href="laboratorio/">
 <span class="step-number">02 / EXPERIMENTAR</span>
-<h3>Diseña y entrena</h3>
-<p>Cambia capas, neuronas o aprendizaje desde un YAML. Ejecuta tu idea en Yuca.</p>
+<h3>Entrenamiento de la red</h3>
+<p>Configuración de capas, neuronas y parámetros de entrenamiento mediante archivos YAML.</p>
 <span class="card-link">Entrar al laboratorio →</span>
 </a>
 
 <a class="journey-card" href="bitacora/">
 <span class="step-number">03 / INTERPRETAR</span>
-<h3>Registra lo que pasó</h3>
-<p>Compara curvas, tiempo y métricas. Completa una tabla y contrasta tu hipótesis.</p>
+<h3>Registro de resultados</h3>
+<p>Comparación de curvas de aprendizaje, métricas de clasificación y tiempos de ejecución.</p>
 <span class="card-link">Abrir la bitácora →</span>
 </a>
 
 <a class="journey-card" href="conclusiones/">
 <span class="step-number">04 / DISCUTIR</span>
-<h3>Cuenta qué aprendiste</h3>
-<p>Una comparación, una figura y una conclusión. Un resultado sin mejora también enseña.</p>
+<h3>Análisis y conclusiones</h3>
+<p>Discusión de las diferencias observadas y de las limitaciones de cada configuración.</p>
 <span class="card-link">Compartir conclusiones →</span>
 </a>
 
 </div>
 
-## Una arquitectura, muchas preguntas
+## Configuración de la arquitectura
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">
-<span class="eyebrow">EXPLORA ANTES DE ENTRENAR</span>
-<h3>¿Qué cambia al ampliar la red?</h3>
-<p>Elige una arquitectura y observa su tamaño. Después podrás probarla editando tu YAML en Yuca.</p>
+<span class="eyebrow">ARQUITECTURAS DE REFERENCIA</span>
+<h3>Capas y parámetros entrenables</h3>
+<p>El selector muestra el número de parámetros de cada arquitectura y el fragmento YAML correspondiente. El entrenamiento se ejecuta en Yuca.</p>
 <label for="network-choice">Arquitectura</label>
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
@@ -96,7 +96,7 @@ La red es nuestra herramienta de investigación. Tú propones un cambio, miras q
 </select>
 <label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>
 <input id="dropout-choice" type="range" min="0" max="0.5" step="0.1" value="0.1">
-<p class="explorer-hint">Más parámetros no garantizan mejor clasificación. Esa es una hipótesis que vamos a poner a prueba.</p>
+<p class="explorer-hint">El aumento del número de parámetros puede modificar el tiempo de entrenamiento y el sobreajuste. Su efecto sobre la clasificación se evaluará con las mismas particiones de datos.</p>
 </div>
 <div class="explorer-result">
 <div class="network-layers" id="network-layers" aria-label="Capas de la red elegida"></div>
@@ -109,7 +109,7 @@ La red es nuestra herramienta de investigación. Tú propones un cambio, miras q
 </div>
 </div>
 
-## Primero observa; después pregunta por qué
+## Distribuciones de las variables
 
 <div class="figure-story" markdown>
 
@@ -117,11 +117,11 @@ La red es nuestra herramienta de investigación. Tú propones un cambio, miras q
 
 <span class="eyebrow">DEL EVENTO AL APRENDIZAJE</span>
 
-### No todas las variables cuentan la misma historia
+### Comparación entre señal y fondo
 
-Algunas muestran diferencias entre señal y fondo. Otras se parecen mucho. Una red puede aprovechar sus combinaciones y correlaciones.
+Las distribuciones permiten identificar diferencias entre señal y fondo. La red utiliza además las correlaciones entre las variables para realizar la clasificación.
 
-Antes de entrenar, elige una variable y explica **qué mide** y **por qué podría ayudar**.
+Antes del entrenamiento se revisará el significado físico de las variables y su capacidad de discriminación.
 
 [Conocer las 30 variables](fisica.md#las-30-variables-organizadas-por-su-significado){ .text-link }
 
@@ -145,9 +145,9 @@ Trabajaremos individualmente o en grupos cercanos, según la disposición del sa
 
 <div class="closing-callout" markdown>
 
-### «Esperábamos esto. Cambiamos esto. Observamos esto otro.»
+### Presentación de resultados
 
-Esa es la historia que cada grupo compartirá al final.
+Cada grupo presentará la configuración estudiada, su comparación con la referencia y las conclusiones sustentadas por los resultados.
 
 [Preparar mi cuenta](preparacion.md){ .md-button }
 [Manual técnico de la herramienta](https://castaned.github.io/ML-integration-CMSSW/){ .text-link }
