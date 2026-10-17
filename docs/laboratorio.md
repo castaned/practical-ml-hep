@@ -156,14 +156,9 @@ Nuestro gráfico ROC es **sin pesos**. Para traducirlo a rendimientos físicos, 
 
 #### Ejemplo para completar en clase
 
-Este es un ejemplo hipotético de rendimientos esperados, no un resultado del dataset. Antes de la selección de la red tenemos **100 eventos de señal y 10 000 de fondo**. Ambas selecciones conservan 60% de la señal:
+Imagina dos selecciones que conservan **60 eventos de señal**. Una deja pasar **1 000 eventos de fondo** y la otra solo **500**. Si el fondo se conoce con suficiente precisión, la segunda facilita distinguir la señal de las fluctuaciones del fondo. Es un ejemplo ilustrativo, no un resultado del dataset.
 
-| Selección | εs | εb | Señal seleccionada s | Fondo seleccionado b | s / √b, aproximación |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| A | 0.60 | 0.10 | 60 | 1 000 | 1.90 |
-| B | 0.60 | 0.05 | 60 | 500 | 2.68 |
-
-La segunda selección permite ver mejor el mismo exceso de señal sobre el fondo. **No cambia la frecuencia física con la que se produce el Higgs**; cambia cuánto ruido dejamos entrar en la selección. La aproximación s/√b sirve aquí para ilustrar el efecto con fondo dominante y conocido; no reemplaza la AMS del challenge ni un cálculo con incertidumbres sistemáticas.
+**Para discutir:** si una red rechaza más fondo, pero también pierde buena parte de la señal, ¿podemos afirmar que mejoró el análisis? ¿Qué información de la ROC necesitamos comparar?
 
 ### Qué aporta la AMS a la comparación {#interpretar-ams}
 
@@ -174,6 +169,17 @@ En **`metrics.json`**, `roc_auc_unweighted` resume la ROC sin pesos y `ams_valid
 Para comparar modelos, conserva las mismas particiones y el mismo procedimiento de evaluación. La AMS del taller se ajusta en validación interna; no es una significancia observada ni una puntuación de la evaluación privada del challenge.
 
 **Al revisar tus figuras:** ¿la ROC mejora en la zona de bajo fondo? ¿Sube también la AMS? ¿La mejora se mantiene en validación o solo disminuye la pérdida de entrenamiento?
+
+### De una mejor clasificación a una búsqueda más sensible {#significado-fisico}
+
+Una mejora útil de la ROC permite **conservar más señal para el mismo fondo**, o **reducir el fondo sin perder señal**. Esto puede hacer que un proceso poco frecuente resulte más fácil de distinguir de las fluctuaciones del fondo. La mejora debe mantenerse en eventos que la red no utilizó para aprender.
+
+- **Si los datos contienen una señal:** una selección más sensible puede ayudar a identificar un exceso compatible con ese proceso y aportar evidencia para su observación.
+- **Si no aparece un exceso significativo:** el análisis puede establecer un límite superior a la intensidad de la señal. Una búsqueda más sensible puede excluir, en promedio, señales más débiles; es decir, alcanzar un **límite esperado más bajo**.
+
+La red mejora la selección; la conclusión física requiere además los datos observados, los rendimientos esperados y sus incertidumbres. Por eso, una mejor ROC o una AMS mayor **no garantizan una observación ni un límite observado más estricto**. La AMS del ejercicio permite explorar esa sensibilidad aproximada en simulación, como explica el [artículo del Higgs Challenge](https://proceedings.mlr.press/v42/cowa14.html).
+
+**Qué significa entrenar mejor:** conseguir una separación que se mantenga en validación y sea útil en la región de interés. Una pérdida de entrenamiento menor, una red más profunda o una AUC global mayor no bastan por sí solas. Al comparar tus corridas, pregunta: **¿esta mejora permitiría conservar una señal débil con menos fondo, y a qué costo de tiempo?**
 
 ## Continuar con las variaciones
 
