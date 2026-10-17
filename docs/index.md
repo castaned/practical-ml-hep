@@ -68,9 +68,9 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 
 ### Arquitectura de los ejercicios {#aplicacion-a-los-ejercicios-del-curso}
 
-![Arquitectura del análisis: CERN Open Data como fuente, Yuca como entorno de ejecución y marcos de énfasis ATLAS y CMS](assets/workshop/hep_framework_atlas_cms.svg)
+[![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v2.svg)](assets/workshop/hep_framework_atlas_cms_v2.svg)
 
-El marco exterior representa **Yuca**. Dentro de él, el marco verde destaca el entrenamiento y la evaluación de **ATLAS**; el violeta incluye el procesamiento y el entrenamiento de **CMS**. Ambos utilizan el software **ML-integration-CMSSW**, con entradas de distinto formato procedentes de CERN Open Data.
+Los **cilindros representan archivos almacenados** y los **rectángulos, operaciones del análisis**. Las flechas indican el paso de datos y productos. El marco exterior es **Yuca**; el verde destaca entrenamiento y evaluación ATLAS, y el violeta el recorrido CMS desde NanoAOD. Los modelos, métricas y figuras se conservan en la carpeta personal de cada ejecución. Pulsa el esquema para ampliarlo.
 
 ## Datos, infraestructura y software de análisis
 
@@ -108,15 +108,6 @@ Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para 
 
 !!! info "Primer paso: preparar tu acceso y tu cuenta"
     La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Esta preparación es necesaria antes de iniciar los ejercicios.
-
-## Dos ejercicios con CERN Open Data
-
-Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables ya calculadas; en CMS realizamos también la selección de eventos y la extracción de observables desde NanoAOD.
-
-[Ejercicio 1: ATLAS Higgs Challenge](atlas.md){ .md-button .md-button--primary }
-[Autoencoder CMS](autoencoder.md){ .md-button }
-
-En ambos ejercicios se comienza reproduciendo una configuración de referencia. Sus conteos, figuras y métricas se revisan antes de introducir cambios; esa ejecución se conserva para comparar las variaciones.
 
 ## Programa del taller
 
