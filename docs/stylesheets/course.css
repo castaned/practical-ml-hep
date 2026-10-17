@@ -109,3 +109,11 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .course-links {display:flex;flex-wrap:wrap;gap:.25rem;}
 .course-links p {margin:0;}
 .course-links .hero-secondary:hover {background:#ffffff15;color:#fff;}
+/* Editable group notebook */
+.notebook-fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;margin:1rem 0;}
+.notebook-fields label {display:flex;flex-direction:column;gap:.35rem;font-size:.75rem;font-weight:500;}
+.notebook-fields input,.notebook-fields textarea {font:inherit;font-weight:400;line-height:1.6;width:100%;padding:.6rem;border:1px solid var(--course-border);border-radius:6px;background:var(--md-default-bg-color);color:var(--md-default-fg-color);}
+.notebook-fields textarea {resize:vertical;min-height:90px;}
+.notebook-wide {grid-column:1/-1;}
+#notebook-status,#notebook-metrics-status {font-size:.7rem;min-height:1.5em;}
+@media(max-width:600px){.notebook-fields{grid-template-columns:1fr;}}

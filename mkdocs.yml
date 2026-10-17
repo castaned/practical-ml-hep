@@ -42,10 +42,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
 extra_css:
-  - stylesheets/course.css?v=3
+  - stylesheets/course.css?v=4
 extra_javascript:
   - javascripts/explorer.js
   - javascripts/results.js
+  - javascripts/notebook.js
 nav:
   - Inicio: index.md
   - Preparación inicial: preparacion.md
