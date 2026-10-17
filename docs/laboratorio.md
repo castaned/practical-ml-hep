@@ -1,61 +1,42 @@
 # Entrenamiento con el ATLAS Higgs Challenge
 
-El objetivo del laboratorio es evaluar cómo una modificación de la red neuronal afecta las curvas de aprendizaje, la discriminación entre señal y fondo y el tiempo de entrenamiento.
+El ejercicio comienza con la reproducción de una red de referencia. Una vez identificados sus resultados, se modificarán los parámetros del YAML para comparar distintas configuraciones.
 
-## Programa del miércoles: tres horas
+## 1. Procesos y variables de entrada
 
-La sesión combina una introducción breve con ejercicios de entrenamiento y análisis. La activación de la cuenta y, de ser posible, la instalación del ambiente se completarán previamente siguiendo la [preparación inicial](preparacion.md).
+Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.
 
-| Tiempo transcurrido | Actividad | Resultado esperado |
-| --- | --- | --- |
-| 0–20 min | Acceso a JupyterLab, activación del ambiente y consulta de los datos compartidos | Entorno listo para ejecutar los ejercicios |
-| 20–40 min | Señal Higgs → ττ, procesos de fondo y distribuciones de entrada | Identificar un observable y explicar su significado físico |
-| 40–65 min | Entrenamiento de referencia y lectura de sus figuras | Primera fila de la tabla: AUC, AMS interna, épocas y tiempo |
-| 65–100 min | Primera variación del YAML por grupo o mesa | Hipótesis escrita, configuración y resultados en una carpeta nueva |
-| 100–110 min | Pausa | |
-| 110–145 min | Comparación con la referencia y segunda prueba, si procede | Interpretación de la mejora, el sobreajuste o el costo de cómputo |
-| 145–170 min | Puesta en común entre grupos | Tabla comparativa y una figura representativa por grupo |
-| 170–180 min | Discusión de resultados y cierre | Conclusiones sobre arquitectura, regularización y evaluación |
+![Distribuciones de seis de las treinta variables de entrada](assets/workshop/atlas_variables_01.png)
 
-Mientras los trabajos esperan o se ejecutan, se revisarán las distribuciones, se formularán hipótesis y se completará el registro. El tiempo en cola se distinguirá del tiempo de entrenamiento.
+*Comparación de las distribuciones de señal y fondo. El entrenamiento utiliza las treinta variables, no solamente las seis de este panel.*
 
-### Escenarios de trabajo
+## 2. Red neuronal de referencia {#red-neuronal-de-referencia}
 
-Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la misma referencia; cada grupo estudiará inicialmente uno de los siguientes factores. Si varias mesas comparten escenario, podrán contrastar la reproducibilidad de sus resultados.
+El benchmark del taller es una red completamente conectada de clasificación binaria. Esta configuración proporciona el punto de comparación para los ejercicios posteriores; no corresponde al modelo ganador del challenge.
 
-| Escenario | Modificación en el YAML | Pregunta de análisis |
-| --- | --- | --- |
-| A. Arquitectura | Cambiar `model.hidden_dims`, por ejemplo a `[512, 256, 128, 64]` | ¿La capacidad adicional mejora la validación y cuánto aumenta el tiempo? |
-| B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
-| C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
-| D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
+**30 entradas → 128 → 64 → 32 → 16 → 1 salida**
 
-Conservar los demás parámetros, las variables y las particiones de datos. Cada modificación requiere un YAML y una carpeta de salida propios. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
+Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se transforma mediante una función sigmoide en una puntuación entre cero y uno; los valores altos favorecen la clasificación como señal.
 
-El criterio de la actividad será la calidad de la comparación y de su interpretación. La rapidez de envío o el mayor AUC aislado no determinan el mejor trabajo. La [bitácora](bitacora.md) y la [tabla de puesta en común](conclusiones.md) se completarán durante la sesión. El jueves se retomarán las conclusiones y se presentará el autoencoder CMS como extensión.
+| Parámetro | Configuración de referencia |
+| --- | --- |
+| Variables de entrada | Las 30 variables físicas |
+| Capas ocultas | `[128, 64, 32, 16]` |
+| Dropout | `0.1` |
+| Optimizador | AdamW |
+| Tasa de aprendizaje | `0.001` |
+| Tamaño de lote | `4096` eventos |
+| Máximo de épocas | `20` |
+| Parada temprana | `6` épocas sin mejora de la pérdida de validación |
+| Entrenamiento / validación | 200 000 / 50 000 eventos, de la partición `t` |
 
-## Entender el problema
+Los valores ausentes se sustituyen por medianas y las variables se estandarizan. Ambas transformaciones se ajustan únicamente con los eventos de entrenamiento. El modelo conservado es el de menor pérdida de validación.
 
-Queremos separar **Higgs → ττ** de procesos de fondo que pueden producir objetos similares. La red recibe **30 variables físicas** y asigna una puntuación a cada evento.
-
-![Higgs a dos taus: leptón, hadrones y tres neutrinos](assets/workshop/higgs_tautau_final_state.svg)
-
-*Cadena ilustrativa del taller: esperamos un electrón o muón, un tau hadrónico y momento transversal faltante por los tres neutrinos. También se considera el conjugado de carga. [Ver la explicación del diagrama](fisica.md#el-estado-final-que-buscamos).*
-
-Antes de entrenar, conversamos: **¿qué distingue señal y fondo? ¿Por qué los neutrinos dificultan reconstruir el Higgs?** La [introducción física](fisica.md) explica las muestras y las 30 variables, no solo las que aparecen en esta imagen:
-
-![Seis ejemplos de las treinta variables](assets/workshop/atlas_variables_01.png)
-
-*Cada curva permite comparar formas de señal y fondo. Este panel muestra seis variables; la red utiliza las treinta.*
-
-!!! info "¿Es tu primera sesión?"
-    Sigue primero la [preparación inicial en Yuca](preparacion.md): acceso, ambiente, terminal y recursos. Luego regresa aquí para experimentar con el YAML.
-
-## Preparar una referencia común
+## 3. Reproducir el entrenamiento de referencia
 
 Primero ejecutaremos todos la misma configuración. Los datos ya están compartidos en Yuca y cada cuenta guarda sus propios resultados.
 
-??? info "Comandos de preparación: una sola vez"
+!!! info "Preparar el YAML de referencia"
     Con el acceso y el ambiente GPU ya preparados, ejecutar desde la terminal:
 
     ```bash
@@ -67,29 +48,63 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
 
     Si falta configurar tu cuenta, consulta el [apoyo de preparación](referencia.md#entorno-gpu-de-yuca). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
-## Configuración mediante YAML
-
-Abre `hep-workshop/configs/atlas_baseline01.yaml` con el editor de **Files de Open OnDemand**. Al principio conserva la configuración de referencia.
-
-| Campo que puedes cambiar | Idea que estás probando |
-| --- | --- |
-| `hidden_dims` | Número de capas y neuronas por capa |
-| `dropout` | Regularización para evitar aprender demasiado los detalles del entrenamiento |
-| `learning_rate` | Tamaño de los pasos al aprender |
-| `batch_size` | Cuántos eventos procesa juntos |
-| `epochs` y `patience` | Cuánto puede entrenar y cuándo dejar de insistir |
-
-**Ejemplo dentro del YAML:**
+Abrir `hep-workshop/configs/atlas_baseline01.yaml` en el explorador lateral de JupyterLab. Comprobar los parámetros anteriores y conservarlos sin cambios durante esta primera ejecución. La carpeta de salida indicada en el YAML debe ser:
 
 ```yaml
-model:
-  hidden_dims: [128, 64, 32, 16]
-  dropout: 0.1
+output:
+  directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
 ```
 
-Son cuatro capas ocultas. Para ensayar una red mayor, podrías cambiar solo la lista a `[512, 256, 128, 64]`. No necesitas modificar el código ni los scripts del clúster.
+Desde la terminal de JupyterLab, en la raíz del repositorio:
 
-## Un experimento, una carpeta
+```bash
+sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
+  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
+```
+
+Consultar el estado del trabajo con `squeue -u "$USER"`. Esperar a que termine antes de abrir sus resultados. Si se produce un error, consultar el [apoyo operativo](apoyo.md).
+
+## 4. Localizar y revisar los resultados
+
+En el explorador de archivos de JupyterLab, abrir **hep-workshop → results → atlas_gpu_baseline01** dentro del directorio personal. Los resultados pertenecen a la cuenta del participante; los datos originales permanecen en la carpeta compartida.
+
+| Archivo | Contenido y uso |
+| --- | --- |
+| `config.yaml` | Configuración utilizada en esta ejecución |
+| `training_summary.png` | Pérdidas, curva ROC y distribuciones de puntuación |
+| `metrics.json` | AUC, AMS interna, tiempo, mejor época y épocas ejecutadas |
+| `history.csv` | Evolución del entrenamiento por época |
+| `best_model.pt` | Modelo conservado según la pérdida de validación |
+| `validation_scores.csv` | Puntuaciones de los eventos de validación |
+| `splits.csv` | Identificación de los eventos de cada partición |
+| `preprocessing.joblib` | Transformaciones aplicadas a las variables |
+
+En la prueba previa en una MI210 se obtuvieron **AUC ≈ 0.910**, **AMS interna ≈ 3.52** y **30 segundos de entrenamiento**. Son valores orientativos: el tiempo depende de los recursos y los resultados pueden presentar pequeñas variaciones numéricas. La AMS corresponde a la validación interna del taller.
+
+Abrir `training_summary.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
+
+1. La carpeta donde se guardaron los resultados.
+2. El archivo que conserva la configuración utilizada.
+3. La evolución de las pérdidas de entrenamiento y validación.
+4. El AUC, la AMS interna y el tiempo de entrenamiento.
+
+### Interpretación de las figuras
+
+Abre **`training_summary.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
+
+| Observa | Interpreta |
+| --- | --- |
+| Pérdida de entrenamiento y validación | ¿Aprende también sobre eventos que no vio al entrenar? |
+| Curva ROC | ¿Conserva más señal para el mismo fondo aceptado? |
+| Puntuaciones de señal y fondo | ¿Dónde se separan y dónde se confunden? |
+| AUC y AMS interna | ¿Mejoró la separación global y también la selección? |
+| Tiempo y épocas | ¿La mejora justificó el costo? |
+
+Una curva de validación que empeora mientras entrenamiento sigue mejorando sugiere **sobreajuste**. La parada temprana conserva el modelo con menor pérdida de validación. Una red más grande o más tiempo no garantizan mejores resultados.
+
+Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a señales. No cambia la sección eficaz física ni calcula por sí sola un límite: [explicación con un ejemplo](fisica.md#leer-una-roc-como-fisico).
+
+## Variaciones de la referencia
 
 **Antes de modificar la referencia, copia su YAML con otro nombre.** Por ejemplo, `atlas_02.yaml`. Dentro de esa copia modifica un parámetro o un conjunto definido de parámetros y elige una carpeta nueva:
 
@@ -110,7 +125,7 @@ Conserva el resto del archivo. Cambiar el nombre del YAML no cambia por sí solo
 **Antes de enviar, escribe una frase:** «Esperamos que este cambio… porque…».
 
 ??? info "Cómo copiar y enviar un YAML"
-    Copiar la referencia, editar la copia en Files y cambiar su carpeta de salida:
+    Copiar la referencia, editar la copia en JupyterLab y cambiar su carpeta de salida:
 
     ```bash
     cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_02.yaml"
@@ -126,28 +141,39 @@ Conserva el resto del archivo. Cambiar el nombre del YAML no cambia por sí solo
 
     Si hay un problema con el trabajo, consulta el [apoyo de comandos y archivos](apoyo.md). Los fragmentos YAML se editan dentro del archivo; no se ejecutan en la terminal.
 
-## Evaluación de los resultados
+### Escenarios de trabajo
 
-Abre **`training_summary.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
+Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la misma referencia; cada grupo estudiará inicialmente uno de los siguientes factores. Si varias mesas comparten escenario, podrán contrastar la reproducibilidad de sus resultados.
 
-| Observa | Interpreta |
-| --- | --- |
-| Pérdida de entrenamiento y validación | ¿Aprende también sobre eventos que no vio al entrenar? |
-| Curva ROC | ¿Conserva más señal para el mismo fondo aceptado? |
-| Puntuaciones de señal y fondo | ¿Dónde se separan y dónde se confunden? |
-| AUC y AMS interna | ¿Mejoró la separación global y también la selección? |
-| Tiempo y épocas | ¿La mejora justificó el costo? |
+| Escenario | Modificación en el YAML | Pregunta de análisis |
+| --- | --- | --- |
+| A. Arquitectura | Cambiar `model.hidden_dims`, por ejemplo a `[512, 256, 128, 64]` | ¿La capacidad adicional mejora la validación y cuánto aumenta el tiempo? |
+| B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
+| C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
+| D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
 
-Una curva de validación que empeora mientras entrenamiento sigue mejorando sugiere **sobreajuste**. La parada temprana conserva el modelo con menor pérdida de validación. Una red más grande o más tiempo no garantizan mejores resultados.
-
-Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a señales. No cambia la sección eficaz física ni calcula por sí sola un límite: [explicación con un ejemplo](fisica.md#leer-una-roc-como-fisico).
+Conservar los demás parámetros, las variables y las particiones de datos. Cada modificación requiere un YAML y una carpeta de salida propios. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
 
 ## Comparación de configuraciones
 
-Completa la **[bitácora breve](bitacora.md)** durante la actividad. Compara con la referencia usando los mismos datos y modificando un factor por experimento. Si hay tiempo, evalúa una segunda configuración o compara CPU y GPU con apoyo del docente.
+Completar la [bitácora](bitacora.md) con la referencia y la variación. Mantener los mismos datos y modificar un factor por experimento. Comparar las curvas y las métricas antes de decidir una segunda modificación.
 
-Al cerrar, comparte una figura y responde: **¿qué esperabas, qué observaste y qué puedes concluir?** [Puesta en común](conclusiones.md).
+Presentar una figura y explicar si los resultados respaldan la hipótesis inicial. Las referencias históricas del challenge utilizan una evaluación diferente de nuestra validación interna: [método y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge).
 
-Nuestra AMS es de validación interna. Los números históricos del challenge corresponden a otra evaluación; se consultan como [referencia externa](referencia.md#benchmarks-publicados-del-higgs-challenge), no como una clasificación directa de nuestros grupos.
+## Programa del miércoles: tres horas
 
-[Apoyo operativo](apoyo.md) · [Física y todas las variables](fisica.md) · [Detalles opcionales del método](referencia.md)
+La sesión combina una introducción breve con ejercicios de entrenamiento y análisis. La activación de la cuenta y, de ser posible, la instalación del ambiente se completarán previamente siguiendo la [preparación inicial](preparacion.md).
+
+| Tiempo transcurrido | Actividad | Resultado esperado |
+| --- | --- | --- |
+| 0–20 min | Acceso a JupyterLab, activación del ambiente y consulta de los datos compartidos | Entorno listo para ejecutar los ejercicios |
+| 20–40 min | Señal Higgs → ττ, procesos de fondo y distribuciones de entrada | Identificar un observable y explicar su significado físico |
+| 40–65 min | Entrenamiento de referencia y lectura de sus figuras | Primera fila de la tabla: AUC, AMS interna, épocas y tiempo |
+| 65–100 min | Primera variación del YAML por grupo o mesa | Hipótesis escrita, configuración y resultados en una carpeta nueva |
+| 100–110 min | Pausa | |
+| 110–145 min | Comparación con la referencia y segunda prueba, si procede | Interpretación de la mejora, el sobreajuste o el costo de cómputo |
+| 145–170 min | Puesta en común entre grupos | Tabla comparativa y una figura representativa por grupo |
+| 170–180 min | Discusión de resultados y cierre | Conclusiones sobre arquitectura, regularización y evaluación |
+
+Mientras los trabajos esperan o se ejecutan, se revisarán las distribuciones, se formularán hipótesis y se completará el registro. El tiempo en cola se distinguirá del tiempo de entrenamiento.
+

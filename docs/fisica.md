@@ -1,16 +1,12 @@
 # La física detrás del Higgs Challenge
 
-**La red no mide una sección eficaz por sí sola.** Ayuda a seleccionar eventos para que una medición o una búsqueda sea más sensible. Aquí conectamos las partículas, las 30 entradas de la red y la interpretación física de sus resultados.
-
-[Volver al laboratorio YAML](laboratorio.md) · [Completar la bitácora](bitacora.md)
-
 ## Proceso físico y respuesta del detector
-
-La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y neutrinos; el otro produce hadrones y un neutrino. Por eso buscamos **un leptón, un tau hadrónico y momento transversal faltante**, a veces acompañados de jets. El detector registra productos del decaimiento, no una etiqueta que diga «Higgs».
 
 ![Producción de Higgs por fusión de gluones y bosones vectoriales](assets/workshop/higgs_ggf_vbf.png){ width="800" }
 
 *Producción: (a) fusión de gluones; (b) fusión de bosones vectoriales, con quarks salientes que pueden producir jets. Recorte de la figura 1 de la [publicación conjunta ATLAS y CMS, arXiv:1606.02266](https://arxiv.org/abs/1606.02266). Estos diagramas contextualizan la producción; no proceden del artículo del challenge.*
+
+La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y neutrinos; el otro produce hadrones y un neutrino. Por eso buscamos **un leptón, un tau hadrónico y momento transversal faltante**, a veces acompañados de jets. El detector registra productos del decaimiento, no una etiqueta que diga «Higgs».
 
 ### El estado final que buscamos
 
@@ -30,30 +26,9 @@ Los fondos imitan esos objetos: **Z → ττ** produce taus reales; los pares de
 
 **Pregunta para el salón:** si señal y fondo pueden producir objetos similares, ¿qué combinaciones de masas, direcciones y momentos podrían ayudarnos?
 
-## ¿Ya se observó H → ττ en el LHC?
-
-**Sí. El objetivo actual incluye medir sus propiedades con más precisión.** El challenge de 2014 permite practicar cómo separar una señal difícil; no significa que el canal siga sin observarse.
-
-| Hito | Resultado |
-| --- | --- |
-| CMS, anunciado en 2017 | Observación de H → ττ por un experimento, 5.9 desviaciones estándar al combinar datos de 7, 8 y 13 TeV |
-| ATLAS, 2018 | Observación con 6.4 desviaciones estándar al combinar esas energías |
-| ATLAS, publicación de 2022 | Medición de la tasa de producción en este canal con los datos completos de Run 2 |
-| ATLAS, publicación de 2025 | Mediciones diferenciales: cómo cambia la producción según las propiedades cinemáticas |
-
-Fuentes: [CMS HIG-16-043](https://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-16-043/index.html), [observación ATLAS](https://atlas.cern/updates/briefing/higgs-couples-heaviest-lepton) y [mediciones diferenciales ATLAS](https://arxiv.org/abs/2407.16320).
-
-Como ejemplo numérico, ATLAS midió en colisiones a **13 TeV**, usando **139 fb⁻¹**, el producto de sección eficaz de producción por probabilidad de decaimiento a ττ, para **|yH| < 2.5**:
-
-**σ × B(H → ττ) = 2.94 ± 0.21 (estadística) +0.37/−0.32 (sistemática) pb.**
-
-La predicción del Modelo Estándar para esa definición es **3.17 ± 0.09 pb**; son compatibles dentro de las incertidumbres. Es una medición publicada, no un número obtenido en nuestro taller ni necesariamente la medición más reciente. [ATLAS, JHEP 08 (2022) 175](https://arxiv.org/abs/2201.08269).
-
-**Para interpretar el ejercicio:** una mejor selección puede ayudar a observar una señal, pero también a medirla mejor una vez observada. Nuestra AMS es un indicador de selección en simulación; no es la significancia observada del experimento ni una sección eficaz.
-
 ## Las 30 variables, organizadas por su significado
 
-La tabla corta de la guía solo mostraba ejemplos. **El YAML `features: all_physics` utiliza las 30 variables siguientes.** `PRI_` identifica 17 cantidades primarias y `DER_` las 13 construidas combinando otras cantidades.
+**El YAML `features: all_physics` utiliza las 30 variables siguientes.** `PRI_` identifica 17 cantidades primarias y `DER_` las 13 construidas combinando otras cantidades.
 
 ### Definición de observables
 
@@ -113,6 +88,33 @@ Resumen de la [documentación del challenge](https://opendata.cern.ch/record/329
 **Tres ideas físicas:** las masas ayudan a distinguir hipótesis de origen; el MET informa sobre componentes invisibles; los jets y sus separaciones aportan información sobre la producción. La red puede combinar estas pistas sin que nosotros fijemos todos los cortes.
 
 Si no hay dos jets, algunas variables no están definidas. El valor `-999` lo señala: no es una masa o un momento físico. La preparación automática lo trata antes del entrenamiento. Las columnas de etiqueta, pesos, identificador y partición no cuentan entre las 30 entradas.
+
+## Del proceso físico al entrenamiento
+
+La red utilizará las treinta variables para distinguir la señal de los procesos de fondo. En el siguiente ejercicio se reproducirá una configuración de referencia, se identificarán los archivos de resultados y, después, se estudiarán modificaciones del modelo.
+
+[Continuar: red de referencia y primer entrenamiento](laboratorio.md#red-neuronal-de-referencia){ .md-button .md-button--primary }
+
+## ¿Ya se observó H → ττ en el LHC?
+
+**Sí. El objetivo actual incluye medir sus propiedades con más precisión.** El challenge de 2014 permite practicar cómo separar una señal difícil; no significa que el canal siga sin observarse.
+
+| Hito | Resultado |
+| --- | --- |
+| CMS, anunciado en 2017 | Observación de H → ττ por un experimento, 5.9 desviaciones estándar al combinar datos de 7, 8 y 13 TeV |
+| ATLAS, 2018 | Observación con 6.4 desviaciones estándar al combinar esas energías |
+| ATLAS, publicación de 2022 | Medición de la tasa de producción en este canal con los datos completos de Run 2 |
+| ATLAS, publicación de 2025 | Mediciones diferenciales: cómo cambia la producción según las propiedades cinemáticas |
+
+Fuentes: [CMS HIG-16-043](https://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-16-043/index.html), [observación ATLAS](https://atlas.cern/updates/briefing/higgs-couples-heaviest-lepton) y [mediciones diferenciales ATLAS](https://arxiv.org/abs/2407.16320).
+
+Como ejemplo numérico, ATLAS midió en colisiones a **13 TeV**, usando **139 fb⁻¹**, el producto de sección eficaz de producción por probabilidad de decaimiento a ττ, para **|yH| < 2.5**:
+
+**σ × B(H → ττ) = 2.94 ± 0.21 (estadística) +0.37/−0.32 (sistemática) pb.**
+
+La predicción del Modelo Estándar para esa definición es **3.17 ± 0.09 pb**; son compatibles dentro de las incertidumbres. Es una medición publicada, no un número obtenido en nuestro taller ni necesariamente la medición más reciente. [ATLAS, JHEP 08 (2022) 175](https://arxiv.org/abs/2201.08269).
+
+**Para interpretar el ejercicio:** una mejor selección puede ayudar a observar una señal, pero también a medirla mejor una vez observada. Nuestra AMS es un indicador de selección en simulación; no es la significancia observada del experimento ni una sección eficaz.
 
 ## Interpretación física de la curva ROC {#leer-una-roc-como-fisico}
 
