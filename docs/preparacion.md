@@ -78,7 +78,7 @@ En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir 
 
 Mantén abierta esta terminal para ejecutar los comandos de las siguientes secciones.
 
-## 3. Configuración inicial de la cuenta
+## 3. Clonación y preparación del entorno de análisis
 
 ### Clonación del repositorio
 
@@ -188,3 +188,4 @@ sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
 [Ir al laboratorio](laboratorio.md){ .md-button }
 
 Los detalles generales de la herramienta permanecen en su [manual técnico](https://castaned.github.io/ML-integration-CMSSW/). Este capítulo reúne los pasos necesarios para empezar la práctica en ACARUS.
+
