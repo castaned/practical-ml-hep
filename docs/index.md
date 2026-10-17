@@ -72,9 +72,6 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 
 El marco exterior representa **Yuca**. Dentro de él, el marco verde destaca el entrenamiento y la evaluación de **ATLAS**; el violeta incluye el procesamiento y el entrenamiento de **CMS**. Ambos utilizan el software **ML-integration-CMSSW**, con entradas de distinto formato procedentes de CERN Open Data.
 
-[ATLAS: física y benchmark](fisica.md){ .md-button .md-button--primary }
-[CMS: procesamiento y autoencoder](autoencoder.md){ .md-button }
-
 ## Datos, infraestructura y software de análisis
 
 <div class="yuca-profile">
