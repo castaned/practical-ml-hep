@@ -10,11 +10,11 @@ hide:
 
 <span class="course-kicker">Universidad de Sonora · Curso práctico</span>
 
-# Aprendizaje automático en física de partículas
+# Practical Machine Learning for HEP Data Analysis
 
-El análisis de física de partículas combina datos, capacidad de cómputo y herramientas de software. En este curso reuniremos estos tres componentes para estudiar procesos de ATLAS y CMS.
+Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
-<p class="course-affiliation">Yuca · Clúster de alto rendimiento de la UNISON<br>ACARUS · Procesamiento y entrenamiento en CPU / GPU</p>
+<p class="course-affiliation">Yuca · ACARUS / UNISON · CPU y GPU</p>
 
 <div class="course-links" markdown>
 
