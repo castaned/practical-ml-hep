@@ -4,17 +4,25 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 <div class="grid cards" markdown>
 
-- **Una sola vez**
+- **Preparación inicial · Una sola vez**
 
-    Activar tu cuenta y la doble verificación. Clonar la herramienta. Crear tu ambiente personal.
+    **Acceso:** cuenta de Yuca y doble verificación.
 
-- **Cada sesión**
+    **Herramienta:** copia del repositorio de análisis en tu cuenta.
 
-    Entrar a Open OnDemand, abrir una terminal, activar el ambiente y entrar al repositorio.
+    **Ambiente:** Python y las bibliotecas necesarias para los ejercicios.
 
-- **Cada experimento**
+- **Inicio de trabajo · Cada sesión**
 
-    Preparar una copia del YAML, modificar los parámetros de estudio y definir una carpeta de salida independiente.
+    **Conexión:** Open OnDemand y terminal de JupyterLab.
+
+    **Entorno:** activación del ambiente y acceso al repositorio de análisis.
+
+- **Configuración y resultados · Cada experimento**
+
+    **Configuración:** archivo YAML personal con los parámetros que vas a estudiar.
+
+    **Resultados:** carpeta propia para conservar las figuras, métricas y modelos de cada ejecución.
 
 </div>
 
