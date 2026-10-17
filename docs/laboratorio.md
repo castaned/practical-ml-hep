@@ -30,7 +30,7 @@ Consultar la [comparación de distribuciones de señal y fondo](fisica.md#distri
 
 El benchmark del taller es una red completamente conectada de clasificación binaria. Esta configuración proporciona el punto de comparación para los ejercicios posteriores; no corresponde al modelo ganador del challenge.
 
-**30 entradas → 128 → 64 → 32 → 16 → 1 salida**
+![Arquitectura del benchmark: treinta entradas, cuatro capas ocultas de 128, 64, 32 y 16 neuronas, y una salida](assets/workshop/atlas_baseline_network.svg)
 
 Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se transforma mediante una función sigmoide en una puntuación entre cero y uno; los valores altos favorecen la clasificación como señal.
 
@@ -74,11 +74,29 @@ output:
 Desde la terminal de JupyterLab, en la raíz del repositorio:
 
 ```bash
-sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
+JOB_ID=$(sbatch --parsable --output="$HOME/hep-workshop/logs/atlas_%j.out" \
+  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml")
+echo "Trabajo enviado: $JOB_ID"
 ```
 
-Consultar el estado del trabajo con `squeue -u "$USER"`. Esperar a que termine antes de abrir sus resultados. Si se produce un error, consultar el [apoyo operativo](apoyo.md).
+### Seguir el entrenamiento en la terminal
+
+Después de enviar el trabajo, ejecuta en la misma terminal:
+
+```bash
+python workshop/monitor_atlas.py \
+  -f "$HOME/hep-workshop/configs/atlas_baseline01.yaml" \
+  --log "$HOME/hep-workshop/logs/atlas_${JOB_ID}.out"
+```
+
+El visor se actualiza cada segundo con una **barra de épocas**, las pérdidas de entrenamiento y validación, el AUC de validación y dos trazas de la evolución de las pérdidas. Lee los valores reales del log; no ejecuta otro entrenamiento ni solicita otra GPU. El máximo de épocas se toma del YAML.
+
+**Qué observar:** ¿disminuyen ambas pérdidas? ¿La validación deja de mejorar mientras entrenamiento sigue bajando? Al finalizar, el visor muestra la época del modelo conservado y la AMS interna. La parada temprana puede terminar antes de que la barra alcance el máximo.
+
+Si el trabajo aún está en cola o prepara los datos, aparecerá un mensaje de espera. **Ctrl+C cierra solamente el visor**; el trabajo continúa en Slurm. Puedes volver a abrirlo con el mismo comando, incluso cuando la corrida haya terminado. Si abriste una nueva terminal, sustituye `${JOB_ID}` por el número del trabajo que se mostró al enviarlo.
+
+Si el avance se detiene, consulta `squeue -u "$USER"` y el log del trabajo. El visor no determina por sí solo si un trabajo falló. Para ver una sola captura del estado, añade `--once` al comando. [Apoyo operativo](apoyo.md).
+
 
 ## 4. Localizar y revisar los resultados
 
