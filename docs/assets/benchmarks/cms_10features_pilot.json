@@ -1,7 +1,7 @@
 {
-  "reference_kind": "historical_cms_pilot",
+  "reference_kind": "course_initial_reference_from_reported_pilot",
   "reported_date": "2026-10-09",
-  "description": "Resultados reportados en Yuca para el piloto DYJets HT70to100, WZ y ZZ, diez variables. No certifica por sí solo una nueva extracción compartida.",
+  "description": "Benchmark inicial adoptado para el ejercicio CMS: piloto de diez variables reportado en Yuca el 9 de octubre de 2026. La reproducción requiere el mismo conjunto de archivos y la misma configuración; no implica una nueva ejecución validada sobre una extracción distinta.",
   "metrics": {
     "normal_train": 4019,
     "normal_validation": 1340,
@@ -55,5 +55,13 @@
       "W_mt"
     ],
     "seed": 16
+  },
+  "architecture": {
+    "input_features": 10,
+    "hidden_dims": [
+      16,
+      8
+    ],
+    "latent_dim": 2
   }
 }

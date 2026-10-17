@@ -66,11 +66,11 @@ Estos comandos corresponden a la configuración del ejercicio CMS. No se utiliza
 
 La primera ejecución utiliza el YAML de referencia completo, antes de estudiar cambios de arquitectura. Reproducir la selección y la extracción con los archivos de entrada de esa referencia, comprobar las diez variables y ejecutar el entrenamiento. Conservar el YAML y los productos de esa primera corrida.
 
-### Referencia documentada del piloto
+### Benchmark inicial del ejercicio
 
-El piloto de diez variables ejecutado en Yuca el 9 de octubre de 2026 produjo los siguientes resultados con DYJets HT 70–100, WZ y ZZ, semilla 16 y una muestra W′ de 320 eventos para evaluación:
+El benchmark adoptado para este ejercicio es la configuración inicial de diez variables y arquitectura **10 → 16 → 8 → 2 → 8 → 16 → 10**. Su ejecución en Yuca el 9 de octubre de 2026 produjo los siguientes resultados con DYJets HT 70–100, WZ y ZZ, semilla 16 y una muestra W′ de 320 eventos para evaluación:
 
-| Magnitud | Referencia del piloto | Tu ejecución |
+| Magnitud | Benchmark inicial | Tu ejecución |
 | --- | ---: | --- |
 | Entradas de la red | 10 | Registrar |
 | Eventos SM de entrenamiento | 4 019 | Registrar |
@@ -84,9 +84,9 @@ El piloto de diez variables ejecutado en Yuca el 9 de octubre de 2026 produjo lo
 | Eficiencia W′ al umbral de referencia | 34.69 % | Registrar |
 | AUC de evaluación | 0.97041 | Registrar |
 
-[Descargar las métricas documentadas del piloto](assets/benchmarks/cms_10features_pilot.json).
+[Descargar las métricas del benchmark inicial](assets/benchmarks/cms_10features_pilot.json).
 
-Estos números corresponden a aquella extracción y configuración. Su comparación exige los mismos archivos, selección, variables, escalado, particiones y parámetros del YAML. Si el conjunto compartido corresponde a una extracción distinta, se utilizará su propia corrida de referencia; no se exigirá reproducir las cifras del piloto anterior.
+Para reproducir este benchmark, conservar los archivos de entrada, la selección, las variables, el escalado, las particiones y los parámetros del YAML de referencia. Comparar primero los conteos de eventos: si no coinciden, revisar la extracción antes de interpretar las diferencias en las métricas.
 
 Los conteos por proceso permiten comprobar la composición:
 
@@ -112,7 +112,7 @@ Los conteos por proceso permiten comprobar la composición:
 
 Comparar primero los conteos y las variables, después las pérdidas y las distribuciones del error. Registrar la corrida inicial y conservarla. Una modificación posterior utilizará una copia del YAML y una carpeta de salida diferente, con los mismos eventos y particiones.
 
-La reproducción del piloto incluye su evaluación W′. Para estudiar cambios del modelo, utilizar la validación SM; las cifras W′ no se emplean como objetivo para seleccionar la arquitectura.
+La reproducción del benchmark incluye su evaluación W′. Para estudiar cambios del modelo, utilizar la validación SM; las cifras W′ no se emplean como objetivo para seleccionar la arquitectura.
 
 ## 6. Interpretación de los resultados
 
