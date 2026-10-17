@@ -130,3 +130,14 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .yuca-capacity dt {font-size:.88rem;font-weight:650;}
 .yuca-capacity dd {font-size:.64rem;margin:.2rem 0 0;color:var(--md-default-fg-color--light);}
 @media(max-width:760px){.yuca-profile{grid-template-columns:1fr;padding:1rem;gap:1rem;}.yuca-profile figure{max-width:340px;margin:auto;}}
+/* CERN Open Data introduction, preceding the framework diagram */
+.open-data-intro {display:grid;grid-template-columns:250px minmax(0,1fr);margin:1.8rem 0 2rem;border:1px solid var(--course-border);border-radius:14px;overflow:hidden;background:var(--md-code-bg-color);}
+.md-typeset .open-data-brand {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:#142e42;padding:1.5rem;color:#d9eaf2;}
+.md-typeset .open-data-brand img {width:196px;max-width:100%;height:auto;border-radius:0;}
+.open-data-brand span {font-size:.65rem;}
+.open-data-copy {padding:1.3rem 1.6rem;}
+.md-typeset .open-data-copy h2 {margin:0 0 .7rem;font-size:1.25rem;}
+.open-data-copy p {font-size:.76rem;line-height:1.7;}
+.open-data-copy>a {font-size:.73rem;font-weight:600;}
+.open-data-copy .open-data-credit {font-size:.6rem;color:var(--md-default-fg-color--light);margin:.6rem 0 0;}
+@media(max-width:680px){.open-data-intro{grid-template-columns:1fr;}.md-typeset .open-data-brand{padding:1.2rem;gap:.5rem;}.open-data-copy{padding:1.2rem;}}

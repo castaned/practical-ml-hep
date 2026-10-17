@@ -36,6 +36,20 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 </div>
 
+<div class="open-data-intro">
+<a class="open-data-brand" href="https://opendata.cern.ch/" aria-label="Visitar el portal CERN Open Data">
+<img src="assets/cern-open-data/logo-blue.png" alt="CERN Open Data" width="196" height="64">
+<span>Portal de datos abiertos</span>
+</a>
+<div class="open-data-copy">
+<h2>CERN Open Data</h2>
+<p>El portal reúne datos de experimentos de física de partículas, software y documentación para su análisis. Este acceso permite trabajar con muestras abiertas y reproducir estudios de procesos físicos.</p>
+<p>En el taller utilizaremos simulaciones de <strong>ATLAS y CMS</strong> para recorrer las etapas del análisis, desde los datos de origen hasta la interpretación de los resultados.</p>
+<a href="https://opendata.cern.ch/">Explorar el portal oficial →</a>
+<p class="open-data-credit">Logotipo: CERN Open Data.</p>
+</div>
+</div>
+
 ## El flujo de un análisis experimental
 
 En el curso practicaremos las etapas de un análisis de física experimental de partículas: partir de una fuente de datos, procesarlos en un clúster, estudiar observables y extraer conclusiones. El entrenamiento de redes neuronales forma parte del recorrido de los dos ejercicios, con un énfasis diferente en cada uno.
@@ -50,8 +64,6 @@ El marco exterior representa **Yuca**. Dentro de él, el marco verde destaca el 
 [CMS: procesamiento y autoencoder](autoencoder.md){ .md-button }
 
 ## Datos, infraestructura y software de análisis
-
-**CERN Open Data** proporciona las muestras con las que estudiaremos los procesos físicos. Su disponibilidad permite reproducir análisis y explorar herramientas utilizadas en física de partículas.
 
 <div class="yuca-profile">
 <div class="yuca-description">

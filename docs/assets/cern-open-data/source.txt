@@ -1,0 +1,6 @@
+CERN Open Data portal wordmark
+Source page: https://opendata.cern.ch/
+Original asset: https://opendata.cern.ch/static/assets/img/logo_blue.png
+Credit: CERN Open Data / CERN
+Retrieved: 2026-10-16
+Unmodified original asset. Used to identify the source portal linked in the course introduction.
