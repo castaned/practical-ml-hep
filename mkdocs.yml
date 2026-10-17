@@ -48,21 +48,12 @@ extra_javascript:
   - javascripts/results.js
   - javascripts/notebook.js
 nav:
-  - Inicio: index.md
-  - Preparación inicial: preparacion.md
-  - "1. ATLAS: clasificación del Higgs":
+  - Introducción: index.md
+  - Preparación: preparacion.md
+  - ATLAS:
       - Presentación del ejercicio: atlas.md
       - Procesos y variables: fisica.md
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
       - Conclusiones: conclusiones.md
-  - "2. CMS: demostración desde NanoAOD":
-      - Datos, procesamiento y entrenamiento: autoencoder.md
-  - Preparación y apoyo:
-      - Bitácora ATLAS: bitacora.md
-      - Comandos ATLAS: apoyo.md
-      - Método y benchmarks ATLAS: referencia.md
-      - Más preguntas ATLAS: preguntas-extra.md
-  - Material complementario CMS:
-      - Clasificación de cuatro leptones: cms-clasificacion.md
-      - Variaciones de los ejemplos CMS: cms-experimentos.md
+  - Demostración CMS: autoencoder.md

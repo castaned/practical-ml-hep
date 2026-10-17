@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Laboratorio en cuatro grupos: modificar YAML y comparar
 
 El objetivo es explicar **qué cambió, qué mejoró y con qué coste**, no encontrar una red ganadora a cualquier precio. Dividir a los participantes en cuatro grupos. Cada grupo ejecuta una referencia común y una variación asignada; después reúne sus resultados con los demás.

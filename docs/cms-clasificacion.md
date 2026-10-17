@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Práctica 1: NanoAOD CMS → análisis → clasificador Higgs
 
 ## Muestras de origen

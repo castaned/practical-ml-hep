@@ -41,3 +41,5 @@ La práctica principal es **ATLAS Higgs Challenge**. Tras la demostración del a
 [Demostración: autoencoder CMS desde NanoAOD](autoencoder.md){ .md-button }
 
 [Bitácora del grupo](bitacora.md) · [Referencias y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge)
+
+[Preguntas adicionales para ampliar la discusión](preguntas-extra.md).

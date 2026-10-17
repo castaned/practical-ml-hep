@@ -93,6 +93,10 @@ Para otra variación, utiliza otro nombre de YAML y otra carpeta, por ejemplo `a
 
 ## 3. Registrar y visualizar resultados {#registro}
 
+La tabla de esta página reúne las métricas de las corridas. La **bitácora** conserva la hipótesis, la configuración estudiada y la explicación de los resultados. Utiliza el mismo nombre de grupo en ambas.
+
+[Completar la bitácora del grupo](bitacora.md){ .md-button }
+
 Introducir una fila de referencia y otra de variación por grupo. Se puede cargar el `metrics.json` de cada entrenamiento para completar los números y después identificar el grupo, el escenario y la configuración.
 
 **Guardar fila** incorpora el registro a la tabla y actualiza las gráficas. Para corregir un registro, utilizar el mismo grupo y el mismo nombre de corrida y volver a guardarlo.
