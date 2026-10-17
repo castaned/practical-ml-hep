@@ -30,7 +30,7 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 La primera conexión se hace por **SSH desde tu computadora**. En ella se prepara tu directorio personal y se activa la doble verificación de la cuenta. Completa esta etapa antes de entrar a Open OnDemand.
 
-### Paso 1. Preparar la conexión a Yuca
+### Paso 1. Conectarse a Yuca con la cuenta asignada
 
 #### Windows · Opción preferida: PowerShell
 
@@ -39,6 +39,8 @@ Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el sig
 ```powershell
 ssh TU_USUARIO@yuca.unison.mx
 ```
+
+Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
 
 ![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
 
@@ -52,7 +54,7 @@ Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga 
 - **Port:** `22`.
 - **Connection type:** `SSH`.
 
-Pulsa **Open** para abrir la conexión.
+Pulsa **Open**. Cuando aparezca `login as:`, escribe **el nombre de usuario que se te proporcionó para el curso** y pulsa **Enter**. Después introduce la contraseña proporcionada cuando aparezca `Password:` y pulsa **Enter**.
 
 ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
@@ -64,18 +66,11 @@ Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asig
 ssh TU_USUARIO@yuca.unison.mx
 ```
 
-A partir de aquí, los pasos de ingreso y activación de Authenticator son los mismos para todos los sistemas.
+Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
 
-### Paso 2. Ingresar con tu cuenta asignada
+En cualquiera de las terminales, la contraseña no se muestra mientras la escribes: no aparecen caracteres ni asteriscos. Es el comportamiento normal.
 
-Utiliza **el nombre de usuario y la contraseña que se te proporcionaron para el curso**.
-
-- **PowerShell o terminal de Linux/macOS:** el usuario ya está incluido en el comando SSH. Cuando aparezca `Password:`, introduce la contraseña proporcionada y pulsa **Enter**.
-- **PuTTY:** cuando aparezca `login as:`, escribe tu usuario y pulsa **Enter**. Después introduce la contraseña proporcionada cuando se solicite y pulsa **Enter**.
-
-Al escribir la contraseña no aparecen caracteres ni asteriscos en la terminal. Es el comportamiento normal: escríbela y pulsa **Enter**.
-
-### Paso 3. Escanear el QR con Google Authenticator
+### Paso 2. Escanear el QR con Google Authenticator
 
 Ten instalada **Google Authenticator en tu teléfono** antes de continuar. Durante la primera activación, Yuca mostrará un **código QR personal** en la terminal o indicará un enlace para visualizarlo.
 
@@ -90,7 +85,7 @@ Ten instalada **Google Authenticator en tu teléfono** antes de continuar. Duran
 
 *Esquema orientativo; no contiene un QR válido ni códigos de acceso reales.*
 
-### Paso 4. Completar la activación
+### Paso 3. Completar la activación
 
 Continúa con las indicaciones de la terminal. Cuando solicite un código de verificación, escribe el código vigente de la cuenta de Yuca en Google Authenticator. Si cambia antes de introducirlo, utiliza el nuevo.
 
