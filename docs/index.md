@@ -48,7 +48,24 @@ El recorrido directo permite analizar distribuciones y selecciones. La rama infe
 
 **CERN Open Data** proporciona las muestras con las que estudiaremos los procesos físicos. Su disponibilidad permite reproducir análisis y explorar herramientas utilizadas en física de partículas.
 
-**Yuca, el clúster de alto rendimiento de la UNISON operado por ACARUS**, aporta la infraestructura para trabajar con esas muestras. Permite distribuir el procesamiento y ejecutar entrenamientos en CPU y GPU, dentro de un entorno común de investigación.
+<div class="yuca-profile">
+<div class="yuca-description">
+<h3>Yuca · Cómputo de alto rendimiento en la UNISON</h3>
+<p>El clúster Yuca, operado por el Área de Cómputo de Alto Rendimiento (ACARUS) de la Universidad de Sonora, aporta la infraestructura para procesar las muestras y entrenar los modelos del curso.</p>
+<p>Un clúster reúne nodos de cómputo que permiten distribuir tareas. En un análisis de partículas, esto facilita procesar distintos archivos de eventos y comparar entrenamientos. Las CPU realizan tareas generales y las GPU pueden acelerar los cálculos de las redes neuronales.</p>
+<dl class="yuca-capacity">
+<div><dt>24 nodos CPU</dt><dd>Procesamiento de datos</dd></div>
+<div><dt>6 nodos GPU · MI210</dt><dd>Cómputo acelerado</dd></div>
+<div><dt>36.77 TB de RAM</dt><dd>Memoria total publicada</dd></div>
+<div><dt>3.25 PB</dt><dd>Almacenamiento HDD y SSD</dd></div>
+</dl>
+<p class="yuca-source">Capacidades globales publicadas por ACARUS. <a href="https://acarus.unison.mx/hardware/">Ficha oficial de hardware de Yuca</a>.</p>
+</div>
+<figure>
+<img src="assets/yuca/yuca-acarus.jpeg" alt="Gabinetes del clúster Yuca de ACARUS en la Universidad de Sonora" width="739" height="865" loading="lazy">
+<figcaption>Clúster Yuca. Fotografía: <a href="https://acarus.unison.mx/hardware/">ACARUS · Universidad de Sonora</a>.</figcaption>
+</figure>
+</div>
 
 **[ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW)** reúne las herramientas de análisis que conectan los datos con los resultados: selección de eventos, construcción de variables y entrenamiento de modelos. Una configuración documentada permite repetir el análisis y estudiar el efecto de sus cambios.
 
