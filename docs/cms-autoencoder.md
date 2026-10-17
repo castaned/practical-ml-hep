@@ -16,15 +16,89 @@ El **codificador** reduce las entradas a dos coordenadas latentes. El **decodifi
 
 El error se calcula sobre las variables escaladas. Una reconstrucción muy distinta del evento de entrada genera un MSE alto. Por eso el escalado, la composición del entrenamiento y el tamaño del espacio latente influyen en la respuesta.
 
-??? info "Ejecución de la demostración"
-    Con la configuración CMS preparada, estos comandos muestran sus archivos y ejecutan la referencia:
+## Preparar la ejecución y su carpeta de resultados
 
-    ```bash
-    python workshop/student.py files
-    python workshop/student.py train --task autoencoder --role baseline
-    ```
+Partimos del **YAML CMS de diez variables**, con las rutas de los HDF5 obtenidos en el [procesamiento NanoAOD](cms-procesamiento.md). Guarda tu copia personal como **`hep-workshop/configs/cms_autoencoder_baseline.yaml`**. El YAML debe conservar todas las secciones de datos, modelo y detección de anomalías; el fragmento siguiente no es una configuración completa.
 
-    Se utiliza el YAML CMS, con sus entradas y carpeta de salida propias. No se utiliza el YAML ni el ejecutable del Higgs Challenge. El [procedimiento técnico CMS](https://castaned.github.io/ML-integration-CMSSW/open-data/05_autoencoder/) detalla su preparación.
+En esa copia, comprueba los campos que identifican la corrida y su destino:
+
+```yaml
+data:
+  output_path: $HOME/hep-workshop/results/cms_autoencoder_baseline01
+
+model:
+  name: cms_autoencoder
+```
+
+**`data.output_path` es la carpeta donde se guardarán los resultados.** `model.name` determina el nombre que acompaña a las figuras, métricas y modelo. Conserva los demás campos del YAML de referencia. Guarda el archivo antes de enviar el entrenamiento.
+
+En JupyterLab, la salida de este ejemplo aparecerá en **hep-workshop → results → cms_autoencoder_baseline01**, dentro de tu cuenta. Los datos de entrada compartidos no se modifican.
+
+## Enviar el entrenamiento
+
+Desde la terminal de JupyterLab, con el ambiente CMS `ml-open-data` disponible:
+
+```bash
+cd "$HOME/ML-integration-CMSSW"
+git pull --ff-only origin opendata_dev
+mkdir -p "$HOME/hep-workshop/logs"
+export WORKSHOP_CONDA_ENV=ml-open-data
+JOB_ID=$(sbatch --parsable --account=curso07 --qos=qoscurso07 \
+  --output="$HOME/hep-workshop/logs/cms_ae_%j.out" \
+  workshop/run_cpu.slurm autoencoder \
+  "$HOME/hep-workshop/configs/cms_autoencoder_baseline.yaml")
+echo "Trabajo enviado: $JOB_ID"
+```
+
+Esta red pequeña se ejecuta en CPU. El comando utiliza el YAML CMS indicado y no depende de la configuración del clasificador ATLAS ni de una asignación previa de grupos.
+
+## Consultar el avance
+
+Para ver si el trabajo está pendiente o ejecutándose:
+
+```bash
+squeue -u "$USER"
+```
+
+Para seguir las épocas y las pérdidas en la misma terminal donde lo enviaste:
+
+```bash
+tail -F "$HOME/hep-workshop/logs/cms_ae_${JOB_ID}.out"
+```
+
+El log muestra una **barra de avance por épocas**, la pérdida de entrenamiento (`train`) y la pérdida de validación SM (`SM validation`). Si el trabajo sigue en cola, el archivo puede no existir todavía; `tail -F` esperará a que aparezca. Si abriste otra terminal, sustituye `${JOB_ID}` por el número de tu trabajo.
+
+**Ctrl+C cierra la consulta del log, no cancela el entrenamiento.** La parada temprana puede terminar antes del máximo de épocas. Una pérdida de entrenamiento que disminuye mientras la validación empeora puede indicar sobreajuste.
+
+Para comprobar cómo terminó el trabajo, usa su número:
+
+```bash
+sacct -j "$JOB_ID" --format=JobID,State,ExitCode
+```
+
+Que desaparezca de `squeue` no garantiza que terminó correctamente. Revisa `COMPLETED`, el código de salida y los archivos de resultados. Si falla, el mismo log contiene los mensajes de error.
+
+## Abrir los resultados
+
+Al terminar, abre **hep-workshop → results → cms_autoencoder_baseline01** en el explorador de JupyterLab. Con `model.name: cms_autoencoder`, los archivos principales son:
+
+| Archivo | Qué revisar |
+| --- | --- |
+| `workshop_config.yaml` | Copia de la configuración utilizada |
+| `best_model_cms_autoencoder.pth` | Modelo conservado por su menor pérdida de validación |
+| `loss_cms_autoencoder.pdf` | Pérdidas SM de entrenamiento y validación |
+| `scores_by_process_cms_autoencoder.pdf` | Error de reconstrucción por proceso y umbral |
+| `ROC_cms_autoencoder.pdf` | Separación entre SM y la muestra W′ de evaluación |
+| `metrics_cms_autoencoder.json` | Conteos, umbral, AUC y eficiencias |
+| `scores_cms_autoencoder.csv` | Errores por evento y selección respecto al umbral |
+
+También puedes consultar las métricas desde la terminal:
+
+```bash
+cat "$HOME/hep-workshop/results/cms_autoencoder_baseline01/metrics_cms_autoencoder.json"
+```
+
+Para otra ejecución, guarda otro YAML y cambia `data.output_path`, por ejemplo a `results/cms_autoencoder_02`. El programa rechaza una carpeta de salida existente para proteger las corridas anteriores. El nombre de los archivos cambia si modificas `model.name`.
 
 ## Benchmark alcanzado {#benchmark-cms}
 

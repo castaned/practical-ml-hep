@@ -2,15 +2,31 @@
 
 ## Herramientas de análisis
 
-| Recurso | Para qué consultarlo |
-| --- | --- |
-| [ML-integration-CMSSW · Código y configuraciones](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev) | Procesamiento de eventos, extracción de variables y entrenamiento de redes neuronales mediante archivos YAML |
-| [Documentación de la herramienta](https://castaned.github.io/ML-integration-CMSSW/) | Procedimientos técnicos y ejemplos de uso |
-| [CERN Open Data](https://opendata.cern.ch/) | Explorar y descargar datos y simulaciones públicos para nuevos análisis |
+**Código y configuraciones · ML-integration-CMSSW**  
+[https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev)
+
+Procesamiento de eventos, extracción de variables y entrenamiento de redes neuronales mediante archivos YAML.
+
+**Documentación de la herramienta**  
+[https://castaned.github.io/ML-integration-CMSSW/](https://castaned.github.io/ML-integration-CMSSW/)
+
+Procedimientos técnicos y ejemplos de uso.
+
+**CERN Open Data**  
+[https://opendata.cern.ch/](https://opendata.cern.ch/)
+
+Datos y simulaciones públicos para explorar nuevos análisis.
 
 ## Cómputo en la Universidad de Sonora
 
 El taller utiliza **Yuca**, el clúster de alto rendimiento de **ACARUS / UNISON**, para el procesamiento de muestras y el entrenamiento en CPU y GPU.
+
+Agradecemos al **Área de Cómputo de Alto Rendimiento (ACARUS) de la Universidad de Sonora** el apoyo y los recursos de cómputo utilizados en el desarrollo de los análisis y en este taller.
+
+**Cuentas y acceso a recursos de cómputo:** para solicitar información sobre cuentas, requisitos de acceso o apoyo técnico, consulta los canales de atención publicados por ACARUS. El correo del instructor que aparece abajo está destinado a consultas académicas y sobre los análisis del curso.
+
+**ACARUS:** [https://acarus.unison.mx/](https://acarus.unison.mx/)  
+**Universidad de Sonora:** [https://www.unison.mx/](https://www.unison.mx/)
 
 - [ACARUS · Área de Cómputo de Alto Rendimiento](https://acarus.unison.mx/).
 - [Infraestructura y características de Yuca](https://acarus.unison.mx/hardware/).
