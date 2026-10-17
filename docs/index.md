@@ -116,3 +116,5 @@ Los **cilindros representan archivos almacenados** y los **rectángulos, operaci
 </div>
 
 Consulta la agenda oficial del [miércoles 21](https://indico.nucleares.unam.mx/event/2675/timetable/#20261021) y del [jueves 22](https://indico.nucleares.unam.mx/event/2675/timetable/#20261022). La distribución temática anterior es la propuesta de trabajo del taller.
+
+[Comenzar con el acceso y la preparación](preparacion.md){ .md-button .md-button--primary }
