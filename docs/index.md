@@ -38,11 +38,20 @@ El análisis de física de partículas combina datos, capacidad de cómputo y he
 
 ## El flujo de un análisis experimental
 
-En el curso practicaremos las etapas de un análisis de física experimental de partículas: partir de una fuente de datos, procesarlos en un clúster, estudiar observables y extraer conclusiones. Las redes neuronales son una herramienta opcional dentro de este flujo; en los dos ejercicios las utilizaremos con objetivos distintos.
+En el curso practicaremos las etapas de un análisis de física experimental de partículas: partir de una fuente de datos, procesarlos en un clúster, estudiar observables y extraer conclusiones. El entrenamiento de redes neuronales forma parte del recorrido de los dos ejercicios, con un énfasis diferente en cada uno.
 
-![Flujo de análisis: datos, procesamiento en Yuca, observables e interpretación, con entrenamiento de redes neuronales como etapa opcional](assets/workshop/experimental_analysis_flow.svg)
+![Flujo modular de análisis: datos, procesamiento en Yuca, observables, red neuronal e interpretación](assets/workshop/hep_analysis_modular.svg)
 
-El recorrido directo permite analizar distribuciones y selecciones. La rama inferior incorpora el entrenamiento y la evaluación de una red. En ambos casos, las conclusiones se sustentan en los resultados y sus limitaciones. Trabajaremos con **simulaciones abiertas de ATLAS y CMS**, disponibles en CERN Open Data.
+Los módulos representan las etapas que conectan los datos con las conclusiones. Yuca proporciona los recursos de cómputo y el software de análisis permite configurar y ejecutar los procesos.
+
+### Aplicación a los ejercicios del curso
+
+![Recorridos ATLAS y CMS: entrenamiento resaltado en ATLAS; procesamiento y entrenamiento resaltados en CMS](assets/workshop/hep_exercise_emphasis.svg)
+
+En **ATLAS**, las variables ya están calculadas y el trabajo se concentra en el entrenamiento y la comparación de clasificadores. En **CMS**, se parte de NanoAOD y se destacan tanto el procesamiento para obtener observables como el entrenamiento del autoencoder. Las etapas de menor énfasis permanecen visibles para conservar el contexto del análisis completo.
+
+[ATLAS: física y benchmark](fisica.md){ .md-button .md-button--primary }
+[CMS: procesamiento y autoencoder](autoencoder.md){ .md-button }
 
 ## Datos, infraestructura y software de análisis
 
