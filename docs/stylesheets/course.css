@@ -157,3 +157,8 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .observable-gallery a { display:block; background:#fff; border:1px solid var(--course-border); border-radius:12px; overflow:hidden; }
 .observable-gallery img { display:block; width:100%; height:auto; border-radius:0; }
 @media(max-width:900px) { .observable-gallery { grid-template-columns:1fr; } }
+
+/* Discreet source credits at the foot of the physics page. */
+.md-typeset .image-credits { margin-top:2.5rem; padding-top:.8rem; border-top:1px solid var(--course-border); color:var(--md-default-fg-color--light); font-size:.62rem; line-height:1.6; }
+.md-typeset .image-credits p,.md-typeset .image-credits li { font-size:inherit; }
+.md-typeset .image-credits code { font-size:.95em; }
