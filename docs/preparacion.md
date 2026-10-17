@@ -78,16 +78,6 @@ En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir 
 
 Mantén abierta esta terminal para ejecutar los comandos de las siguientes secciones.
 
-Para comprobar la cuenta, el nodo y el directorio de trabajo:
-
-```bash
-whoami
-hostname
-pwd
-```
-
-Al finalizar la actividad, volver a **My Interactive Sessions** y utilizar **Delete** para liberar la sesión JupyterLab. Los archivos de la carpeta personal se conservan.
-
 ## 3. Configuración inicial de la cuenta
 
 ### Clonación del repositorio
