@@ -31,7 +31,7 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 <div class="course-links" markdown>
 
 [Acceso y preparación](preparacion.md){ .md-button .md-button--primary }
-[Ejercicio ATLAS](laboratorio.md){ .md-button .hero-secondary }
+[Ejercicio ATLAS](atlas.md){ .md-button .hero-secondary }
 [Ejercicio CMS](autoencoder.md){ .md-button .hero-secondary }
 
 </div>
@@ -113,65 +113,34 @@ Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para 
 
 Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables ya calculadas; en CMS realizamos también la selección de eventos y la extracción de observables desde NanoAOD.
 
-[Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
+[Ejercicio 1: ATLAS Higgs Challenge](atlas.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
 
 En ambos ejercicios se comienza reproduciendo una configuración de referencia. Sus conteos, figuras y métricas se revisan antes de introducir cambios; esa ejecución se conserva para comparar las variaciones.
 
-## Objetivos del ejercicio ATLAS
+## Programa del taller
 
-El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de los procesos de fondo mediante el **ATLAS Higgs Challenge**, un conjunto de simulaciones disponible en CERN Open Data.
+### Miércoles · 3 horas
 
-Se estudiará el efecto de la arquitectura y de los parámetros de entrenamiento sobre la discriminación entre señal y fondo, el sobreajuste y el tiempo de cómputo. Cada configuración se conservará junto con sus resultados para comparar los experimentos.
+**Primeras dos horas: preparación y entrenamiento de referencia.** Acceso a Yuca, presentación de la física del Higgs Challenge y revisión de las variables. Ejecutaremos la misma red inicial y localizaremos sus figuras y métricas en las carpetas personales.
 
-<div class="journey-grid">
-<a class="journey-card" href="fisica/">
-<span class="step-number">01 / MOTIVACIÓN FÍSICA</span>
-<h3>Procesos y observables</h3>
-<p>Producción y decaimiento del Higgs, procesos de fondo y variables de entrada.</p>
-<span class="card-link">Consultar la física →</span>
-</a>
-<a class="journey-card" href="laboratorio/">
-<span class="step-number">02 / BENCHMARK</span>
-<h3>Entrenamiento de referencia</h3>
-<p>Arquitectura inicial, ejecución en Yuca y revisión de los archivos de resultados.</p>
-<span class="card-link">Reproducir el benchmark →</span>
-</a>
-<a class="journey-card" href="variaciones/">
-<span class="step-number">03 / EXPERIMENTOS</span>
-<h3>Variaciones e interpretación</h3>
-<p>Modificaciones del YAML por grupo, registro de métricas y comparación de los entrenamientos.</p>
-<span class="card-link">Realizar las variaciones →</span>
-</a>
-<a class="journey-card" href="conclusiones/">
-<span class="step-number">04 / CONCLUSIONES</span>
-<h3>Discusión de resultados</h3>
-<p>Síntesis de la comparación, evidencia de las figuras y limitaciones de las conclusiones.</p>
-<span class="card-link">Preparar la discusión →</span>
-</a>
-</div>
+**Última hora: experimentación.** Cada estudiante o grupo modificará una configuración YAML, guardará la nueva ejecución en una carpeta diferente y comparará sus resultados con la referencia. Las variaciones se repartirán entre los grupos para estudiar distintos aspectos del entrenamiento.
 
-## Durante la sesión
+### Jueves · 1 hora
 
-Trabajaremos individualmente o en grupos cercanos, según la disposición del salón. Todos partimos de una referencia y probamos al menos una variación. Si hay tiempo, exploramos una segunda idea.
+**Comparación y discusión.** Reuniremos los resultados para analizar la separación entre señal y fondo, el sobreajuste y el tiempo de entrenamiento en CPU y GPU.
 
-<div class="session-strip" markdown>
+**Ejercicio CMS.** Revisaremos un segundo flujo que parte de eventos NanoAOD: selección, extracción de variables y entrenamiento de un autoencoder para explorar anomalías.
 
-**Miércoles · 3 horas**<br>Dos horas de configuración, introducción y benchmark. Una hora de [variaciones por grupos y discusión](variaciones.md).
+### Trabajo esperado
 
-**Jueves · 1 hora**<br>Comparación de resultados y exploración de un autoencoder CMS.
+Cada estudiante o grupo deberá:
 
-</div>
+- Reproducir el entrenamiento de referencia y reconocer sus archivos de resultados.
+- Probar al menos una variación del YAML, conservando la configuración y los resultados de ambas ejecuciones.
+- Registrar las métricas y una figura representativa en la bitácora del ejercicio.
+- Presentar una conclusión apoyada en los resultados: qué cambió, si hubo mejora y qué limitaciones tiene la comparación.
 
-<div class="closing-callout" markdown>
-
-### Presentación de resultados
-
-Cada grupo presentará la configuración estudiada, su comparación con la referencia y las conclusiones sustentadas por los resultados.
-
-[Preparar mi cuenta](preparacion.md){ .md-button }
-[Manual técnico de la herramienta](https://castaned.github.io/ML-integration-CMSSW/){ .text-link }
-
-</div>
+[Comenzar con el acceso y la preparación](preparacion.md){ .md-button .md-button--primary }
 
 El código de entrenamiento y los YAML se mantienen en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Este sitio reúne el material docente. Cómputo en **ACARUS / Yuca, Universidad de Sonora**. Figuras publicadas y fuentes identificadas en el [capítulo de física](fisica.md#procedencia-de-las-imagenes).

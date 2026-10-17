@@ -51,6 +51,7 @@ nav:
   - Inicio: index.md
   - Preparación inicial: preparacion.md
   - "1. ATLAS: clasificación del Higgs":
+      - Presentación del ejercicio: atlas.md
       - Procesos y variables: fisica.md
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
