@@ -141,3 +141,7 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .open-data-copy>a {font-size:.73rem;font-weight:600;}
 .open-data-copy .open-data-credit {font-size:.6rem;color:var(--md-default-fg-color--light);margin:.6rem 0 0;}
 @media(max-width:680px){.open-data-intro{grid-template-columns:1fr;}.md-typeset .open-data-brand{padding:1.2rem;gap:.5rem;}.open-data-copy{padding:1.2rem;}}
+/* Discreet event identification in the workshop cover */
+.workshop-event {display:flex;align-items:center;gap:.65rem;margin:.9rem 0 .6rem;max-width:100%;}
+.md-typeset .course-hero .workshop-event img {display:block;flex:0 0 auto;width:40px;height:auto;border-radius:3px;}
+.course-hero .workshop-event span {font-size:.64rem;font-weight:400;line-height:1.5;color:#d6e8e8;letter-spacing:.01em;}

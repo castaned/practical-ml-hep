@@ -16,6 +16,11 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 <p class="course-affiliation">Yuca · ACARUS / UNISON · CPU y GPU</p>
 
+<div class="workshop-event">
+<img src="assets/event/dpyc-smf.png" alt="División de Partículas y Campos de la Sociedad Mexicana de Física" width="40" height="48">
+<span>XXI Mexican School on Particles and Fields</span>
+</div>
+
 <div class="course-links" markdown>
 
 [Acceso y preparación](preparacion.md){ .md-button .md-button--primary }
