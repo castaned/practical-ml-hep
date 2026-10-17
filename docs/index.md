@@ -95,22 +95,27 @@ Los **cilindros representan archivos almacenados** y los **rectángulos, operaci
 
 ## Programa del taller
 
+**21 y 22 de octubre de 2026 · Sala de Proyecciones, Edificio Carolino, Puebla.** Todos los horarios corresponden a la hora local de Puebla. Los temas se distribuirán en los siguientes bloques del programa oficial.
+
 <div class="workshop-agenda">
 <article class="agenda-day">
-<header class="agenda-day-header"><h3>Miércoles</h3><span class="agenda-duration">3 horas</span></header>
+<header class="agenda-day-header"><h3>Miércoles 21</h3><span class="agenda-duration">3 h 15 min</span></header>
 <ol class="agenda-stages">
-<li><span class="agenda-time">Primeras 2 horas</span><h4>Preparación y benchmark ATLAS</h4><p>Acceso a Yuca, física del Higgs y variables de entrada. Entrenamiento de la red inicial y revisión de figuras y métricas.</p></li>
-<li><span class="agenda-time">Última hora</span><h4>Variaciones del entrenamiento</h4><p>Cambios en el YAML por estudiante o grupo. Cada ejecución se guarda por separado y se compara con la referencia.</p></li>
+<li><span class="agenda-time">10:30–11:30 · 1 hora</span><h4>Introducción y preparación</h4><p>Flujo de análisis, acceso a Yuca, física del Higgs y variables de entrada.</p></li>
+<li><span class="agenda-time">16:00–17:00 · 1 hora</span><h4>Benchmark ATLAS</h4><p>Entrenamiento de la red inicial, seguimiento de su avance y revisión de figuras y métricas.</p></li>
+<li><span class="agenda-time">17:15–18:30 · 1 h 15 min</span><h4>Variaciones del entrenamiento</h4><p>Cambios en el YAML por estudiante o grupo. Cada ejecución se guarda por separado y se compara con la referencia.</p></li>
 </ol>
 </article>
 <article class="agenda-day agenda-day-second">
-<header class="agenda-day-header"><h3>Jueves</h3><span class="agenda-duration">1 hora</span></header>
+<header class="agenda-day-header"><h3>Jueves 22</h3><span class="agenda-duration">09:00–10:00</span></header>
 <ol class="agenda-stages">
 <li><span class="agenda-time">Discusión colectiva</span><h4>Comparación de resultados</h4><p>Separación entre señal y fondo, sobreajuste y tiempos de entrenamiento en CPU y GPU.</p></li>
 <li><span class="agenda-time">Análisis CMS</span><h4>De NanoAOD al autoencoder</h4><p>Recorrido del análisis: selección de eventos, extracción de variables y reconstrucción para explorar anomalías.</p></li>
 </ol>
 </article>
 </div>
+
+Consulta la agenda oficial del [miércoles 21](https://indico.nucleares.unam.mx/event/2675/timetable/#20261021) y del [jueves 22](https://indico.nucleares.unam.mx/event/2675/timetable/#20261022). La distribución temática anterior es la propuesta de trabajo del taller.
 
 ### Resultados del trabajo en ATLAS
 
