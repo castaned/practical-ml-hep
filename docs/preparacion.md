@@ -37,17 +37,15 @@ Sigue las indicaciones de Yuca para registrar el QR en Google Authenticator y ac
 
 ## 2. Terminales de Open OnDemand y JupyterLab
 
-Con la cuenta y la doble verificación ya activadas, se utilizará Open OnDemand para abrir una sesión JupyterLab. Desde esta sesión se editarán los archivos YAML, se enviarán los entrenamientos y se revisarán las figuras.
-
 ### Paso 1. Iniciar sesión en Open OnDemand
 
-Acceder al [portal de Yuca](http://yucaood.acarus.unison.mx) e introducir el usuario y la contraseña asignados. Completar la verificación adicional cuando se solicite. La cuenta `docente_07` que aparece en las capturas es ilustrativa: cada participante debe utilizar su propia cuenta.
+Acceder al [portal de Yuca](http://yucaood.acarus.unison.mx) e introducir el usuario y la contraseña asignados. Completar la verificación adicional cuando se solicite. Utiliza tu cuenta asignada.
 
 ![Pantalla de acceso a Open OnDemand de Yuca](assets/yuca/01-acceso.png)
 
 ### Paso 2. Seleccionar JupyterLab
 
-En el panel principal, abrir **Interactive Apps** y seleccionar **JupyterLab**. El menú **Files** permite consultar los archivos de la cuenta, pero para el desarrollo del taller se trabajará desde JupyterLab.
+En el panel principal, abrir **Interactive Apps** y seleccionar **JupyterLab**. 
 
 ![Panel principal de Open OnDemand y menú Interactive Apps](assets/yuca/02-panel.png)
 
@@ -62,7 +60,7 @@ Completar el formulario y seleccionar **Launch**:
 | Número de cores | `1` |
 | Número de horas | `3`, para la sesión del miércoles |
 
-La captura muestra una solicitud de ocho horas; para el taller se solicitarán tres. Esta sesión se utilizará para editar archivos, enviar trabajos y revisar resultados. Los entrenamientos GPU solicitarán sus recursos por separado mediante el script del curso.
+En **Número de horas**, introduce `3`, aunque la captura muestre `8`.
 
 ![Formulario para solicitar recursos de una sesión JupyterLab](assets/yuca/03-recursos-jupyter.png)
 
@@ -74,11 +72,11 @@ Esperar a que la sesión indique **Running** y seleccionar **Connect to Jupyter*
 
 ### Paso 5. Abrir la terminal
 
-En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir el Launcher y seleccionar **Terminal**. La captura muestra la terminal ya abierta y el explorador de archivos a la izquierda.
+En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir el Launcher y seleccionar **Terminal**. 
 
 ![Terminal de Yuca abierta dentro de JupyterLab](assets/yuca/05-terminal.png)
 
-Los comandos de las siguientes secciones se ejecutan en esta terminal. El explorador lateral permite abrir y editar los YAML y consultar las imágenes de resultados. Las carpetas mostradas en la captura corresponden a una cuenta previamente configurada; se crearán durante los pasos siguientes.
+Mantén abierta esta terminal para ejecutar los comandos de las siguientes secciones.
 
 Para comprobar la cuenta, el nodo y el directorio de trabajo:
 
