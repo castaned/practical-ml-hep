@@ -51,31 +51,31 @@ La red es nuestra herramienta de investigación. Tú propones un cambio, miras q
 
 <div class="journey-grid" markdown>
 
-<a class="journey-card" href="fisica/" markdown>
+<a class="journey-card" href="fisica/">
 <span class="step-number">01 / ENTENDER</span>
-### Mira la física
-Señal, fondos, neutrinos y las 30 variables. ¿Qué información recibe la red?
+<h3>Mira la física</h3>
+<p>Señal, fondos, neutrinos y las 30 variables. ¿Qué información recibe la red?</p>
 <span class="card-link">Explorar el proceso →</span>
 </a>
 
-<a class="journey-card" href="laboratorio/" markdown>
+<a class="journey-card" href="laboratorio/">
 <span class="step-number">02 / EXPERIMENTAR</span>
-### Diseña y entrena
-Cambia capas, neuronas o aprendizaje desde un YAML. Ejecuta tu idea en Yuca.
+<h3>Diseña y entrena</h3>
+<p>Cambia capas, neuronas o aprendizaje desde un YAML. Ejecuta tu idea en Yuca.</p>
 <span class="card-link">Entrar al laboratorio →</span>
 </a>
 
-<a class="journey-card" href="bitacora/" markdown>
+<a class="journey-card" href="bitacora/">
 <span class="step-number">03 / INTERPRETAR</span>
-### Registra lo que pasó
-Compara curvas, tiempo y métricas. Completa una tabla y contrasta tu hipótesis.
+<h3>Registra lo que pasó</h3>
+<p>Compara curvas, tiempo y métricas. Completa una tabla y contrasta tu hipótesis.</p>
 <span class="card-link">Abrir la bitácora →</span>
 </a>
 
-<a class="journey-card" href="conclusiones/" markdown>
+<a class="journey-card" href="conclusiones/">
 <span class="step-number">04 / DISCUTIR</span>
-### Cuenta qué aprendiste
-Una comparación, una figura y una conclusión. Un resultado sin mejora también enseña.
+<h3>Cuenta qué aprendiste</h3>
+<p>Una comparación, una figura y una conclusión. Un resultado sin mejora también enseña.</p>
 <span class="card-link">Compartir conclusiones →</span>
 </a>
 
