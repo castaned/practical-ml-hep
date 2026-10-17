@@ -10,9 +10,7 @@ El entrenamiento se ejecuta con los scripts del repositorio principal [ML-integr
 
 Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.
 
-![Distribuciones de seis de las treinta variables de entrada](assets/workshop/atlas_variables_01.png)
-
-*Comparación de las distribuciones de señal y fondo. El entrenamiento utiliza las treinta variables, no solamente las seis de este panel.*
+Consultar la [comparación de distribuciones de señal y fondo](fisica.md#distribuciones-de-las-variables) antes de ejecutar el entrenamiento.
 
 ## 2. Red neuronal de referencia {#red-neuronal-de-referencia}
 

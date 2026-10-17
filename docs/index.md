@@ -106,28 +106,6 @@ Se estudiará el efecto de la arquitectura y de los parámetros de entrenamiento
 </a>
 </div>
 
-## Distribuciones de las variables
-
-<div class="figure-story" markdown>
-
-<div markdown>
-
-<span class="eyebrow">DEL EVENTO AL APRENDIZAJE</span>
-
-### Comparación entre señal y fondo
-
-Las distribuciones permiten identificar diferencias entre señal y fondo. La red utiliza además las correlaciones entre las variables para realizar la clasificación.
-
-Antes del entrenamiento se revisará el significado físico de las variables y su capacidad de discriminación.
-
-[Conocer las 30 variables](fisica.md#las-30-variables-organizadas-por-su-significado){ .text-link }
-
-</div>
-
-![Ejemplos reales de seis variables del conjunto de entrenamiento](assets/workshop/atlas_variables_01.png)
-
-</div>
-
 ## Durante la sesión
 
 Trabajaremos individualmente o en grupos cercanos, según la disposición del salón. Todos partimos de una referencia y probamos al menos una variación. Si hay tiempo, exploramos una segunda idea.

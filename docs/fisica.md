@@ -89,6 +89,28 @@ Resumen de la [documentación del challenge](https://opendata.cern.ch/record/329
 
 Si no hay dos jets, algunas variables no están definidas. El valor `-999` lo señala: no es una masa o un momento físico. La preparación automática lo trata antes del entrenamiento. Las columnas de etiqueta, pesos, identificador y partición no cuentan entre las 30 entradas.
 
+## Distribuciones de las variables
+
+<div class="figure-story" markdown>
+
+<div markdown>
+
+<span class="eyebrow">DEL EVENTO AL APRENDIZAJE</span>
+
+### Comparación entre señal y fondo
+
+Las distribuciones permiten identificar diferencias entre señal y fondo. La red utiliza además las correlaciones entre las variables para realizar la clasificación.
+
+Antes del entrenamiento se revisará el significado físico de las variables y su capacidad de discriminación.
+
+El panel muestra seis de las treinta variables descritas arriba. Las distribuciones están normalizadas para comparar sus formas.
+
+</div>
+
+![Ejemplos reales de seis variables del conjunto de entrenamiento](assets/workshop/atlas_variables_01.png)
+
+</div>
+
 ## Del proceso físico al entrenamiento
 
 La red utilizará las treinta variables para distinguir la señal de los procesos de fondo. En el siguiente ejercicio se reproducirá una configuración de referencia, se identificarán los archivos de resultados y, después, se estudiarán modificaciones del modelo.
