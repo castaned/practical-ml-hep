@@ -46,9 +46,9 @@ Los módulos representan las etapas que conectan los datos con las conclusiones.
 
 ### Aplicación a los ejercicios del curso
 
-![Recorridos ATLAS y CMS: entrenamiento resaltado en ATLAS; procesamiento y entrenamiento resaltados en CMS](assets/workshop/hep_exercise_emphasis.svg)
+![Recorridos ATLAS y CMS: entrenamiento resaltado en ATLAS; procesamiento y entrenamiento resaltados en CMS](assets/workshop/hep_exercise_emphasis_compact.svg)
 
-En **ATLAS**, las variables ya están calculadas y el trabajo se concentra en el entrenamiento y la comparación de clasificadores. En **CMS**, se parte de NanoAOD y se destacan tanto el procesamiento para obtener observables como el entrenamiento del autoencoder. Las etapas de menor énfasis permanecen visibles para conservar el contexto del análisis completo.
+**ATLAS:** énfasis en el entrenamiento. **CMS:** énfasis en el procesamiento de eventos y el entrenamiento.
 
 [ATLAS: física y benchmark](fisica.md){ .md-button .md-button--primary }
 [CMS: procesamiento y autoencoder](autoencoder.md){ .md-button }
