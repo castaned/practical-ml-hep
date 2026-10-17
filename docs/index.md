@@ -6,9 +6,19 @@ hide:
 
 <div class="course-hero" markdown>
 
+<div class="event-presentation">
+<img src="assets/event/dpyc-smf.png" alt="División de Partículas y Campos de la Sociedad Mexicana de Física" width="76" height="91">
+<div class="event-presentation-copy">
+<p class="event-name">XXI Mexican School on Particles and Fields</p>
+<p class="event-details"><strong>19–23 de octubre de 2026</strong><span> · Puebla, México</span></p>
+<p class="event-venue">Edificio Carolino · Ciudad Universitaria 2</p>
+<a href="https://indico.nucleares.unam.mx/event/2675/overview">Información oficial del evento</a>
+</div>
+</div>
+
 <div class="hero-copy" markdown>
 
-<span class="course-kicker">Universidad de Sonora · Curso práctico</span>
+<span class="course-kicker">Taller práctico · Universidad de Sonora</span>
 
 # Practical Machine Learning for HEP Data Analysis
 
@@ -16,10 +26,7 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 <p class="course-affiliation">Yuca · ACARUS / UNISON · CPU y GPU</p>
 
-<div class="workshop-event">
-<img src="assets/event/dpyc-smf.png" alt="División de Partículas y Campos de la Sociedad Mexicana de Física" width="40" height="48">
-<span>XXI Mexican School on Particles and Fields</span>
-</div>
+
 
 <div class="course-links" markdown>
 
