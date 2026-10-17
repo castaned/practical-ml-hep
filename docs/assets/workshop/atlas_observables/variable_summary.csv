@@ -1,0 +1,17 @@
+feature,class,events,missing_fraction
+PRI_met,Fondo,164333,0.0
+PRI_met,Higgs,85667,0.0
+PRI_tau_pt,Fondo,164333,0.0
+PRI_tau_pt,Higgs,85667,0.0
+PRI_lep_pt,Fondo,164333,0.0
+PRI_lep_pt,Higgs,85667,0.0
+PRI_jet_leading_pt,Fondo,164333,0.45286704435505953
+PRI_jet_leading_pt,Higgs,85667,0.2975708265726592
+DER_mass_MMC,Fondo,164333,0.21467994864086948
+DER_mass_MMC,Higgs,85667,0.033093256446472985
+DER_mass_transverse_met_lep,Fondo,164333,0.0
+DER_mass_transverse_met_lep,Higgs,85667,0.0
+DER_mass_vis,Fondo,164333,0.0
+DER_mass_vis,Higgs,85667,0.0
+DER_deltar_tau_lep,Fondo,164333,0.0
+DER_deltar_tau_lep,Higgs,85667,0.0

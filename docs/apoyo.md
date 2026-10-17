@@ -15,11 +15,11 @@ conda activate ml-hep-gpu
 python workshop/plot_atlas.py -f "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
 ```
 
-En el explorador de JupyterLab, abre `hep-workshop/plots/atlas_inputs01/variables_01.png`. Hay cinco imágenes, con seis variables cada una, y un PDF con todas. La carpeta y el número de intervalos se controlan en el bloque `plots` del YAML. Para regenerar, elige una carpeta nueva en `plots.directory`.
+En el explorador de JupyterLab, abre `hep-workshop/plots/atlas_inputs01/variables_01.png`. Hay ocho paneles, con hasta cuatro variables cada uno, y un PDF con las treinta variables. Las ocho variables representativas también se exportan como gráficos individuales PNG, PDF y SVG. La carpeta y el número de intervalos se controlan en el bloque `plots` del YAML. Para regenerar, elige una carpeta nueva en `plots.directory`.
 
 Las distribuciones se normalizan a área uno para comparar formas y se amplía la zona central para que las colas largas no oculten sus diferencias. Por defecto se muestra hasta el percentil 99.5 de cada clase; `plots.upper_quantile: 1.0` permite ver el rango completo. El área se normaliza antes del recorte visual. Los valores ausentes se omiten en las gráficas; su frecuencia se guarda en `variable_summary.csv`. No representan cantidades físicas esperadas de señal y fondo.
 
-![Ejemplo de variables del conjunto de entrenamiento ATLAS](assets/workshop/atlas_variables_01.png)
+[Consultar las distribuciones ampliadas y sus etiquetas físicas](fisica.md#distribuciones-de-las-variables).
 
 *Ejemplo real del conjunto de entrenamiento: no se emplean eventos del conjunto privado. Los nombres y unidades de cada variable se explican en el registro oficial.*
 

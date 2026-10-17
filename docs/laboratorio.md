@@ -138,7 +138,42 @@ Abre **`training_summary.png`** en la carpeta de tu corrida. Los números para l
 
 Una curva de validación que empeora mientras entrenamiento sigue mejorando sugiere **sobreajuste**. La parada temprana conserva el modelo con menor pérdida de validación. Una red más grande o más tiempo no garantizan mejores resultados.
 
-Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a señales. No cambia la sección eficaz física ni calcula por sí sola un límite: [explicación con un ejemplo](fisica.md#leer-una-roc-como-fisico).
+### Cómo leer la curva ROC {#leer-una-roc-como-fisico}
+
+La red asigna una puntuación. Al exigir una puntuación mayor que cierto umbral, conservamos una fracción de señal **εs** y una fracción de fondo **εb**.
+
+| Elemento de la ROC del taller | Significado |
+| --- | --- |
+| Eje horizontal | Fondo que dejamos pasar, εb |
+| Eje vertical | Señal que conservamos, εs |
+| Un punto | Una elección de umbral |
+| Más arriba al mismo εb | Más señal para el mismo fondo aceptado |
+| Más a la izquierda al mismo εs | Menos fondo para la misma señal conservada |
+
+**AUC resume toda la curva.** Un análisis puede depender solo de una zona de bajo fondo; por eso una AUC ligeramente mayor no garantiza mejor AMS o mejor límite.
+
+Nuestro gráfico ROC es **sin pesos**. Para traducirlo a rendimientos físicos, se deben sumar los pesos de los eventos seleccionados. Los porcentajes de eventos simulados no siempre son las eficiencias ponderadas que corresponden a tasas esperadas.
+
+#### Ejemplo para completar en clase
+
+Este es un ejemplo hipotético de rendimientos esperados, no un resultado del dataset. Antes de la selección de la red tenemos **100 eventos de señal y 10 000 de fondo**. Ambas selecciones conservan 60% de la señal:
+
+| Selección | εs | εb | Señal seleccionada s | Fondo seleccionado b | s / √b, aproximación |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A | 0.60 | 0.10 | 60 | 1 000 | 1.90 |
+| B | 0.60 | 0.05 | 60 | 500 | 2.68 |
+
+La segunda selección permite ver mejor el mismo exceso de señal sobre el fondo. **No cambia la frecuencia física con la que se produce el Higgs**; cambia cuánto ruido dejamos entrar en la selección. La aproximación s/√b sirve aquí para ilustrar el efecto con fondo dominante y conocido; no reemplaza la AMS del challenge ni un cálculo con incertidumbres sistemáticas.
+
+### Qué aporta la AMS a la comparación {#interpretar-ams}
+
+La red asigna una puntuación a cada evento. Al elegir un **umbral**, aceptamos una parte de la señal y otra del fondo: ese punto aparece en la ROC. La **AMS** utiliza los pesos de los eventos seleccionados para estimar una sensibilidad aproximada de esa selección.
+
+En **`metrics.json`**, `roc_auc_unweighted` resume la ROC sin pesos y `ams_validation_tuned` guarda la AMS obtenida tras ajustar el umbral en validación. **Una AUC mayor no garantiza una AMS mayor**: la primera resume todos los umbrales; la segunda depende de la selección elegida y de los rendimientos ponderados de señal y fondo.
+
+Para comparar modelos, conserva las mismas particiones y el mismo procedimiento de evaluación. La AMS del taller se ajusta en validación interna; no es una significancia observada ni una puntuación de la evaluación privada del challenge.
+
+**Al revisar tus figuras:** ¿la ROC mejora en la zona de bajo fondo? ¿Sube también la AMS? ¿La mejora se mantiene en validación o solo disminuye la pérdida de entrenamiento?
 
 ## Continuar con las variaciones
 

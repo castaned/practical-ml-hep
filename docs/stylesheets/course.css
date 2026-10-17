@@ -151,3 +151,9 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .course-hero .event-presentation .event-venue {font-size:.68rem;margin:0 0 .25rem;color:#d6e8e8;}
 .event-presentation a {font-size:.62rem;color:#b9e9da;text-decoration:underline;}
 @media(max-width:600px){.event-presentation{align-items:flex-start;gap:.75rem;}.md-typeset .course-hero .event-presentation img{width:60px;}.course-hero .event-presentation .event-name{font-size:.95rem;}.course-hero .event-presentation .event-details{font-size:.72rem;}}
+
+/* Readable physics distributions with vector enlargement. */
+.observable-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; margin:1.2rem 0; }
+.observable-gallery a { display:block; background:#fff; border:1px solid var(--course-border); border-radius:12px; overflow:hidden; }
+.observable-gallery img { display:block; width:100%; height:auto; border-radius:0; }
+@media(max-width:900px) { .observable-gallery { grid-template-columns:1fr; } }

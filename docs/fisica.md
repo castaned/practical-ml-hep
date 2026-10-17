@@ -91,25 +91,35 @@ Si no hay dos jets, algunas variables no están definidas. El valor `-999` lo se
 
 ## Distribuciones de las variables
 
-<div class="figure-story" markdown>
+Las siguientes ocho variables ilustran la información que recibe la red: los objetos reconstruidos, el momento transversal faltante y sus combinaciones físicas. **El entrenamiento conserva las treinta variables** descritas arriba.
 
-<div markdown>
+Las curvas comparan formas de señal y fondo en la muestra de entrenamiento del challenge, sin pesos de evento. Se excluyen los valores ausentes y se normaliza cada clase antes de recortar las colas al percentil 99.5. No representan los rendimientos físicos esperados.
 
-<span class="eyebrow">DEL EVENTO AL APRENDIZAJE</span>
+### MET y momentos transversales
 
-### Comparación entre señal y fondo
+MET recoge el desequilibrio transversal asociado, entre otras contribuciones, a los neutrinos. Los momentos del leptón, del tau hadrónico y del jet principal describen la actividad visible del evento. El gráfico del jet incluye únicamente eventos donde esa variable está definida.
 
-Las distribuciones permiten identificar diferencias entre señal y fondo. La red utiliza además las correlaciones entre las variables para realizar la clasificación.
-
-Antes del entrenamiento se revisará el significado físico de las variables y su capacidad de discriminación.
-
-El panel muestra seis de las treinta variables descritas arriba. Las distribuciones están normalizadas para comparar sus formas.
-
+<div class="observable-gallery">
+<a href="../assets/workshop/atlas_observables/PRI_met.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/PRI_met.png" alt="Distribución de MET: Higgs y fondo" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/PRI_tau_pt.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/PRI_tau_pt.png" alt="Momento transversal del tau hadrónico" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/PRI_lep_pt.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/PRI_lep_pt.png" alt="Momento transversal del electrón o muón" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/PRI_jet_leading_pt.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/PRI_jet_leading_pt.png" alt="Momento transversal del jet principal" loading="lazy"></a>
 </div>
 
-![Ejemplos reales de seis variables del conjunto de entrenamiento](assets/workshop/atlas_variables_01.png)
+### Masas y separación angular
 
+Las variables compuestas relacionan los objetos del evento. La masa MMC estima la masa del candidato Higgs; la masa visible utiliza solo el leptón y el tau reconstruidos. La masa transversal combina el leptón con MET, y ΔR mide la separación angular entre el leptón y el tau.
+
+<div class="observable-gallery">
+<a href="../assets/workshop/atlas_observables/DER_mass_MMC.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_mass_MMC.png" alt="Masa estimada MMC del candidato Higgs" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/DER_mass_transverse_met_lep.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_mass_transverse_met_lep.png" alt="Masa transversal leptón y MET" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/DER_mass_vis.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_mass_vis.png" alt="Masa visible leptón y tau" loading="lazy"></a>
+<a href="../assets/workshop/atlas_observables/DER_deltar_tau_lep.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_deltar_tau_lep.png" alt="Separación angular entre leptón y tau" loading="lazy"></a>
 </div>
+
+Pulsa cualquier gráfico para ampliarlo en formato vectorial. [Descargar todos los paneles en PDF](assets/workshop/atlas_observables/input_variables.pdf).
+
+**Para discutir:** ¿qué variables presentan diferencias más visibles? ¿Por qué podría ayudar a la red combinar observables que por separado se parecen?
 
 ## Del proceso físico al entrenamiento
 
@@ -136,59 +146,9 @@ La predicción del Modelo Estándar para esa definición es **3.17 ± 0.09 pb**;
 
 **Para interpretar el ejercicio:** una mejor selección puede ayudar a observar una señal, pero también a medirla mejor una vez observada. Nuestra AMS es un indicador de selección en simulación; no es la significancia observada del experimento ni una sección eficaz.
 
-## Interpretación física de la curva ROC {#leer-una-roc-como-fisico}
-
-La red asigna una puntuación. Al exigir una puntuación mayor que cierto umbral, conservamos una fracción de señal **εs** y una fracción de fondo **εb**.
-
-| Elemento de la ROC del taller | Significado |
-| --- | --- |
-| Eje horizontal | Fondo que dejamos pasar, εb |
-| Eje vertical | Señal que conservamos, εs |
-| Un punto | Una elección de umbral |
-| Más arriba al mismo εb | Más señal para el mismo fondo aceptado |
-| Más a la izquierda al mismo εs | Menos fondo para la misma señal conservada |
-
-**AUC resume toda la curva.** Un análisis puede depender solo de una zona de bajo fondo; por eso una AUC ligeramente mayor no garantiza mejor AMS o mejor límite.
-
-Nuestro gráfico ROC es **sin pesos**. Para traducirlo a rendimientos físicos, se deben sumar los pesos de los eventos seleccionados. Los porcentajes de eventos simulados no siempre son las eficiencias ponderadas que corresponden a tasas esperadas.
-
-### Ejemplo para completar en clase
-
-Este es un ejemplo hipotético de rendimientos esperados, no un resultado del dataset. Antes de la selección de la red tenemos **100 eventos de señal y 10 000 de fondo**. Ambas selecciones conservan 60% de la señal:
-
-| Selección | εs | εb | Señal seleccionada s | Fondo seleccionado b | s / √b, aproximación |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| A | 0.60 | 0.10 | 60 | 1 000 | 1.90 |
-| B | 0.60 | 0.05 | 60 | 500 | 2.68 |
-
-La segunda selección permite ver mejor el mismo exceso de señal sobre el fondo. **No cambia la frecuencia física con la que se produce el Higgs**; cambia cuánto ruido dejamos entrar en la selección. La aproximación s/√b sirve aquí para ilustrar el efecto con fondo dominante y conocido; no reemplaza la AMS del challenge ni un cálculo con incertidumbres sistemáticas.
-
-## Conexión con una sección eficaz
-
-La sección eficaz σ describe la frecuencia de producción de un proceso para una luminosidad dada. En un conteo simplificado, el número esperado de eventos seleccionados se expresa como:
-
-<p><strong>s = L × σ × B × A × εs</strong></p>
-
-L es la luminosidad integrada; B, la probabilidad de la cadena de decaimiento considerada; A, la aceptación y preselección previa; εs, la eficiencia adicional de nuestra red.
-
-Si observamos N eventos y estimamos un fondo b, una estimación elemental sería:
-
-<p><strong>σ estimada = (N − b) / (L × B × A × εs)</strong></p>
-
-Una red útil puede reducir el fondo conservando señal y ayudar a disminuir la incertidumbre de la medición. Pero hay que conocer y calibrar εs y estimar el fondo. Una selección demasiado estricta pierde señal; una red mal modelada puede sesgar el resultado. **Mejor ROC no significa una sección eficaz medida más grande.**
-
-## Conexión con límites y descubrimiento
-
-Si no aparece un exceso claro, un análisis puede establecer un **límite superior**: qué intensidades de señal quedan incompatibles con los datos bajo un procedimiento estadístico definido. Una mejor separación puede mejorar el límite **esperado**, pero no garantiza un cambio concreto del límite observado.
-
-También puede mejorar la sensibilidad esperada a un exceso. El cálculo completo utiliza un modelo estadístico, normalizaciones e incertidumbres de fondo, detector y señal; puede emplear toda la distribución de puntuaciones, no solo un corte. Una ROC no contiene por sí sola toda esa información. Véase la [referencia de Cowan, Cranmer, Gross y Vitells](https://arxiv.org/abs/1007.1727).
-
-En este taller medimos **clasificación y AMS de validación en simulación**. No estamos publicando una sección eficaz, un límite ni una significancia observada de descubrimiento. La AMS conecta la selección con una sensibilidad aproximada, y motiva por qué no basta con acertar muchas etiquetas. El [artículo del challenge, secciones 2 y 4](https://proceedings.mlr.press/v42/cowa14.pdf), desarrolla esa conexión.
-
-!!! question "Para cerrar la discusión"
-    ¿Qué preferimos: más AUC global, más señal al mismo fondo, o menos fondo al mismo número de señales? La respuesta depende del objetivo físico y sus incertidumbres. Expliquen qué medirían antes de elegir un modelo.
-
 ## Procedencia de las imágenes
+
+- `atlas_observables/`: distribuciones generadas para el taller con los 250 000 eventos de entrenamiento del [dataset de CERN Open Data](https://opendata.cern.ch/record/328), utilizando `workshop/plot_atlas.py` del repositorio principal. [Condiciones de generación y conteos](assets/workshop/atlas_observables/provenance.json). No son figuras oficiales de ATLAS.
 
 - `higgs_ggf_vbf.png`: figura 1 de ATLAS y CMS, [arXiv:1606.02266](https://arxiv.org/abs/1606.02266), recortada para mostrar los diagramas.
 - `higgs_tautau_final_state.svg/png`: esquema original del taller de la cadena leptónica–hadrónica de H → ττ; no es una figura extraída del artículo.

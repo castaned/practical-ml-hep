@@ -1,0 +1,16 @@
+{
+  "source": "https://opendata.cern.ch/record/328",
+  "doi": "10.7483/OPENDATA.ATLAS.ZBP2.M5T8",
+  "dataset_adler32": "e4717bbe",
+  "partition": "KaggleSet=t only",
+  "events": {
+    "b": 164333,
+    "s": 85667
+  },
+  "weighting": "unweighted shapes, normalized by valid per-class count and bin width before tail crop",
+  "missing_value_excluded": -999,
+  "upper_quantile_per_class": 0.995,
+  "bins": 35,
+  "generator": "ML-integration-CMSSW/workshop/plot_atlas.py",
+  "official_experiment_plot": false
+}
