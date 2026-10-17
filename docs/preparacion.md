@@ -32,32 +32,48 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 
 ### Paso 1. Preparar la conexión a Yuca
 
-**Windows: descarga e instala PuTTY antes de comenzar.** Obtén el instalador desde la [página oficial de descargas de PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Una vez instalado, abre **PuTTY** y completa los campos como en la imagen:
+#### Windows · Opción preferida: PowerShell
+
+Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por el nombre de usuario que se te proporcionó para el curso:
+
+```powershell
+ssh TU_USUARIO@yuca.unison.mx
+```
+
+![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
+
+*La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio usuario asignado.*
+
+#### Windows · Alternativa: PuTTY
+
+Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY** desde la [página oficial de descargas](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Abre el programa y completa los campos como en la imagen:
 
 - **Host Name:** `yuca.unison.mx`.
 - **Port:** `22`.
 - **Connection type:** `SSH`.
 
-Pulsa **Open** para abrir la terminal de conexión. A continuación, inicia sesión con **el nombre de usuario y la contraseña que se te proporcionaron para el curso**, como se indica en el paso 2.
+Pulsa **Open** para abrir la conexión.
 
 ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
-**Linux o macOS:** utiliza la terminal del sistema; no necesitas instalar PuTTY. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por la cuenta que te asignaron:
+#### Linux o macOS · Terminal del sistema
+
+Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asignado:
 
 ```bash
 ssh TU_USUARIO@yuca.unison.mx
 ```
 
+A partir de aquí, los pasos de ingreso y activación de Authenticator son los mismos para todos los sistemas.
+
 ### Paso 2. Ingresar con tu cuenta asignada
 
 Utiliza **el nombre de usuario y la contraseña que se te proporcionaron para el curso**.
 
-1. En PuTTY, cuando aparezca `login as:`, escribe tu nombre de usuario y pulsa **Enter**.
-2. Cuando aparezca la solicitud de contraseña (`Password:`), escribe la contraseña que recibiste y pulsa **Enter**.
+- **PowerShell o terminal de Linux/macOS:** el usuario ya está incluido en el comando SSH. Cuando aparezca `Password:`, introduce la contraseña proporcionada y pulsa **Enter**.
+- **PuTTY:** cuando aparezca `login as:`, escribe tu usuario y pulsa **Enter**. Después introduce la contraseña proporcionada cuando se solicite y pulsa **Enter**.
 
-En Linux o macOS, el nombre de usuario ya está incluido en el comando SSH; introduce la contraseña proporcionada cuando se solicite.
-
-Al escribir la contraseña no aparecen caracteres ni asteriscos en la terminal. Escríbela y pulsa **Enter**.
+Al escribir la contraseña no aparecen caracteres ni asteriscos en la terminal. Es el comportamiento normal: escríbela y pulsa **Enter**.
 
 ### Paso 3. Escanear el QR con Google Authenticator
 
