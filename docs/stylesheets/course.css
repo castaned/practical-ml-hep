@@ -196,3 +196,8 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 [data-md-color-scheme=slate] .agenda-time,[data-md-color-scheme=slate] .deliverable-number { color:#9dd9ce; }
 @media(max-width:900px) { .workshop-agenda { grid-template-columns:1fr; } .agenda-deliverables { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:450px) { .agenda-deliverables { grid-template-columns:1fr; } }
+
+.md-typeset .environment-checks { list-style:none; padding:0; margin:1rem 0 1.4rem; }
+.md-typeset .environment-checks li { position:relative; margin:0 0 .7rem; padding:.4rem 0 .4rem 2.1rem; line-height:1.65; }
+.environment-checks li::before { content:'✓'; position:absolute; left:0; top:.45rem; width:1.35rem; height:1.35rem; display:grid; place-items:center; border-radius:50%; background:#e0f5ef; color:#00878a; font-weight:800; font-size:.85rem; }
+[data-md-color-scheme=slate] .environment-checks li::before { background:#204844; color:#a7e9d8; }

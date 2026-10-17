@@ -253,10 +253,12 @@ sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
 
 ## Verificación del entorno
 
-- [ ] Puedo entrar a Yuca y abrir una terminal.
-- [ ] Mi terminal muestra `(ml-hep-gpu)` y estoy en `ML-integration-CMSSW`.
-- [ ] Puedo ver el archivo compartido del challenge.
-- [ ] Mi cuenta tiene el proyecto del curso y entiendo cómo consultar un trabajo.
+<ul class="environment-checks">
+<li>Puedo entrar a Yuca y abrir una terminal.</li>
+<li>Mi terminal muestra <code>(ml-hep-gpu)</code> y estoy en <code>ML-integration-CMSSW</code>.</li>
+<li>Puedo ver el archivo compartido del challenge.</li>
+<li>Mi cuenta tiene el proyecto del curso y entiendo cómo consultar un trabajo.</li>
+</ul>
 
 [Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
 
