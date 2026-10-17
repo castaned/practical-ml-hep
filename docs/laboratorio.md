@@ -110,6 +110,8 @@ Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a 
 
 ## Continuar con las variaciones
 
+En la siguiente sección podrás utilizar el [selector de arquitecturas](variaciones.md#explorar-la-arquitectura-antes-de-modificar-el-yaml) para comparar capas, neuronas y número de parámetros antes de preparar una variación.
+
 Conservar el YAML y los resultados de la referencia. Registrar sus métricas antes de pasar a la actividad de la última hora.
 
 [Variaciones por grupos y tabla de resultados](variaciones.md){ .md-button .md-button--primary }
