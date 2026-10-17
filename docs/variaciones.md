@@ -62,12 +62,22 @@ Copiar el YAML de referencia y abrir la copia en JupyterLab:
 cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_02.yaml"
 ```
 
-Modificar los campos del escenario asignado y definir una carpeta nueva dentro del mismo YAML:
+En el explorador lateral de **JupyterLab**, abre **hep-workshop → configs → atlas_02.yaml**. Este es el archivo que vas a editar y enviar al entrenamiento; conserva `atlas_baseline01.yaml` como referencia.
+
+En esa copia, modifica el campo del escenario asignado y cambia también **`output.directory`**. Por ejemplo, para el **escenario A**, los bloques correspondientes deben quedar así:
 
 ```yaml
+model:
+  hidden_dims: [512, 256, 128, 64]
+  dropout: 0.1
+
 output:
   directory: $HOME/hep-workshop/results/atlas_02
 ```
+
+Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B, C o D, aplica únicamente los cambios de su fila en la tabla anterior, además de la nueva carpeta de salida.
+
+**Guarda el archivo antes de enviar el trabajo.** La ejecución siguiente utilizará `atlas_02.yaml` y guardará sus resultados en `hep-workshop/results/atlas_02/`, separados de `atlas_gpu_baseline01/`.
 
 Conservar los demás parámetros, incluidas las particiones de datos y la semilla. Antes de enviar, anotar el cambio y el resultado esperado en la [bitácora](bitacora.md).
 
@@ -77,7 +87,9 @@ sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
   workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
 ```
 
-Al terminar, abrir `training_summary.png` y `metrics.json` de la carpeta nueva. Comparar las pérdidas y la curva ROC con las de la referencia.
+Al terminar, abrir **hep-workshop → results → atlas_02** y revisar `training_summary.png` y `metrics.json`. Comparar las pérdidas y la curva ROC con las de la referencia.
+
+Para otra variación, utiliza otro nombre de YAML y otra carpeta, por ejemplo `atlas_03.yaml` y `results/atlas_03`. El entrenamiento rechaza una carpeta de salida que ya existe para evitar sobrescribir resultados anteriores.
 
 ## 3. Registrar y visualizar resultados {#registro}
 
