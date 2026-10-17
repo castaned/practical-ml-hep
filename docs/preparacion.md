@@ -101,7 +101,9 @@ Con la activación completada, continúa con el acceso a **Open OnDemand** en la
 
 ### Paso 1. Iniciar sesión en Open OnDemand
 
-Acceder al [portal de Yuca](http://yucaood.acarus.unison.mx) e introducir el usuario y la contraseña asignados. Completar la verificación adicional cuando se solicite. Utiliza tu cuenta asignada.
+Abre **Open OnDemand de Yuca**: [https://yucaood.acarus.unison.mx/](https://yucaood.acarus.unison.mx/).
+
+Introduce el nombre de usuario y la contraseña que se te proporcionaron para el curso. Completa la verificación con el código de Google Authenticator cuando se solicite.
 
 ![Pantalla de acceso a Open OnDemand de Yuca](assets/yuca/01-acceso.png)
 
