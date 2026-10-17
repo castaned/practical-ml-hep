@@ -19,12 +19,27 @@ El taller utiliza **Yuca**, el clúster de alto rendimiento de **ACARUS / UNISON
 
 ## Acerca del instructor
 
-**Dr. Alfredo Martín Castañeda Hernández**  
+<div class="instructor-profile" markdown>
+<div class="instructor-photo" markdown>
+
+![Dr. Alfredo Castañeda Hernández](assets/instructor/alfredo-castaneda.png){ width="240" }
+
+</div>
+<div markdown>
+
+**Dr. Alfredo Castañeda Hernández**  
 Departamento de Investigación en Física · Universidad de Sonora
 
-Profesor investigador de tiempo completo e integrante del grupo de Física de Altas Energías. Sus líneas de trabajo incluyen la búsqueda de física más allá del Modelo Estándar y el desarrollo de detectores de partículas y electrónica para adquisición de datos.
+El Dr. Alfredo Castañeda Hernández es Profesor-Investigador del Departamento de Investigación en Física de la Universidad de Sonora y miembro del Sistema Nacional de Investigadoras e Investigadores (SNII), Nivel I. Es especialista en física experimental de partículas y ha desarrollado su trabajo científico en experimentos del Gran Colisionador de Hadrones (LHC) del CERN, participando en las colaboraciones ATLAS y CMS.
+
+Es miembro fundador del grupo UNISON-CMS, establecido a partir de la incorporación de la Universidad de Sonora a la colaboración CMS en 2018. Sus líneas de investigación se enfocan en búsquedas de nueva física más allá del Modelo Estándar, análisis de datos y desarrollo de detectores.
+
+También trabaja en la aplicación de métodos computacionales, estadísticos y de aprendizaje automático en física de altas energías, y en la formación de estudiantes que participan en proyectos de investigación relacionados con CMS y CERN.
 
 [Consultar el perfil institucional](https://buhos-api.unison.mx/PureXML/Investigador/Index/33989-ALFREDO%20MARTIN%20CASTA%C3%91EDA%20HERNANDEZ).
+
+</div>
+</div>
 
 ## Consultas y colaboración
 
@@ -36,6 +51,6 @@ Podemos discutir cómo adaptar el flujo del curso a otras muestras y observables
 
 <div class="image-credits" markdown>
 
-Información de adscripción, líneas de investigación y correo consultada en el [perfil institucional de UNISON](https://buhos-api.unison.mx/PureXML/Investigador/Index/33989-ALFREDO%20MARTIN%20CASTA%C3%91EDA%20HERNANDEZ).
+Semblanza y fotografía proporcionadas por el instructor. Correo institucional consultado en el [perfil institucional de UNISON](https://buhos-api.unison.mx/PureXML/Investigador/Index/33989-ALFREDO%20MARTIN%20CASTA%C3%91EDA%20HERNANDEZ).
 
 </div>

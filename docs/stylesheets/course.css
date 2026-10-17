@@ -162,3 +162,9 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .md-typeset .image-credits { margin-top:2.5rem; padding-top:.8rem; border-top:1px solid var(--course-border); color:var(--md-default-fg-color--light); font-size:.62rem; line-height:1.6; }
 .md-typeset .image-credits p,.md-typeset .image-credits li { font-size:inherit; }
 .md-typeset .image-credits code { font-size:.95em; }
+
+/* Instructor portrait beside the biography, stacked on narrow screens. */
+.instructor-profile { display:grid; grid-template-columns:220px minmax(0,1fr); gap:1.6rem; align-items:start; margin:1.2rem 0; }
+.instructor-photo p { margin-top:0; }
+.instructor-photo img { display:block; width:100%; height:auto; border-radius:14px; }
+@media(max-width:760px) { .instructor-profile { grid-template-columns:1fr; gap:.8rem; } .instructor-photo { max-width:220px; } }
