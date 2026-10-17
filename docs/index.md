@@ -71,7 +71,7 @@ Ambos ejercicios utilizan simulaciones disponibles en CERN Open Data. Difieren e
 
 ## Software y archivos de configuración
 
-El software de los dos ejercicios está disponible en el repositorio [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW). Para procesar los datos y entrenar las redes, se utilizan archivos **YAML**, donde se eligen los parámetros de cada ejecución.
+El software que usarás está en el repositorio [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW). Durante los ejercicios trabajarás con archivos **YAML** para elegir cómo procesar los datos y entrenar las redes, sin modificar el código de Python.
 
 ## Objetivos del ejercicio ATLAS
 
