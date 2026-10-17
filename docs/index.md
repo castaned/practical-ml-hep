@@ -116,14 +116,3 @@ Los **cilindros representan archivos almacenados** y los **rectángulos, operaci
 </div>
 
 Consulta la agenda oficial del [miércoles 21](https://indico.nucleares.unam.mx/event/2675/timetable/#20261021) y del [jueves 22](https://indico.nucleares.unam.mx/event/2675/timetable/#20261022). La distribución temática anterior es la propuesta de trabajo del taller.
-
-### Resultados del trabajo en ATLAS
-
-<div class="agenda-deliverables">
-<div><span class="deliverable-number">01</span><h4>Referencia</h4><p>Reproducir el benchmark e identificar sus archivos.</p></div>
-<div><span class="deliverable-number">02</span><h4>Variación</h4><p>Probar un cambio y conservar su YAML y resultados.</p></div>
-<div><span class="deliverable-number">03</span><h4>Registro</h4><p>Anotar métricas y guardar una figura representativa.</p></div>
-<div><span class="deliverable-number">04</span><h4>Conclusión</h4><p>Explicar qué cambió, si mejoró y qué límites tiene la comparación.</p></div>
-</div>
-
-El código de entrenamiento y los YAML se mantienen en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Este sitio reúne el material docente. Cómputo en **ACARUS / Yuca, Universidad de Sonora**. Figuras publicadas y fuentes identificadas en el [capítulo de física](fisica.md#procedencia-de-las-imagenes).
