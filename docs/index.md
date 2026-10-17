@@ -12,7 +12,7 @@ hide:
 
 # Aprendizaje automático en física de partículas
 
-Redes neuronales aplicadas a datos abiertos del CERN: clasificación de eventos con el ATLAS Higgs Challenge y análisis desde NanoAOD con CMS.
+Análisis de datos de física de partículas con CERN Open Data y el clúster Yuca: desde la preparación de los datos hasta la interpretación de resultados.
 
 <p class="course-affiliation">Cómputo en CPU y GPU del clúster Yuca<br>ACARUS · Universidad de Sonora</p>
 
@@ -36,6 +36,14 @@ Redes neuronales aplicadas a datos abiertos del CERN: clasificación de eventos 
 
 </div>
 
+## El flujo de un análisis experimental
+
+En el curso practicaremos las etapas de un análisis de física experimental de partículas: partir de una fuente de datos, procesarlos en un clúster, estudiar observables y extraer conclusiones. Las redes neuronales son una herramienta opcional dentro de este flujo; en los dos ejercicios las utilizaremos con objetivos distintos.
+
+![Flujo de análisis: datos, procesamiento en Yuca, observables e interpretación, con entrenamiento de redes neuronales como etapa opcional](assets/workshop/experimental_analysis_flow.svg)
+
+El recorrido directo permite analizar distribuciones y selecciones. La rama inferior incorpora el entrenamiento y la evaluación de una red. En ambos casos, las conclusiones se sustentan en los resultados y sus limitaciones. Trabajaremos con **simulaciones abiertas de ATLAS y CMS**, disponibles en CERN Open Data.
+
 <div class="course-facts" markdown>
 
 <div><strong>30</strong><span>variables para explorar</span></div>
@@ -50,7 +58,7 @@ Redes neuronales aplicadas a datos abiertos del CERN: clasificación de eventos 
 
 ## Dos ejercicios con CERN Open Data
 
-Ambos ejercicios utilizan simulaciones disponibles en CERN Open Data. Difieren en el formato de origen, el procesamiento necesario y la tarea de aprendizaje.
+Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables ya calculadas; en CMS realizamos también la selección de eventos y la extracción de observables desde NanoAOD.
 
 | | Ejercicio 1 · ATLAS Higgs Challenge | Ejercicio 2 · Autoencoder CMS |
 | --- | --- | --- |
@@ -62,9 +70,9 @@ Ambos ejercicios utilizan simulaciones disponibles en CERN Open Data. Difieren e
 | Evaluación | Curva ROC, AUC y AMS interna | Pérdidas y distribuciones del error de reconstrucción; W′ como referencia de evaluación |
 | Lugar en el curso | Actividad principal del miércoles | Extensión para mostrar el análisis desde NanoAOD |
 
-**ATLAS:** CSV con variables preparadas → preprocesamiento → clasificación → comparación de entrenamientos.
+**ATLAS · Higgs:** tabla de variables → preparación en Yuca → clasificador de señal y fondo → comparación de entrenamientos y conclusiones.
 
-**CMS:** NanoAOD → selección y extracción de variables → HDF5 → reconstrucción con autoencoder → evaluación.
+**CMS · Anomalías:** NanoAOD → selección y extracción de variables en Yuca → HDF5 → autoencoder → estudio del error de reconstrucción y conclusiones.
 
 [Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }

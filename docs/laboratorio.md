@@ -6,6 +6,8 @@ Los datos de este ejercicio son una tabla CSV de CERN Open Data con las variable
 
 El entrenamiento se ejecuta con los scripts del repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Los parámetros se modifican en el YAML personal; las figuras y métricas se analizan en la carpeta de salida de cada corrida. No se requiere editar el código de Python.
 
+En el [flujo general del curso](index.md#el-flujo-de-un-analisis-experimental), este ejercicio comienza con observables ya calculados. La práctica se concentra en preparar esas entradas, entrenar el clasificador y comparar sus resultados.
+
 ## 1. Procesos y variables de entrada
 
 Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.

@@ -4,6 +4,8 @@ Este ejercicio presenta el análisis desde los archivos de eventos hasta el entr
 
 El procesamiento y el entrenamiento utilizan el código del repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev). Los YAML de cada etapa indican los archivos de entrada, los parámetros disponibles y las carpetas de salida. Durante el ejercicio se trabaja con esos archivos de configuración y se revisan los productos generados en las carpetas personales, sin modificar los scripts de Python.
 
+En el [flujo general del curso](index.md#el-flujo-de-un-analisis-experimental), este ejercicio comienza antes de la extracción de observables. La selección y el procesamiento de NanoAOD permiten construir las entradas del autoencoder y seguir su origen hasta los eventos simulados.
+
 ## 1. Muestras y formato de origen
 
 Se utilizan simulaciones CMS disponibles en CERN Open Data, en formato **NanoAOD dentro de archivos ROOT**. Cada evento contiene colecciones de electrones, muones y jets, además de otras cantidades reconstruidas, como el momento transversal faltante.

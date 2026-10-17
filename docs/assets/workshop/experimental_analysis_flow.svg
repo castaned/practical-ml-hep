@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="440" viewBox="0 0 1420 440" role="img" aria-labelledby="flow-title flow-desc">
+<title id="flow-title">Flujo de análisis de datos en física experimental de partículas</title>
+<desc id="flow-desc">Una fuente de datos se procesa en Yuca para obtener observables y selecciones. Estos permiten analizar distribuciones y extraer conclusiones. Opcionalmente, los observables se utilizan para entrenar una red neuronal, cuya evaluación también contribuye a la interpretación. Ambos recorridos se practican con simulaciones de CERN Open Data.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10" fill="none" stroke="#486676" stroke-width="1.7"/></marker><marker id="teal-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L9 5 L0 10" fill="none" stroke="#087f85" stroke-width="1.7"/></marker></defs>
+<rect x="1" y="1" width="1418" height="438" rx="16" fill="#f6f9fa" stroke="#dce5e7"/>
+<g font-family="Segoe UI, Arial, sans-serif">
+<text x="32" y="38" font-size="17" fill="#526a75">ANÁLISIS EXPERIMENTAL · CERN OPEN DATA / YUCA</text>
+<g fill="#fff" stroke="#b7cbd4" stroke-width="1.4">
+<rect x="30" y="76" width="280" height="118" rx="10"/>
+<rect x="390" y="76" width="280" height="118" rx="10"/>
+<rect x="750" y="76" width="280" height="118" rx="10"/>
+<rect x="1110" y="76" width="280" height="118" rx="10"/>
+</g>
+<g text-anchor="middle" fill="#183b4c">
+<text x="170" y="114" font-size="23" font-weight="600">Fuente de datos</text>
+<text x="170" y="145" font-size="18">Eventos o tablas de variables</text>
+<text x="170" y="173" font-size="17" fill="#526a75">Simulaciones ATLAS y CMS</text>
+<text x="530" y="114" font-size="23" font-weight="600">Procesamiento en Yuca</text>
+<text x="530" y="145" font-size="18">Lectura y preparación</text>
+<text x="530" y="173" font-size="17" fill="#526a75">Recursos CPU / GPU</text>
+<text x="890" y="114" font-size="23" font-weight="600">Observables y selección</text>
+<text x="890" y="145" font-size="18">Variables físicas</text>
+<text x="890" y="173" font-size="17" fill="#526a75">Distribuciones y comparaciones</text>
+<text x="1250" y="114" font-size="23" font-weight="600">Interpretación física</text>
+<text x="1250" y="145" font-size="18">Resultados y conclusiones</text>
+<text x="1250" y="173" font-size="17" fill="#526a75">Alcance e incertidumbres</text>
+</g>
+<g fill="none" stroke="#486676" stroke-width="2.2" marker-end="url(#arrow)"><path d="M318 135 H376"/><path d="M678 135 H736"/><path d="M1038 135 H1096"/></g>
+<rect x="740" y="284" width="300" height="112" rx="10" fill="#e5f3ef" stroke="#087f85" stroke-width="1.6"/>
+<g text-anchor="middle" fill="#13565d"><text x="890" y="316" font-size="17" font-weight="600">ETAPA OPCIONAL</text><text x="890" y="347" font-size="23" font-weight="600">Red neuronal</text><text x="890" y="377" font-size="18">Entrenamiento y evaluación</text></g>
+<g fill="none" stroke="#087f85" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#teal-arrow)"><path d="M890 202 V270"/><path d="M1048 340 H1250 V209"/></g>
+<text x="1100" y="375" font-size="17" fill="#13565d">Evaluación del modelo</text>
+<text x="34" y="290" font-size="21" font-weight="600" fill="#183b4c">Aplicaciones del taller</text>
+<text x="34" y="326" font-size="18" fill="#526a75">ATLAS · Clasificación del Higgs</text>
+<text x="34" y="354" font-size="18" fill="#526a75">CMS · Reconstrucción y anomalías</text>
+<text x="34" y="392" font-size="17" fill="#526a75">Simulaciones disponibles en CERN Open Data.</text>
+</g></svg>
