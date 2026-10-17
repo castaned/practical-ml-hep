@@ -4,6 +4,8 @@ El ejercicio comienza con la reproducción de una red de referencia. Una vez ide
 
 Los datos de este ejercicio son una tabla CSV de CERN Open Data con las variables ya calculadas. No se realiza una extracción desde NanoAOD. La lectura, el tratamiento de valores ausentes y la estandarización forman el preprocesamiento del clasificador.
 
+El entrenamiento se ejecuta con los scripts del repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Los parámetros se modifican en el YAML personal; las figuras y métricas se analizan en la carpeta de salida de cada corrida. No se requiere editar el código de Python.
+
 ## 1. Procesos y variables de entrada
 
 Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.

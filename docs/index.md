@@ -69,6 +69,12 @@ Ambos ejercicios utilizan simulaciones disponibles en CERN Open Data. Difieren e
 [Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
 
+## Software y archivos de configuración
+
+El núcleo del software de ambos ejercicios —procesamiento de datos, scripts de Python, entrenamiento y generación de resultados— se mantiene en el repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev), en la rama `opendata_dev`. Este sitio contiene las explicaciones y actividades del curso.
+
+La interacción con el software se realiza mediante **copias personales de los archivos YAML**. En ellos se definen los parámetros del proceso o del modelo y las carpetas de salida. Los comandos del curso ejecutan el código del repositorio con la configuración seleccionada; no es necesario editar los scripts de Python. Las figuras, métricas y configuraciones de cada ejecución se consultan en las carpetas personales de resultados.
+
 ## Objetivos del ejercicio ATLAS
 
 El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de los procesos de fondo mediante el **ATLAS Higgs Challenge**, un conjunto de simulaciones disponible en CERN Open Data.

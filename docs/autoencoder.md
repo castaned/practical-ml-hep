@@ -2,6 +2,8 @@
 
 Este ejercicio presenta el análisis desde los archivos de eventos hasta el entrenamiento de una red de reconstrucción. Es una extensión independiente del ejercicio ATLAS: utiliza otras muestras, otro formato de origen y un objetivo de aprendizaje distinto.
 
+El procesamiento y el entrenamiento utilizan el código del repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev). Los YAML de cada etapa indican los archivos de entrada, los parámetros disponibles y las carpetas de salida. Durante el ejercicio se trabaja con esos archivos de configuración y se revisan los productos generados en las carpetas personales, sin modificar los scripts de Python.
+
 ## 1. Muestras y formato de origen
 
 Se utilizan simulaciones CMS disponibles en CERN Open Data, en formato **NanoAOD dentro de archivos ROOT**. Cada evento contiene colecciones de electrones, muones y jets, además de otras cantidades reconstruidas, como el momento transversal faltante.
@@ -14,7 +16,7 @@ En el Higgs Challenge las treinta variables ya vienen calculadas en una tabla. A
 
 **NanoAOD (ROOT) → selección multileptónica → candidatos W/Z y observables → gráficos de control → HDF5**
 
-Revisar `example_files/main_process/filterNanoAOD.py` para identificar las ramas de entrada y la selección de eventos con al menos tres leptones. El procesamiento construye candidatos Z y W y calcula las cantidades que recibirá la red. El cutflow permite seguir cuántos eventos sobreviven a cada selección.
+La selección de eventos con al menos tres leptones está implementada en `example_files/main_process/filterNanoAOD.py`, dentro del repositorio principal. El archivo puede consultarse para entender la selección; no es necesario editarlo. El procesamiento construye candidatos Z y W y calcula las cantidades que recibirá la red. El cutflow permite seguir cuántos eventos sobreviven a cada selección.
 
 La [guía de procesamiento CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/03_procesamiento/) contiene el procedimiento de ejecución. Los archivos originales se leen de la carpeta compartida; los productos del procesamiento se guardan en la cuenta personal.
 

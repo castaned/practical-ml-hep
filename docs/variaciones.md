@@ -24,6 +24,8 @@ Conservar los demás parámetros, las variables y las particiones de datos. Cada
 
 ## 2. Preparar y ejecutar la variación
 
+Los scripts de Python se mantienen en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). En esta actividad se modifican únicamente el YAML personal y su carpeta de salida.
+
 Copiar el YAML de referencia y abrir la copia en JupyterLab:
 
 ```bash
