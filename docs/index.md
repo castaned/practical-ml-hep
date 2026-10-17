@@ -18,9 +18,9 @@ Redes neuronales aplicadas a datos abiertos del CERN: clasificación de eventos 
 
 <div class="course-links" markdown>
 
-[Acceso y preparación](preparacion.md)
-[Ejercicio ATLAS](laboratorio.md)
-[Ejercicio CMS](autoencoder.md)
+[Acceso y preparación](preparacion.md){ .md-button .md-button--primary }
+[Ejercicio ATLAS](laboratorio.md){ .md-button .hero-secondary }
+[Ejercicio CMS](autoencoder.md){ .md-button .hero-secondary }
 
 </div>
 
