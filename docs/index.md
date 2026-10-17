@@ -32,7 +32,7 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 [Acceso y preparación](preparacion.md){ .md-button .md-button--primary }
 [Ejercicio ATLAS](atlas.md){ .md-button .hero-secondary }
-[Ejercicio CMS](autoencoder.md){ .md-button .hero-secondary }
+[Demostración CMS](autoencoder.md){ .md-button .hero-secondary }
 
 </div>
 
@@ -114,7 +114,7 @@ Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para 
 Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables ya calculadas; en CMS realizamos también la selección de eventos y la extracción de observables desde NanoAOD.
 
 [Ejercicio 1: ATLAS Higgs Challenge](atlas.md){ .md-button .md-button--primary }
-[Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
+[Demostración: autoencoder CMS](autoencoder.md){ .md-button }
 
 En ambos ejercicios se comienza reproduciendo una configuración de referencia. Sus conteos, figuras y métricas se revisan antes de introducir cambios; esa ejecución se conserva para comparar las variaciones.
 
@@ -130,7 +130,7 @@ En ambos ejercicios se comienza reproduciendo una configuración de referencia. 
 
 **Comparación y discusión.** Reuniremos los resultados para analizar la separación entre señal y fondo, el sobreajuste y el tiempo de entrenamiento en CPU y GPU.
 
-**Ejercicio CMS.** Revisaremos un segundo flujo que parte de eventos NanoAOD: selección, extracción de variables y entrenamiento de un autoencoder para explorar anomalías.
+**Demostración CMS.** Revisaremos un segundo flujo que parte de eventos NanoAOD: selección, extracción de variables y entrenamiento de un autoencoder para explorar anomalías.
 
 ### Trabajo esperado
 

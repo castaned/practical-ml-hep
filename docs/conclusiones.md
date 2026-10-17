@@ -35,9 +35,9 @@ Para conversar entre todos: ¿una red más grande siempre ayudó? ¿AUC y AMS me
 !!! tip "Lo importante es la explicación"
     Una comparación bien interpretada vale aunque el número no mejore. Diferencias pequeñas en una sola corrida no bastan para declarar un ganador.
 
-La práctica principal es **ATLAS Higgs Challenge**. Si exploraron el autoencoder, comenten qué cambió en su objetivo y en el significado de la salida; no mezclen sus métricas en la tabla de clasificación.
+La práctica principal es **ATLAS Higgs Challenge**. Tras la demostración del autoencoder, comenten qué cambió en su objetivo y en el significado de la salida; no mezclen sus métricas en la tabla de clasificación.
 
 [Anterior: variaciones y tabla de resultados](variaciones.md){ .md-button }
-[Extensión: autoencoder CMS desde NanoAOD](autoencoder.md){ .md-button }
+[Demostración: autoencoder CMS desde NanoAOD](autoencoder.md){ .md-button }
 
 [Bitácora del grupo](bitacora.md) · [Referencias y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge)

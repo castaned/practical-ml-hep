@@ -56,7 +56,7 @@ nav:
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
       - Conclusiones: conclusiones.md
-  - "2. CMS: autoencoder desde NanoAOD":
+  - "2. CMS: demostración desde NanoAOD":
       - Datos, procesamiento y entrenamiento: autoencoder.md
   - Preparación y apoyo:
       - Bitácora ATLAS: bitacora.md
