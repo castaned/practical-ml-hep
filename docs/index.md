@@ -40,15 +40,11 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 En el curso practicaremos las etapas de un análisis de física experimental de partículas: partir de una fuente de datos, procesarlos en un clúster, estudiar observables y extraer conclusiones. El entrenamiento de redes neuronales forma parte del recorrido de los dos ejercicios, con un énfasis diferente en cada uno.
 
-![Flujo modular de análisis: datos, procesamiento en Yuca, observables, red neuronal e interpretación](assets/workshop/hep_analysis_modular.svg)
+### Arquitectura de los ejercicios {#aplicacion-a-los-ejercicios-del-curso}
 
-Los módulos representan las etapas que conectan los datos con las conclusiones. Yuca proporciona los recursos de cómputo y el software de análisis permite configurar y ejecutar los procesos.
+![Arquitectura del análisis: CERN Open Data como fuente, Yuca como entorno de ejecución y marcos de énfasis ATLAS y CMS](assets/workshop/hep_framework_atlas_cms.svg)
 
-### Aplicación a los ejercicios del curso
-
-![Recorridos ATLAS y CMS: entrenamiento resaltado en ATLAS; procesamiento y entrenamiento resaltados en CMS](assets/workshop/hep_exercise_emphasis_compact.svg)
-
-**ATLAS:** énfasis en el entrenamiento. **CMS:** énfasis en el procesamiento de eventos y el entrenamiento.
+El marco exterior representa **Yuca**. Dentro de él, el marco verde destaca el entrenamiento y la evaluación de **ATLAS**; el violeta incluye el procesamiento y el entrenamiento de **CMS**. Ambos utilizan el software **ML-integration-CMSSW**, con entradas de distinto formato procedentes de CERN Open Data.
 
 [ATLAS: física y benchmark](fisica.md){ .md-button .md-button--primary }
 [CMS: procesamiento y autoencoder](autoencoder.md){ .md-button }
