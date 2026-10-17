@@ -48,7 +48,7 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
     cp -n workshop/configs/atlas_higgs_gpu.yaml "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
     ```
 
-    Si falta configurar tu cuenta, consulta el [apoyo de preparación](referencia.md#entorno-gpu-de-yuca). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
+    Si falta configurar el ambiente, completar la [preparación inicial](preparacion.md#3-clonacion-y-preparacion-del-entorno-de-analisis). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
 Abrir `hep-workshop/configs/atlas_baseline01.yaml` en el explorador lateral de JupyterLab. Comprobar los parámetros anteriores y conservarlos sin cambios durante esta primera ejecución. La carpeta de salida indicada en el YAML debe ser:
 
@@ -110,9 +110,8 @@ Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a 
 
 En la siguiente sección podrás utilizar el [selector de arquitecturas](variaciones.md#explorar-la-arquitectura-antes-de-modificar-el-yaml) para comparar capas, neuronas y número de parámetros antes de preparar una variación.
 
-Conservar el YAML y los resultados de la referencia. Registrar sus métricas antes de pasar a la actividad de la última hora.
+Conservar `atlas_baseline01.yaml` y la carpeta `atlas_gpu_baseline01`. Registrar sus métricas en la tabla de la siguiente sección antes de preparar una variación.
 
-[Variaciones por grupos y tabla de resultados](variaciones.md){ .md-button .md-button--primary }
 
 ## Programa del miércoles: tres horas
 
@@ -122,3 +121,6 @@ Conservar el YAML y los resultados de la referencia. Registrar sus métricas ant
 | Segunda hora | Explicación de la red de referencia, ejecución del benchmark y revisión de carpetas, figuras y métricas |
 | Tercera hora | [Variaciones por grupos, registro de resultados y discusión](variaciones.md) |
 
+
+[Anterior: procesos y variables](fisica.md){ .md-button }
+[Continuar: variaciones y resultados](variaciones.md){ .md-button .md-button--primary }

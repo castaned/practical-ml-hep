@@ -1,6 +1,6 @@
 # Variaciones del benchmark
 
-Esta actividad corresponde a la **última hora del miércoles**. Comenzar con el entrenamiento de referencia completado y sus resultados registrados.
+Esta actividad corresponde a la **última hora del miércoles**. Utilizar el YAML `atlas_baseline01.yaml` y los resultados de `atlas_gpu_baseline01` obtenidos en el [benchmark](laboratorio.md).
 
 | Tiempo | Actividad |
 | --- | --- |
@@ -52,7 +52,7 @@ Conservar los demás parámetros, las variables y las particiones de datos. Cada
 
 ## 2. Preparar y ejecutar la variación
 
-Los scripts de Python se mantienen en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). En esta actividad se modifican únicamente el YAML personal y su carpeta de salida.
+El YAML permite elegir los cambios del modelo y la carpeta de salida; los scripts de ejecución se encuentran en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop).
 
 Copiar el YAML de referencia y abrir la copia en JupyterLab:
 
@@ -70,6 +70,7 @@ output:
 Conservar los demás parámetros, incluidas las particiones de datos y la semilla. Antes de enviar, anotar el cambio y el resultado esperado en la [bitácora](bitacora.md).
 
 ```bash
+cd "$HOME/ML-integration-CMSSW"
 sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
   workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
 ```
@@ -120,4 +121,5 @@ Los registros se conservan en este navegador. **No se sincronizan automáticamen
 
 Las barras de AUC utilizan el intervalo completo de 0 a 1; las diferencias pequeñas se consultan en la tabla. La AMS corresponde a la validación interna del taller. Los resultados históricos del challenge utilizan una evaluación diferente: [método y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge).
 
-[Presentación de conclusiones](conclusiones.md) · [Volver al benchmark](laboratorio.md)
+[Anterior: benchmark](laboratorio.md){ .md-button }
+[Continuar: conclusiones](conclusiones.md){ .md-button .md-button--primary }

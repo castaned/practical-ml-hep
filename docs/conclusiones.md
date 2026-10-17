@@ -37,4 +37,7 @@ Para conversar entre todos: ¿una red más grande siempre ayudó? ¿AUC y AMS me
 
 La práctica principal es **ATLAS Higgs Challenge**. Si exploraron el autoencoder, comenten qué cambió en su objetivo y en el significado de la salida; no mezclen sus métricas en la tabla de clasificación.
 
-[Volver al laboratorio](laboratorio.md) · [Bitácora breve del grupo](bitacora.md) · [Referencias y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge)
+[Anterior: variaciones y tabla de resultados](variaciones.md){ .md-button }
+[Extensión: autoencoder CMS desde NanoAOD](autoencoder.md){ .md-button }
+
+[Bitácora del grupo](bitacora.md) · [Referencias y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge)

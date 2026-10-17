@@ -115,8 +115,6 @@ El panel muestra seis de las treinta variables descritas arriba. Las distribucio
 
 La red utilizará las treinta variables para distinguir la señal de los procesos de fondo. En el siguiente ejercicio se reproducirá una configuración de referencia, se identificarán los archivos de resultados y, después, se estudiarán modificaciones del modelo.
 
-[Continuar: red de referencia y primer entrenamiento](laboratorio.md#red-neuronal-de-referencia){ .md-button .md-button--primary }
-
 ## ¿Ya se observó H → ττ en el LHC?
 
 **Sí. El objetivo actual incluye medir sus propiedades con más precisión.** El challenge de 2014 permite practicar cómo separar una señal difícil; no significa que el canal siga sin observarse.
@@ -198,3 +196,10 @@ En este taller medimos **clasificación y AMS de validación en simulación**. N
 
 Los diagramas de producción se obtuvieron de la publicación conjunta, porque el artículo y la documentación del challenge no contienen ese tipo de diagramas. La cadena completa H → ττ se elaboró como esquema didáctico para este curso. Ninguna de estas figuras es un resultado de nuestros entrenamientos.
 
+
+## Siguiente paso
+
+Identificar qué objetos se esperan en los eventos y qué representan las variables de entrada. A continuación, reproducir la red de referencia y localizar los archivos generados.
+
+[Anterior: preparación del entorno](preparacion.md){ .md-button }
+[Continuar: ejecutar el benchmark](laboratorio.md){ .md-button .md-button--primary }

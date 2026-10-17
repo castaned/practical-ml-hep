@@ -195,7 +195,6 @@ sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
 - [ ] Mi cuenta tiene el proyecto del curso y entiendo cómo consultar un trabajo.
 
 [Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
-[Ir al laboratorio](laboratorio.md){ .md-button }
 
 Los detalles generales de la herramienta permanecen en su [manual técnico](https://castaned.github.io/ML-integration-CMSSW/). Este capítulo reúne los pasos necesarios para empezar la práctica en ACARUS.
 

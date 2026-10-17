@@ -53,11 +53,11 @@ nav:
       - Procesos y variables: fisica.md
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
-      - Bitácora: bitacora.md
       - Conclusiones: conclusiones.md
   - "2. CMS: autoencoder desde NanoAOD":
       - Datos, procesamiento y entrenamiento: autoencoder.md
   - Preparación y apoyo:
+      - Bitácora ATLAS: bitacora.md
       - Comandos ATLAS: apoyo.md
       - Método y benchmarks ATLAS: referencia.md
       - Más preguntas ATLAS: preguntas-extra.md

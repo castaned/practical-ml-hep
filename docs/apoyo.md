@@ -1,106 +1,10 @@
-# Apoyo opcional: comandos y archivos del laboratorio
+# Comandos de apoyo para el ejercicio ATLAS
 
-**¿Puede una red reconocer eventos compatibles con un Higgs?** En esta práctica explorarás datos abiertos de ATLAS y probarás tus propias redes en Yuca.
+Consultar esta página para una operación concreta y regresar después al ejercicio correspondiente. El recorrido principal es [preparación](preparacion.md) → [física y variables](fisica.md) → [benchmark](laboratorio.md) → [variaciones](variaciones.md) → [conclusiones](conclusiones.md).
 
-<div class="grid cards" markdown>
+## Generar las distribuciones de las variables {#3-mira-las-variables-antes-de-entrenar}
 
-- **Una pregunta de física**
-
-    Separar Higgs → ττ de procesos que producen señales parecidas en el detector.
-
-- **30 variables por evento**
-
-    Masas, momentos, jets y energía faltante. La red combina esa información.
-
-- **Tú decides desde un YAML**
-
-    Número de capas, neuronas, aprendizaje, dropout y duración del entrenamiento.
-
-- **Un experimento, una carpeta**
-
-    Conserva cada configuración y sus resultados para compararlos después.
-
-</div>
-
-![Del dato abierto a tus experimentos](assets/workshop/atlas_higgs_workflow.svg)
-
-## 1. Conoce el reto y sus muestras
-
-El [Higgs Challenge de ATLAS](https://opendata.cern.ch/record/328) fue una competición para identificar eventos simulados de Higgs. Estudia el decaimiento **H → ττ**, con un tau que produce un electrón o muón y otro que produce hadrones. También aparecen neutrinos, que no se detectan directamente.
-
-| Muestra | ¿Qué representa? | ¿Por qué interesa? |
-| --- | --- | --- |
-| **Señal: Higgs → ττ** | El proceso que queremos identificar | La red debería asignarle una puntuación alta |
-| **Fondo: Z → ττ** | Otro bosón que también produce taus | Se parece mucho a la señal |
-| **Fondo: pares de top** | Procesos con partículas top | Pueden producir objetos similares |
-| **Fondo: W + jets** | Eventos donde la identificación puede confundir un jet con un tau | También pueden imitar la señal |
-
-En el archivo, la etiqueta distingue señal (`s`) y fondo (`b`); no entrenaremos un clasificador separado para cada fondo.
-
-El archivo completo tiene **818 238 eventos**. Para practicar usamos los **250 000 eventos de la partición original de entrenamiento**: 200 000 para aprender y 50 000 para comprobar el progreso. Los eventos reservados para la evaluación final permanecen fuera del ajuste.
-
-!!! info "¿De dónde vienen los datos?"
-    [Página oficial y descripción de variables](https://opendata.cern.ch/record/328) · [Archivo original](https://opendata.cern.ch/record/328/files/atlas-higgs-challenge-2014-v2.csv.gz)
-
-    **En el taller ya están descargados en la carpeta compartida.** Tú no necesitas descargarlos. Este ejemplo empieza con una tabla de variables extraídas de simulaciones ATLAS. El autoencoder complementario muestra el recorrido desde NanoAOD de CMS.
-
-![Dos mecanismos de producción del Higgs](assets/workshop/higgs_ggf_vbf.png){ width="700" }
-
-*Fusión de gluones y fusión de bosones vectoriales. Figura 1 de la [publicación conjunta ATLAS y CMS](https://arxiv.org/abs/1606.02266), usada como contexto físico; no procede del artículo del challenge.*
-
-**Antes del entrenamiento:** abre [la física y las 30 variables](fisica.md), con los diagramas de producción y decaimiento, los fondos y la explicación de la ROC para mediciones y límites.
-
-### ¿Qué le vamos a dar a la red?
-
-| Ejemplo de variable | Idea física |
-| --- | --- |
-| `DER_mass_MMC` | Una estimación de la masa del sistema de dos taus |
-| `DER_mass_vis` | Masa de los productos visibles del tau y del leptón |
-| `PRI_tau_pt` | Momento transversal del tau hadrónico reconstruido |
-| `PRI_met` | Energía transversal faltante, relacionada con partículas no detectadas |
-| `PRI_jet_num` | Número de jets registrado en el evento |
-| `DER_deltaeta_jet_jet` | Separación entre los dos jets en la dirección del haz |
-
-Esta tabla muestra **solo seis ejemplos**. La [lista completa de las 30 variables y su significado físico](fisica.md#las-30-variables-organizadas-por-su-significado) está organizada en 17 primarias y 13 derivadas. Con `features: all_physics` entrenamos con las 30.
-
-La red recibe números de este tipo y aprende a combinarlos. Las etiquetas dicen qué eventos simulados son señal o fondo; los identificadores y pesos no se usan como entradas de la red.
-
-## 2. Prepara tu YAML personal
-
-Completa primero el [acceso a Yuca](https://castaned.github.io/ML-integration-CMSSW/yuca-course/00_acceso/) y la [configuración de tu cuenta](https://castaned.github.io/ML-integration-CMSSW/yuca-course/01_entorno/). Para esta práctica se utiliza el ambiente GPU `ml-hep-gpu`; si aún no lo tienes, sigue una sola vez la [preparación del ambiente GPU](referencia.md#entorno-gpu-de-yuca).
-
-**En la terminal**, desde tu repositorio:
-
-```bash
-cd "$HOME/ML-integration-CMSSW"
-git pull --ff-only origin opendata_dev
-mkdir -p "$HOME/hep-workshop/configs" "$HOME/hep-workshop/logs"
-cp -n workshop/configs/atlas_higgs_gpu.yaml "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
-```
-
-En **Files de Open OnDemand**, abre `hep-workshop/configs/atlas_baseline01.yaml` con el editor. Este archivo controla tu experimento. Al principio conserva la plantilla completa.
-
-| Campo del YAML | ¿Qué puedes explorar? |
-| --- | --- |
-| `model.hidden_dims` | Cada número es una capa oculta y su cantidad de neuronas |
-| `model.dropout` | Qué fracción de activaciones se omite al entrenar para regularizar |
-| `training.learning_rate` | Tamaño de los pasos de aprendizaje |
-| `training.batch_size` | Eventos que se procesan juntos |
-| `training.epochs` | Máximo de pasadas por los datos de entrenamiento |
-| `training.patience` | Cuántas épocas esperar sin mejora en validación antes de parar |
-| `output.directory` | Carpeta personal donde se guardará esa corrida |
-
-**Ejemplo dentro del YAML, no en la terminal:**
-
-```yaml
-model:
-  hidden_dims: [128, 64, 32, 16]
-  dropout: 0.1
-```
-
-Esta red tiene **cuatro capas ocultas**, con 128, 64, 32 y 16 neuronas. No necesitas modificar Python ni los scripts de envío. Conserva los campos de datos y particiones para comparar los mismos eventos.
-
-## 3. Mira las variables antes de entrenar
+Desde la raíz del repositorio, con el YAML de referencia ya preparado:
 
 Activa el ambiente y genera las comparaciones con **el mismo YAML**:
 
@@ -111,7 +15,7 @@ conda activate ml-hep-gpu
 python workshop/plot_atlas.py -f "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
 ```
 
-En Files, abre `hep-workshop/plots/atlas_inputs01/variables_01.png`. Hay cinco imágenes, con seis variables cada una, y un PDF con todas. La carpeta y el número de intervalos se controlan en el bloque `plots` del YAML. Para regenerar, elige una carpeta nueva en `plots.directory`.
+En el explorador de JupyterLab, abre `hep-workshop/plots/atlas_inputs01/variables_01.png`. Hay cinco imágenes, con seis variables cada una, y un PDF con todas. La carpeta y el número de intervalos se controlan en el bloque `plots` del YAML. Para regenerar, elige una carpeta nueva en `plots.directory`.
 
 Las distribuciones se normalizan a área uno para comparar formas y se amplía la zona central para que las colas largas no oculten sus diferencias. Por defecto se muestra hasta el percentil 99.5 de cada clase; `plots.upper_quantile: 1.0` permite ver el rango completo. El área se normaliza antes del recorte visual. Los valores ausentes se omiten en las gráficas; su frecuencia se guarda en `variable_summary.csv`. No representan cantidades físicas esperadas de señal y fondo.
 
@@ -121,102 +25,39 @@ Las distribuciones se normalizan a área uno para comparar formas y se amplía l
 
 Antes de seguir, completa la [tabla de exploración de variables](bitacora.md#antes-de-entrenar-que-informacion-tenemos). ¿Dónde se parecen señal y fondo? ¿Qué variables podrían ayudar a separarlos?
 
-## 4. Envía tu primera red a Yuca
-
-**En la terminal**, desde la raíz del repositorio:
+## Consultar un entrenamiento
 
 ```bash
-sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
 squeue -u "$USER"
 ```
 
-El comando solicita una GPU y ejecuta tu YAML. La cuenta del curso y el ambiente ya están definidos en el script. Si el trabajo desaparece de la cola, revisa el registro: desaparecer no garantiza éxito.
-
-Al terminar, abre en Files:
-
-```text
-hep-workshop/results/atlas_gpu_baseline01/training_summary.png
-```
-
-| Panel | Pregunta que debes hacerte |
-| --- | --- |
-| Pérdidas por época | ¿Mejora en entrenamiento y también en validación? |
-| Curva ROC | ¿Cuánta señal conserva para una aceptación dada de fondo? |
-| Puntuación de la red | ¿Señal y fondo reciben puntuaciones distintas? |
-
-Los números están en `metrics.json`, dentro de esa misma carpeta. **AUC:** separación global (mayor es mejor). **AMS interna:** indicador que combina señal y fondo seleccionados con sus pesos. Compara ambas; no tienen por qué mejorar juntas.
-
-### ¿Qué mejora física buscamos con la ROC?
-
-Al mismo fondo aceptado, una curva más alta conserva más Higgs; a la misma señal, una curva más a la izquierda deja pasar menos fondo. Eso puede ayudar a medir mejor una sección eficaz o a obtener límites esperados más sensibles. **La red no cambia la sección eficaz de la naturaleza ni calcula un límite por sí sola.** Importan también las tasas y sus incertidumbres.
-
-La AUC resume toda la curva; nuestro objetivo físico puede depender de un solo punto. Por eso nuestras corridas mejoraron ligeramente AUC sin mejorar necesariamente AMS. [Ejemplo con números y conexión con secciones eficaces y límites](fisica.md#leer-una-roc-como-fisico).
-
-## 5. Copia, cambia y vuelve a entrenar
-
-Tu ciclo de trabajo será siempre:
-
-**Copiar YAML → cambiar una idea → elegir carpeta nueva → entrenar → llenar la tabla → discutir.**
-
-Por ejemplo, para probar una red mayor:
+`PD` indica espera de recursos y `R` indica ejecución. Cuando el trabajo salga de la cola, sustituir `NUMERO_JOB` por el número asignado al envío:
 
 ```bash
-cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_02.yaml"
+sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
+tail -40 "$HOME/hep-workshop/logs/atlas_NUMERO_JOB.out"
 ```
 
-Abre `atlas_02.yaml` en Files. Cambia `model.hidden_dims` a `[512, 256, 128, 64]` y, dentro del bloque `output`, cambia la carpeta:
+Los scripts ATLAS conservan la salida y los mensajes de error en el registro indicado por `--output`. `COMPLETED` y `0:0` indican finalización correcta. Ante un error, revisar ese registro antes de repetir el envío. Los resultados se consultan en la carpeta definida por `output.directory` en el YAML utilizado.
 
-```yaml
-output:
-  directory: $HOME/hep-workshop/results/atlas_02
-```
+## Comparación opcional CPU y GPU
 
-Conserva el resto del archivo y guarda. **Cambiar el nombre del YAML no cambia automáticamente la carpeta de resultados.**
+Crear una copia del YAML de referencia:
 
 ```bash
-sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
+cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_cpu01.yaml"
 ```
 
-La carpeta nueva conservará el modelo, la copia del YAML utilizado, los números y las gráficas. Los experimentos anteriores no se sobrescriben.
-
-| Archivo personal | Carpeta de resultados |
-| --- | --- |
-| `configs/atlas_baseline01.yaml` | `results/atlas_gpu_baseline01/` |
-| `configs/atlas_02.yaml` | `results/atlas_02/` |
-| `configs/atlas_03.yaml` | `results/atlas_03/` |
-
-Empieza cambiando **un solo parámetro**. Después combina ideas si puedes explicar por qué lo haces.
-
-## 6. Experimentos por grupo y discusión
-
-Cada grupo parte de la misma referencia y registra sus propios números en la **[bitácora del taller: tablas y preguntas](bitacora.md)**.
-
-| Grupo | Primer experimento | Pregunta |
-| --- | --- | --- |
-| 1 | Aumentar neuronas por capa | ¿Mejora lo suficiente para justificar el costo? |
-| 2 | Aumentar el número de capas | ¿Mayor profundidad ayuda o sobreajusta? |
-| 3 | Cambiar dropout de 0.1 a 0.3 | ¿Cambia la distancia entre entrenamiento y validación? |
-| 4 | Cambiar aprendizaje de 0.001 a 0.0003 | ¿Aprende más lentamente o llega a otro resultado? |
-
-**Parada temprana:** para permitir una corrida más larga, conserva los demás campos y usa `epochs: 200`, `patience: 15`. Se conserva el modelo con menor pérdida de validación. No es obligatorio llegar a 200 épocas.
-
-**CPU frente a GPU:** crea otra copia con `training.device: cpu` y una carpeta nueva. Envíala con el script CPU, que no reserva GPU:
+En `atlas_cpu01.yaml`, cambiar `training.device` a `cpu` y `output.directory` a `$HOME/hep-workshop/results/atlas_cpu01`. Conservar la arquitectura, los datos, la semilla y los demás parámetros. Enviar desde la raíz del repositorio:
 
 ```bash
 sbatch --output="$HOME/hep-workshop/logs/atlas_cpu_%j.out" \
   workshop/run_atlas_cpu.slurm "$HOME/hep-workshop/configs/atlas_cpu01.yaml"
 ```
 
-Este comando supone que ya copiaste y editaste el YAML completo con ese nombre. Usa el mismo número de épocas para comparar tiempos. El campo `fit_seconds` excluye la espera en cola y la preparación inicial. No necesitamos entrenamientos largos para aprender: las primeras corridas de Yuca tardaron decenas de segundos de cálculo.
+Comparar `fit_seconds` en los dos `metrics.json` y registrar las épocas realmente ejecutadas. Para comparar el tiempo de una cantidad fija de trabajo, ambas corridas deben ejecutar el mismo número de épocas; una parada temprana diferente modifica esa comparación. El tiempo de espera en cola no forma parte de `fit_seconds`.
 
-## 7. ¿Qué entregamos y contra qué comparamos?
+Los cuatro escenarios de variación están definidos en [Variaciones y resultados](variaciones.md#1-escenarios-por-grupo). Utilizar esa tabla común para asignar y registrar los experimentos.
 
-Cada grupo comparte su tabla, el YAML, `metrics.json`, `training_summary.png` y una conclusión breve. No es necesario entregar el modelo completo.
-
-Los benchmarks históricos del challenge son **AMS 3.40 (MultiBoost)** y **3.81 (ganador, conjunto de redes profundas)**. Nuestra AMS interna todavía no se compara directamente con ellos: usa otra evaluación. La [bitácora](bitacora.md#referencia-externa-el-challenge-original) separa los resultados del curso de esos números publicados.
-
-Termina respondiendo: **¿qué cambiaste, qué mejoró o empeoró y cuánto tiempo costó?** Un resultado sin mejora también es un resultado útil.
-
-[Detalles opcionales: entorno, pesos, protocolo y resultados medidos en Yuca](referencia.md) · [Exploración complementaria: autoencoder CMS](autoencoder.md)
+[Volver al benchmark](laboratorio.md){ .md-button }
+[Volver a las variaciones](variaciones.md){ .md-button }
