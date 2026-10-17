@@ -40,9 +40,9 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 <div class="hero-art" markdown>
 
-![Del Higgs a un leptón, hadrones y tres neutrinos](assets/workshop/higgs_tautau_final_state.svg)
+![Ilustración conceptual de un detector de partículas conectado mediante datos y una red neuronal a un centro de supercómputo](assets/workshop/hep_ml_supercomputing_hero.webp)
 
-<span>Figura 1. Decaimiento H → ττ en el canal leptón–tau hadrónico.</span>
+<span>Física de partículas · Ciencia de datos · Supercómputo<br>Ilustración conceptual generada con IA.</span>
 
 </div>
 
