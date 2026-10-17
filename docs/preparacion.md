@@ -1,6 +1,6 @@
 # Acceso y configuración del entorno en Yuca
 
-Esta sección describe el acceso al clúster Yuca, la configuración del ambiente de trabajo y el envío de entrenamientos a los recursos de ACARUS. Debe completarse antes del laboratorio.
+Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. En esta sección prepararás el acceso y el entorno para procesar los datos y entrenar las redes con el software [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW).
 
 <div class="grid cards" markdown>
 

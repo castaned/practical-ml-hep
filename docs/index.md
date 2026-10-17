@@ -14,7 +14,7 @@ hide:
 
 Análisis de datos de física de partículas con CERN Open Data y el clúster Yuca: desde la preparación de los datos hasta la interpretación de resultados.
 
-<p class="course-affiliation">Cómputo en CPU y GPU del clúster Yuca<br>ACARUS · Universidad de Sonora</p>
+<p class="course-affiliation">Yuca · Clúster de alto rendimiento de la UNISON<br>ACARUS · Procesamiento y entrenamiento en CPU / GPU</p>
 
 <div class="course-links" markdown>
 
@@ -43,6 +43,15 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 ![Flujo de análisis: datos, procesamiento en Yuca, observables e interpretación, con entrenamiento de redes neuronales como etapa opcional](assets/workshop/experimental_analysis_flow.svg)
 
 El recorrido directo permite analizar distribuciones y selecciones. La rama inferior incorpora el entrenamiento y la evaluación de una red. En ambos casos, las conclusiones se sustentan en los resultados y sus limitaciones. Trabajaremos con **simulaciones abiertas de ATLAS y CMS**, disponibles en CERN Open Data.
+
+## Infraestructura y software del curso
+
+Las prácticas se ejecutan en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. Utilizaremos sus recursos de CPU y GPU para procesar los datos, entrenar las redes y comparar tiempos de ejecución.
+
+El software del curso está disponible en [**ML-integration-CMSSW**](https://github.com/castaned/ML-integration-CMSSW). Mediante archivos **YAML** podrás configurar el procesamiento de los datos, definir la arquitectura y los parámetros de entrenamiento de las redes, y elegir dónde guardar tus resultados. Cada participante clonará este repositorio en su cuenta de Yuca para realizar los ejercicios.
+
+[Repositorio principal del software](https://github.com/castaned/ML-integration-CMSSW){ .md-button .md-button--primary }
+[Acceso a Yuca y preparación del entorno](preparacion.md){ .md-button }
 
 <div class="course-facts" markdown>
 
@@ -76,10 +85,6 @@ Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables
 
 [Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
-
-## Software y archivos de configuración
-
-El software del curso está disponible en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW). Mediante archivos **YAML** podrás configurar el procesamiento de los datos, definir la arquitectura y los parámetros de entrenamiento de las redes, y elegir dónde guardar tus resultados.
 
 ## Objetivos del ejercicio ATLAS
 

@@ -17,7 +17,7 @@
 <text x="170" y="173" font-size="17" fill="#526a75">Simulaciones ATLAS y CMS</text>
 <text x="530" y="114" font-size="23" font-weight="600">Procesamiento en Yuca</text>
 <text x="530" y="145" font-size="18">Lectura y preparación</text>
-<text x="530" y="173" font-size="17" fill="#526a75">Recursos CPU / GPU</text>
+<text x="530" y="173" font-size="17" fill="#526a75">ACARUS · UNISON · CPU / GPU</text>
 <text x="890" y="114" font-size="23" font-weight="600">Observables y selección</text>
 <text x="890" y="145" font-size="18">Variables físicas</text>
 <text x="890" y="173" font-size="17" fill="#526a75">Distribuciones y comparaciones</text>
@@ -27,7 +27,7 @@
 </g>
 <g fill="none" stroke="#486676" stroke-width="2.2" marker-end="url(#arrow)"><path d="M318 135 H376"/><path d="M678 135 H736"/><path d="M1038 135 H1096"/></g>
 <rect x="740" y="284" width="300" height="112" rx="10" fill="#e5f3ef" stroke="#087f85" stroke-width="1.6"/>
-<g text-anchor="middle" fill="#13565d"><text x="890" y="316" font-size="17" font-weight="600">ETAPA OPCIONAL</text><text x="890" y="347" font-size="23" font-weight="600">Red neuronal</text><text x="890" y="377" font-size="18">Entrenamiento y evaluación</text></g>
+<g text-anchor="middle" fill="#13565d"><text x="890" y="316" font-size="17" font-weight="600">ETAPA OPCIONAL</text><text x="890" y="347" font-size="23" font-weight="600">Red neuronal</text><text x="890" y="377" font-size="18">Entrenamiento en Yuca</text></g>
 <g fill="none" stroke="#087f85" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#teal-arrow)"><path d="M890 202 V270"/><path d="M1048 340 H1250 V209"/></g>
 <text x="1100" y="375" font-size="17" fill="#13565d">Evaluación del modelo</text>
 <text x="34" y="290" font-size="21" font-weight="600" fill="#183b4c">Aplicaciones del taller</text>
