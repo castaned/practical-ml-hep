@@ -32,7 +32,7 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 
 ### Paso 1. Preparar la conexión a Yuca
 
-**Windows con PuTTY:** abre el programa y completa los campos como en la imagen:
+**Windows: descarga e instala PuTTY antes de comenzar.** Obtén el instalador desde la [página oficial de descargas de PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Una vez instalado, abre **PuTTY** y completa los campos como en la imagen:
 
 - **Host Name:** `yuca.unison.mx`.
 - **Port:** `22`.
@@ -42,7 +42,7 @@ Pulsa **Open** para abrir la terminal de conexión.
 
 ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
-**Linux, macOS o Windows con PowerShell:** abre la terminal y ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por la cuenta que te asignaron:
+**Linux o macOS:** utiliza la terminal del sistema; no necesitas instalar PuTTY. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por la cuenta que te asignaron:
 
 ```bash
 ssh TU_USUARIO@yuca.unison.mx
