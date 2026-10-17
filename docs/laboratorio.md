@@ -16,6 +16,9 @@ Antes de entrenar, conversamos: **¿qué distingue señal y fondo? ¿Por qué lo
 
 *Cada curva permite comparar formas de señal y fondo. Este panel muestra seis variables; la red utiliza las treinta.*
 
+!!! info "¿Es tu primera sesión?"
+    Sigue primero la [preparación inicial en Yuca](preparacion.md): acceso, ambiente, terminal y recursos. Luego regresa aquí para experimentar con el YAML.
+
 ## Preparar una referencia común
 
 Primero ejecutaremos todos la misma configuración. Los datos ya están compartidos en Yuca y cada cuenta guarda sus propios resultados.

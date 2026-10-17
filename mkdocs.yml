@@ -47,12 +47,12 @@ extra_javascript:
   - javascripts/explorer.js
 nav:
   - Inicio: index.md
+  - Preparación inicial: preparacion.md
   - La física: fisica.md
   - Laboratorio: laboratorio.md
   - Bitácora: bitacora.md
   - Conclusiones: conclusiones.md
   - Preparación y apoyo:
-      - Antes de la sesión: preparacion.md
       - Comandos del laboratorio: apoyo.md
       - Método y benchmarks: referencia.md
   - Para seguir explorando:

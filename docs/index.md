@@ -40,6 +40,9 @@ Aprende a reconocer señales de Higgs, diseña una red neuronal y descubre qué 
 
 </div>
 
+!!! info "Primer paso: preparar tu acceso y tu cuenta"
+    La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Hazla una vez; después podrás concentrarte en los experimentos.
+
 ## No venimos a acumular entrenamientos. Venimos a entenderlos.
 
 Buscamos distinguir **Higgs → ττ** de procesos que se parecen en el detector. Trabajaremos con el **ATLAS Higgs Challenge**: simulaciones abiertas, variables físicas y un reto de clasificación con referencias publicadas.
