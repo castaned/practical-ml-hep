@@ -51,13 +51,13 @@ nav:
   - Introducción: index.md
   - Preparación: preparacion.md
   - ATLAS:
-      - Presentación del ejercicio: atlas.md
+      - Introducción: atlas.md
       - Procesos y variables: fisica.md
       - Benchmark: laboratorio.md
       - Variaciones y resultados: variaciones.md
       - Conclusiones: conclusiones.md
   - CMS:
-      - Presentación del ejemplo: autoencoder.md
+      - Introducción: autoencoder.md
       - Física y variables: cms-fisica.md
       - Procesamiento NanoAOD: cms-procesamiento.md
       - Autoencoder y benchmark: cms-autoencoder.md

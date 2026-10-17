@@ -58,5 +58,5 @@ Pulsa la imagen para ampliarla. Los números de la leyenda corresponden a 49 eve
 
 </div>
 
-[Anterior: Presentación CMS](autoencoder.md){ .md-button }
+[Anterior: introducción CMS](autoencoder.md){ .md-button }
 [Continuar: Procesamiento NanoAOD](cms-procesamiento.md){ .md-button .md-button--primary }
