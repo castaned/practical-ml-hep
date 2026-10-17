@@ -38,7 +38,7 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 - **Port:** `22`.
 - **Connection type:** `SSH`.
 
-Pulsa **Open** para abrir la terminal de conexión.
+Pulsa **Open** para abrir la terminal de conexión. A continuación, inicia sesión con **el nombre de usuario y la contraseña que se te proporcionaron para el curso**, como se indica en el paso 2.
 
 ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
@@ -50,7 +50,12 @@ ssh TU_USUARIO@yuca.unison.mx
 
 ### Paso 2. Ingresar con tu cuenta asignada
 
-En PuTTY, escribe tu usuario cuando aparezca `login as:`. Después introduce la contraseña asignada cuando la terminal la solicite. En la conexión con el comando SSH, el usuario ya está incluido en el comando.
+Utiliza **el nombre de usuario y la contraseña que se te proporcionaron para el curso**.
+
+1. En PuTTY, cuando aparezca `login as:`, escribe tu nombre de usuario y pulsa **Enter**.
+2. Cuando aparezca la solicitud de contraseña (`Password:`), escribe la contraseña que recibiste y pulsa **Enter**.
+
+En Linux o macOS, el nombre de usuario ya está incluido en el comando SSH; introduce la contraseña proporcionada cuando se solicite.
 
 Al escribir la contraseña no aparecen caracteres ni asteriscos en la terminal. Escríbela y pulsa **Enter**.
 
