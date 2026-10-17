@@ -28,14 +28,6 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 
 
-<div class="course-links" markdown>
-
-[Acceso y preparación](preparacion.md){ .md-button .md-button--primary }
-[Ejercicio ATLAS](atlas.md){ .md-button .hero-secondary }
-[CMS](autoencoder.md){ .md-button .hero-secondary }
-
-</div>
-
 </div>
 
 <div class="hero-art" markdown>
