@@ -1,0 +1,59 @@
+{
+  "reference_kind": "historical_cms_pilot",
+  "reported_date": "2026-10-09",
+  "description": "Resultados reportados en Yuca para el piloto DYJets HT70to100, WZ y ZZ, diez variables. No certifica por sí solo una nueva extracción compartida.",
+  "metrics": {
+    "normal_train": 4019,
+    "normal_validation": 1340,
+    "normal_test": 1340,
+    "signal_test": 320,
+    "normal_quantile": 0.99,
+    "threshold": 3.1937519502607636,
+    "normal_test_fpr": 0.020895522388059702,
+    "balanced_normal_test_fpr": 0.010695970695970697,
+    "signal_test_tpr": 0.346875,
+    "ewk_test_fpr": null,
+    "qcd_test": 0,
+    "qcd_test_fpr": null,
+    "normal_training_by_id": {
+      "4": 49,
+      "5": 3151,
+      "6": 819
+    },
+    "normal_validation_by_id": {
+      "4": 17,
+      "5": 1050,
+      "6": 273
+    },
+    "normal_test_by_id": {
+      "4": 17,
+      "5": 1050,
+      "6": 273
+    },
+    "normal_process_names": {
+      "4": "DYJets",
+      "5": "WZ",
+      "6": "ZZ"
+    },
+    "normal_test_fpr_by_id": {
+      "4": 0.0,
+      "5": 0.024761904761904763,
+      "6": 0.007326007326007326
+    },
+    "roc_auc": 0.9704079131652655,
+    "average_precision": 0.9529564973424407,
+    "features": [
+      "MET_pt",
+      "M3l",
+      "Z_deltaR",
+      "Z_mass",
+      "Lep_pt_sum",
+      "Z_pt",
+      "Lep1Z_pt",
+      "Lep2Z_pt",
+      "Lep3W_pt",
+      "W_mt"
+    ],
+    "seed": 16
+  }
+}

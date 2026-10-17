@@ -2,6 +2,8 @@
 
 Esta actividad corresponde a la **última hora del miércoles**. Utilizar el YAML `atlas_baseline01.yaml` y los resultados de `atlas_gpu_baseline01` obtenidos en el [benchmark](laboratorio.md).
 
+Antes de preparar cambios, completar la [comparación del benchmark](laboratorio.md#comparar-benchmark), revisar `training_summary.png` y registrar la corrida como **Referencia** en la [tabla](#registro). Las variaciones se compararán con esa ejecución personal, realizada con los mismos datos y particiones.
+
 | Tiempo | Actividad |
 | --- | --- |
 | 0–10 min | Asignar el escenario por mesa o grupo, formular la hipótesis y preparar el YAML |

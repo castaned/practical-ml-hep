@@ -62,7 +62,59 @@ python workshop/student.py train --task autoencoder --role baseline
 
 Estos comandos corresponden a la configuración del ejercicio CMS. No se utiliza `atlas_baseline01.yaml` ni el script de entrenamiento ATLAS. Consultar el [procedimiento de configuración CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/05_autoencoder/) para preparar el ejemplo antes de ejecutar.
 
-## 5. Resultados e interpretación
+## 5. Reproducir y comparar la referencia {#benchmark-cms}
+
+La primera ejecución utiliza el YAML de referencia completo, antes de estudiar cambios de arquitectura. Reproducir la selección y la extracción con los archivos de entrada de esa referencia, comprobar las diez variables y ejecutar el entrenamiento. Conservar el YAML y los productos de esa primera corrida.
+
+### Referencia documentada del piloto
+
+El piloto de diez variables ejecutado en Yuca el 9 de octubre de 2026 produjo los siguientes resultados con DYJets HT 70–100, WZ y ZZ, semilla 16 y una muestra W′ de 320 eventos para evaluación:
+
+| Magnitud | Referencia del piloto | Tu ejecución |
+| --- | ---: | --- |
+| Entradas de la red | 10 | Registrar |
+| Eventos SM de entrenamiento | 4 019 | Registrar |
+| Eventos SM de validación | 1 340 | Registrar |
+| Eventos SM de prueba | 1 340 | Registrar |
+| Eventos W′ de evaluación | 320 | Registrar |
+| Percentil de validación SM | 99 | Registrar |
+| Umbral de MSE | 3.19375 | Registrar |
+| Fracción SM seleccionada en prueba | 2.09 % | Registrar |
+| Fracción SM seleccionada, promediada por proceso | 1.07 % | Registrar |
+| Eficiencia W′ al umbral de referencia | 34.69 % | Registrar |
+| AUC de evaluación | 0.97041 | Registrar |
+
+[Descargar las métricas documentadas del piloto](assets/benchmarks/cms_10features_pilot.json).
+
+Estos números corresponden a aquella extracción y configuración. Su comparación exige los mismos archivos, selección, variables, escalado, particiones y parámetros del YAML. Si el conjunto compartido corresponde a una extracción distinta, se utilizará su propia corrida de referencia; no se exigirá reproducir las cifras del piloto anterior.
+
+Los conteos por proceso permiten comprobar la composición:
+
+| Proceso | Entrenamiento | Validación | Prueba |
+| --- | ---: | ---: | ---: |
+| DYJets HT 70–100 | 49 | 17 | 17 |
+| WZ | 3 151 | 1 050 | 1 050 |
+| ZZ | 819 | 273 | 273 |
+
+### Archivos para comprobar la ejecución
+
+| Archivo de la corrida | Qué comparar |
+| --- | --- |
+| `workshop_config.yaml` | Entradas, selección de variables y parámetros utilizados |
+| `metrics_<nombre>.json` | Conteos, semilla, umbral y métricas |
+| `loss_<nombre>.pdf` | Evolución de las pérdidas SM de entrenamiento y validación |
+| `scores_by_process_<nombre>.pdf` | Distribuciones del error por proceso |
+| `ROC_<nombre>.pdf` | Respuesta de la referencia frente a W′ |
+
+`<nombre>` es el nombre del modelo indicado en el YAML. En las versiones actuales también se registran la mejor pérdida de validación, las épocas ejecutadas y el tiempo de entrenamiento; el archivo histórico no contiene esos tres valores.
+
+### Antes de realizar una variación
+
+Comparar primero los conteos y las variables, después las pérdidas y las distribuciones del error. Registrar la corrida inicial y conservarla. Una modificación posterior utilizará una copia del YAML y una carpeta de salida diferente, con los mismos eventos y particiones.
+
+La reproducción del piloto incluye su evaluación W′. Para estudiar cambios del modelo, utilizar la validación SM; las cifras W′ no se emplean como objetivo para seleccionar la arquitectura.
+
+## 6. Interpretación de los resultados
 
 Abrir las curvas de pérdida de entrenamiento y validación y las distribuciones de MSE por proceso. Identificar en el YAML la carpeta de salida del autoencoder y conservarla separada de las corridas ATLAS.
 

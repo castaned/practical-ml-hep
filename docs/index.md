@@ -113,6 +113,8 @@ Los dos ejercicios siguen el esquema anterior. En ATLAS comenzamos con variables
 [Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
 [Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
 
+En ambos ejercicios se comienza reproduciendo una configuración de referencia. Sus conteos, figuras y métricas se revisan antes de introducir cambios; esa ejecución se conserva para comparar las variaciones.
+
 ## Objetivos del ejercicio ATLAS
 
 El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de los procesos de fondo mediante el **ATLAS Higgs Challenge**, un conjunto de simulaciones disponible en CERN Open Data.

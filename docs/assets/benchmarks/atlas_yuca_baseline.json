@@ -1,0 +1,38 @@
+{
+  "reference_kind": "reported_yuca_baseline",
+  "description": "Medición de referencia reportada por el responsable del curso en Yuca; resumen de valores, no copia del metrics.json original.",
+  "configuration": {
+    "hidden_dims": [
+      128,
+      64,
+      32,
+      16
+    ],
+    "dropout": 0.1,
+    "learning_rate": 0.001,
+    "batch_size": 4096,
+    "epochs": 20,
+    "patience": 6,
+    "seed": 16,
+    "train_events": 200000,
+    "validation_events": 50000,
+    "features": 30
+  },
+  "runs": [
+    {
+      "device": "GPU MI210",
+      "epochs_run": 20,
+      "fit_seconds": 29.95,
+      "roc_auc_unweighted": 0.90999,
+      "ams_validation_tuned": 3.5229
+    },
+    {
+      "device": "CPU (4 hilos)",
+      "epochs_run": 20,
+      "fit_seconds": 39.35,
+      "roc_auc_unweighted": 0.91048,
+      "ams_validation_tuned": 3.5629
+    }
+  ],
+  "evaluation": "Validación interna de KaggleSet=t. No equivale a la evaluación privada histórica del challenge."
+}

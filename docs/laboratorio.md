@@ -83,7 +83,27 @@ En el explorador de archivos de JupyterLab, abrir **hep-workshop → results →
 | `splits.csv` | Identificación de los eventos de cada partición |
 | `preprocessing.joblib` | Transformaciones aplicadas a las variables |
 
-En la prueba previa en una MI210 se obtuvieron **AUC ≈ 0.910**, **AMS interna ≈ 3.52** y **30 segundos de entrenamiento**. Son valores orientativos: el tiempo depende de los recursos y los resultados pueden presentar pequeñas variaciones numéricas. La AMS corresponde a la validación interna del taller.
+### Comparar con el benchmark antes de variar {#comparar-benchmark}
+
+La primera ejecución reproduce la configuración común. Comparar los valores de `metrics.json` con la corrida de referencia realizada en Yuca:
+
+| Magnitud | Referencia GPU MI210 | Tu ejecución |
+| --- | ---: | --- |
+| Variables de entrada | 30 | Registrar |
+| Eventos de entrenamiento | 200 000 | Registrar |
+| Eventos de validación | 50 000 | Registrar |
+| Semilla | 16 | Registrar |
+| Épocas ejecutadas | 20 | Registrar |
+| AUC de validación | 0.90999 | Registrar |
+| AMS interna | 3.5229 | Registrar |
+| Tiempo de entrenamiento | 29.95 s | Registrar |
+
+Para la misma red en CPU, con cuatro hilos, se midieron **AUC 0.91048**, **AMS interna 3.5629** y **39.35 s** en 20 épocas. Comparar primero con el dispositivo utilizado. [Descargar el resumen de referencia](assets/benchmarks/atlas_yuca_baseline.json).
+
+El número de entradas, los conteos y la semilla deben coincidir con esta configuración. AUC, AMS y tiempos son mediciones de una corrida: pequeñas diferencias numéricas o de rendimiento no implican un fallo. Si la separación difiere claramente, revisar el YAML, las particiones y las curvas antes de pasar a las variaciones. No se ha establecido una tolerancia numérica a partir de repeticiones.
+
+Esta es la referencia reproducible del ejercicio; las puntuaciones históricas del challenge se utilizan posteriormente como contexto. Nuestra AMS corresponde a validación interna, no a la evaluación privada del concurso.
+
 
 Abrir `training_summary.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
 
@@ -112,7 +132,7 @@ Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a 
 
 En la siguiente sección podrás utilizar el [selector de arquitecturas](variaciones.md#explorar-la-arquitectura-antes-de-modificar-el-yaml) para comparar capas, neuronas y número de parámetros antes de preparar una variación.
 
-Conservar `atlas_baseline01.yaml` y la carpeta `atlas_gpu_baseline01`. Registrar sus métricas en la tabla de la siguiente sección antes de preparar una variación.
+Conservar `atlas_baseline01.yaml` y la carpeta `atlas_gpu_baseline01`. Registrar su fila como **Referencia** en la [tabla de resultados](variaciones.md#registro), después de contrastarla con el benchmark. Esa corrida personal será el punto de comparación de las variaciones.
 
 
 ## Programa del miércoles: tres horas
