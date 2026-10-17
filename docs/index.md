@@ -79,36 +79,31 @@ El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de lo
 
 Se estudiará el efecto de la arquitectura y de los parámetros de entrenamiento sobre la discriminación entre señal y fondo, el sobreajuste y el tiempo de cómputo. Cada configuración se conservará junto con sus resultados para comparar los experimentos.
 
-<div class="journey-grid" markdown>
-
+<div class="journey-grid">
 <a class="journey-card" href="fisica/">
-<span class="step-number">01 / ENTENDER</span>
+<span class="step-number">01 / MOTIVACIÓN FÍSICA</span>
 <h3>Procesos y observables</h3>
-<p>Descripción de la señal, los procesos de fondo y las 30 variables de entrada.</p>
-<span class="card-link">Explorar el proceso →</span>
+<p>Producción y decaimiento del Higgs, procesos de fondo y variables de entrada.</p>
+<span class="card-link">Consultar la física →</span>
 </a>
-
 <a class="journey-card" href="laboratorio/">
-<span class="step-number">02 / EXPERIMENTAR</span>
-<h3>Entrenamiento de la red</h3>
-<p>Configuración de capas, neuronas y parámetros de entrenamiento mediante archivos YAML.</p>
-<span class="card-link">Entrar al laboratorio →</span>
+<span class="step-number">02 / BENCHMARK</span>
+<h3>Entrenamiento de referencia</h3>
+<p>Arquitectura inicial, ejecución en Yuca y revisión de los archivos de resultados.</p>
+<span class="card-link">Reproducir el benchmark →</span>
 </a>
-
-<a class="journey-card" href="bitacora/">
-<span class="step-number">03 / INTERPRETAR</span>
-<h3>Registro de resultados</h3>
-<p>Comparación de curvas de aprendizaje, métricas de clasificación y tiempos de ejecución.</p>
-<span class="card-link">Abrir la bitácora →</span>
+<a class="journey-card" href="variaciones/">
+<span class="step-number">03 / EXPERIMENTOS</span>
+<h3>Variaciones e interpretación</h3>
+<p>Modificaciones del YAML por grupo, registro de métricas y comparación de los entrenamientos.</p>
+<span class="card-link">Realizar las variaciones →</span>
 </a>
-
 <a class="journey-card" href="conclusiones/">
-<span class="step-number">04 / DISCUTIR</span>
-<h3>Análisis y conclusiones</h3>
-<p>Discusión de las diferencias observadas y de las limitaciones de cada configuración.</p>
-<span class="card-link">Compartir conclusiones →</span>
+<span class="step-number">04 / CONCLUSIONES</span>
+<h3>Discusión de resultados</h3>
+<p>Síntesis de la comparación, evidencia de las figuras y limitaciones de las conclusiones.</p>
+<span class="card-link">Preparar la discusión →</span>
 </a>
-
 </div>
 
 ## Distribuciones de las variables
