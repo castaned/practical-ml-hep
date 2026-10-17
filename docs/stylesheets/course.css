@@ -80,3 +80,25 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 @media(max-width:720px) { .md-typeset .course-hero,.network-explorer,.figure-story { grid-template-columns:1fr; } .course-hero h1 { font-size:3rem; } .course-facts { grid-template-columns:repeat(2,1fr); gap:.7rem; } .course-facts div:nth-child(2) { border:0; } .network-explorer { padding:1.25rem; gap:1rem; } .session-strip { grid-template-columns:1fr; } }
 @media(max-width:450px) { .journey-grid { grid-template-columns:1fr; } .md-typeset .course-hero { padding:1.4rem 1.15rem; } .course-hero h1 { font-size:2.7rem; } }
 @media(prefers-reduced-motion:reduce) { .journey-card { transition:none; } .journey-card:hover { transform:none; } }
+/* Training results form, comparison table and charts */
+.result-form {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;padding:1rem;border:1px solid var(--course-border);border-radius:12px;}
+.result-form label {display:flex;flex-direction:column;gap:.25rem;font-size:.72rem;}
+.result-form input,.result-form select {font:inherit;padding:.5rem;border:1px solid var(--course-border);border-radius:5px;background:var(--md-default-bg-color);color:var(--md-default-fg-color);width:100%;}
+.result-wide {grid-column:1/-1;}
+.result-controls {display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0;}
+.result-controls .md-button,.result-form .md-button {font-size:.68rem;cursor:pointer;}
+.result-controls input[type=file] {display:block;max-width:210px;font-size:.58rem;margin-top:.25rem;}
+#results-status {min-height:2em;font-size:.72rem;}
+.result-table-wrap {overflow:auto;}
+#results-table {font-size:.65rem;min-width:900px;}
+#results-table button {cursor:pointer;text-decoration:underline;}
+.result-charts {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}
+.result-charts section {border:1px solid var(--course-border);border-radius:10px;padding:.7rem;min-width:0;}
+.result-charts h3 {font-size:.8rem;}
+.metric-row {margin-bottom:.8rem;font-size:.6rem;}
+.metric-row>span {display:block;overflow-wrap:anywhere;}
+.metric-track {height:12px;background:var(--md-code-bg-color);margin:.2rem 0;}
+.metric-bar {height:100%;background:#087f85;}
+.metric-bar.reference {background:#d58c38;}
+@media(max-width:800px){.result-form{grid-template-columns:repeat(2,minmax(0,1fr));}.result-charts{grid-template-columns:1fr;}}
+@media(max-width:450px){.result-form{grid-template-columns:1fr;}}

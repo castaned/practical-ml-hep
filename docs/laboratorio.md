@@ -104,76 +104,17 @@ Una curva de validación que empeora mientras entrenamiento sigue mejorando sugi
 
 Una mejor selección puede ayudar a medir procesos o aumentar la sensibilidad a señales. No cambia la sección eficaz física ni calcula por sí sola un límite: [explicación con un ejemplo](fisica.md#leer-una-roc-como-fisico).
 
-## Variaciones de la referencia
+## Continuar con las variaciones
 
-**Antes de modificar la referencia, copia su YAML con otro nombre.** Por ejemplo, `atlas_02.yaml`. Dentro de esa copia modifica un parámetro o un conjunto definido de parámetros y elige una carpeta nueva:
+Conservar el YAML y los resultados de la referencia. Registrar sus métricas antes de pasar a la actividad de la última hora.
 
-```yaml
-output:
-  directory: $HOME/hep-workshop/results/atlas_02
-```
-
-Conserva el resto del archivo. Cambiar el nombre del YAML no cambia por sí solo la carpeta de salida. Los resultados anteriores se conservan para poder compararlos.
-
-| Experimento | Qué queremos averiguar |
-| --- | --- |
-| Más neuronas o capas | ¿Aprende mejor o solo se vuelve más complejo? |
-| Otro aprendizaje | ¿Cambia cómo progresa la red? |
-| Más dropout | ¿Mejora su comportamiento en eventos que no usó para aprender? |
-| Más épocas con parada temprana | ¿Cuándo deja de mejorar? |
-
-**Antes de enviar, escribe una frase:** «Esperamos que este cambio… porque…».
-
-??? info "Cómo copiar y enviar un YAML"
-    Copiar la referencia, editar la copia en JupyterLab y cambiar su carpeta de salida:
-
-    ```bash
-    cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_02.yaml"
-    ```
-
-    Desde la raíz del repositorio, enviar el YAML elegido. Para la referencia, usar `atlas_baseline01.yaml` en la última línea:
-
-    ```bash
-    sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-      workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
-    squeue -u "$USER"
-    ```
-
-    Si hay un problema con el trabajo, consulta el [apoyo de comandos y archivos](apoyo.md). Los fragmentos YAML se editan dentro del archivo; no se ejecutan en la terminal.
-
-### Escenarios de trabajo
-
-Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la misma referencia; cada grupo estudiará inicialmente uno de los siguientes factores. Si varias mesas comparten escenario, podrán contrastar la reproducibilidad de sus resultados.
-
-| Escenario | Modificación en el YAML | Pregunta de análisis |
-| --- | --- | --- |
-| A. Arquitectura | Cambiar `model.hidden_dims`, por ejemplo a `[512, 256, 128, 64]` | ¿La capacidad adicional mejora la validación y cuánto aumenta el tiempo? |
-| B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
-| C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
-| D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
-
-Conservar los demás parámetros, las variables y las particiones de datos. Cada modificación requiere un YAML y una carpeta de salida propios. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
-
-## Comparación de configuraciones
-
-Completar la [bitácora](bitacora.md) con la referencia y la variación. Mantener los mismos datos y modificar un factor por experimento. Comparar las curvas y las métricas antes de decidir una segunda modificación.
-
-Presentar una figura y explicar si los resultados respaldan la hipótesis inicial. Las referencias históricas del challenge utilizan una evaluación diferente de nuestra validación interna: [método y benchmarks publicados](referencia.md#benchmarks-publicados-del-higgs-challenge).
+[Variaciones por grupos y tabla de resultados](variaciones.md){ .md-button .md-button--primary }
 
 ## Programa del miércoles: tres horas
 
-La sesión combina una introducción breve con ejercicios de entrenamiento y análisis. La activación de la cuenta y, de ser posible, la instalación del ambiente se completarán previamente siguiendo la [preparación inicial](preparacion.md).
-
-| Tiempo transcurrido | Actividad | Resultado esperado |
-| --- | --- | --- |
-| 0–20 min | Acceso a JupyterLab, activación del ambiente y consulta de los datos compartidos | Entorno listo para ejecutar los ejercicios |
-| 20–40 min | Señal Higgs → ττ, procesos de fondo y distribuciones de entrada | Identificar un observable y explicar su significado físico |
-| 40–65 min | Entrenamiento de referencia y lectura de sus figuras | Primera fila de la tabla: AUC, AMS interna, épocas y tiempo |
-| 65–100 min | Primera variación del YAML por grupo o mesa | Hipótesis escrita, configuración y resultados en una carpeta nueva |
-| 100–110 min | Pausa | |
-| 110–145 min | Comparación con la referencia y segunda prueba, si procede | Interpretación de la mejora, el sobreajuste o el costo de cómputo |
-| 145–170 min | Puesta en común entre grupos | Tabla comparativa y una figura representativa por grupo |
-| 170–180 min | Discusión de resultados y cierre | Conclusiones sobre arquitectura, regularización y evaluación |
-
-Mientras los trabajos esperan o se ejecutan, se revisarán las distribuciones, se formularán hipótesis y se completará el registro. El tiempo en cola se distinguirá del tiempo de entrenamiento.
+| Horario relativo | Actividad |
+| --- | --- |
+| Primera hora | Acceso a Yuca, configuración del entorno e introducción a los procesos y variables físicas |
+| Segunda hora | Explicación de la red de referencia, ejecución del benchmark y revisión de carpetas, figuras y métricas |
+| Tercera hora | [Variaciones por grupos, registro de resultados y discusión](variaciones.md) |
 

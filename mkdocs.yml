@@ -45,11 +45,13 @@ extra_css:
   - stylesheets/course.css
 extra_javascript:
   - javascripts/explorer.js
+  - javascripts/results.js
 nav:
   - Inicio: index.md
   - Preparación inicial: preparacion.md
   - La física: fisica.md
-  - Laboratorio: laboratorio.md
+  - Benchmark: laboratorio.md
+  - Variaciones y resultados: variaciones.md
   - Bitácora: bitacora.md
   - Conclusiones: conclusiones.md
   - Preparación y apoyo:

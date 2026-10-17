@@ -1,6 +1,6 @@
 # Comparación y presentación de resultados
 
-**Cada grupo cuenta un pequeño experimento: qué esperaba, qué cambió y qué observó.** No buscamos entregar muchos archivos ni encontrar una red ganadora a toda costa.
+Cada grupo presentará la configuración estudiada, los resultados respecto a la referencia y su interpretación.
 
 ## 1. Selección de la comparación
 
@@ -8,11 +8,7 @@ Comparen la red inicial con una variación que les parezca interesante. Puede ha
 
 ## 2. Registro en la tabla de resultados
 
-Copien esta tabla al documento compartido que se indique durante la sesión. Pueden trabajar por mesas o grupos cercanos.
-
-| Grupo | ¿Qué cambiamos? | AUC antes → después | AMS interna antes → después | Tiempo antes → después | ¿Qué aprendimos? |
-| --- | --- | --- | --- | --- | --- |
-| | | | | | |
+Completar la [tabla interactiva de resultados](variaciones.md#registro) con la referencia y la variación. Descargar el CSV del grupo y entregarlo junto con las figuras. Durante la puesta en común, reunir los CSV en esa misma página para visualizar las métricas de todos los grupos.
 
 Los números están en `metrics.json`, dentro de cada carpeta de resultados. Mantengan los mismos datos para comparar las redes. La AMS del curso es de validación interna; no equivale todavía a la evaluación privada del challenge.
 

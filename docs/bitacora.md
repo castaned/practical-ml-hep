@@ -18,6 +18,8 @@ Copien el YAML y elijan una carpeta nueva antes de modificarlo. Mantengan iguale
 
 ## Resultados
 
+Registrar también los valores en la [tabla interactiva](variaciones.md#registro) para reunirlos y visualizarlos durante la discusión.
+
 | Corrida | ¿Qué cambió? | AUC | AMS interna | Tiempo (s) | ¿Qué muestran las curvas? |
 | --- | --- | --- | --- | --- | --- |
 | Referencia | Nada | | | | |
