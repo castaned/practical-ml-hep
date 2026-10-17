@@ -8,16 +8,21 @@ hide:
 
 <div class="hero-copy" markdown>
 
-<span class="eyebrow">CERN OPEN DATA · FÍSICA · EXPERIMENTACIÓN</span>
+<span class="course-kicker">Universidad de Sonora · Curso práctico</span>
 
-# Aprendizaje automático<br>en física de partículas
+# Aprendizaje automático en física de partículas
 
-Curso práctico de clasificación de eventos del ATLAS Higgs Challenge con redes neuronales.
+Redes neuronales aplicadas a datos abiertos del CERN: clasificación de eventos con el ATLAS Higgs Challenge y análisis desde NanoAOD con CMS.
 
-**Entrenamiento en CPU y GPU del clúster Yuca de ACARUS, Universidad de Sonora.**
+<p class="course-affiliation">Cómputo en CPU y GPU del clúster Yuca<br>ACARUS · Universidad de Sonora</p>
 
-[Explorar la física](fisica.md){ .md-button .md-button--primary }
-[Ir al laboratorio](laboratorio.md){ .md-button .hero-secondary }
+<div class="course-links" markdown>
+
+[Acceso y preparación](preparacion.md)
+[Ejercicio ATLAS](laboratorio.md)
+[Ejercicio CMS](autoencoder.md)
+
+</div>
 
 </div>
 
@@ -25,7 +30,7 @@ Curso práctico de clasificación de eventos del ATLAS Higgs Challenge con redes
 
 ![Del Higgs a un leptón, hadrones y tres neutrinos](assets/workshop/higgs_tautau_final_state.svg)
 
-<span>Canal de estudio: H → ττ, con un leptón y un tau hadrónico en el estado final visible.</span>
+<span>Figura 1. Decaimiento H → ττ en el canal leptón–tau hadrónico.</span>
 
 </div>
 
