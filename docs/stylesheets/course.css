@@ -168,3 +168,31 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .instructor-photo p { margin-top:0; }
 .instructor-photo img { display:block; width:100%; height:auto; border-radius:14px; }
 @media(max-width:760px) { .instructor-profile { grid-template-columns:1fr; gap:.8rem; } .instructor-photo { max-width:220px; } }
+
+/* Workshop programme: session cards and a clear sequence of outcomes. */
+.workshop-agenda { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem; margin:1.2rem 0 1.8rem; }
+.agenda-day { border:1px solid var(--course-border); border-radius:16px; overflow:hidden; background:var(--md-default-bg-color); }
+.agenda-day-header { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:1rem 1.2rem; background:#e7f4f0; border-bottom:1px solid var(--course-border); }
+.agenda-day-second .agenda-day-header { background:#edf0f8; }
+.md-typeset .agenda-day-header h3 { margin:0; font-size:1.08rem; color:#183b48; letter-spacing:-.02em; }
+.agenda-duration { border:1px solid #a8c7c3; border-radius:30px; padding:.12rem .6rem; font-size:.68rem; font-weight:650; color:#244b55; white-space:nowrap; }
+.md-typeset .agenda-stages { list-style:none; margin:0; padding:1.15rem 1.25rem 1.2rem 1.9rem; }
+.md-typeset .agenda-stages li { position:relative; margin:0; padding:0 0 1.25rem 1.1rem; border-left:2px solid #c6dcd8; }
+.md-typeset .agenda-stages li:last-child { padding-bottom:0; border-left-color:transparent; }
+.agenda-stages li::before { content:""; position:absolute; left:-.27rem; top:.18rem; width:.46rem; height:.46rem; border-radius:50%; background:#087f85; }
+.agenda-day-second .agenda-stages li::before { background:#5c73a2; }
+.agenda-time { display:block; color:#087f85; font-size:.64rem; font-weight:650; letter-spacing:.02em; }
+.agenda-day-second .agenda-time { color:#50658e; }
+.md-typeset .agenda-stages h4 { margin:.25rem 0 .35rem; font-size:.84rem; line-height:1.4; }
+.md-typeset .agenda-stages p { margin:0; font-size:.74rem; line-height:1.65; color:var(--md-default-fg-color--light); }
+.agenda-deliverables { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1rem; padding:1.1rem 0 1.6rem; }
+.agenda-deliverables > div { padding:.15rem .2rem .15rem .9rem; border-left:2px solid #c4dad7; }
+.deliverable-number { font-size:.65rem; font-weight:700; color:#087f85; }
+.md-typeset .agenda-deliverables h4 { margin:.25rem 0 .4rem; font-size:.82rem; }
+.md-typeset .agenda-deliverables p { margin:0; font-size:.72rem; line-height:1.6; color:var(--md-default-fg-color--light); }
+[data-md-color-scheme=slate] .agenda-day-header { background:#203f40; }
+[data-md-color-scheme=slate] .agenda-day-second .agenda-day-header { background:#29354b; }
+[data-md-color-scheme=slate] .agenda-day-header h3,[data-md-color-scheme=slate] .agenda-duration { color:#e0eeee; }
+[data-md-color-scheme=slate] .agenda-time,[data-md-color-scheme=slate] .deliverable-number { color:#9dd9ce; }
+@media(max-width:900px) { .workshop-agenda { grid-template-columns:1fr; } .agenda-deliverables { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:450px) { .agenda-deliverables { grid-template-columns:1fr; } }

@@ -95,27 +95,30 @@ Los **cilindros representan archivos almacenados** y los **rectángulos, operaci
 
 ## Programa del taller
 
-### Miércoles · 3 horas
+<div class="workshop-agenda">
+<article class="agenda-day">
+<header class="agenda-day-header"><h3>Miércoles</h3><span class="agenda-duration">3 horas</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">Primeras 2 horas</span><h4>Preparación y benchmark ATLAS</h4><p>Acceso a Yuca, física del Higgs y variables de entrada. Entrenamiento de la red inicial y revisión de figuras y métricas.</p></li>
+<li><span class="agenda-time">Última hora</span><h4>Variaciones del entrenamiento</h4><p>Cambios en el YAML por estudiante o grupo. Cada ejecución se guarda por separado y se compara con la referencia.</p></li>
+</ol>
+</article>
+<article class="agenda-day agenda-day-second">
+<header class="agenda-day-header"><h3>Jueves</h3><span class="agenda-duration">1 hora</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">Discusión colectiva</span><h4>Comparación de resultados</h4><p>Separación entre señal y fondo, sobreajuste y tiempos de entrenamiento en CPU y GPU.</p></li>
+<li><span class="agenda-time">Análisis CMS</span><h4>De NanoAOD al autoencoder</h4><p>Recorrido del análisis: selección de eventos, extracción de variables y reconstrucción para explorar anomalías.</p></li>
+</ol>
+</article>
+</div>
 
-**Primeras dos horas: preparación y entrenamiento de referencia.** Acceso a Yuca, presentación de la física del Higgs Challenge y revisión de las variables. Ejecutaremos la misma red inicial y localizaremos sus figuras y métricas en las carpetas personales.
+### Resultados del trabajo en ATLAS
 
-**Última hora: experimentación.** Cada estudiante o grupo modificará una configuración YAML, guardará la nueva ejecución en una carpeta diferente y comparará sus resultados con la referencia. Las variaciones se repartirán entre los grupos para estudiar distintos aspectos del entrenamiento.
-
-### Jueves · 1 hora
-
-**Comparación y discusión.** Reuniremos los resultados para analizar la separación entre señal y fondo, el sobreajuste y el tiempo de entrenamiento en CPU y GPU.
-
-**CMS.** Revisaremos un segundo flujo que parte de eventos NanoAOD: selección, extracción de variables y entrenamiento de un autoencoder para explorar anomalías.
-
-### Trabajo esperado
-
-Cada estudiante o grupo deberá:
-
-- Reproducir el entrenamiento de referencia y reconocer sus archivos de resultados.
-- Probar al menos una variación del YAML, conservando la configuración y los resultados de ambas ejecuciones.
-- Registrar las métricas y una figura representativa en la bitácora del ejercicio.
-- Presentar una conclusión apoyada en los resultados: qué cambió, si hubo mejora y qué limitaciones tiene la comparación.
-
-[Comenzar con el acceso y la preparación](preparacion.md){ .md-button .md-button--primary }
+<div class="agenda-deliverables">
+<div><span class="deliverable-number">01</span><h4>Referencia</h4><p>Reproducir el benchmark e identificar sus archivos.</p></div>
+<div><span class="deliverable-number">02</span><h4>Variación</h4><p>Probar un cambio y conservar su YAML y resultados.</p></div>
+<div><span class="deliverable-number">03</span><h4>Registro</h4><p>Anotar métricas y guardar una figura representativa.</p></div>
+<div><span class="deliverable-number">04</span><h4>Conclusión</h4><p>Explicar qué cambió, si mejoró y qué límites tiene la comparación.</p></div>
+</div>
 
 El código de entrenamiento y los YAML se mantienen en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Este sitio reúne el material docente. Cómputo en **ACARUS / Yuca, Universidad de Sonora**. Figuras publicadas y fuentes identificadas en el [capítulo de física](fisica.md#procedencia-de-las-imagenes).

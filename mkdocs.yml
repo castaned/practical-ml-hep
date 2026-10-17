@@ -42,7 +42,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
 extra_css:
-  - stylesheets/course.css?v=11
+  - stylesheets/course.css?v=12
 extra_javascript:
   - javascripts/explorer.js
   - javascripts/results.js
