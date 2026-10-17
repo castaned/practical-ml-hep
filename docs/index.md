@@ -12,7 +12,7 @@ hide:
 
 # Aprendizaje automático en física de partículas
 
-Análisis de datos de física de partículas con CERN Open Data y el clúster Yuca: desde la preparación de los datos hasta la interpretación de resultados.
+El análisis de física de partículas combina datos, capacidad de cómputo y herramientas de software. En este curso reuniremos estos tres componentes para estudiar procesos de ATLAS y CMS.
 
 <p class="course-affiliation">Yuca · Clúster de alto rendimiento de la UNISON<br>ACARUS · Procesamiento y entrenamiento en CPU / GPU</p>
 
@@ -44,14 +44,15 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 
 El recorrido directo permite analizar distribuciones y selecciones. La rama inferior incorpora el entrenamiento y la evaluación de una red. En ambos casos, las conclusiones se sustentan en los resultados y sus limitaciones. Trabajaremos con **simulaciones abiertas de ATLAS y CMS**, disponibles en CERN Open Data.
 
-## Infraestructura y software del curso
+## Datos, infraestructura y software de análisis
 
-Las prácticas se ejecutan en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. Utilizaremos sus recursos de CPU y GPU para procesar los datos, entrenar las redes y comparar tiempos de ejecución.
+**CERN Open Data** proporciona las muestras con las que estudiaremos los procesos físicos. Su disponibilidad permite reproducir análisis y explorar herramientas utilizadas en física de partículas.
 
-El software del curso está disponible en [**ML-integration-CMSSW**](https://github.com/castaned/ML-integration-CMSSW). Mediante archivos **YAML** podrás configurar el procesamiento de los datos, definir la arquitectura y los parámetros de entrenamiento de las redes, y elegir dónde guardar tus resultados. Cada participante clonará este repositorio en su cuenta de Yuca para realizar los ejercicios.
+**Yuca, el clúster de alto rendimiento de la UNISON operado por ACARUS**, aporta la infraestructura para trabajar con esas muestras. Permite distribuir el procesamiento y ejecutar entrenamientos en CPU y GPU, dentro de un entorno común de investigación.
 
-[Repositorio principal del software](https://github.com/castaned/ML-integration-CMSSW){ .md-button .md-button--primary }
-[Acceso a Yuca y preparación del entorno](preparacion.md){ .md-button }
+**[ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW)** reúne las herramientas de análisis que conectan los datos con los resultados: selección de eventos, construcción de variables y entrenamiento de modelos. Una configuración documentada permite repetir el análisis y estudiar el efecto de sus cambios.
+
+Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para responder una pregunta física. Las redes neuronales forman parte de las herramientas disponibles; sus resultados deben interpretarse a partir del proceso estudiado y de las condiciones del análisis.
 
 <div class="course-facts" markdown>
 
