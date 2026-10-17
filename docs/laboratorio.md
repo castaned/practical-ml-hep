@@ -1,6 +1,8 @@
-# Entrenamiento con el ATLAS Higgs Challenge
+# Ejercicio 1 · ATLAS Higgs Challenge
 
 El ejercicio comienza con la reproducción de una red de referencia. Una vez identificados sus resultados, se modificarán los parámetros del YAML para comparar distintas configuraciones.
+
+Los datos de este ejercicio son una tabla CSV de CERN Open Data con las variables ya calculadas. No se realiza una extracción desde NanoAOD. La lectura, el tratamiento de valores ausentes y la estandarización forman el preprocesamiento del clasificador.
 
 ## 1. Procesos y variables de entrada
 

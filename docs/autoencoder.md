@@ -1,56 +1,78 @@
-# Práctica 2: anomalías con CMS
+# Ejercicio 2 · Autoencoder CMS desde NanoAOD
 
-## Miércoles, tercera hora: aprender la referencia del Modelo Estándar
+Este ejercicio presenta el análisis desde los archivos de eventos hasta el entrenamiento de una red de reconstrucción. Es una extensión independiente del ejercicio ATLAS: utiliza otras muestras, otro formato de origen y un objetivo de aprendizaje distinto.
 
-El autoencoder aprende eventos multileptónicos asociados al sector electrodébil del SM, usando DYJets HT 70–100, WZ y ZZ. W′→WZ→3ℓν, de 1 TeV, se usa como referencia de nueva física **solo para evaluación**. Las muestras son simulaciones abiertas CMS; no se entrena con W′.
+## 1. Muestras y formato de origen
 
-### 1. De NanoAOD a una configuración personal (10 min)
+Se utilizan simulaciones CMS disponibles en CERN Open Data, en formato **NanoAOD dentro de archivos ROOT**. Cada evento contiene colecciones de electrones, muones y jets, además de otras cantidades reconstruidas, como el momento transversal faltante.
 
-La selección de tres leptones del repositorio produce candidatos Z/W y observables por canal. Revisar `example_files/main_process/filterNanoAOD.py`, las ramas de entrada, la selección y su cutflow. El flujo original y sus comandos Slurm se encuentran en [procesamiento NanoAOD](https://castaned.github.io/ML-integration-CMSSW/yuca-course/03_procesamiento/). Por el límite de cuatro horas, cada equipo procesa NanoAOD en la práctica Higgs; en autoencoder se reutiliza el HDF5 obtenido con el flujo CMS ya validado. Reprocesar un archivo WZ es una extensión, no confundir ese HDF5 con datos de origen.
+Las muestras del Modelo Estándar son **DYJets HT 70–100, WZ y ZZ**. La muestra **W′ → WZ → 3ℓν**, de masa 1 TeV, se reserva para evaluación. W′ no participa en el entrenamiento del autoencoder.
 
+En el Higgs Challenge las treinta variables ya vienen calculadas en una tabla. Aquí es necesario seleccionar los eventos y construir las variables a partir de las ramas NanoAOD.
 
-Los datos compartidos y tu salida personal ya quedaron registrados en los YAML durante la preparación del entorno. Revisar las variables y la selección descritas aquí; no editar sus rutas ni los scripts.
+## 2. Selección y extracción de variables
 
-### 2. Entrenar la referencia (25 min)
+**NanoAOD (ROOT) → selección multileptónica → candidatos W/Z y observables → gráficos de control → HDF5**
 
-```bash
-python workshop/student.py train --task autoencoder --role baseline
-squeue -u "$USER"
-```
+Revisar `example_files/main_process/filterNanoAOD.py` para identificar las ramas de entrada y la selección de eventos con al menos tres leptones. El procesamiento construye candidatos Z y W y calcula las cantidades que recibirá la red. El cutflow permite seguir cuántos eventos sobreviven a cada selección.
 
-La arquitectura inicial es 10→16→8→2→8→16→10. Entradas: MET_pt, M3l, Z_deltaR, Z_mass, Lep_pt_sum, Z_pt, Lep1Z_pt, Lep2Z_pt, Lep3W_pt y W_mt. Son variables del canal seleccionado; Dataset_ID sirve para separar muestras y nunca es una entrada de la red.
+La [guía de procesamiento CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/03_procesamiento/) contiene el procedimiento de ejecución. Los archivos originales se leen de la carpeta compartida; los productos del procesamiento se guardan en la cuenta personal.
 
-Se minimiza MSE con Adam. El escalado se aprende únicamente del entrenamiento SM, balanceando procesos. El umbral es el percentil 99 de validación SM con igual peso por proceso. Consultar el YAML guardado para los parámetros exactos.
+| Producto | Función en el análisis |
+| --- | --- |
+| ROOT procesado | Eventos seleccionados y observables calculados |
+| Cutflow y gráficos | Revisión de la selección y las distribuciones |
+| HDF5 | Variables de los eventos seleccionados, preparadas para lectura durante el entrenamiento |
+| Mapa de datasets | Asociación entre identificadores y procesos físicos |
 
-### 3. Diagnóstico (15 min)
+HDF5 es un producto del análisis; los archivos de origen de este ejercicio son los NanoAOD. Se puede reutilizar una extracción ya preparada para estudiar el entrenamiento, conservando la trazabilidad hasta los archivos ROOT y la selección utilizada.
 
-Abrir `loss_autoencoder_groupN_baseline.pdf` y `scores_by_process_autoencoder_groupN_baseline.pdf`, donde N es tu grupo; revisar los archivos de métricas y el registro Slurm. Comparar pérdidas de entrenamiento y validación. ¿Las dos siguen bajando? ¿El error significa automáticamente nueva física? ¿Puede reflejar ausencia de representatividad del fondo?
+## 3. Variables de entrada
 
-El ejecutor actual también produce ROC y eficiencia W′ al finalizar. **No usar esas cifras para escoger arquitectura o variables.** Guardarlas para la discusión final; si se inspeccionan repetidamente, tratar todo el estudio como exploratorio. El taller no dispone de una nueva muestra W′ independiente para confirmar elecciones.
+La referencia utiliza diez variables:
 
-## Jueves: variar, comparar y explicar
+| Grupo | Variables |
+| --- | --- |
+| Momento transversal faltante | `MET_pt` |
+| Sistema de tres leptones | `M3l`, `Lep_pt_sum` |
+| Candidato Z | `Z_mass`, `Z_pt`, `Z_deltaR` |
+| Leptones de los candidatos | `Lep1Z_pt`, `Lep2Z_pt`, `Lep3W_pt` |
+| Candidato W | `W_mt` |
 
-La actividad principal usa los [cuatro grupos YAML y la tabla común](cms-experimentos.md). Cada equipo ejecuta referencia y variación asignada; el escenario 4 estudia la dimensión latente. Los cambios sugeridos a continuación son extensiones.
+`Dataset_ID` identifica el proceso de origen y permite separar las muestras. No es una variable de entrada de la red.
 
-Abrir el YAML de variación del autoencoder indicado por:
+## 4. Red y entrenamiento
+
+**10 → 16 → 8 → 2 → 8 → 16 → 10**
+
+El autoencoder comprime las diez entradas a un espacio latente de dos dimensiones e intenta reconstruirlas. Se entrena exclusivamente con las muestras del Modelo Estándar, minimizando el error cuadrático medio (MSE) con Adam. El escalado se ajusta con los eventos de entrenamiento.
+
+A diferencia del clasificador ATLAS, la salida no es una puntuación aprendida para distinguir Higgs de fondo. Son diez valores reconstruidos; el error entre entradas y reconstrucciones se utiliza para estudiar eventos poco compatibles con lo aprendido.
+
+Con los YAML personales de este ejemplo ya preparados, consultar sus rutas y ejecutar la referencia:
 
 ```bash
 python workshop/student.py files
+python workshop/student.py train --task autoencoder --role baseline
 ```
 
-Editar solo el campo asignado dentro de `model`. Guardar y ejecutar el mismo comando para todos los grupos:
+Estos comandos corresponden a la configuración del ejercicio CMS. No se utiliza `atlas_baseline01.yaml` ni el script de entrenamiento ATLAS. Consultar el [procedimiento de configuración CMS](https://castaned.github.io/ML-integration-CMSSW/yuca-course/05_autoencoder/) para preparar el ejemplo antes de ejecutar.
 
-```bash
-python workshop/student.py train --task autoencoder --role variation
-```
+## 5. Resultados e interpretación
 
-No modificar datos, selección, variables, semilla ni umbral. Comparar curvas de pérdida, mejor pérdida de validación y coste de entrenamiento. La referencia W′ se discute al final como evaluación exploratoria; no usarla para elegir el parámetro.
+Abrir las curvas de pérdida de entrenamiento y validación y las distribuciones de MSE por proceso. Identificar en el YAML la carpeta de salida del autoencoder y conservarla separada de las corridas ATLAS.
 
-## Limitaciones que deben aparecer en la entrega
+| ATLAS: clasificación | CMS: reconstrucción |
+| --- | --- |
+| Aprende usando etiquetas de señal y fondo | Aprende a reconstruir eventos del Modelo Estándar |
+| La puntuación favorece señal o fondo | El MSE cuantifica el error de reconstrucción |
+| Se comparan AUC, AMS interna y tiempo | Se comparan pérdidas, errores por proceso y tiempo |
+| Higgs aparece durante el entrenamiento | W′ se utiliza únicamente para evaluación |
 
-- DYJets tiene poca estadística en el piloto anterior (49/17/17); el preflight confirma los conteos efectivos del conjunto compartido. No asumir que las cifras históricas se repiten tras cambiar los archivos.
-- Pesos iguales por proceso no representan tasas por luminosidad; no son una predicción de fondo físico.
-- Una sola masa/canal W′ no demuestra sensibilidad universal a nueva física.
-- Una fluctuación o un evento mal reconstruido no constituye descubrimiento.
+Un error elevado puede deberse a un evento diferente de la referencia, a una descripción insuficiente del fondo o a problemas de reconstrucción. No constituye por sí mismo evidencia de nueva física. Las muestras del piloto tienen tamaños distintos; los pesos iguales por proceso no representan tasas físicas por luminosidad.
 
-**Entrega:** configuración de referencia y variación, dos curvas de pérdida, tabla de métricas SM y una conclusión de tres frases. Agradecer el uso del clúster de alto rendimiento ACARUS de la UNISON.
+La muestra W′ permite ilustrar la respuesta del modelo. Si se consulta repetidamente para decidir arquitectura o variables, el resultado debe considerarse exploratorio. Sus métricas no se mezclan con la tabla de clasificación ATLAS.
+
+**Preguntas de análisis:** ¿en qué paso se construyen las variables? ¿Qué información se necesita para entrenar cada red? ¿Por qué un error alto y una puntuación alta de clasificación tienen significados diferentes?
+
+[Inicio: comparación de los dos ejercicios](index.md#dos-ejercicios-con-cern-open-data) · [Ejercicio 1: ATLAS](laboratorio.md)

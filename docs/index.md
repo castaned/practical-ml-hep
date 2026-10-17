@@ -43,7 +43,28 @@ Curso práctico de clasificación de eventos del ATLAS Higgs Challenge con redes
 !!! info "Primer paso: preparar tu acceso y tu cuenta"
     La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Esta preparación es necesaria antes de iniciar los ejercicios.
 
-## Objetivos del curso
+## Dos ejercicios con CERN Open Data
+
+Ambos ejercicios utilizan simulaciones disponibles en CERN Open Data. Difieren en el formato de origen, el procesamiento necesario y la tarea de aprendizaje.
+
+| | Ejercicio 1 · ATLAS Higgs Challenge | Ejercicio 2 · Autoencoder CMS |
+| --- | --- | --- |
+| Datos de origen | Tabla CSV comprimida (`.csv.gz`) del challenge | Archivos ROOT en formato NanoAOD (`.root`) |
+| Contenido | Una fila por evento, con 30 variables físicas ya calculadas | Colecciones de partículas reconstruidas y propiedades del evento |
+| Procesamiento | Lectura de la tabla, tratamiento de valores ausentes y estandarización | Selección de eventos, reconstrucción de candidatos W/Z, cálculo de observables y conversión a HDF5 |
+| Modelo | Red completamente conectada de clasificación supervisada | Autoencoder entrenado con eventos del Modelo Estándar |
+| Objetivo | Distinguir Higgs → ττ de los procesos de fondo | Estudiar eventos con errores de reconstrucción elevados |
+| Evaluación | Curva ROC, AUC y AMS interna | Pérdidas y distribuciones del error de reconstrucción; W′ como referencia de evaluación |
+| Lugar en el curso | Actividad principal del miércoles | Extensión para mostrar el análisis desde NanoAOD |
+
+**ATLAS:** CSV con variables preparadas → preprocesamiento → clasificación → comparación de entrenamientos.
+
+**CMS:** NanoAOD → selección y extracción de variables → HDF5 → reconstrucción con autoencoder → evaluación.
+
+[Ejercicio 1: ATLAS Higgs Challenge](fisica.md){ .md-button .md-button--primary }
+[Ejercicio 2: autoencoder CMS](autoencoder.md){ .md-button }
+
+## Objetivos del ejercicio ATLAS
 
 El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de los procesos de fondo mediante el **ATLAS Higgs Challenge**, un conjunto de simulaciones disponible en CERN Open Data.
 
