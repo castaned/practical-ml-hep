@@ -1,0 +1,62 @@
+site_name: Practical Machine Learning in HEP
+site_description: Un laboratorio de física y redes neuronales con CERN Open Data y el clúster Yuca.
+site_url: https://castaned.github.io/practical-ml-hep/
+repo_url: https://github.com/castaned/practical-ml-hep
+repo_name: Material del curso
+copyright: Taller MLforHEP · Universidad de Sonora · Cómputo en ACARUS / Yuca
+strict: true
+theme:
+  name: material
+  language: es
+  font: false
+  icon:
+    logo: material/atom
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+  features:
+    - navigation.footer
+    - navigation.tracking
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+plugins:
+  - search:
+      lang: es
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - footnotes
+  - attr_list
+  - md_in_html
+extra_css:
+  - stylesheets/course.css
+extra_javascript:
+  - javascripts/explorer.js
+nav:
+  - Inicio: index.md
+  - La física: fisica.md
+  - Laboratorio: laboratorio.md
+  - Bitácora: bitacora.md
+  - Conclusiones: conclusiones.md
+  - Preparación y apoyo:
+      - Antes de la sesión: preparacion.md
+      - Comandos del laboratorio: apoyo.md
+      - Método y benchmarks: referencia.md
+  - Para seguir explorando:
+      - Autoencoder CMS: autoencoder.md
+      - Desde NanoAOD: cms-clasificacion.md
+      - Ejercicios CMS: cms-experimentos.md
+      - Más preguntas: preguntas-extra.md
