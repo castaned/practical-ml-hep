@@ -2,6 +2,38 @@
 
 El objetivo del laboratorio es evaluar cómo una modificación de la red neuronal afecta las curvas de aprendizaje, la discriminación entre señal y fondo y el tiempo de entrenamiento.
 
+## Programa del miércoles: tres horas
+
+La sesión combina una introducción breve con ejercicios de entrenamiento y análisis. La activación de la cuenta y, de ser posible, la instalación del ambiente se completarán previamente siguiendo la [preparación inicial](preparacion.md).
+
+| Tiempo transcurrido | Actividad | Resultado esperado |
+| --- | --- | --- |
+| 0–20 min | Acceso a JupyterLab, activación del ambiente y consulta de los datos compartidos | Entorno listo para ejecutar los ejercicios |
+| 20–40 min | Señal Higgs → ττ, procesos de fondo y distribuciones de entrada | Identificar un observable y explicar su significado físico |
+| 40–65 min | Entrenamiento de referencia y lectura de sus figuras | Primera fila de la tabla: AUC, AMS interna, épocas y tiempo |
+| 65–100 min | Primera variación del YAML por grupo o mesa | Hipótesis escrita, configuración y resultados en una carpeta nueva |
+| 100–110 min | Pausa | |
+| 110–145 min | Comparación con la referencia y segunda prueba, si procede | Interpretación de la mejora, el sobreajuste o el costo de cómputo |
+| 145–170 min | Puesta en común entre grupos | Tabla comparativa y una figura representativa por grupo |
+| 170–180 min | Discusión de resultados y cierre | Conclusiones sobre arquitectura, regularización y evaluación |
+
+Mientras los trabajos esperan o se ejecutan, se revisarán las distribuciones, se formularán hipótesis y se completará el registro. El tiempo en cola se distinguirá del tiempo de entrenamiento.
+
+### Escenarios de trabajo
+
+Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la misma referencia; cada grupo estudiará inicialmente uno de los siguientes factores. Si varias mesas comparten escenario, podrán contrastar la reproducibilidad de sus resultados.
+
+| Escenario | Modificación en el YAML | Pregunta de análisis |
+| --- | --- | --- |
+| A. Arquitectura | Cambiar `model.hidden_dims`, por ejemplo a `[512, 256, 128, 64]` | ¿La capacidad adicional mejora la validación y cuánto aumenta el tiempo? |
+| B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
+| C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
+| D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
+
+Conservar los demás parámetros, las variables y las particiones de datos. Cada modificación requiere un YAML y una carpeta de salida propios. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
+
+El criterio de la actividad será la calidad de la comparación y de su interpretación. La rapidez de envío o el mayor AUC aislado no determinan el mejor trabajo. La [bitácora](bitacora.md) y la [tabla de puesta en común](conclusiones.md) se completarán durante la sesión. El jueves se retomarán las conclusiones y se presentará el autoencoder CMS como extensión.
+
 ## Entender el problema
 
 Queremos separar **Higgs → ττ** de procesos de fondo que pueden producir objetos similares. La red recibe **30 variables físicas** y asigna una puntuación a cada evento.

@@ -137,7 +137,7 @@ Trabajaremos individualmente o en grupos cercanos, según la disposición del sa
 
 <div class="session-strip" markdown>
 
-**Miércoles · 3 horas**<br>Física, variables, entrenamiento y experimentos por grupo.
+**Miércoles · 3 horas**<br>Introducción física, entrenamiento de referencia, variaciones del YAML y discusión por grupos. [Consultar el programa](laboratorio.md#programa-del-miercoles-tres-horas).
 
 **Jueves · 1 hora**<br>Comparación de resultados y exploración de un autoencoder CMS.
 

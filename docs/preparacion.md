@@ -37,15 +37,50 @@ Sigue las indicaciones de Yuca para registrar el QR en Google Authenticator y ac
 
 ## 2. Terminales de Open OnDemand y JupyterLab
 
-Durante el curso puedes trabajar desde una **terminal de Open OnDemand** o desde una **terminal dentro de una sesión JupyterLab de Yuca**. En ambos casos los comandos deben ejecutarse en el clúster, no en la terminal de tu computadora personal.
+Con la cuenta y la doble verificación ya activadas, se utilizará Open OnDemand para abrir una sesión JupyterLab. Desde esta sesión se editarán los archivos YAML, se enviarán los entrenamientos y se revisarán las figuras.
 
-| Desde dónde trabajas | Qué puedes hacer |
+### Paso 1. Iniciar sesión en Open OnDemand
+
+Acceder al [portal de Yuca](http://yucaood.acarus.unison.mx) e introducir el usuario y la contraseña asignados. Completar la verificación adicional cuando se solicite. La cuenta `docente_07` que aparece en las capturas es ilustrativa: cada participante debe utilizar su propia cuenta.
+
+![Pantalla de acceso a Open OnDemand de Yuca](assets/yuca/01-acceso.png)
+
+### Paso 2. Seleccionar JupyterLab
+
+En el panel principal, abrir **Interactive Apps** y seleccionar **JupyterLab**. El menú **Files** permite consultar los archivos de la cuenta, pero para el desarrollo del taller se trabajará desde JupyterLab.
+
+![Panel principal de Open OnDemand y menú Interactive Apps](assets/yuca/02-panel.png)
+
+### Paso 3. Solicitar la sesión interactiva
+
+Completar el formulario y seleccionar **Launch**:
+
+| Campo | Valor para la sesión del taller |
 | --- | --- |
-| Terminal de Open OnDemand | Preparar archivos y enviar trabajos de entrenamiento |
-| Terminal de JupyterLab en Yuca | Usar los mismos comandos desde tu sesión interactiva |
-| Explorador Files de Open OnDemand | Editar el YAML y abrir las figuras que produjo la red |
+| Proyecto | `curso07` |
+| Tipo de Nodo | `CPU` |
+| Número de cores | `1` |
+| Número de horas | `3`, para la sesión del miércoles |
 
-Para comprobar en qué cuenta y carpeta estás:
+La captura muestra una solicitud de ocho horas; para el taller se solicitarán tres. Esta sesión se utilizará para editar archivos, enviar trabajos y revisar resultados. Los entrenamientos GPU solicitarán sus recursos por separado mediante el script del curso.
+
+![Formulario para solicitar recursos de una sesión JupyterLab](assets/yuca/03-recursos-jupyter.png)
+
+### Paso 4. Conectarse a JupyterLab
+
+Esperar a que la sesión indique **Running** y seleccionar **Connect to Jupyter**. La asignación puede tardar según la disponibilidad de recursos. No es necesario crear otra sesión mientras la primera permanece en espera.
+
+![Sesión JupyterLab en ejecución y botón Connect to Jupyter](assets/yuca/04-conectar-jupyter.png)
+
+### Paso 5. Abrir la terminal
+
+En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir el Launcher y seleccionar **Terminal**. La captura muestra la terminal ya abierta y el explorador de archivos a la izquierda.
+
+![Terminal de Yuca abierta dentro de JupyterLab](assets/yuca/05-terminal.png)
+
+Los comandos de las siguientes secciones se ejecutan en esta terminal. El explorador lateral permite abrir y editar los YAML y consultar las imágenes de resultados. Las carpetas mostradas en la captura corresponden a una cuenta previamente configurada; se crearán durante los pasos siguientes.
+
+Para comprobar la cuenta, el nodo y el directorio de trabajo:
 
 ```bash
 whoami
@@ -53,7 +88,7 @@ hostname
 pwd
 ```
 
-Una sesión JupyterLab tiene sus propios recursos. Abrir su terminal **no asigna automáticamente una GPU** al entrenamiento. El trabajo enviado con el script del curso solicitará la GPU por separado.
+Al finalizar la actividad, volver a **My Interactive Sessions** y utilizar **Delete** para liberar la sesión JupyterLab. Los archivos de la carpeta personal se conservan.
 
 ## 3. Configuración inicial de la cuenta
 
