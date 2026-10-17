@@ -154,9 +154,9 @@ El repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-i
 
 Para realizar una variación, copiar el YAML, editar los parámetros indicados y asignar una carpeta de salida nueva. Ejecutar después el comando correspondiente desde el repositorio principal. Los scripts de Python se conservan sin modificaciones durante los ejercicios.
 
-### Clonación del repositorio
+### Clonación del repositorio · solo la primera vez
 
-En la terminal de Yuca:
+Ejecuta estos comandos **una sola vez en tu cuenta de Yuca** para descargar la herramienta y preparar tus carpetas personales:
 
 ```bash
 cd "$HOME"
@@ -167,9 +167,9 @@ mkdir -p "$HOME/hep-workshop/configs" "$HOME/hep-workshop/logs"
 
 Si ya clonaste el repositorio, entra a esa carpeta y actualiza con `git pull --ff-only origin opendata_dev`; no necesitas otra copia.
 
-### Creación del ambiente de entrenamiento
+### Creación del ambiente de entrenamiento · solo la primera vez
 
-Para las GPU AMD MI210 de Yuca usamos el ambiente personal `ml-hep-gpu`. Estos comandos crean una instalación en tu cuenta:
+Para las GPU AMD MI210 de Yuca usamos el ambiente personal `ml-hep-gpu`. **Créalo e instala sus paquetes una sola vez en tu cuenta** con estos comandos:
 
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
@@ -180,7 +180,7 @@ python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/
 python -m pip install numpy pandas scikit-learn matplotlib pyyaml h5py
 ```
 
-Si el ambiente ya existe, actívalo en lugar de crearlo otra vez. Esta combinación de PyTorch y ROCm fue probada en una MI210 de Yuca. El ambiente de procesamiento CMS `ml-open-data`, si ya lo tienes, es independiente.
+En las siguientes sesiones, utiliza los comandos de **Inicio de una sesión de trabajo**, más abajo: solo necesitas activar el ambiente y entrar al repositorio. Esta combinación de PyTorch y ROCm fue probada en una MI210 de Yuca. El ambiente de procesamiento CMS `ml-open-data`, si ya lo tienes, es independiente.
 
 ## 4. Inicio de una sesión de trabajo
 
