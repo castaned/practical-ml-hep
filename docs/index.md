@@ -93,22 +93,6 @@ Los **cilindros representan archivos almacenados** y los **rectángulos, operaci
 </figure>
 </div>
 
-**[ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW)** reúne las herramientas de análisis que conectan los datos con los resultados: selección de eventos, construcción de variables y entrenamiento de modelos. Una configuración documentada permite repetir el análisis y estudiar el efecto de sus cambios.
-
-Los ejercicios de ATLAS y CMS muestran cómo se combinan estos componentes para responder una pregunta física. Las redes neuronales forman parte de las herramientas disponibles; sus resultados deben interpretarse a partir del proceso estudiado y de las condiciones del análisis.
-
-<div class="course-facts" markdown>
-
-<div><strong>30</strong><span>variables para explorar</span></div>
-<div><strong>250 mil</strong><span>eventos para desarrollar el modelo</span></div>
-<div><strong>CPU ↔ GPU</strong><span>comparación de tiempos de entrenamiento</span></div>
-<div><strong>1 YAML</strong><span>por experimento; una carpeta por resultado</span></div>
-
-</div>
-
-!!! info "Primer paso: preparar tu acceso y tu cuenta"
-    La [preparación inicial en Yuca](preparacion.md) explica el primer SSH, la doble verificación, cómo trabajar desde Open OnDemand o JupyterLab y cómo solicitar recursos de ACARUS. Esta preparación es necesaria antes de iniciar los ejercicios.
-
 ## Programa del taller
 
 ### Miércoles · 3 horas
