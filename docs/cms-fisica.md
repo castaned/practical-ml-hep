@@ -10,8 +10,6 @@ Algunas extensiones del Modelo Estándar proponen un bosón cargado más pesado,
 
 *W′ → WZ → 3ℓν. En el canal ilustrado, Z produce dos leptones de cargas opuestas y W un leptón y un neutrino; ℓ representa un electrón o un muón. Se considera también el canal conjugado de carga.*
 
-[Ampliar o descargar el diagrama PDF](assets/cms/wprime_decay.pdf).
-
 En el detector esperamos **tres leptones cargados y momento transversal faltante**, relacionado con el neutrino que no se detecta directamente. La producción habitual de WZ puede producir el mismo estado final. La pregunta es si una red entrenada con procesos conocidos responde de forma diferente a eventos de la señal W′. Este estado final se utiliza también en [búsquedas de resonancias de CMS](https://cms-results.web.cern.ch/cms-results/public-results/publications/EXO-12-025/index.html).
 
 ## Muestras y formato de origen

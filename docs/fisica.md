@@ -16,8 +16,6 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
 
 **Lo visible:** un electrón o muón y un tau hadrónico reconstruido. **Lo invisible:** tres neutrinos, que contribuyen al momento transversal faltante. Por eso usamos variables del leptón, del tau y del MET. El estado completo no se reconstruye con la masa visible solamente.
 
-[Descargar diagrama PNG](assets/workshop/higgs_tautau_final_state.png) · [SVG para ampliar o presentar](assets/workshop/higgs_tautau_final_state.svg)
-
 Los fondos imitan esos objetos: **Z → ττ** produce taus reales; los pares de top pueden generar leptones, taus y jets; **W + jets** puede entrar cuando un objeto se identifica incorrectamente. Una misma apariencia final puede tener distintos orígenes.
 
 ![La masa visible muestra una señal pequeña sobre fondos abundantes](assets/workshop/challenge_visible_mass.png){ width="460" }
@@ -116,8 +114,6 @@ Las variables compuestas relacionan los objetos del evento. La masa MMC estima l
 <a href="../assets/workshop/atlas_observables/DER_mass_vis.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_mass_vis.png" alt="Masa visible leptón y tau" loading="lazy"></a>
 <a href="../assets/workshop/atlas_observables/DER_deltar_tau_lep.svg" title="Ampliar gráfico"><img src="../assets/workshop/atlas_observables/DER_deltar_tau_lep.png" alt="Separación angular entre leptón y tau" loading="lazy"></a>
 </div>
-
-Pulsa cualquier gráfico para ampliarlo en formato vectorial. [Descargar todos los paneles en PDF](assets/workshop/atlas_observables/input_variables.pdf).
 
 **Para discutir:** ¿qué variables presentan diferencias más visibles? ¿Por qué podría ayudar a la red combinar observables que por separado se parecen?
 
