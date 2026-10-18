@@ -102,7 +102,7 @@ Para otra ejecución, guarda otro YAML y cambia `data.output_path`, por ejemplo 
 
 ## Benchmark alcanzado {#benchmark-cms}
 
-Este benchmark recoge los resultados ya obtenidos con la configuración inicial. En el taller se mostrará su desarrollo y la interpretación de sus productos. La referencia requiere conservar la selección, los archivos de entrada, las diez variables, el escalado y las particiones; no corresponde a cualquier conjunto de muestras CMS.
+Para comparar con la referencia, conserva la selección, los archivos de entrada, las diez variables, el escalado y las particiones.
 
 ### Configuración y resultados de referencia
 

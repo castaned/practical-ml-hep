@@ -30,7 +30,7 @@ Conservar los demás parámetros, las variables y las particiones de datos. Cada
 <div class="explorer-intro">
 <span class="eyebrow">ARQUITECTURAS DE REFERENCIA</span>
 <h3>Capas y parámetros entrenables</h3>
-<p>El selector muestra el número de parámetros de cada arquitectura y el fragmento YAML correspondiente. El entrenamiento se ejecuta en Yuca.</p>
+<p>Elige una arquitectura para explorar sus capas, parámetros y configuración YAML.</p>
 <label for="network-choice">Arquitectura</label>
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
@@ -93,7 +93,7 @@ Para otra variación, utiliza otro nombre de YAML y otra carpeta, por ejemplo `a
 
 ## 3. Registrar y visualizar resultados {#registro}
 
-La tabla de esta página reúne las métricas de las corridas. La **bitácora** conserva la hipótesis, la configuración estudiada y la explicación de los resultados. Utiliza el mismo nombre de grupo en ambas.
+Registra las métricas en la tabla y la hipótesis e interpretación en la **bitácora**, utilizando el mismo nombre de grupo.
 
 [Completar la bitácora del grupo](bitacora.md){ .md-button }
 

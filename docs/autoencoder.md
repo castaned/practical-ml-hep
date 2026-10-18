@@ -2,7 +2,7 @@
 
 Este ejemplo recorre un análisis desarrollado con **simulaciones públicas de CMS en CERN Open Data**: selección de eventos NanoAOD, extracción de variables, entrenamiento de un autoencoder e interpretación de su respuesta ante W′.
 
-La referencia es el benchmark que ya alcanzamos con diez variables. En el taller seguiremos su desarrollo como un segundo caso de análisis, complementario al clasificador ATLAS. Las posibles mejoras quedan como perspectivas para un estudio posterior.
+El autoencoder utiliza diez variables y aprende a reconstruir eventos del Modelo Estándar. La muestra W′ permite evaluar su respuesta ante una señal que no participó en el entrenamiento.
 
 <div class="journey-grid">
 <a class="journey-card" href="../cms-fisica/"><span class="step-number">01 / FÍSICA</span><h3>Procesos y variables</h3><p>La señal W′, los procesos conocidos y las entradas del autoencoder.</p><span class="card-link">Consultar sección →</span></a>
@@ -21,6 +21,5 @@ La referencia es el benchmark que ya alcanzamos con diez variables. En el taller
 | Modelo | Autoencoder entrenado con eventos del Modelo Estándar |
 | Objetivo | Estudiar eventos con errores de reconstrucción elevados |
 | Evaluación | Pérdidas y distribuciones del error de reconstrucción; W′ como referencia de evaluación |
-| Lugar en el curso | Demostración guiada de un análisis ya desarrollado desde NanoAOD |
 
 [Continuar: Física y variables](cms-fisica.md){ .md-button .md-button--primary }

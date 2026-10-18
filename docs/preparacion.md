@@ -235,6 +235,3 @@ El envío del primer trabajo y su seguimiento se realizarán en el [benchmark de
 </ul>
 
 [Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
-
-Los detalles generales de la herramienta permanecen en su [manual técnico](https://castaned.github.io/ML-integration-CMSSW/). Este capítulo reúne los pasos necesarios para empezar la práctica en ACARUS.
-

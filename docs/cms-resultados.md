@@ -2,7 +2,7 @@
 
 ## Lectura de las gráficas
 
-La demostración revisa las pérdidas de entrenamiento y validación, las distribuciones de MSE por proceso y la ROC frente a W′. Sus resultados se mantienen separados de las corridas ATLAS.
+Revisa las pérdidas de entrenamiento y validación, las distribuciones de MSE por proceso y la ROC frente a W′.
 
 | ATLAS: clasificación | CMS: reconstrucción |
 | --- | --- |
@@ -15,11 +15,9 @@ Un error elevado puede deberse a un evento diferente de la referencia, a una des
 
 Si W′ presenta errores mayores que los procesos SM, un umbral de MSE puede enriquecer una selección en esa señal. Para convertirlo en una búsqueda física harían falta las normalizaciones e incertidumbres del fondo y una evaluación estadística. La AUC de este ejemplo resume la separación frente a esta muestra W′; no mide una capacidad universal de descubrir cualquier anomalía.
 
-La muestra W′ permite ilustrar la respuesta del modelo. Si se consulta repetidamente para decidir arquitectura o variables, el resultado debe considerarse exploratorio. Sus métricas no se mezclan con la tabla de clasificación ATLAS.
+La muestra W′ permite ilustrar la respuesta del modelo. Si se consulta repetidamente para decidir arquitectura o variables, el resultado debe considerarse exploratorio.
 
 ### Posibles mejoras para una exploración posterior
-
-Estas propuestas quedan como continuación del estudio, no como una actividad de entrenamiento obligatoria del taller.
 
 | Variación posible | Qué permitiría investigar |
 | --- | --- |

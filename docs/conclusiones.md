@@ -35,7 +35,7 @@ Para conversar entre todos: ¿una red más grande siempre ayudó? ¿AUC y AMS me
 !!! tip "Lo importante es la explicación"
     Una comparación bien interpretada vale aunque el número no mejore. Diferencias pequeñas en una sola corrida no bastan para declarar un ganador.
 
-La práctica principal es **ATLAS Higgs Challenge**. Tras la demostración del autoencoder, comenten qué cambió en su objetivo y en el significado de la salida; no mezclen sus métricas en la tabla de clasificación.
+Al comparar con el autoencoder CMS, ¿qué cambia en el objetivo del entrenamiento y en el significado de la salida?
 
 [Anterior: variaciones y tabla de resultados](variaciones.md){ .md-button }
 [Autoencoder CMS desde NanoAOD](autoencoder.md){ .md-button }
