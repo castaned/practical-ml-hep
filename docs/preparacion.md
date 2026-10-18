@@ -4,25 +4,19 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 <div class="grid cards" markdown>
 
-- **Preparación inicial · Una sola vez**
+- **Primera vez**
 
-    **Acceso:** cuenta de Yuca y doble verificación.
+    1. [Activar tu acceso y la doble verificación](#1-primer-acceso-antes-de-open-ondemand).
 
-    **Herramienta:** copia del repositorio de análisis en tu cuenta.
+    2. [Clonar el repositorio](#clonar-repositorio).
 
-    **Ambiente:** Python y las bibliotecas necesarias para los ejercicios.
+    3. [Crear el ambiente de entrenamiento](#crear-ambiente).
 
-- **Inicio de trabajo · Cada sesión**
+- **Cada sesión**
 
-    **Conexión:** Open OnDemand y terminal de JupyterLab.
+    1. [Entrar a Open OnDemand y abrir una terminal en JupyterLab](#2-terminales-de-open-ondemand-y-jupyterlab).
 
-    **Entorno:** activación del ambiente y acceso al repositorio de análisis.
-
-- **Configuración y resultados · Cada experimento**
-
-    **Configuración:** archivo YAML personal con los parámetros que vas a estudiar.
-
-    **Resultados:** carpeta propia para conservar las figuras, métricas y modelos de cada ejecución.
+    2. [Activar el ambiente y entrar al repositorio](#4-inicio-de-una-sesion-de-trabajo).
 
 </div>
 
@@ -154,7 +148,7 @@ El repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-i
 
 Para realizar una variación, copiar el YAML, editar los parámetros indicados y asignar una carpeta de salida nueva. Ejecutar después el comando correspondiente desde el repositorio principal. Los scripts de Python se conservan sin modificaciones durante los ejercicios.
 
-### Clonación del repositorio · solo la primera vez
+### Clonación del repositorio · solo la primera vez {#clonar-repositorio}
 
 Ejecuta estos comandos **una sola vez en tu cuenta de Yuca** para descargar la herramienta y preparar tus carpetas personales:
 
@@ -167,7 +161,7 @@ mkdir -p "$HOME/hep-workshop/configs" "$HOME/hep-workshop/logs"
 
 Si ya clonaste el repositorio, entra a esa carpeta y actualiza con `git pull --ff-only origin opendata_dev`; no necesitas otra copia.
 
-### Creación del ambiente de entrenamiento · solo la primera vez
+### Creación del ambiente de entrenamiento · solo la primera vez {#crear-ambiente}
 
 Para las GPU AMD MI210 de Yuca usamos el ambiente personal `ml-hep-gpu`. **Créalo e instala sus paquetes una sola vez en tu cuenta** con estos comandos:
 
