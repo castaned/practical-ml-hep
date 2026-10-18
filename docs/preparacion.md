@@ -180,35 +180,13 @@ ls -lh /lustre/cursos/curso07/datos/ATLAS_HiggsChallenge/
 
 No necesitas descargarlos ni modificarlos. Tus YAML, registros y resultados se guardan en `hep-workshop` dentro de tu cuenta.
 
-## 5. Uso de los recursos de ACARUS
-
-Yuca administra los trabajos mediante Slurm. La arquitectura y los parámetros de entrenamiento se definen en el archivo YAML; el script del curso solicita los recursos de cómputo necesarios.
-
-| Recurso o acción | Para qué lo usamos |
-| --- | --- |
-| CPU | Preparación y comparación de tiempos de entrenamiento |
-| GPU AMD MI210 | Entrenamiento de redes neuronales |
-| Proyecto o cuenta de Slurm | Identifica a qué proyecto se carga el trabajo |
-| Cola | Esperar hasta que los recursos estén disponibles |
-| Carpeta personal | Conservar la configuración y salida de cada experimento |
-
-Consulta el proyecto autorizado para tu cuenta:
-
-```bash
-misproyectos
-```
-
-En las pruebas del curso se utiliza **`curso07`** y la QOS **`qoscurso07`**. Los scripts ya incluyen esos valores. Si tu cuenta no muestra ese proyecto, revísalo con el docente antes de enviar trabajos; no utilices el proyecto de otra persona.
-
-El envío del primer trabajo y su seguimiento se realizarán en el [benchmark de ATLAS](laboratorio.md#3-reproducir-el-entrenamiento-de-referencia), después de preparar el YAML. Por ahora, basta con comprobar que tu cuenta tiene acceso al proyecto del curso.
-
 ## Verificación del entorno
 
 <ul class="environment-checks">
 <li>Puedo entrar a Yuca y abrir una terminal.</li>
 <li>Mi terminal muestra <code>(ml-hep-gpu)</code> y estoy en <code>ML-integration-CMSSW</code>.</li>
 <li>Puedo ver el archivo compartido del challenge.</li>
-<li>Mi cuenta tiene acceso al proyecto del curso.</li>
+
 </ul>
 
 [Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
