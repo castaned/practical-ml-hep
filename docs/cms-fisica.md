@@ -54,7 +54,7 @@ Pulsa la imagen para ampliarla. Los números de la leyenda corresponden a 49 eve
 
 <div class="image-credits" markdown>
 
-**Fuentes.** Diagrama W′ proporcionado para el taller, conservado en PDF. Las distribuciones se recuperaron del material del análisis previo facilitado por el autor; muestran cuatro de las diez variables del benchmark, sin alterar las curvas. No se han regenerado a partir de archivos de eventos en esta actualización. No son figuras oficiales de CMS.
+**Fuentes.** Diagrama W′ y distribuciones: material del análisis proporcionado por el autor. No son figuras oficiales de CMS.
 
 </div>
 

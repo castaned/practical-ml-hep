@@ -34,7 +34,7 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
 
 ![Ilustración conceptual de un detector de partículas conectado mediante datos y una red neuronal a un centro de supercómputo](assets/workshop/hep_ml_supercomputing_hero.webp)
 
-<span>Física de partículas · Ciencia de datos · Supercómputo<br>Ilustración conceptual generada con IA.</span>
+<span>Física de partículas · Ciencia de datos · Supercómputo</span>
 
 </div>
 

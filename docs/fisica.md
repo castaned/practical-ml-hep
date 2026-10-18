@@ -12,7 +12,7 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
 
 ![Cadena completa del Higgs a dos taus y sus productos de decaimiento](assets/workshop/higgs_tautau_final_state.svg)
 
-*Esquema elaborado para el taller. Un tau decae a electrón o muón y dos neutrinos; el otro a hadrones y un neutrino. Se muestra un ejemplo de corriente hadrónica con u y anti-d, que forman hadrones; no observamos quarks libres. Los W son virtuales. También se incluye el proceso con cargas opuestas.*
+*Un tau decae a electrón o muón y dos neutrinos; el otro a hadrones y un neutrino. Se muestra un ejemplo de corriente hadrónica con u y anti-d, que forman hadrones; no observamos quarks libres. Los W son virtuales. También se incluye el proceso con cargas opuestas.*
 
 **Lo visible:** un electrón o muón y un tau hadrónico reconstruido. **Lo invisible:** tres neutrinos, que contribuyen al momento transversal faltante. Por eso usamos variables del leptón, del tau y del MET. El estado completo no se reconstruye con la masa visible solamente.
 
@@ -158,7 +158,7 @@ Identificar qué objetos se esperan en los eventos y qué representan las variab
 
 **Procedencia de las imágenes.**
 
-- `atlas_observables/`: distribuciones generadas para el taller con los 250 000 eventos de entrenamiento del [dataset de CERN Open Data](https://opendata.cern.ch/record/328), utilizando `workshop/plot_atlas.py` del repositorio principal. [Condiciones de generación y conteos](assets/workshop/atlas_observables/provenance.json). No son figuras oficiales de ATLAS.
+- `atlas_observables/`: distribuciones de los 250 000 eventos de entrenamiento del [dataset de CERN Open Data](https://opendata.cern.ch/record/328), utilizando `workshop/plot_atlas.py` del repositorio principal. [Condiciones de generación y conteos](assets/workshop/atlas_observables/provenance.json). No son figuras oficiales de ATLAS.
 
 - `higgs_ggf_vbf.png`: figura 1 de ATLAS y CMS, [arXiv:1606.02266](https://arxiv.org/abs/1606.02266), recortada para mostrar los diagramas.
 - `higgs_tautau_final_state.svg/png`: esquema original del taller de la cadena leptónica–hadrónica de H → ττ; no es una figura extraída del artículo.
