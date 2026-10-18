@@ -68,30 +68,11 @@ En cualquiera de las terminales, la contraseña no se muestra mientras la escrib
 
 #### Registrar el QR · Todos los sistemas {#registrar-qr}
 
-Ten instalada **Google Authenticator en tu teléfono** antes de continuar. Durante la primera activación, Yuca mostrará un **código QR personal** en la terminal o indicará un enlace para visualizarlo.
+1. Instala y abre **Google Authenticator** en tu teléfono.
+2. Pulsa **+ → Escanear un código QR** y escanea el QR personal que Yuca muestre durante el primer acceso.
+3. Cuando la terminal solicite la verificación, introduce el **código vigente de seis dígitos** que aparece en la app y sigue las indicaciones hasta completar la activación.
 
-1. Abre **Google Authenticator** en el teléfono.
-2. Pulsa **+** para añadir una cuenta y selecciona **Escanear un código QR**.
-3. Desde la app, apunta la cámara al **QR de tu cuenta de Yuca que aparece en la computadora**.
-4. Comprueba que la cuenta quedó añadida y que la app muestra un código temporal de seis dígitos.
-
-**El QR se escanea dentro de Google Authenticator.** Este registro vincula tu cuenta de Yuca con los códigos que genera la app.
-
-![Secuencia conceptual: QR personal de Yuca, escaneo desde Authenticator y código temporal para el acceso](assets/yuca/00-activacion-2fa.svg)
-
-*Esquema orientativo; no contiene un QR válido ni códigos de acceso reales.*
-
-#### Completar la activación
-
-Continúa con las indicaciones de la terminal. Cuando solicite un código de verificación, escribe el código vigente de la cuenta de Yuca en Google Authenticator. Si cambia antes de introducirlo, utiliza el nuevo.
-
-**Antes de seguir:** la cuenta debe aparecer en Authenticator y el proceso de activación en la terminal debe haber terminado. A partir de ese momento usarás tu contraseña y el código de la app cuando el sistema los solicite.
-
-El QR y los códigos de recuperación, si se proporcionan, son personales: no los compartas ni los incluyas en capturas del curso. Si el QR no aparece o no puedes completar la activación, solicita apoyo antes de continuar.
-
-[Ayuda oficial de Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=es).
-
-Con la activación completada, continúa con el acceso a **Open OnDemand** en la siguiente sección.
+Conserva la cuenta en Authenticator: usarás su código junto con tu contraseña cuando Yuca lo solicite. Después, continúa con **Open OnDemand**.
 
 ## 2. Terminales de Open OnDemand y JupyterLab
 
