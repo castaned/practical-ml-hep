@@ -189,4 +189,4 @@ No necesitas descargarlos ni modificarlos. Tus YAML, registros y resultados se g
 
 </ul>
 
-[Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
+[Continuar con ATLAS Higgs Challenge](atlas.md){ .md-button .md-button--primary }
