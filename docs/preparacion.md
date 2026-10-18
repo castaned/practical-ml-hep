@@ -24,7 +24,9 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 La primera conexión se hace por **SSH desde tu computadora**. En ella se prepara tu directorio personal y se activa la doble verificación de la cuenta. Completa esta etapa antes de entrar a Open OnDemand.
 
-### Paso 1. Conectarse a Yuca con la cuenta asignada
+### Paso 1. Conectarse a Yuca y activar la doble verificación
+
+En el primer acceso, entra con **el usuario y la contraseña proporcionados** y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige la terminal según tu sistema operativo; al terminar la conexión, continúa con [Registrar el QR](#registrar-qr), un paso común para Windows, Linux y macOS.
 
 #### Windows · Opción preferida: PowerShell
 
@@ -64,7 +66,7 @@ Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó par
 
 En cualquiera de las terminales, la contraseña no se muestra mientras la escribes: no aparecen caracteres ni asteriscos. Es el comportamiento normal.
 
-### Paso 2. Escanear el QR con Google Authenticator
+#### Registrar el QR · Todos los sistemas {#registrar-qr}
 
 Ten instalada **Google Authenticator en tu teléfono** antes de continuar. Durante la primera activación, Yuca mostrará un **código QR personal** en la terminal o indicará un enlace para visualizarlo.
 
@@ -79,7 +81,7 @@ Ten instalada **Google Authenticator en tu teléfono** antes de continuar. Duran
 
 *Esquema orientativo; no contiene un QR válido ni códigos de acceso reales.*
 
-### Paso 3. Completar la activación
+#### Completar la activación
 
 Continúa con las indicaciones de la terminal. Cuando solicite un código de verificación, escribe el código vigente de la cuenta de Yuca en Google Authenticator. Si cambia antes de introducirlo, utiliza el nuevo.
 
