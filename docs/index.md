@@ -62,8 +62,6 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 
 [![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v2.svg)](assets/workshop/hep_framework_atlas_cms_v2.svg)
 
-Los **cilindros representan archivos almacenados** y los **rectángulos, operaciones del análisis**. Las flechas indican el paso de datos y productos. El marco exterior es **Yuca**; el verde destaca entrenamiento y evaluación ATLAS, y el violeta el recorrido CMS desde NanoAOD. Los modelos, métricas y figuras se conservan en la carpeta personal de cada ejecución. Pulsa el esquema para ampliarlo.
-
 ## Datos, infraestructura y software de análisis
 
 <div class="yuca-profile">
