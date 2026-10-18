@@ -73,6 +73,8 @@ output:
 
 Desde la terminal de JupyterLab, en la raíz del repositorio:
 
+El script del benchmark solicita **una GPU, cuatro CPU, 16 GB de memoria y hasta 30 minutos**, con el proyecto `curso07` y la QOS `qoscurso07`. Comprueba que tu cuenta tiene acceso a ese proyecto antes de enviarlo.
+
 ```bash
 JOB_ID=$(sbatch --parsable --output="$HOME/hep-workshop/logs/atlas_%j.out" \
   workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml")
@@ -96,6 +98,15 @@ El visor se actualiza cada segundo con una **barra de épocas**, las pérdidas d
 Si el trabajo aún está en cola o prepara los datos, aparecerá un mensaje de espera. **Ctrl+C cierra solamente el visor**; el trabajo continúa en Slurm. Puedes volver a abrirlo con el mismo comando, incluso cuando la corrida haya terminado. Si abriste una nueva terminal, sustituye `${JOB_ID}` por el número del trabajo que se mostró al enviarlo.
 
 Si el avance se detiene, consulta `squeue -u "$USER"` y el log del trabajo. El visor no determina por sí solo si un trabajo falló. Para ver una sola captura del estado, añade `--once` al comando. [Apoyo operativo](apoyo.md).
+
+### Comprobar el estado del trabajo
+
+```bash
+squeue -u "$USER"
+sacct -j "$JOB_ID" --format=JobID,State,ExitCode,Elapsed -X
+```
+
+En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. Al terminar, `COMPLETED` con código `0:0` indica que finalizó sin error. No envíes otra copia mientras la primera espera. Si necesitas detener esa ejecución, utiliza `scancel "$JOB_ID"`. En una nueva terminal, sustituye `$JOB_ID` por el número recibido al enviar el trabajo.
 
 
 ## 4. Localizar y revisar los resultados

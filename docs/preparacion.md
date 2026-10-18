@@ -223,33 +223,7 @@ misproyectos
 
 En las pruebas del curso se utiliza **`curso07`** y la QOS **`qoscurso07`**. Los scripts ya incluyen esos valores. Si tu cuenta no muestra ese proyecto, revísalo con el docente antes de enviar trabajos; no utilices el proyecto de otra persona.
 
-Para el primer entrenamiento, con el YAML ya preparado en el [laboratorio](laboratorio.md):
-
-```bash
-sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
-```
-
-El script solicita **una GPU, cuatro CPU, 16 GB de memoria y hasta 30 minutos**. No hace falta editar el script para variar la arquitectura de la red.
-
-### Seguimiento de los trabajos
-
-```bash
-squeue -u "$USER"
-```
-
-- **PD:** está esperando recursos.
-- **R:** está ejecutándose.
-- Si desapareció, consulta su registro para verificar si terminó correctamente.
-
-Sustituye `NUMERO_JOB` por el número que devolvió `sbatch`:
-
-```bash
-tail -30 "$HOME/hep-workshop/logs/atlas_NUMERO_JOB.out"
-sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
-```
-
-`COMPLETED` con código `0:0` indica que terminó sin error. No es necesario enviar otra copia mientras la primera espera. Si necesitas cancelar una prueba, usa `scancel NUMERO_JOB` solo para el trabajo que deseas detener.
+El envío del primer trabajo y su seguimiento se realizarán en el [benchmark de ATLAS](laboratorio.md#3-reproducir-el-entrenamiento-de-referencia), después de preparar el YAML. Por ahora, basta con comprobar que tu cuenta tiene acceso al proyecto del curso.
 
 ## Verificación del entorno
 
@@ -257,7 +231,7 @@ sacct -j NUMERO_JOB --format=JobID,State,ExitCode,Elapsed -X
 <li>Puedo entrar a Yuca y abrir una terminal.</li>
 <li>Mi terminal muestra <code>(ml-hep-gpu)</code> y estoy en <code>ML-integration-CMSSW</code>.</li>
 <li>Puedo ver el archivo compartido del challenge.</li>
-<li>Mi cuenta tiene el proyecto del curso y entiendo cómo consultar un trabajo.</li>
+<li>Mi cuenta tiene acceso al proyecto del curso.</li>
 </ul>
 
 [Continuar: entender la física](fisica.md){ .md-button .md-button--primary }
