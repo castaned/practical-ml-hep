@@ -128,7 +128,7 @@ En las siguientes sesiones, utiliza los comandos de **Inicio de una sesión de t
 
 ## 4. Inicio de una sesión de trabajo
 
-Después de abrir una terminal en Yuca, ejecuta:
+**Cada vez que inicies una nueva sesión de JupyterLab y abras la terminal, ejecuta estos comandos.** Repítelos también si abres otra terminal: activan el ambiente de trabajo y te sitúan en el repositorio.
 
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
