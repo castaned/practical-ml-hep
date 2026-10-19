@@ -6,18 +6,22 @@ Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después re
 
 Cada escenario puede asignarse a unas diez personas. Al menos dos estudiantes o parejas ejecutan la referencia y la variación en sus cuentas; los demás apoyan en la revisión de las figuras.
 
+**Mantén las 30 variables de entrada (`all_physics`), los mismos datos y la partición con semilla 16.** Todas las pruebas conservan máximo 40 épocas y paciencia 10. Compara cada variación con tu referencia; no acumules cambios entre escenarios.
+
+Estos contrastes exploran capacidad, optimización y regularización. Una diferencia grande revela sensibilidad en las condiciones de esta prueba; confirma las tendencias con las repeticiones y las curvas de pérdidas.
+
 Selecciona una fila para ver las instrucciones de esa variación. Conserva los demás parámetros y las mismas particiones del benchmark.
 
 <div id="scenario-picker" class="result-table-wrap">
 <table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Elegir</th></tr></thead><tbody>
-<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[512, 256, 128, 64]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="B"><td><strong>B · Más profunda</strong></td><td><code>model.hidden_dims</code></td><td><code>[128, 128, 64, 64, 32, 32, 16, 16]</code></td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Más profunda" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="C"><td><strong>C · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[64, 32, 16, 8]</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="D"><td><strong>D · Anchura uniforme</strong></td><td><code>model.hidden_dims</code></td><td><code>[128, 128, 128, 128]</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Anchura uniforme" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="E"><td><strong>E · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.3</code></td><td><button type="button" class="md-button" data-scenario="E" aria-label="Seleccionar E: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="F"><td><strong>F · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.0003</code></td><td><button type="button" class="md-button" data-scenario="F" aria-label="Seleccionar F: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="G"><td><strong>G · Tamaño de lote</strong></td><td><code>training.batch_size</code></td><td><code>4096 → 8192</code></td><td><button type="button" class="md-button" data-scenario="G" aria-label="Seleccionar G: Tamaño de lote" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="H"><td><strong>H · Duración máxima</strong></td><td><code>training.epochs</code></td><td><code>40 → 100</code></td><td><button type="button" class="md-button" data-scenario="H" aria-label="Seleccionar H: Duración máxima" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[2048, 1024, 512, 256]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="B"><td><strong>B · Más profunda</strong></td><td><code>model.hidden_dims</code></td><td>16 capas de <code>128</code> neuronas</td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Más profunda" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="C"><td><strong>C · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="D"><td><strong>D · Anchura uniforme</strong></td><td><code>model.hidden_dims</code></td><td><code>[512, 512, 512, 512]</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Anchura uniforme" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="E"><td><strong>E · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td><button type="button" class="md-button" data-scenario="E" aria-label="Seleccionar E: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="F"><td><strong>F · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.03</code></td><td><button type="button" class="md-button" data-scenario="F" aria-label="Seleccionar F: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="G"><td><strong>G · Tamaño de lote</strong></td><td><code>training.batch_size</code></td><td><code>4096 → 256</code></td><td><button type="button" class="md-button" data-scenario="G" aria-label="Seleccionar G: Tamaño de lote" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="H"><td><strong>H · Regularización</strong></td><td><code>training.weight_decay</code></td><td><code>0.0001 → 0.1</code></td><td><button type="button" class="md-button" data-scenario="H" aria-label="Seleccionar H: Regularización" aria-pressed="false">Seleccionar</button></td></tr>
 </tbody></table>
 </div>
 
@@ -47,7 +51,7 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 
 ### Explorar las capas de esta variación {#explorar-la-arquitectura-antes-de-modificar-el-yaml}
 
-El dibujo muestra la arquitectura elegida. Mantén dropout en `0.1` para comparar A–D.
+En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El dibujo muestra la arquitectura elegida. Mantén dropout en `0.1` para comparar A–D.
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">
@@ -58,12 +62,12 @@ El dibujo muestra la arquitectura elegida. Mantén dropout en `0.1` para compara
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
 <option value="wide">A · Más ancha · cuatro capas</option>
-<option value="deep">B · Más profunda · ocho capas</option>
-<option value="compact">C · Compacta · cuatro capas</option>
+<option value="deep">B · Más profunda · dieciséis capas</option>
+<option value="compact">C · Compacta · dos capas</option>
 <option value="uniform">D · Uniforme · cuatro capas</option>
 </select>
 <label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>
-<input id="dropout-choice" type="range" min="0" max="0.5" step="0.1" value="0.1">
+<input id="dropout-choice" type="range" min="0" max="0.6" step="0.1" value="0.1">
 <p class="explorer-hint">El aumento del número de parámetros puede modificar el tiempo de entrenamiento y el sobreajuste. Su efecto sobre la clasificación se evaluará con las mismas particiones de datos.</p>
 </div>
 <div class="explorer-result">

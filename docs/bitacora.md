@@ -7,7 +7,7 @@
 <div id="simple-log">
 <label class="md-button">Cargar metrics.json<input id="simple-metrics" type="file" accept=".json,application/json"></label>
 <form class="result-form">
-<label>Variación<select name="variation"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
+<label>Variación<select name="variation"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Regularización</option></select></label>
 <label>AUC · roc_auc_unweighted<input name="auc" type="number" min="0" max="1" step="any" required></label>
 <label>AMS · ams_validation_tuned<input name="ams" type="number" min="0" step="any" required></label>
 <label>Tiempo (s) · fit_seconds<input name="seconds" type="number" min="0" step="any" required></label>
