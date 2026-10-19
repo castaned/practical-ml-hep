@@ -53,7 +53,13 @@ git clone https://github.com/root-project/student-course.git
 
 Si ya clonaste el curso, conserva esa carpeta. Actualiza la página de JupyterLab y abre **student-course → course → notebooks → core**. Comienza con `00-root-intro.ipynb` y después `01-histograms-and-graphs.ipynb`.
 
-Selecciona **Kernel → Change Kernel → Python (ROOT student-course)**. En una celda comprueba:
+Selecciona **Kernel → Change Kernel → Python (ROOT student-course)** y pulsa **Select**, como en la captura. También puedes abrir el selector haciendo clic en el nombre del kernel en la esquina superior derecha del notebook.
+
+![JupyterLab: selección del kernel Python (ROOT student-course) para el notebook de histogramas](assets/root-course/select-root-kernel.png)
+
+Después de seleccionarlo, confirma que **Python (ROOT student-course)** aparece en la esquina superior derecha. Esta elección se hace para cada notebook; activar el ambiente en una terminal no cambia el kernel de los notebooks abiertos. Puedes dejar desmarcada **Always start the preferred kernel** para seguir eligiendo el adecuado al cambiar de curso.
+
+En una celda comprueba:
 
 ```python
 import sys
