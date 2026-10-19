@@ -17,8 +17,8 @@ En estos cuatro escenarios cambia **solo `model.hidden_dims`**. Conserva dropout
 
 #### B · Red más profunda
 
-**YAML:** `atlas_B_capas1024-1024-512-512-256-128-64-32.yaml`
-**Cambio:** usar **`[1024, 1024, 512, 512, 256, 128, 64, 32]`**. Aumentan la profundidad y el número de parámetros; este escenario estudia la arquitectura completa, no aísla el efecto de añadir capas. ¿La mejora compensa el costo y el posible sobreajuste?
+**YAML:** `atlas_B_capas128-128-64-64-32-32-16-16.yaml`
+**Cambio:** `[128, 64, 32, 16]` → **`[128, 128, 64, 64, 32, 32, 16, 16]`**. Duplica cada etapa de la red inicial: pasa de cuatro a ocho capas sin aumentar sus anchuras. También aumenta el número de parámetros, por lo que no es una comparación a capacidad fija. ¿Añadir profundidad mejora la validación y compensa su costo?
 
 #### C · Red compacta
 
@@ -128,7 +128,7 @@ Para los escenarios B–H, sustituye el nombre del ejemplo en **la copia, el edi
 ## 3. Bitácora y entrega
 
 1. Abre la [bitácora de resultados](bitacora.md), selecciona la variación y carga el `metrics.json` de la corrida.
-2. Comprueba los cinco indicadores y descarga su **registro CSV**. Registra también el benchmark como **Referencia** en otro CSV.
+2. Comprueba los seis indicadores y descarga su **registro CSV**. Registra también el benchmark como **Referencia** en otro CSV.
 3. El responsable sube los CSV a **`/lustre/cursos/curso07/variaciones/`**. En Open OnDemand, abre **Files → Curso: curso07 → variaciones → Upload** y selecciona los archivos descargados.
 
 [Registrar indicadores](bitacora.md){ .md-button .md-button--primary }
@@ -141,13 +141,13 @@ El instructor descarga los CSV de **`/lustre/cursos/curso07/variaciones/`** y lo
 <label class="md-button">Reunir registros CSV<input id="simple-import" type="file" accept=".csv,text/csv" multiple></label>
 <button id="simple-clear" class="md-button" type="button">Vaciar resumen</button>
 <p id="simple-summary-status" role="status">Selecciona los CSV para mostrar la comparación.</p>
-<div class="result-table-wrap"><table><thead><tr><th>Variación</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Épocas</th><th>Mejor época</th><th>Registro</th></tr></thead><tbody></tbody></table></div>
+<div class="result-table-wrap"><table><thead><tr><th>Variación</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Parámetros</th><th>Épocas</th><th>Mejor época</th><th>Registro</th></tr></thead><tbody></tbody></table></div>
 </div>
 
 ### Discusión de la tabla
 
 - ¿Qué variaciones mejoran AUC y AMS respecto a la referencia?
-- ¿La mejora compensa el tiempo de entrenamiento?
+- ¿La mejora compensa el tiempo y el número de parámetros?
 - ¿Las repeticiones de la misma variación dan resultados parecidos?
 - ¿Las curvas de pérdidas muestran sobreajuste?
 
