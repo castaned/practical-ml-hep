@@ -4,16 +4,7 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 ## 1. Primer acceso: antes de Open OnDemand
 
-### Consulta tu cuenta
-
-<div id="account-lookup">
-<form method="post" target="account-response">
-<label>Nombre y apellido<input type="text" name="name" required minlength="3" maxlength="160" autocomplete="name" placeholder="Escribe tu nombre y apellido"></label>
-<button type="submit" class="md-button md-button--primary" disabled>Consultar cuenta</button>
-</form>
-<p role="status" aria-live="polite">Preparando consulta…</p>
-<iframe name="account-response" title="Cuenta asignada de Yuca" hidden style="width:100%;height:190px;border:0" referrerpolicy="no-referrer"></iframe>
-</div>
+[Consultar cuenta asignada](https://docs.google.com/spreadsheets/d/1Bg-fwwj3Lxm3iRCQGzOcIHAbl4OHoVv12B9ttB509-Q/preview){ .md-button .md-button--primary target="_blank" rel="noopener" }
 
 La primera conexión se hace por **SSH desde tu computadora**. En ella se prepara tu directorio personal y se activa la doble verificación de la cuenta. Completa esta etapa antes de entrar a Open OnDemand.
 
