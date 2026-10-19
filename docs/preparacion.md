@@ -94,15 +94,9 @@ Mantén abierta esta terminal para ejecutar los comandos de las siguientes secci
 
 ## 3. Clonación y preparación del entorno de análisis
 
-El repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev) contiene el núcleo de los procesos y los scripts de Python de los dos ejercicios. Se clonará en la cuenta personal de Yuca. El repositorio de esta página contiene el material del curso.
+**Realiza estos pasos una sola vez en tu cuenta de Yuca:** clonar el repositorio e instalar el ambiente de entrenamiento. En las sesiones posteriores basta con [activar el ambiente y entrar al repositorio](#4-inicio-de-una-sesion-de-trabajo).
 
-| Ubicación | Contenido y uso |
-| --- | --- |
-| `$HOME/ML-integration-CMSSW` | Código de procesamiento, entrenamiento y scripts de ejecución |
-| `$HOME/hep-workshop/configs` | Copias personales de los YAML que se editarán durante los ejercicios |
-| Carpeta indicada en el YAML de cada proceso | Productos del análisis: datos procesados, figuras, métricas y modelos, según el paso ejecutado |
-
-Para realizar una variación, copiar el YAML, editar los parámetros indicados y asignar una carpeta de salida nueva. Ejecutar después el comando correspondiente desde el repositorio principal. Los scripts de Python se conservan sin modificaciones durante los ejercicios.
+El código de procesamiento y entrenamiento está en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev).
 
 ### Clonación del repositorio · solo la primera vez {#clonar-repositorio}
 
