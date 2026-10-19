@@ -31,13 +31,16 @@ conda activate ml-open-data
 module load root/6.24.08
 export PYTHONPATH="$(root-config --libdir):${PYTHONPATH:-}"
 cd "$HOME/ML-integration-CMSSW"
+export PYTHONPATH="$PWD:${PYTHONPATH:-}"
 git pull --ff-only origin opendata_dev
 export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
 export SBATCH_QOS=qoscurso07
-python -c "import ROOT, uproot, h5py, torch, onnx, yaml; print('Ambiente CMS disponible')"
+python -c "import ROOT, uproot, h5py, torch, onnx, yaml; from mini_nanotools import PostProcessor, Module, Collection; print('Ambiente CMS disponible')"
 ```
 
 CMS utiliza **`ml-open-data`** y el **módulo ROOT instalado en Yuca**, necesario para seleccionar los NanoAOD desde Python. Es un ambiente distinto al utilizado para ATLAS. Activa el ambiente, carga el módulo y exporta `PYTHONPATH` en cada nueva terminal, antes de comprobar las dependencias y enviar los trabajos. Slurm hereda estas variables al enviar el array.
+
+**`mini_nanotools` también forma parte de este flujo.** Es el paquete incluido en la raíz del repositorio que proporciona `PostProcessor`, `Module` y `Collection` a `filterNanoAOD.py`. Utiliza PyROOT para recorrer los eventos y escribir los ROOT seleccionados. El `PYTHONPATH` anterior permite encontrar tanto ROOT como este paquete; el ejecutor de Slurm también añade la raíz del repositorio antes de lanzar el filtro.
 
 ??? info "Solo si todavía no tienes el ambiente CMS"
 
