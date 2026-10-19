@@ -52,18 +52,19 @@ extra_javascript:
 nav:
   - Introducción: index.md
   - Preparación: preparacion.md
-  - Cambiar de taller / ambiente: ambientes.md
-  - ATLAS:
-      - Introducción: atlas.md
-      - Procesos y variables: fisica.md
-      - Benchmark: laboratorio.md
-      - Variaciones y resultados: variaciones.md
-      - Conclusiones: conclusiones.md
-  - CMS:
-      - Introducción: autoencoder.md
-      - Física y objetivo: cms-fisica.md
-      - Procesamiento NanoAOD: cms-procesamiento.md
-      - Autoencoder y benchmark: cms-autoencoder.md
-      - Interpretación y perspectivas: cms-resultados.md
-  - Curso ROOT en Yuca: curso-root.md
+  - Taller Machine learning:
+      - ATLAS:
+          - Introducción: atlas.md
+          - Procesos y variables: fisica.md
+          - Benchmark: laboratorio.md
+          - Variaciones y resultados: variaciones.md
+          - Conclusiones: conclusiones.md
+      - CMS:
+          - Introducción: autoencoder.md
+          - Física y objetivo: cms-fisica.md
+          - Procesamiento NanoAOD: cms-procesamiento.md
+          - Autoencoder y benchmark: cms-autoencoder.md
+          - Interpretación y perspectivas: cms-resultados.md
+  - Taller de ROOT: curso-root.md
+  - Cambiar de taller: ambientes.md
   - Recursos y contacto: recursos.md

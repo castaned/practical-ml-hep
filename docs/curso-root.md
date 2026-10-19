@@ -1,4 +1,4 @@
-# Curso de ROOT en Yuca
+# Taller de ROOT en Yuca
 
 Ejecutaremos los notebooks del [curso de ROOT para estudiantes](https://github.com/root-project/student-course) con **ROOT 6.36 y Python 3.11**, en un ambiente independiente del taller de machine learning. En Yuca ya se probaron ROOT 6.36.14, el kernel y el comando `rootls`.
 
@@ -47,7 +47,7 @@ Conserva la estructura de carpetas: los notebooks buscan los datos mediante ruta
 
 ## 2. Iniciar una sesión o cambiar de taller
 
-Abre [Elegir taller y cambiar de ambiente](ambientes.md), selecciona la pestaña **Curso de ROOT** y ejecuta su bloque en la terminal. Usa esa misma página para volver a **Machine learning · ATLAS** o **Machine learning · CMS**.
+Abre [Cambiar de taller](ambientes.md), selecciona la pestaña **ROOT** y ejecuta su bloque en la terminal. Usa esa misma página para volver a **ATLAS** o **CMS**.
 
 **En este curso usamos el ROOT del ambiente Conda; no cargues el módulo `root/6.24.08` de CMS.** Activar el ambiente en una terminal no cambia el kernel de los notebooks.
 
@@ -61,4 +61,4 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT student-
 
 Con el kernel **Python (ROOT student-course)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
-[Elegir taller y cambiar de ambiente](ambientes.md){ .md-button .md-button--primary }
+[Cambiar de taller](ambientes.md){ .md-button .md-button--primary }
