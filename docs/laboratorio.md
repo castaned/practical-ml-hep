@@ -42,8 +42,8 @@ Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se trans
 | Optimizador | AdamW |
 | Tasa de aprendizaje | `0.001` |
 | Tamaño de lote | `4096` eventos |
-| Máximo de épocas | `20` |
-| Parada temprana | `6` épocas sin mejora de la pérdida de validación |
+| Máximo de épocas | `40` |
+| Parada temprana | `10` épocas sin mejora de la pérdida de validación |
 | Entrenamiento / validación | 200 000 / 50 000 eventos, de la partición `t` |
 
 Los valores ausentes se sustituyen por medianas y las variables se estandarizan. Ambas transformaciones se ajustan únicamente con los eventos de entrenamiento. El modelo conservado es el de menor pérdida de validación.
@@ -63,6 +63,8 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
     ```
 
     Si falta configurar el ambiente, completar la [preparación inicial](preparacion.md#3-clonacion-y-preparacion-del-entorno-de-analisis). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
+
+Si ya tenías una copia personal del YAML, actualiza `training.epochs` a `40` y `training.patience` a `10`; `cp -n` conserva los archivos existentes.
 
 ### Abrir y revisar el YAML en JupyterLab
 
@@ -140,7 +142,9 @@ En el explorador de archivos de JupyterLab, abrir **hep-workshop → results →
 
 ### Comparar con el benchmark antes de variar {#comparar-benchmark}
 
-La primera ejecución reproduce la configuración común. Comparar los valores de `metrics.json` con la corrida de referencia realizada en Yuca:
+La configuración actual permite hasta **40 épocas**, con parada tras **10 épocas sin mejora**. Registra sus resultados en `metrics.json`.
+
+Las mediciones siguientes corresponden a la configuración anterior de **20 épocas y paciencia 6**; se conservan como antecedente, no como resultados del benchmark actualizado:
 
 | Magnitud | Referencia GPU MI210 | Tu ejecución |
 | --- | ---: | --- |
@@ -157,7 +161,7 @@ Para la misma red en CPU, con cuatro hilos, se midieron **AUC 0.91048**, **AMS i
 
 El número de entradas, los conteos y la semilla deben coincidir con esta configuración. AUC, AMS y tiempos son mediciones de una corrida: pequeñas diferencias numéricas o de rendimiento no implican un fallo. Si la separación difiere claramente, revisar el YAML, las particiones y las curvas antes de pasar a las variaciones. No se ha establecido una tolerancia numérica a partir de repeticiones.
 
-Esta es la referencia reproducible del ejercicio; las puntuaciones históricas del challenge se utilizan posteriormente como contexto. Nuestra AMS corresponde a validación interna, no a la evaluación privada del concurso.
+Compara las variaciones con tu nueva ejecución de referencia de 40 épocas máximas y paciencia 10. Las puntuaciones históricas del challenge sirven como contexto. Nuestra AMS corresponde a validación interna, no a la evaluación privada del concurso.
 
 
 Abrir `training_summary.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
