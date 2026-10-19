@@ -51,7 +51,7 @@ extra_javascript:
   - javascripts/simple-records.js?v=3
 nav:
   - Introducción: index.md
-  - Preparación: preparacion.md
+  - Activación de cuenta (Yuca): preparacion.md
   - Taller Machine learning:
       - ATLAS:
           - Introducción: atlas.md
