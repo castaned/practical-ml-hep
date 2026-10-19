@@ -97,14 +97,19 @@ Después de enviar el trabajo, ejecuta en la misma terminal:
 ```bash
 python workshop/monitor_atlas.py \
   -f "$HOME/hep-workshop/configs/atlas_baseline01.yaml" \
+  --job-id "$JOB_ID" \
   --log "$HOME/hep-workshop/logs/atlas_${JOB_ID}.out"
 ```
 
-El visor se actualiza cada segundo con una **barra de épocas**, las pérdidas de entrenamiento y validación, el AUC de validación y dos trazas de la evolución de las pérdidas. Lee los valores reales del log; no ejecuta otro entrenamiento ni solicita otra GPU. El máximo de épocas se toma del YAML.
+El visor muestra el **estado de Slurm**, una **barra de épocas**, las pérdidas y el AUC de validación. La gráfica de la terminal compara las pérdidas en una misma escala: **T** para entrenamiento y **V** para validación. Se actualiza con los valores reales de cada época completada.
+
+Antes de la primera época, indica si el trabajo está en cola o activo y muestra las últimas líneas del log. Si el trabajo falla, muestra el estado y el registro para identificar el problema.
 
 **Qué observar:** ¿disminuyen ambas pérdidas? ¿La validación deja de mejorar mientras entrenamiento sigue bajando? Al finalizar, el visor muestra la época del modelo conservado y la AMS interna. La parada temprana puede terminar antes de que la barra alcance el máximo.
 
 Si el trabajo aún está en cola o prepara los datos, aparecerá un mensaje de espera. **Ctrl+C cierra solamente el visor**; el trabajo continúa en Slurm. Puedes volver a abrirlo con el mismo comando, incluso cuando la corrida haya terminado. Si abriste una nueva terminal, sustituye `${JOB_ID}` por el número del trabajo que se mostró al enviarlo.
+
+Si vuelve a aparecer el prompt de la terminal, el visor ya no está actualizándose: vuelve a ejecutar el comando sin `--once`. Si tu copia solo muestra el mensaje de espera antiguo, actualiza primero el repositorio con `git pull --ff-only origin opendata_dev`.
 
 Si el avance se detiene, consulta `squeue -u "$USER"` y el log del trabajo. El visor no determina por sí solo si un trabajo falló. Para ver una sola captura del estado, añade `--once` al comando. [Apoyo operativo](apoyo.md).
 
