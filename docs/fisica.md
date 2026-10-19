@@ -121,26 +121,7 @@ Las variables compuestas relacionan los objetos del evento. La masa MMC estima l
 
 La red utilizará las treinta variables para distinguir la señal de los procesos de fondo. En el siguiente ejercicio se reproducirá una configuración de referencia, se identificarán los archivos de resultados y, después, se estudiarán modificaciones del modelo.
 
-## ¿Ya se observó H → ττ en el LHC?
-
-**Sí. El objetivo actual incluye medir sus propiedades con más precisión.** El challenge de 2014 permite practicar cómo separar una señal difícil; no significa que el canal siga sin observarse.
-
-| Hito | Resultado |
-| --- | --- |
-| CMS, anunciado en 2017 | Observación de H → ττ por un experimento, 5.9 desviaciones estándar al combinar datos de 7, 8 y 13 TeV |
-| ATLAS, 2018 | Observación con 6.4 desviaciones estándar al combinar esas energías |
-| ATLAS, publicación de 2022 | Medición de la tasa de producción en este canal con los datos completos de Run 2 |
-| ATLAS, publicación de 2025 | Mediciones diferenciales: cómo cambia la producción según las propiedades cinemáticas |
-
-Fuentes: [CMS HIG-16-043](https://cms-results.web.cern.ch/cms-results/public-results/publications/HIG-16-043/index.html), [observación ATLAS](https://atlas.cern/updates/briefing/higgs-couples-heaviest-lepton) y [mediciones diferenciales ATLAS](https://arxiv.org/abs/2407.16320).
-
-Como ejemplo numérico, ATLAS midió en colisiones a **13 TeV**, usando **139 fb⁻¹**, el producto de sección eficaz de producción por probabilidad de decaimiento a ττ, para **|yH| < 2.5**:
-
-**σ × B(H → ττ) = 2.94 ± 0.21 (estadística) +0.37/−0.32 (sistemática) pb.**
-
-La predicción del Modelo Estándar para esa definición es **3.17 ± 0.09 pb**; son compatibles dentro de las incertidumbres. Es una medición publicada, no un número obtenido en nuestro taller ni necesariamente la medición más reciente. [ATLAS, JHEP 08 (2022) 175](https://arxiv.org/abs/2201.08269).
-
-**Para interpretar el ejercicio:** una mejor selección puede ayudar a observar una señal, pero también a medirla mejor una vez observada. Nuestra AMS es un indicador de selección en simulación; no es la significancia observada del experimento ni una sección eficaz.
+El canal **H → ττ ya fue observado en el LHC**. Una mejor separación entre señal y fondo puede ayudar a reducir las incertidumbres en la medición de su sección eficaz. [ATLAS](https://atlas.cern/updates/briefing/higgs-couples-heaviest-lepton).
 
 ## Siguiente paso
 
