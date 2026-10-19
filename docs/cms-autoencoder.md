@@ -16,43 +16,43 @@ El **codificador** reduce las entradas a dos coordenadas latentes. El **decodifi
 
 El error se calcula sobre las variables escaladas. Una reconstrucción muy distinta del evento de entrada genera un MSE alto. Por eso el escalado, la composición del entrenamiento y el tamaño del espacio latente influyen en la respuesta.
 
-## Preparar la ejecución y su carpeta de resultados
+## 1. Abrir el YAML de entrenamiento
 
-Partimos del **YAML CMS de diez variables**, con las rutas de los HDF5 obtenidos en el [procesamiento NanoAOD](cms-procesamiento.md). Guarda tu copia personal como **`hep-workshop/configs/cms_autoencoder_baseline.yaml`**. El YAML debe conservar todas las secciones de datos, modelo y detección de anomalías; el fragmento siguiente no es una configuración completa.
+Completa primero los [cinco pasos del procesamiento NanoAOD](cms-procesamiento.md). Ya tendrás los HDF5 validados y tu YAML **`hep-workshop/configs/cms_autoencoder_baseline01.yaml`**; no necesitas crear otra configuración desde cero.
 
-En esa copia, comprueba los campos que identifican la corrida y su destino:
+En el explorador izquierdo de JupyterLab abre **hep-workshop → configs → cms_autoencoder_baseline01.yaml**. Revisa:
 
-```yaml
-data:
-  output_path: $HOME/hep-workshop/results/cms_autoencoder_baseline01
+| Sección | Configuración de esta reproducción |
+| --- | --- |
+| `data.normal_input_paths` | Tus HDF5 de DYJets, WZ y ZZ: muestras SM utilizadas para aprender, validar y probar |
+| `data.anomaly_input_paths` | Tus HDF5 Wprime: evaluación posterior, sin entrenar con ellos |
+| `data.features` | Las diez variables físicas del ejercicio; no incluye `Dataset_ID` |
+| `data.output_path` | Tu carpeta **hep-workshop/results/cms_autoencoder_baseline01** |
+| `model` | Nombre `cms_autoencoder`, capas `[16, 8]`, espacio latente `2`, máximo `60` épocas, lote `256`, aprendizaje `0.001` y paciencia `8` |
+| `anomaly_detection` | Validación SM `0.2`, prueba SM `0.2`, percentil `0.99` y semilla `16` |
 
-model:
-  name: cms_autoencoder
-```
+Conserva los valores de la configuración inicial y guarda con **Ctrl+S**. El YAML completo utiliza rutas absolutas generadas para tu cuenta. No copies las rutas personales de otro estudiante.
 
-**`data.output_path` es la carpeta donde se guardarán los resultados.** `model.name` determina el nombre que acompaña a las figuras, métricas y modelo. Conserva los demás campos del YAML de referencia. Guarda el archivo antes de enviar el entrenamiento.
+## 2. Enviar el entrenamiento
 
-En JupyterLab, la salida de este ejemplo aparecerá en **hep-workshop → results → cms_autoencoder_baseline01**, dentro de tu cuenta. Los datos de entrada compartidos no se modifican.
-
-## Enviar el entrenamiento
-
-Desde la terminal de JupyterLab, con el ambiente CMS `ml-open-data` disponible:
+En la terminal de JupyterLab, activa el mismo ambiente CMS y envía el entrenamiento:
 
 ```bash
+source /apps/miniconda3/etc/profile.d/conda.sh
+conda activate ml-open-data
 cd "$HOME/ML-integration-CMSSW"
-git pull --ff-only origin opendata_dev
 mkdir -p "$HOME/hep-workshop/logs"
 export WORKSHOP_CONDA_ENV=ml-open-data
 JOB_ID=$(sbatch --parsable --account=curso07 --qos=qoscurso07 \
   --output="$HOME/hep-workshop/logs/cms_ae_%j.out" \
   workshop/run_cpu.slurm autoencoder \
-  "$HOME/hep-workshop/configs/cms_autoencoder_baseline.yaml")
+  "$HOME/hep-workshop/configs/cms_autoencoder_baseline01.yaml")
 echo "Trabajo enviado: $JOB_ID"
 ```
 
 Esta red pequeña se ejecuta en CPU. El comando utiliza el YAML CMS indicado y no depende de la configuración del clasificador ATLAS ni de una asignación previa de grupos.
 
-## Consultar el avance
+## 3. Monitorear el entrenamiento
 
 Para ver si el trabajo está pendiente o ejecutándose:
 
@@ -78,7 +78,7 @@ sacct -j "$JOB_ID" --format=JobID,State,ExitCode
 
 Que desaparezca de `squeue` no garantiza que terminó correctamente. Revisa `COMPLETED`, el código de salida y los archivos de resultados. Si falla, el mismo log contiene los mensajes de error.
 
-## Abrir los resultados
+## 4. Abrir e interpretar los resultados
 
 Al terminar, abre **hep-workshop → results → cms_autoencoder_baseline01** en el explorador de JupyterLab. Con `model.name: cms_autoencoder`, los archivos principales son:
 
@@ -87,10 +87,33 @@ Al terminar, abre **hep-workshop → results → cms_autoencoder_baseline01** en
 | `workshop_config.yaml` | Copia de la configuración utilizada |
 | `best_model_cms_autoencoder.pth` | Modelo conservado por su menor pérdida de validación |
 | `loss_cms_autoencoder.pdf` | Pérdidas SM de entrenamiento y validación |
+| `validation_events_cms_autoencoder.pdf` | Error por evento en validación SM y evaluación W′, con eventos separados por el umbral |
 | `scores_by_process_cms_autoencoder.pdf` | Error de reconstrucción por proceso y umbral |
 | `ROC_cms_autoencoder.pdf` | Separación entre SM y la muestra W′ de evaluación |
 | `metrics_cms_autoencoder.json` | Conteos, umbral, AUC y eficiencias |
 | `scores_cms_autoencoder.csv` | Errores por evento y selección respecto al umbral |
+
+### Pérdidas: ¿la red aprende a reconstruir eventos SM?
+
+Abre **`loss_cms_autoencoder.pdf`**. El eje horizontal muestra las épocas y el vertical el error de reconstrucción. Compara entrenamiento y validación **SM**: si entrenamiento mejora mientras validación empeora, puede haber sobreajuste. Se conserva el modelo con menor pérdida de validación.
+
+### Error por evento y umbral: ¿qué selecciona el autoencoder?
+
+Abre primero **`validation_events_cms_autoencoder.pdf`**: es la gráfica de **error de reconstrucción frente al índice del evento**. Tiene un panel por proceso SM de validación y otro para W′ de evaluación. La línea horizontal muestra el mismo umbral en todos los paneles; los puntos **azules** quedan por debajo y los **rojos** alcanzan o superan el umbral.
+
+El índice horizontal solo ordena los eventos dentro de cada muestra: no es tiempo ni una variable física. Observa cuántos eventos SM se seleccionan y qué fracción de W′ produce un error alto. Si hay más de 4000 puntos azules por panel, se muestra una submuestra para facilitar la lectura; se conservan todos los puntos rojos y las fracciones se calculan con todos los eventos.
+
+Abre **`scores_by_process_cms_autoencoder.pdf`**. Muestra las distribuciones del error de reconstrucción (MSE) para cada proceso SM y la muestra W′. La línea de umbral se fija con el **percentil 99 de la validación SM**, antes de evaluar W′. Los eventos con MSE igual o superior al umbral son los seleccionados como anómalos.
+
+Compara cuánto SM y cuánto W′ quedan por encima del corte. Un evento seleccionado no queda identificado automáticamente como nueva física: el umbral conserva también una fracción de eventos SM. El 1 % se fija en validación con balance por proceso; no obliga a obtener exactamente 1 % en el conteo conjunto de prueba.
+
+### ROC: ¿cómo cambia la selección al mover el umbral?
+
+Abre **`ROC_cms_autoencoder.pdf`**. Compara la eficiencia W′ frente a la aceptación SM al recorrer distintos umbrales de MSE. La AUC resume esa separación. La ROC utiliza W′ como muestra de evaluación; sus eventos no ajustan la red ni el umbral de referencia.
+
+### Indicadores numéricos
+
+En **`metrics_cms_autoencoder.json`**, revisa `threshold`, `roc_auc`, `signal_test_tpr` (eficiencia W′), `normal_test_fpr` (aceptación SM conjunta) y `balanced_normal_test_fpr` (aceptación SM balanceada por proceso), junto con los conteos de eventos. Las métricas, las curvas y el YAML deben corresponder a la misma carpeta de resultados.
 
 También puedes consultar las métricas desde la terminal:
 
