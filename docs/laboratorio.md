@@ -64,7 +64,9 @@ output:
   directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
 ```
 
-Desde la terminal de JupyterLab, en la raíz del repositorio:
+### Enviar el benchmark
+
+Guarda el YAML con **Ctrl+S**. En la terminal de JupyterLab, desde la raíz del repositorio, envía el trabajo:
 
 El script del benchmark solicita **una GPU, cuatro CPU, 16 GB de memoria y hasta 30 minutos**, con el proyecto `curso07` y la QOS `qoscurso07`. Comprueba que tu cuenta tiene acceso a ese proyecto antes de enviarlo.
 
@@ -89,13 +91,22 @@ El visor muestra el **estado de Slurm**, una **barra de épocas**, las pérdidas
 
 Antes de la primera época, indica si el trabajo está en cola o activo y muestra las últimas líneas del log. Si el trabajo falla, muestra el estado y el registro para identificar el problema.
 
+Al comenzar, verás un mensaje como este:
+
+```text
+Slurm: EN EJECUCIÓN | amdgpu-hpc-01
+[------------------------------] Sin épocas registradas / máximo 40
+Trabajo activo; aún no se ha completado la primera época.
+Resultados: /lustre/home/TU_USUARIO/hep-workshop/results/atlas_gpu_baseline01/run_0001
+```
+
+Deja el visor abierto: después de la primera época aparecerán las pérdidas, el AUC y la gráfica. **Resultados** indica la carpeta de esta ejecución.
+
 **Qué observar:** ¿disminuyen ambas pérdidas? ¿La validación deja de mejorar mientras entrenamiento sigue bajando? Al finalizar, el visor muestra la época del modelo conservado y la AMS interna. La parada temprana puede terminar antes de que la barra alcance el máximo.
 
 Si el trabajo aún está en cola o prepara los datos, aparecerá un mensaje de espera. **Ctrl+C cierra solamente el visor**; el trabajo continúa en Slurm. Puedes volver a abrirlo con el mismo comando, incluso cuando la corrida haya terminado. Si abriste una nueva terminal, sustituye `${JOB_ID}` por el número del trabajo que se mostró al enviarlo.
 
-Si vuelve a aparecer el prompt de la terminal, el visor ya no está actualizándose: vuelve a ejecutar el comando sin `--once`. Si tu copia solo muestra el mensaje de espera antiguo, actualiza primero el repositorio con `git pull --ff-only origin opendata_dev`.
-
-Si el avance se detiene, consulta `squeue -u "$USER"` y el log del trabajo. El visor no determina por sí solo si un trabajo falló. Para ver una sola captura del estado, añade `--once` al comando. [Apoyo operativo](apoyo.md).
+Si el visor se cierra sin mostrar resultados finales o el avance se detiene, comprueba el estado con los comandos siguientes y revisa el log. Para consultar una sola captura del visor, añade `--once`. [Apoyo operativo](apoyo.md).
 
 ### Comprobar el estado del trabajo
 
@@ -110,6 +121,8 @@ En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. A
 ## 4. Localizar y revisar los resultados
 
 En el explorador de archivos de JupyterLab, abrir **hep-workshop → results → atlas_gpu_baseline01 → run_0001** (o el número de la ejecución). El visor y el log muestran la ruta exacta. Dentro encontrarás una copia del YAML y los resultados de esa corrida.
+
+Para repetir el benchmark, envía de nuevo el mismo YAML: se creará `run_0002`, después `run_0003`, y así sucesivamente. **No cambies ni borres las carpetas anteriores.** Identifica la corrida por la ruta que muestra el visor.
 
 | Archivo | Contenido y uso |
 | --- | --- |
