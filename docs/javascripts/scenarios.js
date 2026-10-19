@@ -12,6 +12,7 @@
   function instructions(key){
     const s=scenarios[key];if(!s)throw Error('Variación desconocida');
     return {...s,copy:`cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/${s.file}"`,
+      monitor:`python workshop/monitor_atlas.py \\\n  -f "$HOME/hep-workshop/configs/${s.file}" \\\n  --job-id "$JOB_ID" \\\n  --log "$HOME/hep-workshop/logs/atlas_\${JOB_ID}.out"`,
       yaml:`${s.block}:\n  ${s.field}: ${s.value}`,
       submit:`cd "$HOME/ML-integration-CMSSW"\nJOB_ID=$(sbatch --parsable --output="$HOME/hep-workshop/logs/atlas_%j.out" \\\n  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/${s.file}")\necho "Trabajo enviado: $JOB_ID"`};
   }
@@ -25,7 +26,7 @@
     document.getElementById('scenario-empty').hidden=true;
     document.getElementById('scenario-detail').hidden=false;
     set('scenario-title',s.label);set('scenario-question',s.question);set('scenario-copy',s.copy);
-    set('scenario-path',`hep-workshop → configs → ${s.file}`);set('scenario-yaml',s.yaml);set('scenario-submit',s.submit);set('scenario-log-label',s.label);
+    set('scenario-path',`hep-workshop → configs → ${s.file}`);set('scenario-yaml',s.yaml);set('scenario-submit',s.submit);set('scenario-monitor',s.monitor);set('scenario-log-label',s.label);
     const network=document.getElementById('scenario-network');network.hidden=!s.network;
     if(s.network){const select=document.getElementById('network-choice');select.value=s.network;document.getElementById('dropout-choice').value='0.1';select.dispatchEvent(new Event('change'));}
   }));

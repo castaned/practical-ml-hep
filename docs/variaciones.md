@@ -36,7 +36,10 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 <p><strong>3. Guarda con Ctrl+S y envía el trabajo:</strong></p>
 <pre><code id="scenario-submit" class="language-bash"></code></pre>
 <p>La salida se crea en una nueva carpeta <code>run_XXXX</code>; no necesitas cambiar <code>output.directory</code>.</p>
-<p><strong>4. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y carga su <code>metrics.json</code> en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
+<p><strong>4. Monitorea el entrenamiento</strong> en la misma terminal, usando el <code>JOB_ID</code> del trabajo que acabas de enviar:</p>
+<pre><code id="scenario-monitor" class="language-bash"></code></pre>
+<p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
+<p><strong>5. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y carga su <code>metrics.json</code> en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
 </div>
 </div>
 
