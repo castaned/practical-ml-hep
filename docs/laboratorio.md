@@ -118,137 +118,58 @@ sacct -j "$JOB_ID" --format=JobID,State,ExitCode,Elapsed -X
 En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. Al terminar, `COMPLETED` con código `0:0` indica que finalizó sin error. No envíes otra copia mientras la primera espera. Si necesitas detener esa ejecución, utiliza `scancel "$JOB_ID"`. En una nueva terminal, sustituye `$JOB_ID` por el número recibido al enviar el trabajo.
 
 
-## 4. Localizar y revisar los resultados
+## 4. Revisar los resultados del entrenamiento
 
-En el explorador de archivos de JupyterLab, abrir **hep-workshop → results → atlas_gpu_baseline01 → run_0001** (o el número de la ejecución). El visor y el log muestran la ruta exacta. Dentro encontrarás una copia del YAML y los resultados de esa corrida.
+En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → run_0001**. Abre las tres figuras y `metrics.json`.
 
-Para repetir el benchmark, envía de nuevo el mismo YAML: se creará `run_0002`, después `run_0003`, y así sucesivamente. **No cambies ni borres las carpetas anteriores.** Identifica la corrida por la ruta que muestra el visor.
+### Pérdidas y aprendizaje
 
-| Archivo | Contenido y uso |
+En **`training_loss.png`**, observa las dos curvas:
+
+- **Pérdida de entrenamiento:** el error que la red intenta reducir al aprender.
+- **Pérdida de validación:** el error sobre eventos que no se utilizan para ajustar sus parámetros. Es la curva que usamos para elegir el modelo.
+- **Mejor época (`best_epoch`):** la época con menor pérdida de validación; su modelo queda guardado. **Épocas ejecutadas (`epochs_run`)** indica cuántas se completaron en total.
+
+Si la pérdida de entrenamiento baja pero la de validación sube, puede haber **sobreajuste**. El máximo es 40 épocas; tras 10 sin mejora de validación, el entrenamiento se detiene.
+
+### Separación entre señal y fondo {#leer-una-roc-como-fisico}
+
+En **`classifier_scores.png`**, la puntuación va de 0 a 1: los valores altos favorecen señal. Observa cuánto se solapan las distribuciones de Higgs y fondo. Al exigir una puntuación mínima, seleccionas parte de ambas muestras.
+
+En **`roc_curve.png`**, cada punto corresponde a un umbral distinto. El eje horizontal muestra la fracción de fondo aceptado y el vertical la fracción de señal conservada. Una curva más arriba conserva más señal para el mismo fondo; una más a la izquierda acepta menos fondo para la misma señal.
+
+### Indicadores que debes registrar {#comparar-benchmark}
+
+Los siguientes valores están en **`metrics.json`**:
+
+| Indicador · campo del archivo | Qué significa y cómo compararlo |
 | --- | --- |
-| `config.yaml` | Configuración utilizada en esta ejecución |
-| `training_loss.png` | Pérdidas de entrenamiento y validación por época |
-| `roc_curve.png` | Curva ROC y AUC de validación |
-| `classifier_scores.png` | Puntuación del clasificador para señal y fondo |
-| `metrics.json` | AUC, AMS interna, tiempo, mejor época y épocas ejecutadas |
-| `history.csv` | Evolución del entrenamiento por época |
-| `best_model.pt` | Modelo conservado según la pérdida de validación |
-| `validation_scores.csv` | Puntuaciones de los eventos de validación |
-| `splits.csv` | Identificación de los eventos de cada partición |
-| `preprocessing.joblib` | Transformaciones aplicadas a las variables |
+| **AUC** · `roc_auc_unweighted` | Resume la separación en toda la ROC: 0.5 corresponde a una clasificación aleatoria y 1 a una separación perfecta. Un valor mayor indica mejor separación global, pero no garantiza mejor selección en la región de bajo fondo. |
+| **AMS interna** · `ams_validation_tuned` | Sensibilidad aproximada de una selección, calculada con los rendimientos ponderados de señal y fondo. Mayor es mejor bajo las mismas condiciones de evaluación. No es una significancia observada. |
+| **Umbral** · `threshold` | Puntuación mínima elegida para maximizar la AMS en validación. Determina qué eventos se aceptan; un umbral mayor no implica por sí solo una mejora. |
+| **Eficiencia de señal** · `signal_efficiency` | Fracción de eventos de señal que supera ese umbral. Multiplica por 100 para expresarla como porcentaje. |
+| **Aceptación de fondo** · `background_acceptance` | Fracción de eventos de fondo que supera el mismo umbral. Busca reducirla conservando señal. Estas dos fracciones son conteos sin pesos; la AMS sí utiliza pesos. |
+| **Mejor época / épocas ejecutadas** · `best_epoch` / `epochs_run` | Cuándo se obtuvo el modelo conservado y cuánto duró el aprendizaje. Más épocas no garantizan mejor validación. |
+| **Tiempo de entrenamiento** · `fit_seconds` | Segundos del entrenamiento, sin incluir la espera en cola. Permite valorar el costo de una mejora y comparar CPU/GPU con la misma configuración. |
 
-Las tres figuras se guardan por separado en **PNG, PDF y SVG**. Para regenerarlas a partir de una corrida anterior, sin volver a entrenar:
+### Qué significa una mejora {#interpretar-ams}
+
+**AUC y AMS responden a preguntas distintas:** la AUC resume todos los umbrales; la AMS evalúa una selección concreta y sus rendimientos ponderados. Por eso pueden cambiar en sentidos diferentes.
+
+<span id="significado-fisico"></span>
+Una mejor separación puede ayudar a medir una señal con menor incertidumbre o aumentar la sensibilidad a procesos poco frecuentes. La conclusión física requiere también datos observados, normalizaciones e incertidumbres: **una AMS mayor no equivale a un descubrimiento**.
+
+### Guardar la referencia y continuar
+
+Registra **AUC, AMS, umbral, eficiencia de señal, aceptación de fondo, mejor época, épocas ejecutadas y tiempo** en la [bitácora](bitacora.md). Conserva la subcarpeta de esta corrida y su `config.yaml`: será tu referencia para comparar variaciones con los mismos datos y particiones.
+
+Las figuras están disponibles en PNG, PDF y SVG. Si necesitas regenerarlas sin volver a entrenar:
 
 ```bash
-git pull --ff-only origin opendata_dev
 python workshop/plot_atlas_training.py --results "$HOME/hep-workshop/results/atlas_gpu_baseline01/run_0001"
 ```
 
-Sustituye la ruta por la carpeta de la corrida que quieras visualizar.
-
-### Comparar con el benchmark antes de variar {#comparar-benchmark}
-
-La configuración actual permite hasta **40 épocas**, con parada tras **10 épocas sin mejora**. Registra sus resultados en `metrics.json`.
-
-Las mediciones siguientes corresponden a la configuración anterior de **20 épocas y paciencia 6**; se conservan como antecedente, no como resultados del benchmark actualizado:
-
-| Magnitud | Referencia GPU MI210 | Tu ejecución |
-| --- | ---: | --- |
-| Variables de entrada | 30 | Registrar |
-| Eventos de entrenamiento | 200 000 | Registrar |
-| Eventos de validación | 50 000 | Registrar |
-| Semilla | 16 | Registrar |
-| Épocas ejecutadas | 20 | Registrar |
-| AUC de validación | 0.90999 | Registrar |
-| AMS interna | 3.5229 | Registrar |
-| Tiempo de entrenamiento | 29.95 s | Registrar |
-
-Para la misma red en CPU, con cuatro hilos, se midieron **AUC 0.91048**, **AMS interna 3.5629** y **39.35 s** en 20 épocas. Comparar primero con el dispositivo utilizado. [Descargar el resumen de referencia](assets/benchmarks/atlas_yuca_baseline.json).
-
-El número de entradas, los conteos y la semilla deben coincidir con esta configuración. AUC, AMS y tiempos son mediciones de una corrida: pequeñas diferencias numéricas o de rendimiento no implican un fallo. Si la separación difiere claramente, revisar el YAML, las particiones y las curvas antes de pasar a las variaciones. No se ha establecido una tolerancia numérica a partir de repeticiones.
-
-Compara las variaciones con tu nueva ejecución de referencia de 40 épocas máximas y paciencia 10. Las puntuaciones históricas del challenge sirven como contexto. Nuestra AMS corresponde a validación interna, no a la evaluación privada del concurso.
-
-
-Abrir `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
-
-1. La carpeta donde se guardaron los resultados.
-2. El archivo que conserva la configuración utilizada.
-3. La evolución de las pérdidas de entrenamiento y validación.
-4. El AUC, la AMS interna y el tiempo de entrenamiento.
-
-### Interpretación de las figuras
-
-Abre **`training_loss.png`, `roc_curve.png` y `classifier_scores.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
-
-| Observa | Interpreta |
-| --- | --- |
-| Pérdida de entrenamiento y validación | ¿Aprende también sobre eventos que no vio al entrenar? |
-| Curva ROC | ¿Conserva más señal para el mismo fondo aceptado? |
-| Puntuaciones de señal y fondo | ¿Dónde se separan y dónde se confunden? |
-| AUC y AMS interna | ¿Mejoró la separación global y también la selección? |
-| Tiempo y épocas | ¿La mejora justificó el costo? |
-
-Una curva de validación que empeora mientras entrenamiento sigue mejorando sugiere **sobreajuste**. La parada temprana conserva el modelo con menor pérdida de validación. Una red más grande o más tiempo no garantizan mejores resultados.
-
-### Cómo leer la curva ROC {#leer-una-roc-como-fisico}
-
-La red asigna una puntuación. Al exigir una puntuación mayor que cierto umbral, conservamos una fracción de señal **εs** y una fracción de fondo **εb**.
-
-| Elemento de la ROC del taller | Significado |
-| --- | --- |
-| Eje horizontal | Fondo que dejamos pasar, εb |
-| Eje vertical | Señal que conservamos, εs |
-| Un punto | Una elección de umbral |
-| Más arriba al mismo εb | Más señal para el mismo fondo aceptado |
-| Más a la izquierda al mismo εs | Menos fondo para la misma señal conservada |
-
-**AUC resume toda la curva.** Un análisis puede depender solo de una zona de bajo fondo; por eso una AUC ligeramente mayor no garantiza mejor AMS o mejor límite.
-
-Nuestro gráfico ROC es **sin pesos**. Para traducirlo a rendimientos físicos, se deben sumar los pesos de los eventos seleccionados. Los porcentajes de eventos simulados no siempre son las eficiencias ponderadas que corresponden a tasas esperadas.
-
-#### Ejemplo para completar en clase
-
-Imagina dos selecciones que conservan **60 eventos de señal**. Una deja pasar **1 000 eventos de fondo** y la otra solo **500**. Si el fondo se conoce con suficiente precisión, la segunda facilita distinguir la señal de las fluctuaciones del fondo. Es un ejemplo ilustrativo, no un resultado del dataset.
-
-**Para discutir:** si una red rechaza más fondo, pero también pierde buena parte de la señal, ¿podemos afirmar que mejoró el análisis? ¿Qué información de la ROC necesitamos comparar?
-
-### Qué aporta la AMS a la comparación {#interpretar-ams}
-
-La red asigna una puntuación a cada evento. Al elegir un **umbral**, aceptamos una parte de la señal y otra del fondo: ese punto aparece en la ROC. La **AMS** utiliza los pesos de los eventos seleccionados para estimar una sensibilidad aproximada de esa selección.
-
-En **`metrics.json`**, `roc_auc_unweighted` resume la ROC sin pesos y `ams_validation_tuned` guarda la AMS obtenida tras ajustar el umbral en validación. **Una AUC mayor no garantiza una AMS mayor**: la primera resume todos los umbrales; la segunda depende de la selección elegida y de los rendimientos ponderados de señal y fondo.
-
-Para comparar modelos, conserva las mismas particiones y el mismo procedimiento de evaluación. La AMS del taller se ajusta en validación interna; no es una significancia observada ni una puntuación de la evaluación privada del challenge.
-
-**Al revisar tus figuras:** ¿la ROC mejora en la zona de bajo fondo? ¿Sube también la AMS? ¿La mejora se mantiene en validación o solo disminuye la pérdida de entrenamiento?
-
-### De una mejor clasificación a una búsqueda más sensible {#significado-fisico}
-
-Una mejora útil de la ROC permite **conservar más señal para el mismo fondo**, o **reducir el fondo sin perder señal**. Esto puede hacer que un proceso poco frecuente resulte más fácil de distinguir de las fluctuaciones del fondo. La mejora debe mantenerse en eventos que la red no utilizó para aprender.
-
-- **Si los datos contienen una señal:** una selección más sensible puede ayudar a identificar un exceso compatible con ese proceso y aportar evidencia para su observación.
-- **Si no aparece un exceso significativo:** el análisis puede establecer un límite superior a la intensidad de la señal. Una búsqueda más sensible puede excluir, en promedio, señales más débiles; es decir, alcanzar un **límite esperado más bajo**.
-
-La red mejora la selección; la conclusión física requiere además los datos observados, los rendimientos esperados y sus incertidumbres. Por eso, una mejor ROC o una AMS mayor **no garantizan una observación ni un límite observado más estricto**. La AMS del ejercicio permite explorar esa sensibilidad aproximada en simulación, como explica el [artículo del Higgs Challenge](https://proceedings.mlr.press/v42/cowa14.html).
-
-**Qué significa entrenar mejor:** conseguir una separación que se mantenga en validación y sea útil en la región de interés. Una pérdida de entrenamiento menor, una red más profunda o una AUC global mayor no bastan por sí solas. Al comparar tus corridas, pregunta: **¿esta mejora permitiría conservar una señal débil con menos fondo, y a qué costo de tiempo?**
-
-## Continuar con las variaciones
-
-En la siguiente sección podrás utilizar el [selector de arquitecturas](variaciones.md#explorar-la-arquitectura-antes-de-modificar-el-yaml) para comparar capas, neuronas y número de parámetros antes de preparar una variación.
-
-Conservar `atlas_baseline01.yaml` y la subcarpeta `run_XXXX` correspondiente a la referencia. Registrar su fila como **Referencia** en la [tabla de resultados](variaciones.md#registro), después de contrastarla con el benchmark. Esa corrida personal será el punto de comparación de las variaciones.
-
-
-## Programa del miércoles: tres horas
-
-| Horario relativo | Actividad |
-| --- | --- |
-| Primera hora | Acceso a Yuca, configuración del entorno e introducción a los procesos y variables físicas |
-| Segunda hora | Explicación de la red de referencia, ejecución del benchmark y revisión de carpetas, figuras y métricas |
-| Tercera hora | [Variaciones por grupos, registro de resultados y discusión](variaciones.md) |
-
+Sustituye la ruta por la carpeta de tu corrida.
 
 [Anterior: procesos y variables](fisica.md){ .md-button }
 [Continuar: variaciones y resultados](variaciones.md){ .md-button .md-button--primary }

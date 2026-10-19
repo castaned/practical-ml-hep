@@ -94,7 +94,7 @@ La primera versión del laboratorio no calcula la AMS privada. No inventar ese v
 
 ## De una mejor ROC a una pregunta de física
 
-Leer el [ejemplo físico](laboratorio.md#ejemplo-para-completar-en-clase). Partimos de rendimientos **hipotéticos** de 100 señales y 10 000 fondos. Completar sin usar un entrenamiento:
+Leer el [ejemplo físico](laboratorio.md#leer-una-roc-como-fisico). Partimos de rendimientos **hipotéticos** de 100 señales y 10 000 fondos. Completar sin usar un entrenamiento:
 
 | Selección | Señal conservada | Fondo aceptado | s esperado | b esperado | s / √b aproximado |
 | --- | --- | --- | --- | --- | --- |
