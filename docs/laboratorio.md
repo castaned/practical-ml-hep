@@ -53,7 +53,7 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
 3. Revisa `model` (capas y dropout) y `training` (épocas, tamaño de lote y tasa de aprendizaje). Para reproducir la referencia, conserva los valores de la copia inicial.
 4. Comprueba que `output.directory` coincida con la ruta siguiente. Si necesitas corregirla, edita el valor **después de los dos puntos**, conservando la sangría, y guarda con **Ctrl+S**.
 
-![Contenido del YAML de referencia y ubicación en la carpeta configs](assets/workshop/atlas_baseline_yaml.png)
+![JupyterLab: explorador izquierdo en hep-workshop/configs y atlas_baseline01.yaml abierto en el editor](assets/workshop/atlas_baseline_yaml_jupyterlab.png)
 
 Puedes conservar `output.directory` al repetir el entrenamiento. Cada envío crea una subcarpeta nueva: `run_0001`, `run_0002`, etc., sin sobrescribir las anteriores.
 
