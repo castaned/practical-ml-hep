@@ -72,7 +72,7 @@ En el primer acceso, entra con los datos **Username** y **Password** de la tabla
 
     Cuando aparezca el QR, realiza el mismo procedimiento explicado para Windows: **Google Authenticator → + → Escanear un código QR**. Introduce el código de seis dígitos cuando lo solicite la terminal y completa la activación antes de entrar a **Open OnDemand**.
 
-## 2. Terminales de Open OnDemand y JupyterLab
+## 2. Acceso al clúster mediante Open OnDemand {#2-terminales-de-open-ondemand-y-jupyterlab}
 
 ### Paso 1. Iniciar sesión en Open OnDemand
 
