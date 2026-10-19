@@ -4,6 +4,8 @@ Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la U
 
 ## 1. Primer acceso: antes de Open OnDemand
 
+[Consultar cuenta asignada](https://docs.google.com/spreadsheets/d/1Bg-fwwj3Lxm3iRCQGzOcIHAbl4OHoVv12B9ttB509-Q/edit){ .md-button .md-button--primary }
+
 La primera conexión se hace por **SSH desde tu computadora**. En ella se prepara tu directorio personal y se activa la doble verificación de la cuenta. Completa esta etapa antes de entrar a Open OnDemand.
 
 ### Paso 1. Conectarse a Yuca y activar la doble verificación
