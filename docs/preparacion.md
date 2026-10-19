@@ -42,11 +42,11 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
     #### PuTTY · Alternativa
 
-    Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY**:
+    Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga PuTTY** para Windows de 64 bits (Intel/AMD):
 
-    [Descargar PuTTY · Sitio oficial](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){ .md-button }
+    [Descargar PuTTY para Windows · Descarga directa oficial](https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe){ .md-button }
 
-    Abre el programa y completa los campos como en la imagen:
+    Abre el archivo **`putty.exe`** descargado; esta versión no requiere instalación. Completa los campos como en la imagen. Para otras arquitecturas, consulta el [sitio oficial de PuTTY](https://putty.software/).
 
     - **Host Name:** `yuca.unison.mx`.
     - **Port:** `22`.
