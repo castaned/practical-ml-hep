@@ -38,6 +38,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - footnotes
   - attr_list
   - md_in_html

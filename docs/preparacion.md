@@ -12,45 +12,51 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 
 En el primer acceso, entra con **el usuario y la contraseña proporcionados** y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige la terminal según tu sistema operativo; al terminar la conexión, continúa con [Registrar el QR](#registrar-qr), un paso común para Windows, Linux y macOS.
 
-#### Windows · Opción preferida: PowerShell
+**Selecciona tu sistema operativo y sigue únicamente esa opción:**
 
-Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por el nombre de usuario que se te proporcionó para el curso:
+=== "Windows"
 
-```powershell
-ssh TU_USUARIO@yuca.unison.mx
-```
+    #### PowerShell · Opción preferida
 
-Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
+    Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por el nombre de usuario que se te proporcionó para el curso:
 
-![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
+    ```powershell
+    ssh TU_USUARIO@yuca.unison.mx
+    ```
 
-*La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio usuario asignado.*
+    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
 
-#### Windows · Alternativa: PuTTY
+    ![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
 
-Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY**:
+    *La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio usuario asignado.*
 
-[Descargar PuTTY · Sitio oficial](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){ .md-button }
+    #### PuTTY · Alternativa
 
-Abre el programa y completa los campos como en la imagen:
+    Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY**:
 
-- **Host Name:** `yuca.unison.mx`.
-- **Port:** `22`.
-- **Connection type:** `SSH`.
+    [Descargar PuTTY · Sitio oficial](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){ .md-button }
 
-Pulsa **Open**. Cuando aparezca `login as:`, escribe **el nombre de usuario que se te proporcionó para el curso** y pulsa **Enter**. Después introduce la contraseña proporcionada cuando aparezca `Password:` y pulsa **Enter**.
+    Abre el programa y completa los campos como en la imagen:
 
-![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
+    - **Host Name:** `yuca.unison.mx`.
+    - **Port:** `22`.
+    - **Connection type:** `SSH`.
 
-#### Linux o macOS · Terminal del sistema
+    Pulsa **Open**. Cuando aparezca `login as:`, escribe **el nombre de usuario que se te proporcionó para el curso** y pulsa **Enter**. Después introduce la contraseña proporcionada cuando aparezca `Password:` y pulsa **Enter**.
 
-Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asignado:
+    ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
-```bash
-ssh TU_USUARIO@yuca.unison.mx
-```
+=== "Linux / macOS"
 
-Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
+    Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asignado:
+
+    ```bash
+    ssh TU_USUARIO@yuca.unison.mx
+    ```
+
+    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
+
+---
 
 En cualquiera de las terminales, la contraseña no se muestra mientras la escribes: no aparecen caracteres ni asteriscos. Es el comportamiento normal.
 
