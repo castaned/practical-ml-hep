@@ -110,4 +110,4 @@ En **ATLAS**, separaremos eventos de Higgs y fondo con un clasificador. En **CMS
 </article>
 </div>
 
-[Comenzar con el acceso y la preparación](preparacion.md){ .md-button .md-button--primary }
+[Activación de cuenta (Yuca)](preparacion.md){ .md-button .md-button--primary }
