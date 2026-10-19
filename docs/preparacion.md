@@ -18,10 +18,10 @@ En el primer acceso, entra con los datos **Username** y **Password** de la tabla
 
     #### PowerShell · Opción preferida
 
-    Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USERNAME` por el valor de la columna **Username** de la tabla de cuentas:
+    Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `Username` por el valor de la columna **Username** de la tabla de cuentas:
 
     ```powershell
-    ssh TU_USERNAME@yuca.unison.mx
+    ssh Username@yuca.unison.mx
     ```
 
     Cuando aparezca `Password:`, escribe el valor de la columna **Password** de la tabla y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
@@ -62,10 +62,10 @@ En el primer acceso, entra con los datos **Username** y **Password** de la tabla
 
 === "Linux / macOS"
 
-    Abre la terminal del sistema y utiliza el mismo comando SSH, sustituyendo `TU_USERNAME` por tu **Username** de la tabla:
+    Abre la terminal del sistema y utiliza el mismo comando SSH, sustituyendo `Username` por tu **Username** de la tabla:
 
     ```bash
-    ssh TU_USERNAME@yuca.unison.mx
+    ssh Username@yuca.unison.mx
     ```
 
     Cuando aparezca `Password:`, escribe el valor de la columna **Password** de la tabla y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
