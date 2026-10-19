@@ -46,7 +46,7 @@ extra_css:
 extra_javascript:
   - javascripts/explorer.js
   - javascripts/results.js
-  - javascripts/notebook.js
+  - javascripts/notebook.js?v=2
 nav:
   - Introducción: index.md
   - Preparación: preparacion.md

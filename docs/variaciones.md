@@ -4,12 +4,19 @@ Esta actividad corresponde al **bloque del miércoles de 17:00 a 18:30**. Utiliz
 
 Antes de preparar cambios, completar la [comparación del benchmark](laboratorio.md#comparar-benchmark), revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y registrar la corrida como **Referencia** en la [tabla](#registro). Las variaciones se compararán con esa ejecución personal, realizada con los mismos datos y particiones.
 
-| Tiempo | Actividad |
-| --- | --- |
-| 0–10 min | Asignar el escenario por mesa o grupo, formular la hipótesis y preparar el YAML |
-| 10–30 min | Ejecutar una variación y examinar las pérdidas y la curva ROC |
-| 30–45 min | Registrar las métricas y comparar con la referencia; repetir únicamente si es necesario |
-| 45–60 min | Reunir las tablas, visualizar los resultados y discutir las conclusiones |
+### Nombres para identificar cada entrenamiento
+
+Usa **`gNN_escenario_cambio.yaml`**, sin espacios ni acentos. Sustituye `g01` por el identificador de tu grupo (`g02`, `g03`, etc.). Usa `p` para los decimales en el nombre del archivo; dentro del YAML conserva el punto decimal habitual.
+
+| Configuración | Archivo YAML · ejemplo para g01 | Cambio respecto a la referencia |
+| --- | --- | --- |
+| Referencia | `atlas_baseline01.yaml` | Sin cambios: 40 épocas máximas y paciencia 10 |
+| A · Arquitectura | `g01_A_capas512-256-128-64.yaml` | Capas `[512, 256, 128, 64]` |
+| B · Dropout | `g01_B_dropout0p3.yaml` | Dropout `0.3` |
+| C · Aprendizaje | `g01_C_lr0p0003.yaml` | Tasa de aprendizaje `0.0003` |
+| D · Duración | `g01_D_epochs100.yaml` | Máximo 100 épocas; conservar paciencia 10 |
+
+**Una configuración, un YAML con nombre propio.** Copia siempre la referencia, cambia solo el parámetro asignado y conserva las demás condiciones. Si pruebas otro valor, crea otro archivo con ese valor en el nombre.
 
 ## 1. Escenarios por grupo
 
@@ -59,10 +66,10 @@ El YAML permite elegir los cambios del modelo y la carpeta de salida; los script
 Copiar el YAML de referencia y abrir la copia en JupyterLab:
 
 ```bash
-cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/atlas_02.yaml"
+cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/g01_A_capas512-256-128-64.yaml"
 ```
 
-En el explorador lateral de **JupyterLab**, abre **hep-workshop → configs → atlas_02.yaml**. Este es el archivo que vas a editar y enviar al entrenamiento; conserva `atlas_baseline01.yaml` como referencia.
+En el explorador lateral de **JupyterLab**, abre **hep-workshop → configs → g01_A_capas512-256-128-64.yaml**. Este es el archivo que vas a editar y enviar al entrenamiento; conserva `atlas_baseline01.yaml` como referencia.
 
 En esa copia, modifica el campo del escenario asignado. Puedes conservar **`output.directory`**: las ejecuciones se separan automáticamente. Para el **escenario A**, cambia:
 
@@ -77,23 +84,28 @@ output:
 
 Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B, C o D, aplica únicamente los cambios de su fila en la tabla anterior.
 
-**Guarda el archivo antes de enviar el trabajo.** La ejecución utilizará `atlas_02.yaml` y creará la siguiente subcarpeta `run_XXXX` dentro de la ruta de salida. Allí se conserva también la configuración utilizada.
+**Guarda el archivo antes de enviar el trabajo.** La ejecución utilizará `g01_A_capas512-256-128-64.yaml` y creará la siguiente subcarpeta `run_XXXX` dentro de la ruta de salida. Allí se conserva también la configuración utilizada.
 
 Conservar los demás parámetros, incluidas las particiones de datos y la semilla. Antes de enviar, anotar el cambio y el resultado esperado en la [bitácora](bitacora.md).
 
 ```bash
 cd "$HOME/ML-integration-CMSSW"
 sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
-  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
+  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/g01_A_capas512-256-128-64.yaml"
 ```
 
 Al terminar, abrir la subcarpeta **run_XXXX** indicada en el log y revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Comparar las pérdidas y la curva ROC con las de la referencia.
 
-Para otra variación, guarda su configuración, por ejemplo en `atlas_03.yaml`, y envíala. No necesitas renombrar la carpeta de salida: el número de ejecución aumenta automáticamente.
+Para el escenario B, C o D, sustituye el nombre del ejemplo en **la copia, el editor y el comando de envío** por el de tu escenario. Puedes conservar la carpeta base de salida: cada envío crea su propio `run_XXXX`.
 
 ## 3. Registrar y visualizar resultados {#registro}
 
-Registra las métricas en la tabla y la hipótesis e interpretación en la **bitácora**, utilizando el mismo nombre de grupo.
+Usa el mismo identificador de **Grupo** en la tabla y la bitácora, por ejemplo `g01`. En **Corrida**, escribe el nombre del YAML sin `.yaml`, seguido de `/run_XXXX`:
+
+- Referencia: `atlas_baseline01/run_0001`.
+- Variación A: `g01_A_capas512-256-128-64/run_0002`.
+
+Los números son ejemplos: copia el `run_XXXX` real que aparece en el visor. En la bitácora registra también los nombres de ambos YAML y las rutas completas de resultados. Si repites el mismo YAML, conserva su nombre y registra el nuevo número de ejecución.
 
 [Completar la bitácora del grupo](bitacora.md){ .md-button }
 
@@ -103,8 +115,8 @@ Introducir una fila de referencia y otra de variación por grupo. Se puede carga
 
 <div id="results-board">
 <form id="result-form" class="result-form">
-<label>Grupo<input name="group" required maxlength="60" placeholder="Mesa 1"></label>
-<label>Corrida<input name="run" required maxlength="80" placeholder="referencia o dropout_03"></label>
+<label>Grupo<input name="group" required maxlength="60" placeholder="g01"></label>
+<label>Corrida<input name="run" required maxlength="80" placeholder="g01_B_dropout0p3/run_0002"></label>
 <label>Tipo<select name="kind"><option value="Referencia">Referencia</option><option value="Variación">Variación</option></select></label>
 <label>Escenario<select name="scenario"><option>Referencia</option><option>A. Arquitectura</option><option>B. Regularización</option><option>C. Optimización</option><option>D. Duración</option></select></label>
 <label>Equipo<select name="device"><option>GPU MI210</option><option>CPU</option></select></label>

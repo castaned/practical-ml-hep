@@ -1,9 +1,10 @@
 (() => {
-  const fields={group:'Grupo o mesa',participants:'Participantes',variable:'Variable elegida',physics:'Significado físico y distribuciones',change:'Cambio propuesto',hypothesis:'Hipótesis',baseline_dir:'Carpeta de referencia',variation_dir:'Carpeta de variación',evidence:'Evidencia e hipótesis',metrics_interpretation:'Interpretación de AUC y AMS',learning_curves:'Curvas de aprendizaje',cost:'Tiempo de entrenamiento',conclusion:'Conclusiones',next_test:'Siguiente prueba'};
+  const fields={group:'Grupo o mesa',participants:'Participantes',variable:'Variable elegida',physics:'Significado físico y distribuciones',change:'Cambio propuesto',hypothesis:'Hipótesis',baseline_yaml:'YAML de referencia',variation_yaml:'YAML de la variación',baseline_dir:'Carpeta de referencia',variation_dir:'Carpeta de variación',evidence:'Evidencia e hipótesis',metrics_interpretation:'Interpretación de AUC y AMS',learning_curves:'Curvas de aprendizaje',cost:'Tiempo de entrenamiento',conclusion:'Conclusiones',next_test:'Siguiente prueba'};
   const metricsKey='hep-workshop-results-v1', noteKey='hep-workshop-notebook-v1';
   function validate(payload){
     if(!payload || payload.version!==1 || !payload.notes || typeof payload.notes!=='object' || !Array.isArray(payload.metrics)) throw Error('No es una copia editable de la bitácora.');
     const notes={};for(const key of Object.keys(fields)) {
+      if(['baseline_yaml','variation_yaml'].includes(key) && payload.notes[key]===undefined){notes[key]='';continue;}
       if(typeof payload.notes[key]!=='string' || payload.notes[key].length>20000) throw Error('Las respuestas de la copia no son válidas.');
       notes[key]=payload.notes[key];
     }

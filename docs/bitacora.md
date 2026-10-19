@@ -4,7 +4,7 @@ Completar la bitácora durante los entrenamientos. Las respuestas se guardan en 
 
 <div id="workshop-notebook">
 <div class="notebook-fields">
-<label>Grupo o mesa<input name="group" maxlength="60" placeholder="Usar el mismo nombre que en la tabla de resultados"></label>
+<label>Grupo o mesa<input name="group" maxlength="60" placeholder="g01 · mismo identificador que en la tabla"></label>
 <label>Participantes<input name="participants" maxlength="300"></label>
 </div>
 
@@ -18,6 +18,8 @@ Completar la bitácora durante los entrenamientos. Las respuestas se guardan en 
 <div class="notebook-fields">
 <label class="notebook-wide">Cambio propuesto<textarea name="change" rows="3" placeholder="Indicar el parámetro y sus valores antes y después"></textarea></label>
 <label class="notebook-wide">Resultado esperado y justificación<textarea name="hypothesis" rows="4"></textarea></label>
+<label>YAML de referencia<input name="baseline_yaml" maxlength="180" placeholder="atlas_baseline01.yaml"></label>
+<label>YAML de la variación<input name="variation_yaml" maxlength="180" placeholder="g01_B_dropout0p3.yaml"></label>
 <label>Carpeta de referencia<input name="baseline_dir" maxlength="300"></label>
 <label>Carpeta de la variación<input name="variation_dir" maxlength="300"></label>
 </div>
