@@ -76,15 +76,6 @@ En el panel principal, abrir **Interactive Apps** y seleccionar **JupyterLab**.
 
 Completar el formulario y seleccionar **Launch**:
 
-| Campo | Valor para la sesión del taller |
-| --- | --- |
-| Proyecto | `curso07` |
-| Tipo de Nodo | `CPU` |
-| Número de cores | `1` |
-| Número de horas | `5` |
-
-En **Número de horas**, introduce `5`, aunque la captura muestre `8`.
-
 ![Formulario para solicitar recursos de una sesión JupyterLab](assets/yuca/03-recursos-jupyter.png)
 
 ### Paso 4. Conectarse a JupyterLab
