@@ -84,7 +84,7 @@ Separaremos los datos utilizados para aprender de los empleados para evaluar el 
 
 ## Arquitectura de los ejercicios {#aplicacion-a-los-ejercicios-del-curso}
 
-[![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v2.svg)](assets/workshop/hep_framework_atlas_cms_v2.svg)
+[![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v3.svg)](assets/workshop/hep_framework_atlas_cms_v3.svg)
 
 ## Programa del taller
 
