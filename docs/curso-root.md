@@ -61,40 +61,24 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT student-
 
 Con el kernel **Python (ROOT student-course)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
-## 4. Alternativa al archivo remoto del notebook 05
+## 4. Ejemplo breve para el notebook 05
 
-En **`05-rdataframe-features.ipynb`**, la celda que suma `nMuon` abre un archivo de CERN mediante **XRootD (`root://`)**. Si tarda demasiado o muestra `TNetXNGFile::Open: Connection error`, puedes descargarlo por HTTPS y leerlo localmente.
+En **`05-rdataframe-features.ipynb`**, sustituye la celda que abre el archivo remoto y suma `nMuon` por este ejemplo de **10 000 eventos sintéticos en memoria**. Ilustra el uso de `RDataFrame` y multihilo sin descargar datos ni conectarse a CERN.
 
-**En la terminal**, descarga una sola vez el archivo (aproximadamente **2.1 GB**, según el [servidor oficial de ROOT](https://root.cern/files/rootbench/)):
-
-```bash
-cd "$HOME/student-course/course/data"
-curl --fail --location --retry 3 --connect-timeout 30 --continue-at - \
-  --output Run2012BC_DoubleMuParked_Muons.root.part \
-  https://root.cern/files/rootbench/Run2012BC_DoubleMuParked_Muons.root \
-  && mv -n Run2012BC_DoubleMuParked_Muons.root.part Run2012BC_DoubleMuParked_Muons.root
-```
-
-Espera a que la descarga termine sin error. La extensión `.part` evita confundir una descarga incompleta con el archivo listo. Si se interrumpe, el mismo comando intenta reanudarla. Esta alternativa también requiere acceso HTTPS desde Yuca; aún no se ha comprobado allí esta descarga.
-
-**En el notebook**, interrumpe la celda anterior si sigue ejecutándose y sustitúyela por:
+Interrumpe primero la celda anterior si sigue ejecutándose. Después ejecuta:
 
 ```python
-from pathlib import Path
 import ROOT
 
-filename = Path.home() / "student-course/course/data/Run2012BC_DoubleMuParked_Muons.root"
-assert filename.is_file(), "Primero completa la descarga en la terminal"
-
 ROOT.DisableImplicitMT()
-ROOT.EnableImplicitMT(2)  # Usa 2 hilos si reservaste al menos 2 cores CPU
+ROOT.EnableImplicitMT(2)  # Si reservaste al menos 2 cores CPU
 try:
-    df = ROOT.RDataFrame("Events", str(filename))
-    print("Total de muones:", df.Sum("nMuon").GetValue())
+    df_demo = ROOT.RDataFrame(10_000).Define("nMuon", "int(rdfentry_ % 5)")
+    print("Suma ilustrativa de nMuon:", df_demo.Sum("nMuon").GetValue())
 finally:
     ROOT.DisableImplicitMT()
 ```
 
-El cálculo sigue recorriendo todos los eventos, pero ya no depende de la conexión remota a CERN durante el análisis. Para un grupo grande, el instructor puede preparar una sola copia compartida y proporcionar esa ruta a los estudiantes.
+El resultado esperado es **20 000**. `nMuon` recorre los valores 0, 1, 2, 3 y 4: son datos inventados para mostrar la operación, no eventos de CMS. Este ejemplo no mide una ganancia de rendimiento; con tan pocos eventos, preparar el multihilo puede costar más que el propio cálculo.
 
 [Cambiar de taller](ambientes.md){ .md-button .md-button--primary }
