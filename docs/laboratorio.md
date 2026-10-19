@@ -46,8 +46,6 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
 
     Si falta configurar el ambiente, completar la [preparación inicial](preparacion.md#3-clonacion-y-preparacion-del-entorno-de-analisis). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
-Si ya tenías una copia personal del YAML, actualiza `training.epochs` a `40` y `training.patience` a `10`; `cp -n` conserva los archivos existentes.
-
 ### Abrir y revisar el YAML en JupyterLab
 
 1. En el **explorador de archivos de la izquierda**, vuelve a tu carpeta personal y abre **hep-workshop → configs**.
