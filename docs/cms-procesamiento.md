@@ -27,6 +27,8 @@ Si vienes de ATLAS o del curso de ROOT, activa primero la pestaña **CMS** en [C
 
 Los NanoAOD están en **`/lustre/cursos/curso07/datos/autoencoder/`**, en las carpetas `DYjets`, `WZ`, `ZZ` y `Wprime`. En Open OnDemand puedes encontrarlos en **Files → Curso: curso07 → datos → autoencoder**. No necesitas copiarlos a tu cuenta.
 
+Si todavía no tienes `ML-integration-CMSSW` en tu cuenta, realiza primero la [clonación del repositorio](atlas-preparacion.md#clonar-repositorio). Para CMS utiliza el ambiente `ml-open-data` indicado aquí.
+
 **En cada nueva terminal de JupyterLab, prepara ROOT y las herramientas de procesamiento antes de enviar los trabajos:**
 
 ```bash

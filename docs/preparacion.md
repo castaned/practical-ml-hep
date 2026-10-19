@@ -1,6 +1,6 @@
-# Acceso y configuración del entorno en Yuca
+# Activación de cuenta y acceso a Yuca
 
-Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. En esta sección prepararás el acceso y el entorno para procesar los datos y entrenar las redes con el software [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW).
+Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. En esta sección activarás tu cuenta, configurarás la doble verificación y accederás a **Open OnDemand y JupyterLab**.
 
 ## 1. Primer acceso: antes de Open OnDemand
 
@@ -106,74 +106,11 @@ En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir 
 
 ![Terminal de Yuca abierta dentro de JupyterLab](assets/yuca/05-terminal.png)
 
-Mantén abierta esta terminal para ejecutar los comandos de las siguientes secciones.
+Desde esta terminal podrás seguir las instrucciones del taller que elijas.
 
-## 3. Clonación y preparación del entorno · Solo la primera vez {#3-clonacion-y-preparacion-del-entorno-de-analisis}
+## Acceso listo
 
-**Realiza estos pasos una sola vez en tu cuenta de Yuca:** clonar el repositorio e instalar el ambiente de entrenamiento. En las sesiones posteriores basta con [activar el ambiente y entrar al repositorio](#4-inicio-de-una-sesion-de-trabajo).
+Ya puedes entrar a Open OnDemand, abrir JupyterLab y utilizar su terminal. **La clonación del software y la instalación de ambientes se realizan al iniciar cada taller**, siguiendo su sección correspondiente.
 
-El código de procesamiento y entrenamiento está en [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev).
-
-### Clonación del repositorio · solo la primera vez {#clonar-repositorio}
-
-Ejecuta estos comandos **una sola vez en tu cuenta de Yuca** para descargar la herramienta y preparar tus carpetas personales:
-
-**Puedes copiar el bloque completo de comandos** con el botón de la esquina superior derecha, pegarlo en la terminal de JupyterLab y pulsar **Enter**. Sigue los bloques en el orden indicado y sustituye los datos que se señalen en cada paso.
-
-```bash
-cd "$HOME"
-git clone --branch opendata_dev https://github.com/castaned/ML-integration-CMSSW.git
-cd ML-integration-CMSSW
-mkdir -p "$HOME/hep-workshop/configs" "$HOME/hep-workshop/logs"
-```
-
-Si ya clonaste el repositorio, entra a esa carpeta y actualiza con `git pull --ff-only origin opendata_dev`; no necesitas otra copia.
-
-### Creación del ambiente de entrenamiento · solo la primera vez {#crear-ambiente}
-
-Para las GPU AMD MI210 de Yuca usamos el ambiente personal `ml-hep-gpu`. **Créalo e instala sus paquetes una sola vez en tu cuenta** con estos comandos:
-
-```bash
-source /apps/miniconda3/etc/profile.d/conda.sh
-module load rocm/6.4.3
-conda create -n ml-hep-gpu python=3.10 pip -y
-conda activate ml-hep-gpu
-python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/rocm6.4
-python -m pip install numpy pandas scikit-learn matplotlib pyyaml h5py
-```
-
-En las siguientes sesiones, utiliza los comandos de **Inicio de una sesión de trabajo**, más abajo: solo necesitas activar el ambiente y entrar al repositorio. Esta combinación de PyTorch y ROCm fue probada en una MI210 de Yuca. El ambiente de procesamiento CMS `ml-open-data`, si ya lo tienes, es independiente.
-
-## 4. Inicio de una sesión de trabajo
-
-**Este bloque inicia ATLAS.** Si vienes de CMS o del curso de ROOT, utiliza [Cambiar de taller](ambientes.md) para activar las herramientas correctas. Dentro del taller de machine learning, solo CMS requiere ROOT para procesar los NanoAOD.
-
-**Cada vez que inicies una nueva sesión de JupyterLab y abras la terminal, ejecuta estos comandos.** Repítelos también si abres otra terminal: activan el ambiente de trabajo y te sitúan en el repositorio.
-
-```bash
-source /apps/miniconda3/etc/profile.d/conda.sh
-module load rocm/6.4.3
-conda activate ml-hep-gpu
-cd "$HOME/ML-integration-CMSSW"
-```
-
-La terminal debe mostrar `(ml-hep-gpu)`. Ya puedes seguir el laboratorio con tu YAML.
-
-Los datos originales estarán en la carpeta compartida:
-
-```bash
-ls -lh /lustre/cursos/curso07/datos/ATLAS_HiggsChallenge/
-```
-
-No necesitas descargarlos ni modificarlos. Tus YAML, registros y resultados se guardan en `hep-workshop` dentro de tu cuenta.
-
-## Verificación del entorno
-
-<ul class="environment-checks">
-<li>Puedo entrar a Yuca y abrir una terminal.</li>
-<li>Mi terminal muestra <code>(ml-hep-gpu)</code> y estoy en <code>ML-integration-CMSSW</code>.</li>
-<li>Puedo ver el archivo compartido del challenge.</li>
-
-</ul>
-
-[Continuar con ATLAS Higgs Challenge](atlas.md){ .md-button .md-button--primary }
+[Continuar con ATLAS](atlas.md){ .md-button .md-button--primary }
+[Ir al taller de ROOT](curso-root.md){ .md-button }

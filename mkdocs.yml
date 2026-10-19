@@ -56,6 +56,7 @@ nav:
       - ATLAS:
           - Introducción: atlas.md
           - Procesos y variables: fisica.md
+          - Preparar el entorno: atlas-preparacion.md
           - Benchmark: laboratorio.md
           - Variaciones y resultados: variaciones.md
           - Conclusiones: conclusiones.md

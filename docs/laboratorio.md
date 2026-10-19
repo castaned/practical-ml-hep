@@ -32,7 +32,7 @@ Los valores ausentes se sustituyen por medianas y las variables se estandarizan.
 
 ## 3. Reproducir el entrenamiento de referencia
 
-Primero ejecutaremos todos la misma configuración. Los datos ya están compartidos en Yuca y cada cuenta guarda sus propios resultados.
+Antes de empezar, completa [ATLAS · Preparar el entorno](atlas-preparacion.md): clona el repositorio, instala el ambiente una sola vez y actívalo. Después ejecutaremos todos la misma configuración; los datos están compartidos en Yuca y cada cuenta guarda sus resultados.
 
 !!! info "Preparar el YAML de referencia"
     Con el acceso y el ambiente GPU ya preparados, ejecutar desde la terminal:
@@ -44,7 +44,7 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
     cp -n workshop/configs/atlas_higgs_gpu.yaml "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
     ```
 
-    Si falta configurar el ambiente, completar la [preparación inicial](preparacion.md#3-clonacion-y-preparacion-del-entorno-de-analisis). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
+    Si falta configurar el ambiente, completar la [preparación inicial](atlas-preparacion.md). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
 ### Abrir y revisar el YAML en JupyterLab
 

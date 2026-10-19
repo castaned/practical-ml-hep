@@ -30,7 +30,7 @@ Agradecemos al **Área de Cómputo de Alto Rendimiento (ACARUS) de la Universida
 
 - [Infraestructura y características de Yuca](https://acarus.unison.mx/hardware/).
 - [Acceso a Open OnDemand](https://yucaood.acarus.unison.mx/).
-- [Preparación de la cuenta y del entorno para el taller](preparacion.md).
+- [Activación de cuenta y acceso a Yuca](preparacion.md).
 
 ## Acerca del instructor
 
