@@ -4,9 +4,9 @@ Reproduce la configuración inicial y revisa sus resultados antes de probar vari
 
 ## 1. Procesos y variables de entrada
 
-Revisar los [diagramas de producción y decaimiento del Higgs](fisica.md) y las [treinta variables de entrada](fisica.md#las-30-variables-organizadas-por-su-significado). Identificar el leptón, el tau hadrónico, el momento transversal faltante y los jets que caracterizan los eventos.
+En el menú izquierdo del taller, abre **ATLAS → Procesos y variables**. Allí encontrarás los diagramas del Higgs, las treinta variables y sus distribuciones. Revisa ese contenido en el navegador y después regresa a **Benchmark** para continuar.
 
-Consultar la [comparación de distribuciones de señal y fondo](fisica.md#distribuciones-de-las-variables) antes de ejecutar el entrenamiento.
+[Revisar procesos y variables](fisica.md){ .md-button }
 
 ## 2. Red neuronal de referencia {#red-neuronal-de-referencia}
 
