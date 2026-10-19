@@ -84,7 +84,11 @@ python execute_data_processing.py \
 
 **Este comando ya envía un array a Slurm**, con una tarea por archivo ROOT. No lo envuelvas en otro `sbatch`. Anota el número del trabajo que aparece al enviarlo.
 
-Se aplica la selección multileptónica de `filterNanoAOD.py`, con al menos tres leptones, candidatos W/Z y las variables de cada canal. Los identificadores son **DYJets: 4, WZ: 5, ZZ: 6 y Wprime: 1**; `Dataset_ID` identifica el proceso y no es una entrada de la red.
+La **lógica de selección de eventos está en [`example_files/main_process/filterNanoAOD.py`](https://github.com/castaned/ML-integration-CMSSW/blob/opendata_dev/example_files/main_process/filterNanoAOD.py)**, dentro del software del análisis. Allí se definen los requisitos sobre los leptones, los filtros por evento, la construcción de candidatos W/Z y las variables de cada canal.
+
+El YAML indica qué muestras procesar, qué script ejecutar y dónde guardar los resultados; **los criterios físicos de selección están actualmente en el código Python**. Para otro análisis, se puede adaptar ese archivo o crear otro módulo de selección e indicarlo en `data_processing.processing_script`. Así se reutiliza el flujo NanoAOD → ROOT seleccionado → HDF5 con una selección y observables distintos. Para reproducir este benchmark, conserva el script y sus criterios originales.
+
+ Los identificadores son **DYJets: 4, WZ: 5, ZZ: 6 y Wprime: 1**; `Dataset_ID` identifica el proceso y no es una entrada de la red.
 
 ### Monitorear el procesamiento
 
