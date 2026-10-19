@@ -45,13 +45,7 @@ Después de clonar, en el **explorador izquierdo de JupyterLab**, vuelve a tu ca
 
 Conserva la estructura de carpetas: los notebooks buscan los datos mediante rutas relativas.
 
-## 2. Iniciar una sesión o cambiar de taller
-
-Abre [Cambiar de taller](ambientes.md), selecciona la pestaña **ROOT** y ejecuta su bloque en la terminal. Usa esa misma página para volver a **ATLAS** o **CMS**.
-
-**En este curso usamos el ROOT del ambiente Conda; no cargues el módulo `root/6.24.08` de CMS.** Activar el ambiente en una terminal no cambia el kernel de los notebooks.
-
-## 3. Abrir el notebook y elegir el kernel
+## 2. Abrir el notebook y elegir el kernel
 
 En el explorador izquierdo abre **student-course → course → notebooks → core**. Comienza con `00-root-intro.ipynb` y sigue con `01-histograms-and-graphs.ipynb`.
 
@@ -61,7 +55,7 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT student-
 
 Con el kernel **Python (ROOT student-course)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
-## 4. Archivo compartido para el notebook 05
+## 3. Archivo compartido para el notebook 05
 
 En **`05-rdataframe-features.ipynb`**, la celda que suma `nMuon` utiliza una dirección `root://eospublic.cern.ch/...`. **Sustituye esa llamada al servidor por la ubicación del archivo compartido en Yuca:**
 
