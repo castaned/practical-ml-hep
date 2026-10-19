@@ -28,6 +28,8 @@ Desde una terminal de JupyterLab:
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
 conda activate ml-open-data
+module load root/6.24.08
+export PYTHONPATH="$(root-config --libdir):${PYTHONPATH:-}"
 cd "$HOME/ML-integration-CMSSW"
 git pull --ff-only origin opendata_dev
 export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
@@ -35,14 +37,14 @@ export SBATCH_QOS=qoscurso07
 python -c "import ROOT, uproot, h5py, torch, onnx, yaml; print('Ambiente CMS disponible')"
 ```
 
-CMS utiliza **`ml-open-data`**, con ROOT para leer y seleccionar los NanoAOD. Es un ambiente distinto al utilizado para ATLAS. Actívalo cada vez que abras una terminal para trabajar en CMS.
+CMS utiliza **`ml-open-data`** y el **módulo ROOT instalado en Yuca**, necesario para seleccionar los NanoAOD desde Python. Es un ambiente distinto al utilizado para ATLAS. Activa el ambiente, carga el módulo y exporta `PYTHONPATH` en cada nueva terminal, antes de comprobar las dependencias y enviar los trabajos. Slurm hereda estas variables al enviar el array.
 
 ??? info "Solo si todavía no tienes el ambiente CMS"
 
     Créalo una sola vez en tu cuenta y luego vuelve a la comprobación anterior:
 
     ```bash
-    conda create -n ml-open-data -c conda-forge python=3.11 root pip -y
+    conda create -n ml-open-data -c conda-forge python=3.11 pip -y
     conda activate ml-open-data
     python -m pip install -r workshop/requirements-yuca.txt
     python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
