@@ -37,7 +37,7 @@ export PYTHONPATH="$PWD:${PYTHONPATH:-}"
 git pull --ff-only origin opendata_dev
 export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
 export SBATCH_QOS=qoscurso07
-python -c "import ROOT, uproot, h5py, torch, onnx, yaml; from mini_nanotools import PostProcessor, Module, Collection; print('Ambiente CMS disponible')"
+python -c "import ROOT, uproot, tables, h5py, torch, onnx, yaml; from mini_nanotools import PostProcessor, Module, Collection; print('Ambiente CMS disponible')"
 ```
 
 CMS utiliza **`ml-open-data`** y el **módulo ROOT instalado en Yuca**, necesario para seleccionar los NanoAOD desde Python. Es un ambiente distinto al utilizado para ATLAS. Activa el ambiente, carga el módulo y exporta `PYTHONPATH` en cada nueva terminal, antes de comprobar las dependencias y enviar los trabajos. Slurm hereda estas variables al enviar el array.
@@ -115,7 +115,20 @@ sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode -X
 
 ## 4. Convertir los ROOT seleccionados a HDF5
 
-Después de completar la selección:
+Después de completar la selección, comprueba que **PyTables** esté disponible en `ml-open-data`. El conversor lo importa con el nombre `tables` para escribir los archivos HDF5:
+
+```bash
+python -c "import tables; print('PyTables disponible:', tables.__version__)"
+```
+
+Si aparece **`ModuleNotFoundError: No module named 'tables'`**, instálalo una sola vez en el ambiente activo y repite la comprobación:
+
+```bash
+python -m pip install tables
+python -c "import tables; print('PyTables disponible:', tables.__version__)"
+```
+
+Este error ocurre antes del envío de los trabajos de conversión; **no necesitas repetir la selección NanoAOD**. Una vez disponible PyTables, envía la conversión:
 
 ```bash
 cd "$HOME/ML-integration-CMSSW/data_processing/convert_h5"
