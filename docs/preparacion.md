@@ -10,7 +10,7 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 
 ### Paso 1. Conectarse a Yuca y activar la doble verificación
 
-En el primer acceso, entra con **el usuario y la contraseña proporcionados** y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige la terminal según tu sistema operativo; al terminar la conexión, continúa con [Registrar el QR](#registrar-qr), un paso común para Windows, Linux y macOS.
+En el primer acceso, entra con **el usuario y la contraseña proporcionados** y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige tu sistema operativo y completa la activación en cuanto Yuca muestre el código QR.
 
 **Selecciona tu sistema operativo y sigue únicamente esa opción:**
 
@@ -24,11 +24,21 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
     ssh TU_USUARIO@yuca.unison.mx
     ```
 
-    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
+    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
 
     ![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
 
     *La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio usuario asignado.*
+
+    #### Activar Google Authenticator cuando aparezca el QR {#registrar-qr}
+
+    **En cuanto Yuca muestre el código QR**, completa la activación antes de continuar:
+
+    1. Abre **Google Authenticator** en tu teléfono (instala la app si aún no la tienes).
+    2. Pulsa **+ → Escanear un código QR** y apunta al QR que aparece en tu computadora.
+    3. Introduce en la terminal el **código vigente de seis dígitos** de la app cuando Yuca lo solicite y completa las indicaciones.
+
+    Conserva la cuenta en Authenticator: usarás sus códigos en los siguientes accesos. Después continúa con **Open OnDemand**.
 
     #### PuTTY · Alternativa
 
@@ -46,6 +56,8 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
     ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
+    Si utilizas PuTTY, cuando aparezca el QR sigue el mismo procedimiento de **Google Authenticator** explicado arriba.
+
 === "Linux / macOS"
 
     Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asignado:
@@ -54,19 +66,9 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
     ssh TU_USUARIO@yuca.unison.mx
     ```
 
-    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**.
+    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
 
----
-
-En cualquiera de las terminales, la contraseña no se muestra mientras la escribes: no aparecen caracteres ni asteriscos. Es el comportamiento normal.
-
-#### Registrar el QR · Todos los sistemas {#registrar-qr}
-
-1. Instala y abre **Google Authenticator** en tu teléfono.
-2. Pulsa **+ → Escanear un código QR** y escanea el QR personal que Yuca muestre durante el primer acceso.
-3. Cuando la terminal solicite la verificación, introduce el **código vigente de seis dígitos** que aparece en la app y sigue las indicaciones hasta completar la activación.
-
-Conserva la cuenta en Authenticator: usarás su código junto con tu contraseña cuando Yuca lo solicite. Después, continúa con **Open OnDemand**.
+    Cuando aparezca el QR, realiza el mismo procedimiento explicado para Windows: **Google Authenticator → + → Escanear un código QR**. Introduce el código de seis dígitos cuando lo solicite la terminal y completa la activación antes de entrar a **Open OnDemand**.
 
 ## 2. Terminales de Open OnDemand y JupyterLab
 
