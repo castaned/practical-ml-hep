@@ -84,9 +84,13 @@ En **ATLAS**, separaremos eventos de Higgs y fondo con un clasificador. En **CMS
 
 [![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v3.svg)](assets/workshop/hep_framework_atlas_cms_v3.svg)
 
-## Programa del taller
+## Programa de los talleres
 
-**20, 21 y 23 de octubre de 2026 · Sala de Proyecciones, Edificio Carolino, Puebla.** Horarios en hora local de Puebla.
+**20–23 de octubre de 2026.** Horarios en hora local de Puebla.
+
+### Taller Machine learning
+
+Sala de Proyecciones, Edificio Carolino, Puebla.
 
 <div class="workshop-agenda workshop-agenda-three">
 <article class="agenda-day">
@@ -106,6 +110,31 @@ En **ATLAS**, separaremos eventos de Higgs y fondo con un clasificador. En **CMS
 <header class="agenda-day-header"><h3>Viernes 23</h3><span class="agenda-duration">1 h 15 min</span></header>
 <ol class="agenda-stages">
 <li><span class="agenda-time">11:45–13:00</span><h4>Discusión y análisis CMS</h4><p>Comparación de resultados ATLAS y recorrido CMS: procesamiento NanoAOD, variables y autoencoder.</p></li>
+</ol>
+</article>
+</div>
+
+### Taller de ROOT
+
+<div class="workshop-agenda workshop-agenda-three">
+<article class="agenda-day">
+<header class="agenda-day-header"><h3>Martes 20</h3><span class="agenda-duration">3 h 15 min</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">13:00–14:00</span><h4>Sesión 1</h4></li>
+<li><span class="agenda-time">15:30–16:45</span><h4>Sesión 2</h4></li>
+<li><span class="agenda-time">17:00–18:00</span><h4>Sesión 3</h4></li>
+</ol>
+</article>
+<article class="agenda-day">
+<header class="agenda-day-header"><h3>Miércoles 21</h3><span class="agenda-duration">1 h 15 min</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">10:15–11:30</span><h4>Sesión 4</h4></li>
+</ol>
+</article>
+<article class="agenda-day agenda-day-second">
+<header class="agenda-day-header"><h3>Jueves 22</h3><span class="agenda-duration">1 h</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">09:00–10:00</span><h4>Sesión 5</h4></li>
 </ol>
 </article>
 </div>
