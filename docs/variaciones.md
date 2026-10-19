@@ -17,7 +17,7 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 <div id="scenario-picker" class="result-table-wrap">
 <table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Elegir</th></tr></thead><tbody>
 <tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[2048, 1024, 512, 256]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="B"><td><strong>B · Más profunda</strong></td><td><code>model.hidden_dims</code></td><td>16 capas de <code>128</code> neuronas</td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Más profunda" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="B"><td><strong>B · Más profunda</strong></td><td><code>model.hidden_dims</code></td><td>10 capas de <code>128</code> neuronas</td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Más profunda" aria-pressed="false">Seleccionar</button></td></tr>
 <tr data-scenario-row="C"><td><strong>C · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
 <tr data-scenario-row="D"><td><strong>D · Anchura uniforme</strong></td><td><code>model.hidden_dims</code></td><td><code>[512, 512, 512, 512]</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Anchura uniforme" aria-pressed="false">Seleccionar</button></td></tr>
 <tr data-scenario-row="E"><td><strong>E · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td><button type="button" class="md-button" data-scenario="E" aria-label="Seleccionar E: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
@@ -65,7 +65,7 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
 <option value="wide">A · Más ancha · cuatro capas</option>
-<option value="deep">B · Más profunda · dieciséis capas</option>
+<option value="deep">B · Más profunda · diez capas</option>
 <option value="compact">C · Compacta · dos capas</option>
 <option value="uniform">D · Uniforme · cuatro capas</option>
 </select>
