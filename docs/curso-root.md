@@ -6,9 +6,10 @@ Ejecutaremos los notebooks del [curso de ROOT para estudiantes](https://github.c
 
 **Si ya tienes el ambiente, el kernel y el repositorio, pasa al paso 2.** Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
 
-Desde una terminal de JupyterLab, crea el ambiente:
+Abre una terminal de JupyterLab y sitúate en tu **carpeta personal (`$HOME`)** antes de crear el ambiente. El curso ROOT se prepara desde allí, separado del repositorio `ML-integration-CMSSW`. El primer comando del bloque te lleva a esa ubicación:
 
 ```bash
+cd "$HOME"
 source /apps/miniconda3/etc/profile.d/conda.sh
 conda deactivate
 module unload root/6.24.08 rocm/6.4.3
@@ -31,7 +32,7 @@ python -m ipykernel install --user \
   --env PYTHONPATH ""
 ```
 
-Descarga el repositorio completo **si todavía no lo tienes**:
+Desde **`$HOME`**, descarga el repositorio completo **si todavía no lo tienes**. Se creará **`$HOME/student-course`**, al mismo nivel que `$HOME/ML-integration-CMSSW`:
 
 ```bash
 cd "$HOME"
