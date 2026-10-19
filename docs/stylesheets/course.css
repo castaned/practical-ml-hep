@@ -204,3 +204,9 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 
 .workshop-agenda-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
 @media(max-width:900px) { .workshop-agenda-three { grid-template-columns:1fr; } }
+
+#scenario-picker .md-button { padding:.3rem .65rem; white-space:nowrap; font-size:.7rem; }
+#scenario-picker tr.scenario-selected { background:#e1f4ed; }
+[data-md-color-scheme=slate] #scenario-picker tr.scenario-selected { background:#204844; }
+#scenario-detail code { overflow-wrap:anywhere; }
+#scenario-detail { border-left:3px solid #00878a; padding:.2rem 1rem; margin:1rem 0; }

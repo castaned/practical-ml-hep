@@ -44,9 +44,10 @@ markdown_extensions:
   - attr_list
   - md_in_html
 extra_css:
-  - stylesheets/course.css?v=15
+  - stylesheets/course.css?v=16
 extra_javascript:
   - javascripts/explorer.js?v=3
+  - javascripts/scenarios.js?v=1
   - javascripts/simple-records.js?v=3
 nav:
   - Introducción: index.md
