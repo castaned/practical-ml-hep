@@ -60,7 +60,7 @@ nav:
       - Conclusiones: conclusiones.md
   - CMS:
       - Introducción: autoencoder.md
-      - Física y variables: cms-fisica.md
+      - Física y objetivo: cms-fisica.md
       - Procesamiento NanoAOD: cms-procesamiento.md
       - Autoencoder y benchmark: cms-autoencoder.md
       - Interpretación y perspectivas: cms-resultados.md
