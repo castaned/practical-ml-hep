@@ -1,17 +1,23 @@
 # CMS · Procesamiento desde NanoAOD
 
-**Nuestro punto de partida son las muestras originales de simulación CMS en NanoAOD, ya descargadas en Yuca.** No comenzamos con una tabla de variables preparada para machine learning: los archivos ROOT contienen las colecciones y cantidades reconstruidas de cada evento.
+Partimos de **muestras públicas de simulación del experimento CMS, disponibles en [CERN Open Data](https://opendata.cern.ch/)**. Los archivos originales están en formato **NanoAOD (ROOT)** y ya se descargaron en Yuca: este es el punto de inicio del ejercicio.
 
-A partir de esas ramas, el código identifica leptones, aplica filtros por evento, construye candidatos W/Z y calcula los observables. Después exporta las variables seleccionadas a HDF5 para entrenar el autoencoder.
+Usaremos los siguientes procesos:
 
-| Etapa | Qué hacemos |
-| --- | --- |
-| **NanoAOD original** | Leer electrones, muones, jets y momento transversal faltante de los archivos compartidos |
-| **Filtros por evento** | Aplicar la selección multileptónica y comprobar sus efectos en el cutflow |
-| **Construcción de variables** | Asignar los leptones a candidatos W/Z y calcular masas, momentos y separaciones angulares |
-| **ROOT seleccionado → HDF5** | Guardar las cantidades e identificadores de proceso para preparar las diez entradas de la red |
+| Muestra | Proceso físico | Papel en el análisis |
+| --- | --- | --- |
+| **DYJets** | Producción Drell–Yan de pares de leptones acompañados de jets | Muestra del Modelo Estándar; el benchmark histórico utiliza el intervalo HT 70–100 |
+| **WZ** | Producción conjunta de un bosón W y un Z | Proceso SM que puede producir tres leptones y momento transversal faltante |
+| **ZZ** | Producción de dos bosones Z | Otro proceso SM que contribuye a la muestra multileptónica |
+| **W′ → WZ** | Resonancia hipotética de 1 TeV que decae en W y Z | Señal simulada reservada para evaluación; no participa en el entrenamiento |
 
-Los procesos SM son DYJets, WZ y ZZ; W′ se reserva para evaluación. El benchmark histórico utiliza DYJets HT 70–100. Conserva la procedencia y la lista de archivos para poder comparar las ejecuciones. Los datos compartidos no se modifican; las salidas quedan en tu cuenta.
+A partir de las colecciones y ramas NanoAOD, **el código selecciona leptones, aplica filtros por evento, construye candidatos W/Z y calcula variables físicas**. Al terminar tendremos **archivos HDF5 con las cantidades seleccionadas para preparar las diez entradas del autoencoder**, separados por proceso. Sus distribuciones permiten revisar qué información física llega a la red y cómo difieren los procesos SM de W′.
+
+| Punto de partida | Procesamiento | Producto para machine learning |
+| --- | --- | --- |
+| NanoAOD originales de CMS Open Data, ya descargados | Filtros de eventos, reconstrucción de candidatos y cálculo de observables | HDF5 con variables seleccionadas e identificadores de proceso; diez entradas físicas para la red |
+
+Los NanoAOD compartidos se conservan como fuente. Los ROOT seleccionados y los HDF5 se generan en tu cuenta; la lista exacta de archivos de entrada queda registrada para comparar ejecuciones.
 
 ## 1. Localizar los datos y preparar el ambiente
 
@@ -96,6 +102,25 @@ sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode -X
 
 **Continúa cuando todas las tareas terminen correctamente (`COMPLETED`, `0:0`).** Los ROOT seleccionados estarán en **hep-workshop → cms → baseline01 → root**, separados por proceso. No vuelvas a enviar la selección mientras el primer array esté pendiente o activo: comparte su mapa de procesos dentro de tu copia del repositorio.
 
+## 4. Convertir los ROOT seleccionados a HDF5
+
+Después de completar la selección:
+
+```bash
+cd "$HOME/ML-integration-CMSSW/data_processing/convert_h5"
+python execute_convert_root2h5.py \
+  -f "$HOME/hep-workshop/configs/cms_root2h5_baseline01.yaml" \
+  --skip-empty-trees
+```
+
+Este comando envía otro array a Slurm. Anota su número y comprueba su estado con `squeue` y `sacct`, como en el paso anterior. Sus registros están en **data_processing → convert_h5 → logs**. Se omiten los ROOT sin eventos seleccionados.
+
+Los resultados se guardan en **hep-workshop → cms → baseline01 → h5**, en `DYJets`, `WZ`, `ZZ` y `Wprime`. Cada archivo `.h5` contiene las variables seleccionadas y `Dataset_ID`; las ramas por canal permiten construir las diez entradas físicas del autoencoder.
+
+### Producto del procesamiento: variables listas para el autoencoder
+
+Los HDF5 reúnen las cantidades seleccionadas de cada proceso. Al leerlos, el programa obtiene una fila de diez variables por evento; las cantidades dependientes del canal se toman de los leptones asignados a W/Z y `W_mt` se calcula con el leptón de W y el momento faltante. `Dataset_ID` se conserva para identificar la muestra, sin incorporarlo a las entradas de la red.
+
 ### Variables construidas para la red
 
 El código combina las ramas NanoAOD de los leptones y del momento faltante para construir candidatos W/Z y sus observables. Las diez entradas describen la energía transversal del evento, los candidatos W/Z y la geometría de sus decaimientos. Las cantidades de momento y masa se expresan en **GeV**; `Z_deltaR` es adimensional.
@@ -133,21 +158,6 @@ Estas distribuciones ilustran el producto físico de la selección y construcci�
 Distribuciones: material del análisis proporcionado por el autor; no son figuras oficiales de CMS.
 
 </div>
-
-## 4. Convertir los ROOT seleccionados a HDF5
-
-Después de completar la selección:
-
-```bash
-cd "$HOME/ML-integration-CMSSW/data_processing/convert_h5"
-python execute_convert_root2h5.py \
-  -f "$HOME/hep-workshop/configs/cms_root2h5_baseline01.yaml" \
-  --skip-empty-trees
-```
-
-Este comando envía otro array a Slurm. Anota su número y comprueba su estado con `squeue` y `sacct`, como en el paso anterior. Sus registros están en **data_processing → convert_h5 → logs**. Se omiten los ROOT sin eventos seleccionados.
-
-Los resultados se guardan en **hep-workshop → cms → baseline01 → h5**, en `DYJets`, `WZ`, `ZZ` y `Wprime`. Cada archivo `.h5` contiene las variables seleccionadas y `Dataset_ID`; las ramas por canal permiten construir las diez entradas físicas del autoencoder.
 
 ## 5. Comprobar los datos antes de entrenar
 
