@@ -146,6 +146,8 @@ En las siguientes sesiones, utiliza los comandos de **Inicio de una sesión de t
 
 ## 4. Inicio de una sesión de trabajo
 
+**Este bloque inicia ATLAS.** Si vienes de CMS o del curso de ROOT, utiliza [Elegir taller y cambiar de ambiente](ambientes.md) para activar las herramientas correctas. Dentro del taller de machine learning, solo CMS requiere ROOT para procesar los NanoAOD.
+
 **Cada vez que inicies una nueva sesión de JupyterLab y abras la terminal, ejecuta estos comandos.** Repítelos también si abres otra terminal: activan el ambiente de trabajo y te sitúan en el repositorio.
 
 ```bash

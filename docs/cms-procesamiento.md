@@ -23,6 +23,8 @@ Los NanoAOD compartidos se conservan como fuente. Los ROOT seleccionados y los H
 
 ## 1. Localizar los datos y preparar el ambiente
 
+Si vienes de ATLAS o del curso de ROOT, activa primero **Machine learning · CMS** en [Elegir taller y cambiar de ambiente](ambientes.md). CMS usa el ROOT 6.24.08 de Yuca para procesar NanoAOD; el curso de ROOT utiliza su propia instalación 6.36.
+
 Los NanoAOD están en **`/lustre/cursos/curso07/datos/autoencoder/`**, en las carpetas `DYjets`, `WZ`, `ZZ` y `Wprime`. En Open OnDemand puedes encontrarlos en **Files → Curso: curso07 → datos → autoencoder**. No necesitas copiarlos a tu cuenta.
 
 **En cada nueva terminal de JupyterLab, prepara ROOT y las herramientas de procesamiento antes de enviar los trabajos:**

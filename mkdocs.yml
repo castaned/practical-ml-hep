@@ -52,6 +52,7 @@ extra_javascript:
 nav:
   - Introducción: index.md
   - Preparación: preparacion.md
+  - Cambiar de taller / ambiente: ambientes.md
   - ATLAS:
       - Introducción: atlas.md
       - Procesos y variables: fisica.md
