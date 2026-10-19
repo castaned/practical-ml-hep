@@ -1,10 +1,11 @@
 # Bitácora del grupo
 
-Completar la bitácora durante los entrenamientos. Las respuestas se guardan en este navegador. Descargar una copia al terminar para conservarla y compartirla en la carpeta indicada en clase.
+El responsable del grupo completa la variación asignada, la hipótesis y las conclusiones. Al terminar, descarga la bitácora y el CSV del grupo en [Variaciones y resultados](variaciones.md#registro); súbelos desde JupyterLab a la carpeta compartida de entregas indicada por el instructor. El instructor reunirá los CSV para generar el resumen comparativo.
 
 <div id="workshop-notebook">
 <div class="notebook-fields">
 <label>Grupo o mesa<input name="group" maxlength="60" placeholder="g01 · mismo identificador que en la tabla"></label>
+<label>Variación asignada<select name="scenario"><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
 <label>Participantes<input name="participants" maxlength="300"></label>
 </div>
 

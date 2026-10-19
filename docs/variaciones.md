@@ -133,6 +133,16 @@ Para los escenarios B–H, sustituye el nombre del ejemplo en **la copia, el edi
 
 ## 3. Registrar y visualizar resultados {#registro}
 
+**Un responsable por grupo reúne y entrega los resultados:**
+
+1. Completa **Grupo**, **Variación asignada**, **Corrida**, métricas, cambio realizado y conclusión. Registra primero la referencia y después cada ejecución de la variación con **Guardar fila**.
+2. Completa la [bitácora](bitacora.md) con la misma variación, los YAML utilizados y las carpetas de resultados.
+3. Pulsa **Descargar CSV del grupo**. El archivo `resultados_gNN.csv` contiene las filas guardadas de ese grupo, incluida la referencia.
+4. En **JupyterLab**, abre la carpeta compartida de entregas que indique el instructor y utiliza **Upload Files** (flecha hacia arriba) para subir el CSV descargado. Sube también la bitácora `.md` para compartir la interpretación.
+5. **El instructor** descarga los CSV de esa carpeta y los selecciona juntos en **Reunir tablas CSV**. La página reúne las filas y genera las gráficas comparativas para la discusión.
+
+Guardar en la página conserva los datos en este navegador; **la entrega se completa al subir los archivos a Yuca**. La página no lee la carpeta compartida automáticamente.
+
 Usa el mismo identificador de **Grupo** en la tabla y la bitácora, por ejemplo `g01`. En **Corrida**, escribe el nombre del YAML sin `.yaml`, seguido de `/run_XXXX`:
 
 - Referencia: `atlas_baseline01/run_0001`.
@@ -151,7 +161,7 @@ Introducir una fila de referencia y otra de variación por grupo. Se puede carga
 <label>Grupo<input name="group" required maxlength="60" placeholder="g01"></label>
 <label>Corrida<input name="run" required maxlength="80" placeholder="g05_E_dropout0p3/run_0002"></label>
 <label>Tipo<select name="kind"><option value="Referencia">Referencia</option><option value="Variación">Variación</option></select></label>
-<label>Escenario<select name="scenario"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
+<label>Variación asignada<select name="scenario"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
 <label>Equipo<select name="device"><option>GPU MI210</option><option>CPU</option></select></label>
 <label>AUC<input name="auc" type="number" min="0" max="1" step="any" required></label>
 <label>AMS interna<input name="ams" type="number" min="0" step="any" required></label>
@@ -164,15 +174,13 @@ Introducir una fila de referencia y otra de variación por grupo. Se puede carga
 </form>
 <div class="result-controls">
 <label class="md-button">Cargar metrics.json<input id="metrics-import" type="file" accept=".json,application/json"></label>
-<button id="csv-export" type="button" class="md-button">Descargar tabla CSV</button>
+<button id="csv-export" type="button" class="md-button">Descargar CSV del grupo</button>
 <label class="md-button">Reunir tablas CSV<input id="csv-import" type="file" accept=".csv,text/csv" multiple></label>
 </div>
 <p id="results-status" role="status" aria-live="polite"></p>
 <div class="result-table-wrap"><table id="results-table"><thead><tr><th>Grupo / corrida</th><th>Escenario y cambio</th><th>Equipo</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Épocas / mejor</th><th>Δ AUC / Δ AMS</th><th>Conclusión</th><th>Acción</th></tr></thead><tbody></tbody></table></div>
 <div id="result-charts" class="result-charts" aria-label="Comparación de las métricas registradas"></div>
 </div>
-
-Los registros se conservan en este navegador. **No se sincronizan automáticamente entre computadoras.** Cada grupo descargará su tabla CSV y la entregará en la carpeta compartida indicada en clase. Para la discusión colectiva, utilizar **Reunir tablas CSV** con los archivos de los grupos; las filas se mostrarán juntas en la tabla y en las gráficas de esta página. El CSV conserva también el cambio realizado y la conclusión.
 
 ## 4. Interpretar la comparación
 

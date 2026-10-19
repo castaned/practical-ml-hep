@@ -89,9 +89,13 @@
     }catch(error){message(`No se cargaron las métricas: ${error.message}`);}event.target.value='';
   });
   board.querySelector('#csv-export').addEventListener('click',()=>{
-    const url=URL.createObjectURL(new Blob([encode(rows)],{type:'text/csv;charset=utf-8'}));
-    const a=element('a');a.href=url;a.download='resultados-hep.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    message('Tabla descargada. Entregar el CSV en la carpeta compartida de la actividad.');
+    const group=form.elements.namedItem('group').value.trim();
+    const selected=rows.filter(row=>row.group===group);
+    if(!group || !selected.length){message('Escribe el grupo que quieres descargar y guarda primero sus filas de resultados.');return;}
+    const safeGroup=group.replace(/[^a-zA-Z0-9_-]/g,'_');
+    const url=URL.createObjectURL(new Blob([encode(selected)],{type:'text/csv;charset=utf-8'}));
+    const a=element('a');a.href=url;a.download=`resultados_${safeGroup}.csv`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    message(`CSV de ${group} descargado con ${selected.length} filas. Súbelo desde JupyterLab a la carpeta compartida de entregas.`);
   });
   board.querySelector('#csv-import').addEventListener('change',async event=>{
     try{const incoming=[];for(const file of event.target.files)incoming.push(...decode(await file.text()));merge(incoming);message(`${incoming.length} filas importadas. Grupo y corrida identifican cada registro; las coincidencias se actualizan.`);}catch(error){message(`No se importaron las tablas: ${error.message}`);}event.target.value='';
