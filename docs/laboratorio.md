@@ -1,24 +1,6 @@
-# Ejercicio 1 · ATLAS Higgs Challenge
+# ATLAS · Benchmark de referencia
 
-El ejercicio comienza con la reproducción de una red de referencia. Una vez identificados sus resultados, se modificarán los parámetros del YAML para comparar distintas configuraciones.
-
-Los datos de este ejercicio son una tabla CSV de CERN Open Data con las variables ya calculadas. No se realiza una extracción desde NanoAOD. La lectura, el tratamiento de valores ausentes y la estandarización forman el preprocesamiento del clasificador.
-
-El entrenamiento se ejecuta con los scripts del repositorio principal [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW/tree/opendata_dev/workshop). Los parámetros se modifican en el YAML personal; las figuras y métricas se analizan en la carpeta de salida de cada corrida. No se requiere editar el código de Python.
-
-En el [flujo general del curso](index.md#el-flujo-de-un-analisis-experimental), este ejercicio comienza con observables ya calculados. La práctica se concentra en preparar esas entradas, entrenar el clasificador y comparar sus resultados.
-
-## Características del ejercicio
-
-| Aspecto | ATLAS Higgs Challenge |
-| --- | --- |
-| Datos de origen | Tabla CSV comprimida (`.csv.gz`) del challenge |
-| Contenido | Una fila por evento, con 30 variables físicas ya calculadas |
-| Procesamiento | Lectura de la tabla, tratamiento de valores ausentes y estandarización |
-| Modelo | Red completamente conectada de clasificación supervisada |
-| Objetivo | Distinguir Higgs → ττ de los procesos de fondo |
-| Evaluación | Curva ROC, AUC y AMS interna |
-| Lugar en el curso | Actividad principal del miércoles |
+Reproduce la configuración inicial y revisa sus resultados antes de probar variaciones del YAML.
 
 ## 1. Procesos y variables de entrada
 
