@@ -2,6 +2,8 @@
 
 Partimos de **muestras públicas de simulación del experimento CMS, disponibles en [CERN Open Data](https://opendata.cern.ch/)**. Los archivos originales están en formato **NanoAOD (ROOT)** y ya se descargaron en Yuca: este es el punto de inicio del ejercicio.
 
+**Diferencia con ATLAS:** allí leíamos una tabla CSV con las variables ya calculadas. En este paso de CMS usamos **ROOT desde Python (PyROOT)** y los módulos **`mini_nanotools`** del repositorio para recorrer los NanoAOD, acceder a las partículas de cada evento y ejecutar la selección de `filterNanoAOD.py`. Después convertimos los ROOT seleccionados a HDF5 para el entrenamiento.
+
 Usaremos los siguientes procesos:
 
 | Muestra | Proceso físico | Papel en el análisis |
@@ -23,7 +25,7 @@ Los NanoAOD compartidos se conservan como fuente. Los ROOT seleccionados y los H
 
 Los NanoAOD están en **`/lustre/cursos/curso07/datos/autoencoder/`**, en las carpetas `DYjets`, `WZ`, `ZZ` y `Wprime`. En Open OnDemand puedes encontrarlos en **Files → Curso: curso07 → datos → autoencoder**. No necesitas copiarlos a tu cuenta.
 
-Desde una terminal de JupyterLab:
+**En cada nueva terminal de JupyterLab, prepara ROOT y las herramientas de procesamiento antes de enviar los trabajos:**
 
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
@@ -40,7 +42,7 @@ python -c "import ROOT, uproot, h5py, torch, onnx, yaml; from mini_nanotools imp
 
 CMS utiliza **`ml-open-data`** y el **módulo ROOT instalado en Yuca**, necesario para seleccionar los NanoAOD desde Python. Es un ambiente distinto al utilizado para ATLAS. Activa el ambiente, carga el módulo y exporta `PYTHONPATH` en cada nueva terminal, antes de comprobar las dependencias y enviar los trabajos. Slurm hereda estas variables al enviar el array.
 
-**`mini_nanotools` también forma parte de este flujo.** Es el paquete incluido en la raíz del repositorio que proporciona `PostProcessor`, `Module` y `Collection` a `filterNanoAOD.py`. Utiliza PyROOT para recorrer los eventos y escribir los ROOT seleccionados. El `PYTHONPATH` anterior permite encontrar tanto ROOT como este paquete; el ejecutor de Slurm también añade la raíz del repositorio antes de lanzar el filtro.
+**`mini_nanotools` está incluido en el repositorio; no requiere una instalación aparte.** `PostProcessor` recorre los eventos y coordina la salida; `Module` permite implementar el filtro y `Collection` da acceso a las colecciones de partículas. `filterNanoAOD.py` utiliza estas herramientas junto con PyROOT para seleccionar los eventos y escribir los ROOT resultantes. El `PYTHONPATH` anterior permite encontrar tanto ROOT como este paquete; el ejecutor de Slurm también añade la raíz del repositorio antes de lanzar el filtro.
 
 ??? info "Solo si todavía no tienes el ambiente CMS"
 
