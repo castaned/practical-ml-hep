@@ -16,7 +16,7 @@ Los números están en `metrics.json`, dentro de cada carpeta de resultados. Man
 
 En la carpeta compartida indicada en clase, suban:
 
-- **Una o dos figuras** `training_summary.png` que permitan explicar la comparación.
+- **Una o dos figuras** `training_loss.png`, `roc_curve.png` y `classifier_scores.png` que permitan explicar la comparación.
 - **Los dos YAML** utilizados, para poder repetirla.
 - **La fila de resultados y su conclusión.** Pueden añadir los `metrics.json` para conservar los números.
 

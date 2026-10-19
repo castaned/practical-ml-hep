@@ -20,7 +20,7 @@ Elijan tres variables de las imágenes generadas con el YAML y consulten su sign
 
 ## Primera corrida: nuestra referencia
 
-Lean `metrics.json` y miren `training_summary.png`. La curva y los números corresponden al mejor modelo guardado.
+Lean `metrics.json` y miren `training_loss.png`, `roc_curve.png` y `classifier_scores.png`. La curva y los números corresponden al mejor modelo guardado.
 
 | YAML | Carpeta de resultados | Capas ocultas | Dropout | Aprendizaje | Lote | Mejor época | Épocas ejecutadas | Tiempo (s) | AUC | AMS interna |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

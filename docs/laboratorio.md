@@ -132,13 +132,24 @@ En el explorador de archivos de JupyterLab, abrir **hep-workshop → results →
 | Archivo | Contenido y uso |
 | --- | --- |
 | `config.yaml` | Configuración utilizada en esta ejecución |
-| `training_summary.png` | Pérdidas, curva ROC y distribuciones de puntuación |
+| `training_loss.png` | Pérdidas de entrenamiento y validación por época |
+| `roc_curve.png` | Curva ROC y AUC de validación |
+| `classifier_scores.png` | Puntuación del clasificador para señal y fondo |
 | `metrics.json` | AUC, AMS interna, tiempo, mejor época y épocas ejecutadas |
 | `history.csv` | Evolución del entrenamiento por época |
 | `best_model.pt` | Modelo conservado según la pérdida de validación |
 | `validation_scores.csv` | Puntuaciones de los eventos de validación |
 | `splits.csv` | Identificación de los eventos de cada partición |
 | `preprocessing.joblib` | Transformaciones aplicadas a las variables |
+
+Las tres figuras se guardan por separado en **PNG, PDF y SVG**. Para regenerarlas a partir de una corrida anterior, sin volver a entrenar:
+
+```bash
+git pull --ff-only origin opendata_dev
+python workshop/plot_atlas_training.py --results "$HOME/hep-workshop/results/atlas_gpu_baseline01"
+```
+
+Sustituye la ruta por la carpeta de la corrida que quieras visualizar.
 
 ### Comparar con el benchmark antes de variar {#comparar-benchmark}
 
@@ -164,7 +175,7 @@ El número de entradas, los conteos y la semilla deben coincidir con esta config
 Compara las variaciones con tu nueva ejecución de referencia de 40 épocas máximas y paciencia 10. Las puntuaciones históricas del challenge sirven como contexto. Nuestra AMS corresponde a validación interna, no a la evaluación privada del concurso.
 
 
-Abrir `training_summary.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
+Abrir `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Registrar la primera fila de la [bitácora](bitacora.md) con los valores propios. Antes de modificar el modelo, identificar:
 
 1. La carpeta donde se guardaron los resultados.
 2. El archivo que conserva la configuración utilizada.
@@ -173,7 +184,7 @@ Abrir `training_summary.png` y `metrics.json`. Registrar la primera fila de la [
 
 ### Interpretación de las figuras
 
-Abre **`training_summary.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
+Abre **`training_loss.png`, `roc_curve.png` y `classifier_scores.png`** en la carpeta de tu corrida. Los números para la tabla están en **`metrics.json`**.
 
 | Observa | Interpreta |
 | --- | --- |

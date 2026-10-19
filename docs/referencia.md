@@ -70,7 +70,7 @@ La primera corrida muestra **ROC-AUC sin pesos y AMS interna optimizada en valid
 cat "$HOME/hep-workshop/results/atlas_gpu_baseline01/metrics.json"
 ```
 
-En Files abrir `hep-workshop/results/atlas_gpu_baseline01/training_summary.png`: pérdida de entrenamiento/validación por época, ROC y distribución de puntuaciones. También se guarda PDF, `history.csv`, `validation_scores.csv`, `splits.csv`, `config.yaml`, el preprocesamiento y `best_model.pt`.
+En Files abrir `hep-workshop/results/atlas_gpu_baseline01/`: pérdida de entrenamiento/validación por época, ROC y distribución de puntuaciones. También se guarda PDF, `history.csv`, `validation_scores.csv`, `splits.csv`, `config.yaml`, el preprocesamiento y `best_model.pt`.
 
 Registrar AUC, AMS interna, mejor época, épocas ejecutadas, tiempo y GPU. Para un nuevo experimento, copiar el YAML, variar un solo parámetro y cambiar `output.directory` a una carpeta nueva. Los resultados existentes no se sobrescriben. Una red mayor no garantiza una mejora; conservar iguales los datos, particiones y semillas para comparar.
 
@@ -126,7 +126,7 @@ Copiar una fila por entrenamiento en la tabla compartida del curso:
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | | | | | | | | | | | | |
 
-Compartir el YAML, `metrics.json`, `history.csv` y `training_summary.png`, junto con una conclusión breve: qué cambió, cuánto costó, si mejoró AUC/AMS y qué muestran las pérdidas. Conservar los resultados en carpetas personales distintas; compartir solo las entregas solicitadas. No afirmar mejoras significativas por diferencias pequeñas de una única corrida.
+Compartir el YAML, `metrics.json`, `history.csv` y `training_loss.png`, `roc_curve.png` y `classifier_scores.png`, junto con una conclusión breve: qué cambió, cuánto costó, si mejoró AUC/AMS y qué muestran las pérdidas. Conservar los resultados en carpetas personales distintas; compartir solo las entregas solicitadas. No afirmar mejoras significativas por diferencias pequeñas de una única corrida.
 
 ## Benchmarks publicados del Higgs Challenge
 
