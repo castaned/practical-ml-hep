@@ -201,3 +201,6 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 .md-typeset .environment-checks li { position:relative; margin:0 0 .7rem; padding:.4rem 0 .4rem 2.1rem; line-height:1.65; }
 .environment-checks li::before { content:'✓'; position:absolute; left:0; top:.45rem; width:1.35rem; height:1.35rem; display:grid; place-items:center; border-radius:50%; background:#e0f5ef; color:#00878a; font-weight:800; font-size:.85rem; }
 [data-md-color-scheme=slate] .environment-checks li::before { background:#204844; color:#a7e9d8; }
+
+.workshop-agenda-three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media(max-width:900px) { .workshop-agenda-three { grid-template-columns:1fr; } }

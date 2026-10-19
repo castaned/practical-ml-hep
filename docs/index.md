@@ -85,22 +85,26 @@ En el curso practicaremos las etapas de un análisis de física experimental de 
 
 ## Programa del taller
 
-**21 y 22 de octubre de 2026 · Sala de Proyecciones, Edificio Carolino, Puebla.** Todos los horarios corresponden a la hora local de Puebla. Los temas se distribuirán en los siguientes bloques del programa oficial.
+**20, 21 y 23 de octubre de 2026 · Sala de Proyecciones, Edificio Carolino, Puebla.** Horarios en hora local de Puebla.
 
-<div class="workshop-agenda">
+<div class="workshop-agenda workshop-agenda-three">
 <article class="agenda-day">
-<header class="agenda-day-header"><h3>Miércoles 21</h3><span class="agenda-duration">3 h 15 min</span></header>
+<header class="agenda-day-header"><h3>Martes 20</h3><span class="agenda-duration">1 h 15 min</span></header>
 <ol class="agenda-stages">
-<li><span class="agenda-time">10:30–11:30 · 1 hora</span><h4>Introducción y preparación</h4><p>Flujo de análisis, acceso a Yuca, física del Higgs y variables de entrada.</p></li>
-<li><span class="agenda-time">16:00–17:00 · 1 hora</span><h4>Benchmark ATLAS</h4><p>Entrenamiento de la red inicial, seguimiento de su avance y revisión de figuras y métricas.</p></li>
-<li><span class="agenda-time">17:15–18:30 · 1 h 15 min</span><h4>Variaciones del entrenamiento</h4><p>Cambios en el YAML por estudiante o grupo. Cada ejecución se guarda por separado y se compara con la referencia.</p></li>
+<li><span class="agenda-time">11:45–13:00</span><h4>Introducción y preparación</h4><p>Flujo de análisis, acceso a Yuca, física del Higgs y variables de entrada.</p></li>
+</ol>
+</article>
+<article class="agenda-day">
+<header class="agenda-day-header"><h3>Miércoles 21</h3><span class="agenda-duration">2 h 45 min</span></header>
+<ol class="agenda-stages">
+<li><span class="agenda-time">15:30–16:45 · 1 h 15 min</span><h4>Benchmark ATLAS</h4><p>Entrenamiento de la red inicial, seguimiento de su avance y revisión de figuras y métricas.</p></li>
+<li><span class="agenda-time">17:00–18:30 · 1 h 30 min</span><h4>Variaciones del entrenamiento</h4><p>Cambios en el YAML por estudiante o grupo y comparación con la referencia.</p></li>
 </ol>
 </article>
 <article class="agenda-day agenda-day-second">
-<header class="agenda-day-header"><h3>Jueves 22</h3><span class="agenda-duration">09:00–10:00</span></header>
+<header class="agenda-day-header"><h3>Viernes 23</h3><span class="agenda-duration">1 h 15 min</span></header>
 <ol class="agenda-stages">
-<li><span class="agenda-time">Discusión colectiva</span><h4>Comparación de resultados</h4><p>Separación entre señal y fondo, sobreajuste y tiempos de entrenamiento en CPU y GPU.</p></li>
-<li><span class="agenda-time">Análisis CMS</span><h4>De NanoAOD al autoencoder</h4><p>Recorrido del análisis: selección de eventos, extracción de variables y reconstrucción para explorar anomalías.</p></li>
+<li><span class="agenda-time">11:45–13:00</span><h4>Discusión y análisis CMS</h4><p>Comparación de resultados ATLAS y recorrido CMS: procesamiento NanoAOD, variables y autoencoder.</p></li>
 </ol>
 </article>
 </div>
