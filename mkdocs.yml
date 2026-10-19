@@ -64,4 +64,5 @@ nav:
       - Procesamiento NanoAOD: cms-procesamiento.md
       - Autoencoder y benchmark: cms-autoencoder.md
       - Interpretación y perspectivas: cms-resultados.md
+  - Curso ROOT en Yuca: curso-root.md
   - Recursos y contacto: recursos.md
