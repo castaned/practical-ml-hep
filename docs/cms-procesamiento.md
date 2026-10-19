@@ -193,7 +193,19 @@ Distribuciones: material del análisis proporcionado por el autor; no son figura
 
 ## 5. Comprobar los HDF5, generar las gráficas y visualizarlas
 
-Cuando todas las tareas de conversión terminen correctamente (`COMPLETED`, `0:0`), ejecuta la comprobación y genera las distribuciones desde tus propios HDF5:
+**Antes de comprobar los datos o producir las gráficas, cerciórate de que todas las tareas de conversión ROOT → HDF5 hayan terminado con `COMPLETED` y código `0:0`.** Consulta el número del array de conversión —distinto al de selección NanoAOD— y revisa la lista completa:
+
+```bash
+sacct -j NUMERO_DEL_ARRAY_DE_CONVERSION --format=JobID,State,ExitCode -X
+```
+
+Sustituye `NUMERO_DEL_ARRAY_DE_CONVERSION` por el número recibido al enviar la conversión.
+
+![Ejemplo de tareas de conversión ROOT a HDF5 terminadas con COMPLETED y código 0:0](assets/cms/root2h5_jobs_completed.png)
+
+El número `2096378` corresponde únicamente al ejemplo de la captura. No basta con que algunas filas estén completas o que el trabajo desaparezca de `squeue`: **todas las tareas deben haber finalizado correctamente**. Leer los HDF5 mientras se están generando puede dar conteos incompletos, errores de lectura o impedir la división en entrenamiento, validación y prueba.
+
+Después ejecuta la comprobación y genera las distribuciones desde tus propios HDF5:
 
 ```bash
 cd "$HOME/ML-integration-CMSSW"
