@@ -20,7 +20,7 @@
     root.querySelector('#parameter-count').textContent = new Intl.NumberFormat('es-MX').format(count(dims));
     root.querySelector('#dropout-value').textContent = Number(slider.value).toFixed(1);
     code.textContent = `model:\n  hidden_dims: [${hidden.join(', ')}]\n  dropout: ${Number(slider.value).toFixed(1)}`;
-    status.textContent='Conserva el resto de tu YAML y elige una carpeta nueva para cada corrida.';
+    status.textContent='Conserva el resto de tu YAML; cada ejecución crea su propia carpeta numerada.';
   };
   select.addEventListener('change',update); slider.addEventListener('input',update);
   root.querySelector('#copy-network').addEventListener('click',async () => {

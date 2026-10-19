@@ -1,6 +1,6 @@
 # Variaciones del benchmark
 
-Esta actividad corresponde a la **bloque del miércoles de 17:00 a 18:30**. Utilizar el YAML `atlas_baseline01.yaml` y los resultados de `atlas_gpu_baseline01` obtenidos en el [benchmark](laboratorio.md).
+Esta actividad corresponde al **bloque del miércoles de 17:00 a 18:30**. Utilizar el YAML `atlas_baseline01.yaml` y los resultados de `atlas_gpu_baseline01` obtenidos en el [benchmark](laboratorio.md).
 
 Antes de preparar cambios, completar la [comparación del benchmark](laboratorio.md#comparar-benchmark), revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y registrar la corrida como **Referencia** en la [tabla](#registro). Las variaciones se compararán con esa ejecución personal, realizada con los mismos datos y particiones.
 
@@ -22,7 +22,7 @@ Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la mi
 | C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
 | D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
 
-Conservar los demás parámetros, las variables y las particiones de datos. Cada modificación requiere un YAML y una carpeta de salida propios. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
+Conservar los demás parámetros, las variables y las particiones de datos. Guarda cada configuración en su YAML; cada envío crea automáticamente una subcarpeta numerada con sus resultados. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
 
 ### Explorar la arquitectura antes de modificar el YAML
 
@@ -48,7 +48,7 @@ Conservar los demás parámetros, las variables y las particiones de datos. Cada
   hidden_dims: [128, 64, 32, 16]
   dropout: 0.1</code></pre>
 <button type="button" id="copy-network">Copiar fragmento YAML</button>
-<p id="copy-status" role="status">Conserva el resto de tu YAML y elige una carpeta nueva para cada corrida.</p>
+<p id="copy-status" role="status">Conserva el resto de tu YAML; cada ejecución crea su propia carpeta numerada.</p>
 </div>
 </div>
 
@@ -64,7 +64,7 @@ cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/con
 
 En el explorador lateral de **JupyterLab**, abre **hep-workshop → configs → atlas_02.yaml**. Este es el archivo que vas a editar y enviar al entrenamiento; conserva `atlas_baseline01.yaml` como referencia.
 
-En esa copia, modifica el campo del escenario asignado y cambia también **`output.directory`**. Por ejemplo, para el **escenario A**, los bloques correspondientes deben quedar así:
+En esa copia, modifica el campo del escenario asignado. Puedes conservar **`output.directory`**: las ejecuciones se separan automáticamente. Para el **escenario A**, cambia:
 
 ```yaml
 model:
@@ -72,12 +72,12 @@ model:
   dropout: 0.1
 
 output:
-  directory: $HOME/hep-workshop/results/atlas_02
+  directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
 ```
 
-Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B, C o D, aplica únicamente los cambios de su fila en la tabla anterior, además de la nueva carpeta de salida.
+Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B, C o D, aplica únicamente los cambios de su fila en la tabla anterior.
 
-**Guarda el archivo antes de enviar el trabajo.** La ejecución siguiente utilizará `atlas_02.yaml` y guardará sus resultados en `hep-workshop/results/atlas_02/`, separados de `atlas_gpu_baseline01/`.
+**Guarda el archivo antes de enviar el trabajo.** La ejecución utilizará `atlas_02.yaml` y creará la siguiente subcarpeta `run_XXXX` dentro de la ruta de salida. Allí se conserva también la configuración utilizada.
 
 Conservar los demás parámetros, incluidas las particiones de datos y la semilla. Antes de enviar, anotar el cambio y el resultado esperado en la [bitácora](bitacora.md).
 
@@ -87,9 +87,9 @@ sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
   workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/atlas_02.yaml"
 ```
 
-Al terminar, abrir **hep-workshop → results → atlas_02** y revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Comparar las pérdidas y la curva ROC con las de la referencia.
+Al terminar, abrir la subcarpeta **run_XXXX** indicada en el log y revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Comparar las pérdidas y la curva ROC con las de la referencia.
 
-Para otra variación, utiliza otro nombre de YAML y otra carpeta, por ejemplo `atlas_03.yaml` y `results/atlas_03`. El entrenamiento rechaza una carpeta de salida que ya existe para evitar sobrescribir resultados anteriores.
+Para otra variación, guarda su configuración, por ejemplo en `atlas_03.yaml`, y envíala. No necesitas renombrar la carpeta de salida: el número de ejecución aumenta automáticamente.
 
 ## 3. Registrar y visualizar resultados {#registro}
 

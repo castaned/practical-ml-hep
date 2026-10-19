@@ -57,7 +57,7 @@ Si ya tenías una copia personal del YAML, actualiza `training.epochs` a `40` y 
 
 ![Contenido del YAML de referencia y ubicación en la carpeta configs](assets/workshop/atlas_baseline_yaml.png)
 
-La imagen muestra el contenido del archivo y su ubicación; la apariencia del editor puede variar.
+Puedes conservar `output.directory` al repetir el entrenamiento. Cada envío crea una subcarpeta nueva: `run_0001`, `run_0002`, etc., sin sobrescribir las anteriores.
 
 ```yaml
 output:
@@ -109,7 +109,7 @@ En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. A
 
 ## 4. Localizar y revisar los resultados
 
-En el explorador de archivos de JupyterLab, abrir **hep-workshop → results → atlas_gpu_baseline01** dentro del directorio personal. Los resultados pertenecen a la cuenta del participante; los datos originales permanecen en la carpeta compartida.
+En el explorador de archivos de JupyterLab, abrir **hep-workshop → results → atlas_gpu_baseline01 → run_0001** (o el número de la ejecución). El visor y el log muestran la ruta exacta. Dentro encontrarás una copia del YAML y los resultados de esa corrida.
 
 | Archivo | Contenido y uso |
 | --- | --- |
@@ -128,7 +128,7 @@ Las tres figuras se guardan por separado en **PNG, PDF y SVG**. Para regenerarla
 
 ```bash
 git pull --ff-only origin opendata_dev
-python workshop/plot_atlas_training.py --results "$HOME/hep-workshop/results/atlas_gpu_baseline01"
+python workshop/plot_atlas_training.py --results "$HOME/hep-workshop/results/atlas_gpu_baseline01/run_0001"
 ```
 
 Sustituye la ruta por la carpeta de la corrida que quieras visualizar.
@@ -225,7 +225,7 @@ La red mejora la selección; la conclusión física requiere además los datos o
 
 En la siguiente sección podrás utilizar el [selector de arquitecturas](variaciones.md#explorar-la-arquitectura-antes-de-modificar-el-yaml) para comparar capas, neuronas y número de parámetros antes de preparar una variación.
 
-Conservar `atlas_baseline01.yaml` y la carpeta `atlas_gpu_baseline01`. Registrar su fila como **Referencia** en la [tabla de resultados](variaciones.md#registro), después de contrastarla con el benchmark. Esa corrida personal será el punto de comparación de las variaciones.
+Conservar `atlas_baseline01.yaml` y la subcarpeta `run_XXXX` correspondiente a la referencia. Registrar su fila como **Referencia** en la [tabla de resultados](variaciones.md#registro), después de contrastarla con el benchmark. Esa corrida personal será el punto de comparación de las variaciones.
 
 
 ## Programa del miércoles: tres horas

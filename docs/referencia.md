@@ -72,7 +72,7 @@ cat "$HOME/hep-workshop/results/atlas_gpu_baseline01/metrics.json"
 
 En Files abrir `hep-workshop/results/atlas_gpu_baseline01/`: pérdida de entrenamiento/validación por época, ROC y distribución de puntuaciones. También se guarda PDF, `history.csv`, `validation_scores.csv`, `splits.csv`, `config.yaml`, el preprocesamiento y `best_model.pt`.
 
-Registrar AUC, AMS interna, mejor época, épocas ejecutadas, tiempo y GPU. Para un nuevo experimento, copiar el YAML, variar un solo parámetro y cambiar `output.directory` a una carpeta nueva. Los resultados existentes no se sobrescriben. Una red mayor no garantiza una mejora; conservar iguales los datos, particiones y semillas para comparar.
+Registrar AUC, AMS interna, mejor época, épocas ejecutadas, tiempo y GPU. Para un nuevo experimento, copiar el YAML y variar un solo parámetro. Cada envío crea automáticamente una subcarpeta numerada dentro de `output.directory`. Los resultados existentes no se sobrescriben. Una red mayor no garantiza una mejora; conservar iguales los datos, particiones y semillas para comparar.
 
 El ejemplo CMS de [clasificación desde NanoAOD](cms-clasificacion.md) permanece como material complementario; el [autoencoder](autoencoder.md) ilustra entrenamiento sin etiquetas de señal y error de reconstrucción.
 
