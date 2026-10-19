@@ -10,7 +10,7 @@ La primera conexión se hace por **SSH desde tu computadora**. En ella se prepar
 
 ### Paso 1. Conectarse a Yuca y activar la doble verificación
 
-En el primer acceso, entra con **el usuario y la contraseña proporcionados** y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige tu sistema operativo y completa la activación en cuanto Yuca muestre el código QR.
+En el primer acceso, entra con los datos **Username** y **Password** de la tabla de cuentas y después **escanea el QR personal de Yuca desde Google Authenticator en tu teléfono**. Elige tu sistema operativo y completa la activación en cuanto Yuca muestre el código QR.
 
 **Selecciona tu sistema operativo y sigue únicamente esa opción:**
 
@@ -18,17 +18,17 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
     #### PowerShell · Opción preferida
 
-    Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USUARIO` por el nombre de usuario que se te proporcionó para el curso:
+    Abre el menú Inicio, busca **PowerShell** y abre la aplicación. Ejecuta el siguiente comando, sustituyendo `TU_USERNAME` por el valor de la columna **Username** de la tabla de cuentas:
 
     ```powershell
-    ssh TU_USUARIO@yuca.unison.mx
+    ssh TU_USERNAME@yuca.unison.mx
     ```
 
-    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
+    Cuando aparezca `Password:`, escribe el valor de la columna **Password** de la tabla y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
 
     ![Conexión SSH a Yuca desde Windows PowerShell y solicitud de contraseña](assets/yuca/00-powershell-ssh.png)
 
-    *La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio usuario asignado.*
+    *La captura utiliza la cuenta de ejemplo `docente_07`. Debes escribir tu propio **Username** de la tabla.*
 
     #### Activar Google Authenticator cuando aparezca el QR {#registrar-qr}
 
@@ -54,7 +54,7 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
     - **Port:** `22`.
     - **Connection type:** `SSH`.
 
-    Pulsa **Open**. Cuando aparezca `login as:`, escribe **el nombre de usuario que se te proporcionó para el curso** y pulsa **Enter**. Después introduce la contraseña proporcionada cuando aparezca `Password:` y pulsa **Enter**.
+    Pulsa **Open**. Cuando aparezca `login as:`, escribe tu **Username** de la tabla y pulsa **Enter**. Después introduce el valor de **Password** de la tabla cuando aparezca `Password:` y pulsa **Enter**.
 
     ![Configuración de PuTTY: servidor yuca.unison.mx, puerto 22 y conexión SSH](assets/yuca/00-putty-ssh.png){ width="580" }
 
@@ -62,13 +62,13 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
 === "Linux / macOS"
 
-    Abre la terminal del sistema y utiliza el mismo comando SSH, con tu usuario asignado:
+    Abre la terminal del sistema y utiliza el mismo comando SSH, sustituyendo `TU_USERNAME` por tu **Username** de la tabla:
 
     ```bash
-    ssh TU_USUARIO@yuca.unison.mx
+    ssh TU_USERNAME@yuca.unison.mx
     ```
 
-    Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó para el curso** y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
+    Cuando aparezca `Password:`, escribe el valor de la columna **Password** de la tabla y pulsa **Enter**. La contraseña no muestra caracteres ni asteriscos mientras la escribes.
 
     Cuando aparezca el QR, realiza el mismo procedimiento explicado para Windows: **Google Authenticator → + → Escanear un código QR**. Introduce el código de seis dígitos cuando lo solicite la terminal y completa la activación antes de entrar a **Open OnDemand**.
 
@@ -78,7 +78,7 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
 Abre **Open OnDemand de Yuca**: [https://yucaood.acarus.unison.mx/](https://yucaood.acarus.unison.mx/).
 
-Introduce el nombre de usuario y la contraseña que se te proporcionaron para el curso. Completa la verificación con el código de Google Authenticator cuando se solicite.
+Introduce los valores **Username** y **Password** de la tabla de cuentas. Completa la verificación con el código de Google Authenticator cuando se solicite.
 
 ![Pantalla de acceso a Open OnDemand de Yuca](assets/yuca/01-acceso.png)
 
