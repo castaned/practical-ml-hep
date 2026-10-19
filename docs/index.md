@@ -61,10 +61,6 @@ El **entrenamiento de redes neuronales es una aplicación del aprendizaje autom�
 
 Separaremos los datos utilizados para aprender de los empleados para evaluar el modelo. Revisaremos las curvas de entrenamiento y las métricas para comprobar si la red generaliza a eventos que no utilizó para ajustar sus parámetros. Finalmente, interpretaremos los resultados en su contexto físico: qué procesos logra distinguir, qué aporta frente a la referencia y qué limitaciones debemos considerar antes de extraer conclusiones.
 
-### Arquitectura de los ejercicios {#aplicacion-a-los-ejercicios-del-curso}
-
-[![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v2.svg)](assets/workshop/hep_framework_atlas_cms_v2.svg)
-
 ## Datos, infraestructura y software de análisis
 
 <div class="yuca-profile">
@@ -85,6 +81,10 @@ Separaremos los datos utilizados para aprender de los empleados para evaluar el 
 <figcaption>Clúster Yuca. Fotografía: <a href="https://acarus.unison.mx/hardware/">ACARUS · Universidad de Sonora</a>.</figcaption>
 </figure>
 </div>
+
+## Arquitectura de los ejercicios {#aplicacion-a-los-ejercicios-del-curso}
+
+[![Flujo de datos, procesamiento, entrenamiento, evaluación y almacenamiento de resultados en Yuca para ATLAS y CMS](assets/workshop/hep_framework_atlas_cms_v2.svg)](assets/workshop/hep_framework_atlas_cms_v2.svg)
 
 ## Programa del taller
 
