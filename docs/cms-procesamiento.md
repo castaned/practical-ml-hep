@@ -113,6 +113,14 @@ sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode -X
 
 **Continúa cuando todas las tareas terminen correctamente (`COMPLETED`, `0:0`).** Los ROOT seleccionados estarán en **hep-workshop → cms → baseline01 → root**, separados por proceso. No vuelvas a enviar la selección mientras el primer array esté pendiente o activo: comparte su mapa de procesos dentro de tu copia del repositorio.
 
+### Antes de convertir: comprobar todas las tareas
+
+**No inicies la conversión a HDF5 hasta que todas las tareas de selección NanoAOD aparezcan en `COMPLETED` con `ExitCode` igual a `0:0`.** Revisa la salida completa de `sacct`, no solo las últimas filas. Que el trabajo desaparezca de `squeue` no confirma que haya terminado correctamente.
+
+![Ejemplo en JupyterLab: tareas del array NanoAOD en COMPLETED y código de salida 0:0](assets/cms/nanoaod_jobs_completed.png)
+
+En esta captura, `2096094` es el número de una ejecución de ejemplo; utiliza el número de tu propio array. Si alguna tarea está pendiente, ejecutándose o ha fallado, espera o revisa sus registros `.out` y `.err` antes de continuar. Convertir antes de completar la selección puede dejar fuera archivos y producir una muestra incompleta.
+
 ## 4. Convertir los ROOT seleccionados a HDF5
 
 Después de completar la selección, comprueba que **PyTables** esté disponible en `ml-open-data`. El conversor lo importa con el nombre `tables` para escribir los archivos HDF5:
