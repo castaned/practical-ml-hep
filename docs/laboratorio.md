@@ -158,17 +158,5 @@ Los siguientes valores están en **`metrics.json`**:
 <span id="significado-fisico"></span>
 Una mejor separación puede ayudar a medir una señal con menor incertidumbre o aumentar la sensibilidad a procesos poco frecuentes. La conclusión física requiere también datos observados, normalizaciones e incertidumbres: **una AMS mayor no equivale a un descubrimiento**.
 
-### Guardar la referencia y continuar
-
-En la [bitácora](bitacora.md), selecciona **Referencia** y carga `metrics.json`: se completarán AUC, AMS, tiempo, épocas ejecutadas y mejor época. Descarga el CSV para la comparación. Conserva la subcarpeta de esta corrida y su `config.yaml`: será tu referencia para comparar variaciones con los mismos datos y particiones.
-
-Las figuras están disponibles en PNG, PDF y SVG. Si necesitas regenerarlas sin volver a entrenar:
-
-```bash
-python workshop/plot_atlas_training.py --results "$HOME/hep-workshop/results/atlas_gpu_baseline01/run_0001"
-```
-
-Sustituye la ruta por la carpeta de tu corrida.
-
 [Anterior: procesos y variables](fisica.md){ .md-button }
 [Continuar: variaciones y resultados](variaciones.md){ .md-button .md-button--primary }
