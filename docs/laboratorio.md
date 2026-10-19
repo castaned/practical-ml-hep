@@ -64,7 +64,16 @@ Primero ejecutaremos todos la misma configuración. Los datos ya están comparti
 
     Si falta configurar el ambiente, completar la [preparación inicial](preparacion.md#3-clonacion-y-preparacion-del-entorno-de-analisis). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
-Abrir `hep-workshop/configs/atlas_baseline01.yaml` en el explorador lateral de JupyterLab. Comprobar los parámetros anteriores y conservarlos sin cambios durante esta primera ejecución. La carpeta de salida indicada en el YAML debe ser:
+### Abrir y revisar el YAML en JupyterLab
+
+1. En el **explorador de archivos de la izquierda**, vuelve a tu carpeta personal y abre **hep-workshop → configs**.
+2. Haz doble clic en **atlas_baseline01.yaml** para abrirlo en el editor. Si no se abre como texto, haz clic derecho y selecciona **Open With → Editor**.
+3. Revisa `model` (capas y dropout) y `training` (épocas, tamaño de lote y tasa de aprendizaje). Para reproducir la referencia, conserva los valores de la copia inicial.
+4. Comprueba que `output.directory` coincida con la ruta siguiente. Si necesitas corregirla, edita el valor **después de los dos puntos**, conservando la sangría, y guarda con **Ctrl+S**.
+
+![Contenido del YAML de referencia y ubicación en la carpeta configs](assets/workshop/atlas_baseline_yaml.png)
+
+La imagen muestra el contenido del archivo y su ubicación; la apariencia del editor puede variar.
 
 ```yaml
 output:
