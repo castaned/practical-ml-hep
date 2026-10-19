@@ -10,6 +10,8 @@ Cada escenario puede asignarse a unas diez personas. Al menos dos estudiantes o 
 
 Estos contrastes exploran capacidad, optimización y regularización. Una diferencia grande revela sensibilidad en las condiciones de esta prueba; confirma las tendencias con las repeticiones y las curvas de pérdidas.
 
+**En E–H se conserva la arquitectura del benchmark: `[128, 64, 32, 16]`, con 14 849 parámetros entrenables.** E cambia únicamente dropout; F–H conservan también dropout en `0.1`.
+
 Selecciona una fila para ver las instrucciones de esa variación. Conserva los demás parámetros y las mismas particiones del benchmark.
 
 <div id="scenario-picker" class="result-table-wrap">
@@ -32,6 +34,7 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 <div id="scenario-detail" hidden>
 <h3 id="scenario-title"></h3>
 <p id="scenario-question"></p>
+<p id="scenario-architecture"></p>
 <p><strong>1. Crea la copia del YAML</strong> desde la terminal de JupyterLab:</p>
 <pre><code id="scenario-copy" class="language-bash"></code></pre>
 <p><strong>2. Ábrela en el explorador izquierdo:</strong> <code id="scenario-path"></code>.</p>
@@ -51,7 +54,7 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 
 ### Explorar las capas de esta variación {#explorar-la-arquitectura-antes-de-modificar-el-yaml}
 
-En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El dibujo muestra la arquitectura elegida. Mantén dropout en `0.1` para comparar A–D.
+En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El explorador muestra la arquitectura del escenario seleccionado y sus parámetros entrenables. E usa dropout `0.6`; los demás escenarios usan `0.1`. Cambiar dropout no altera el número de parámetros.
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">

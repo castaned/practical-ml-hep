@@ -47,7 +47,7 @@ extra_css:
   - stylesheets/course.css?v=16
 extra_javascript:
   - javascripts/explorer.js?v=4
-  - javascripts/scenarios.js?v=3
+  - javascripts/scenarios.js?v=4
   - javascripts/simple-records.js?v=3
 nav:
   - Introducción: index.md
