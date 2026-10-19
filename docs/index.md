@@ -45,10 +45,10 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales.
 </a>
 <div class="open-data-copy">
 <h2>CERN Open Data</h2>
-<p>El portal reúne datos de experimentos de física de partículas, software y documentación para su análisis. Este acceso permite trabajar con muestras abiertas y reproducir estudios de procesos físicos.</p>
-<p>En el taller utilizaremos simulaciones de <strong>ATLAS y CMS</strong> para recorrer las etapas del análisis, desde los datos de origen hasta la interpretación de los resultados.</p>
+<p>Con <strong>más de 5 petabytes de datos abiertos</strong> —más de 5 millones de gigabytes—, el portal ofrece datos de colisiones, simulaciones, software y documentación para desarrollar análisis de física de partículas.</p>
+<p>Es una base ideal para <strong>estudiar procesos del Modelo Estándar (SM)</strong> y <strong>explorar señales de física más allá del Modelo Estándar (BSM)</strong>. En el taller trabajaremos con simulaciones de ATLAS y CMS: clasificación de Higgs y búsqueda de anomalías.</p>
 <a href="https://opendata.cern.ch/">Explorar el portal oficial →</a>
-<p class="open-data-credit">Logotipo: CERN Open Data.</p>
+<p class="open-data-credit">Logotipo y <a href="https://opendata.cern/docs/colddata">volumen de datos publicado</a>: CERN Open Data.</p>
 </div>
 </div>
 
