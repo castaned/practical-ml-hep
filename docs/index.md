@@ -18,13 +18,11 @@ hide:
 
 <div class="hero-copy" markdown>
 
-<span class="course-kicker">Taller práctico · Universidad de Sonora</span>
+<span class="course-kicker">Taller práctico</span>
 
 # Practical Machine Learning for HEP Data Analysis
 
-Análisis de datos abiertos de ATLAS y CMS con redes neuronales en Yuca.
-
-<p class="course-affiliation">Yuca · ACARUS / UNISON · CPU y GPU</p>
+Análisis de datos abiertos de ATLAS y CMS con redes neuronales.
 
 
 
