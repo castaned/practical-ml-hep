@@ -51,7 +51,7 @@
         const label=row.variation==='Referencia'?'referencia':row.variation[0];
         const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([encode([row])],{type:'text/csv;charset=utf-8'}));
         a.download=`resultado_${label}_${stamp}.csv`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-        status.textContent='Registro descargado. Súbelo a la carpeta compartida de Yuca.';
+        status.textContent='Registro descargado. Súbelo a /lustre/cursos/curso07/variaciones/ desde Open OnDemand: Files → Curso: curso07 → variaciones → Upload.';
       }catch(e){status.textContent=e.message;}
     });
   }

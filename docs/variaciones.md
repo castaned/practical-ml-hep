@@ -129,13 +129,13 @@ Para los escenarios B–H, sustituye el nombre del ejemplo en **la copia, el edi
 
 1. Abre la [bitácora de resultados](bitacora.md), selecciona la variación y carga el `metrics.json` de la corrida.
 2. Comprueba los cinco indicadores y descarga su **registro CSV**. Registra también el benchmark como **Referencia** en otro CSV.
-3. El responsable sube los CSV a la carpeta compartida indicada en clase, usando **Upload Files** en JupyterLab.
+3. El responsable sube los CSV a **`/lustre/cursos/curso07/variaciones/`**. En Open OnDemand, abre **Files → Curso: curso07 → variaciones → Upload** y selecciona los archivos descargados.
 
 [Registrar indicadores](bitacora.md){ .md-button .md-button--primary }
 
 ## 4. Tabla de resumen {#registro}
 
-El instructor descarga los CSV de la carpeta compartida y los selecciona juntos con **Reunir registros CSV**. La tabla se genera automáticamente; cada fila corresponde a una ejecución, sin promediar ni ocultar las repeticiones.
+El instructor descarga los CSV de **`/lustre/cursos/curso07/variaciones/`** y los selecciona juntos con **Reunir registros CSV**. La tabla se genera automáticamente; cada fila corresponde a una ejecución, sin promediar ni ocultar las repeticiones.
 
 <div id="simple-summary">
 <label class="md-button">Reunir registros CSV<input id="simple-import" type="file" accept=".csv,text/csv" multiple></label>

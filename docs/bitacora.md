@@ -2,7 +2,7 @@
 
 1. Selecciona la **variación** que ejecutaste (o **Referencia** para el benchmark).
 2. Carga el `metrics.json` de esa ejecución: los indicadores se completan automáticamente. También puedes copiarlos a mano.
-3. Pulsa **Descargar registro CSV** y sube el archivo a la carpeta compartida de Yuca desde JupyterLab. El instructor reunirá estos archivos en la [tabla de resumen](variaciones.md#registro).
+3. Pulsa **Descargar registro CSV** y sube el archivo a **`/lustre/cursos/curso07/variaciones/`**. En Open OnDemand, abre **Files → Curso: curso07 → variaciones** y pulsa **Upload** para seleccionar el CSV descargado. El instructor reunirá estos archivos en la [tabla de resumen](variaciones.md#registro).
 
 <div id="simple-log">
 <label class="md-button">Cargar metrics.json<input id="simple-metrics" type="file" accept=".json,application/json"></label>
