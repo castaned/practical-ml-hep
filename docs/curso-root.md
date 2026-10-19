@@ -59,27 +59,6 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT student-
 
 ![Seleccionar Python (ROOT student-course) en JupyterLab](assets/root-course/select-root-kernel.png)
 
-Comprueba en una celda Python:
-
-```python
-import ROOT
-import shutil
-print("ROOT:", ROOT.gROOT.GetVersion())
-print("rootls:", shutil.which("rootls"))
-```
-
-Debes ver **ROOT 6.36.x** y una ruta de `rootls` dentro de **`root-student-course/bin`**. Después ejecuta las celdas en orden con **Shift+Enter**.
-
-??? info "Si aparece ROOT 6.24 o no se encuentra rootls"
-
-    Vuelve a [Elegir taller y cambiar de ambiente](ambientes.md) y ejecuta el bloque del curso ROOT. Si falta `rootls` solo en el notebook, repite el registro del kernel del paso 1. Cierra el kernel anterior, selecciona nuevamente **Python (ROOT student-course)** y ejecuta el notebook desde el principio.
-
-    No es necesario reinstalar el ambiente ni modificar los notebooks para corregir las rutas.
-
-??? info "Lecciones avanzadas y archivos remotos"
-
-    Algunos ejemplos leen datos de CERN por HTTPS/XRootD. Dask trabaja dentro del nodo asignado y no solicita nodos adicionales. Limita `ROOT.EnableImplicitMT()` a los cores reservados, por ejemplo `ROOT.EnableImplicitMT(2)`.
-
-    Los ejercicios extra con ROOT C++ o metadata antigua de Python 2 requieren revisión aparte. Hay también celdas con errores didácticos y ejercicios por completar.
+Con el kernel **Python (ROOT student-course)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
 [Elegir taller y cambiar de ambiente](ambientes.md){ .md-button .md-button--primary }
