@@ -44,6 +44,7 @@ markdown_extensions:
 extra_css:
   - stylesheets/course.css?v=15
 extra_javascript:
+  - javascripts/account-lookup.js?v=1
   - javascripts/explorer.js?v=3
   - javascripts/simple-records.js?v=3
 nav:
