@@ -54,11 +54,10 @@ Análisis de datos abiertos de ATLAS y CMS con redes neuronales.
 
 ## El flujo de un análisis experimental
 
-En el taller recorreremos las etapas de un análisis de física experimental de partículas: seleccionar una fuente de datos, procesar los eventos en un clúster y construir o preparar los observables que describen sus propiedades físicas. Estas variables serán las entradas de las redes neuronales.
+Partiremos de datos abiertos, prepararemos las variables físicas y entrenaremos redes neuronales con **machine learning**. Después evaluaremos su respuesta con eventos que no participaron en el entrenamiento e interpretaremos los resultados.
 
-El **entrenamiento de redes neuronales es una aplicación del aprendizaje automático (machine learning)**: a partir de ejemplos, la red ajusta sus parámetros para aprender patrones y relaciones entre las variables. En ATLAS entrenaremos un clasificador con eventos etiquetados de Higgs y fondo; en CMS, un autoencoder aprenderá a reconstruir eventos del Modelo Estándar para explorar posibles anomalías mediante su error de reconstrucción.
+En **ATLAS**, separaremos eventos de Higgs y fondo con un clasificador. En **CMS**, entrenaremos un autoencoder con procesos del Modelo Estándar para identificar eventos con un error de reconstrucción alto.
 
-Separaremos los datos utilizados para aprender de los empleados para evaluar el modelo. Revisaremos las curvas de entrenamiento y las métricas para comprobar si la red generaliza a eventos que no utilizó para ajustar sus parámetros. Finalmente, interpretaremos los resultados en su contexto físico: qué procesos logra distinguir, qué aporta frente a la referencia y qué limitaciones debemos considerar antes de extraer conclusiones.
 
 ## Datos, infraestructura y software de análisis
 
