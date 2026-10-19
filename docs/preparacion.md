@@ -92,7 +92,7 @@ En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir 
 
 Mantén abierta esta terminal para ejecutar los comandos de las siguientes secciones.
 
-## 3. Clonación y preparación del entorno de análisis
+## 3. Clonación y preparación del entorno · Solo la primera vez {#3-clonacion-y-preparacion-del-entorno-de-analisis}
 
 **Realiza estos pasos una sola vez en tu cuenta de Yuca:** clonar el repositorio e instalar el ambiente de entrenamiento. En las sesiones posteriores basta con [activar el ambiente y entrar al repositorio](#4-inicio-de-una-sesion-de-trabajo).
 
