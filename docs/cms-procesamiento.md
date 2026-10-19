@@ -183,7 +183,7 @@ Pulsa la imagen para ampliarla. Los números de la leyenda corresponden a 49 eve
 
 **Para interpretar:** en esta muestra, W′ presenta diferencias claras en MET, masa de tres leptones y momento transversal de Z. Otras variables pueden parecerse más a los procesos SM. La red utiliza conjuntamente las entradas y sus correlaciones; estas curvas no demuestran por sí solas una nueva señal.
 
-Estas distribuciones ilustran el producto físico de la selección y construcción de variables. El panel corresponde al análisis previo; no se genera automáticamente al enviar el filtrado. Los ROOT seleccionados y sus HDF5 conservan las cantidades necesarias para inspeccionar las distribuciones de tu propia ejecución.
+Estas distribuciones ilustran el producto físico de la selección y construcción de variables. El panel corresponde al análisis previo. En el paso 5 generarás tus propias figuras desde los HDF5, con el script de comprobación y visualización.
 
 <div class="image-credits" markdown>
 
@@ -191,17 +191,46 @@ Distribuciones: material del análisis proporcionado por el autor; no son figura
 
 </div>
 
-## 5. Comprobar los datos antes de entrenar
+## 5. Comprobar los HDF5, generar las gráficas y visualizarlas
 
-Cuando la conversión termine correctamente:
+Cuando todas las tareas de conversión terminen correctamente (`COMPLETED`, `0:0`), ejecuta la comprobación y genera las distribuciones desde tus propios HDF5:
 
 ```bash
 cd "$HOME/ML-integration-CMSSW"
 python scripts/check_dyjets_ht_pilot.py \
-  -f "$HOME/hep-workshop/configs/cms_autoencoder_baseline01.yaml"
+  -f "$HOME/hep-workshop/configs/cms_autoencoder_baseline01.yaml" \
+  --plots "$HOME/hep-workshop/cms/baseline01/plots"
 ```
 
 La comprobación lee los HDF5, valida las diez variables e identificadores y muestra los conteos **SM de entrenamiento, validación y prueba**, además de los eventos W′ de evaluación. Si falta un proceso, una rama o los datos no son válidos, corrige el procesamiento antes de entrenar.
+
+### Abrir y revisar las gráficas en JupyterLab
+
+Si las comprobaciones pasan, el mismo comando genera las figuras **sin entrenar la red**. En el explorador izquierdo abre **hep-workshop → cms → baseline01 → plots** y haz doble clic en:
+
+| Archivo | Qué muestra |
+| --- | --- |
+| `variables_selected.png` | Panel de cuatro observables: MET, masa de tres leptones, momento de Z y masa transversal W |
+| `variables_all.png` | Las diez variables del YAML, comparadas por proceso |
+| `variable_MET_pt.png`, `variable_M3l.png`, etc. | Una figura individual para cada variable, con etiquetas físicas y unidades |
+| `sample_counts.json` | Conteos utilizados, variables y criterio de normalización |
+| `config.yaml` | Copia del YAML que identifica las entradas y la partición utilizada |
+
+Las figuras se guardan también en **PDF y SVG**. DYJets aparece en azul, WZ en ocre, ZZ en verde azulado y W′ en magenta discontinuo. La leyenda indica el número de eventos de cada proceso.
+
+Se muestran **valores originales, antes del escalado**: para SM se utiliza únicamente la partición de entrenamiento definida por el YAML; W′ se incluye solo como comparación de evaluación. Los histogramas utilizan los mismos intervalos y área uno por proceso. Compara sus formas, no tasas físicas ni rendimientos por luminosidad.
+
+**Qué revisar:** ¿en qué variables W′ se desplaza hacia valores altos? ¿Dónde se solapan SM y W′? ¿Algún proceso tiene pocos eventos? Usa estas figuras para comprobar la información física de entrada antes de pasar al entrenamiento.
+
+Para regenerar solo las figuras, sin volver a procesar NanoAOD ni entrenar:
+
+```bash
+python workshop/plot_cms_inputs.py \
+  -f "$HOME/hep-workshop/configs/cms_autoencoder_baseline01.yaml" \
+  --output "$HOME/hep-workshop/cms/baseline01/plots_revision02"
+```
+
+Utiliza una carpeta nueva para conservar las figuras anteriores.
 
 Para reproducir los números históricos deben coincidir también los archivos de entrada. El manifiesto conserva los de tu ejecución; compara los conteos con la referencia de la página siguiente. No cambies las variables ni descartes comprobaciones para forzar una coincidencia.
 
