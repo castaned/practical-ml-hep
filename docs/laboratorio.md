@@ -118,7 +118,18 @@ En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. A
 
 ## 4. Revisar los resultados del entrenamiento
 
-En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → run_0001**. Abre las tres figuras y `metrics.json`.
+En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → run_0001**. Cada corrida conserva los siguientes productos:
+
+| Archivo | Información que recuperas |
+| --- | --- |
+| `training_loss.png` | Evolución del aprendizaje y comparación entre entrenamiento y validación. |
+| `classifier_scores.png` | Distribuciones de la puntuación para señal y fondo. |
+| `roc_curve.png` | Eficiencia de señal frente a aceptación de fondo al variar el umbral. |
+| `metrics.json` | Indicadores numéricos de calidad, tiempo, tamaño de la red y condiciones de ejecución. |
+| `config.yaml` | Copia de la configuración utilizada, para identificar y reproducir la corrida. |
+| `history.csv` / `validation_scores.csv` | Valores por época y puntuaciones de validación que permiten volver a analizar los resultados. |
+
+Las tres figuras se guardan también en **PDF y SVG**. Abre los PNG y `metrics.json` con doble clic en JupyterLab. Las imágenes siguientes corresponden a una ejecución del benchmark; tus valores pueden variar.
 
 ### Pérdidas y aprendizaje
 
@@ -128,17 +139,35 @@ En **`training_loss.png`**, observa las dos curvas:
 - **Pérdida de validación:** el error sobre eventos que no se utilizan para ajustar sus parámetros. Es la curva que usamos para elegir el modelo.
 - **Mejor época (`best_epoch`):** la época con menor pérdida de validación; su modelo queda guardado. **Épocas ejecutadas (`epochs_run`)** indica cuántas se completaron en total.
 
+![Pérdidas de entrenamiento y validación del benchmark; mejor época 40](assets/benchmarks/atlas_reference_loss.png)
+
+En este ejemplo ambas pérdidas siguen disminuyendo y el modelo conservado corresponde a la época 40. La validación puede quedar por debajo del entrenamiento porque dropout está activo al entrenar y se desactiva al evaluar; esa diferencia por sí sola no indica un problema.
+
 Si la pérdida de entrenamiento baja pero la de validación sube, puede haber **sobreajuste**. El máximo es 40 épocas; tras 10 sin mejora de validación, el entrenamiento se detiene.
 
 ### Separación entre señal y fondo {#leer-una-roc-como-fisico}
 
 En **`classifier_scores.png`**, la puntuación va de 0 a 1: los valores altos favorecen señal. Observa cuánto se solapan las distribuciones de Higgs y fondo. Al exigir una puntuación mínima, seleccionas parte de ambas muestras.
 
+![Puntuación del clasificador: fondo hacia cero y señal hacia uno, con solapamiento](assets/benchmarks/atlas_reference_scores.png)
+
+Las distribuciones están normalizadas por clase: sus alturas comparan las formas, no la cantidad total de señal y fondo.
+
 En **`roc_curve.png`**, cada punto corresponde a un umbral distinto. El eje horizontal muestra la fracción de fondo aceptado y el vertical la fracción de señal conservada. Una curva más arriba conserva más señal para el mismo fondo; una más a la izquierda acepta menos fondo para la misma señal.
+
+![Curva ROC del benchmark con AUC de aproximadamente 0.9122](assets/benchmarks/atlas_reference_roc.png)
+
+En el ejemplo, **AUC ≈ 0.9122**. La diagonal representa una clasificación aleatoria; interesa especialmente conservar señal con poca aceptación de fondo.
 
 ### Indicadores que debes registrar {#comparar-benchmark}
 
-Los siguientes valores están en **`metrics.json`**:
+En **`metrics.json`** encontrarás los valores exactos que acompañan a las figuras:
+
+![Archivo metrics.json de la ejecución de referencia con métricas, tiempos y configuración del equipo](assets/benchmarks/atlas_reference_metrics.png)
+
+En esta corrida se obtuvieron **AUC ≈ 0.9122**, **AMS interna ≈ 3.5713**, **49.36 segundos** de entrenamiento y **14 849 parámetros**; se ejecutaron 40 épocas y la mejor fue la 40. Son un ejemplo de lectura, no valores que deban coincidir exactamente con tu ejecución.
+
+Para interpretar tus resultados, revisa estos campos:
 
 | Indicador · campo del archivo | Qué significa y cómo compararlo |
 | --- | --- |
@@ -150,6 +179,8 @@ Los siguientes valores están en **`metrics.json`**:
 | **Mejor época / épocas ejecutadas** · `best_epoch` / `epochs_run` | Cuándo se obtuvo el modelo conservado y cuánto duró el aprendizaje. Más épocas no garantizan mejor validación. |
 | **Parámetros** · `parameters` | Número de valores ajustables de la red. Permite valorar si una mejora requiere una arquitectura mucho mayor. |
 | **Tiempo de entrenamiento** · `fit_seconds` | Segundos del entrenamiento, sin incluir la espera en cola. Permite valorar el costo de una mejora y comparar CPU/GPU con la misma configuración. |
+
+El archivo también permite comprobar **200 000 eventos de entrenamiento**, **50 000 de validación**, las **30 variables**, la semilla (`seed`) y la GPU utilizada. `batches_per_epoch`, `mean_epoch_seconds` y `gpu_peak_allocated_mb` describen el trabajo por época, su tiempo medio y la memoria GPU máxima asignada. Úsalos para entender diferencias de coste entre escenarios; la bitácora reúne los seis indicadores principales.
 
 ### Qué significa una mejora {#interpretar-ams}
 
