@@ -161,7 +161,7 @@ Una mejor separación puede ayudar a medir una señal con menor incertidumbre o 
 
 ### Guardar la referencia y continuar
 
-Registra **AUC, AMS, umbral, eficiencia de señal, aceptación de fondo, mejor época, épocas ejecutadas y tiempo** en la [bitácora](bitacora.md). Conserva la subcarpeta de esta corrida y su `config.yaml`: será tu referencia para comparar variaciones con los mismos datos y particiones.
+En la [bitácora](bitacora.md), selecciona **Referencia** y carga `metrics.json`: se completarán AUC, AMS, tiempo, épocas ejecutadas y mejor época. Descarga el CSV para la comparación. Conserva la subcarpeta de esta corrida y su `config.yaml`: será tu referencia para comparar variaciones con los mismos datos y particiones.
 
 Las figuras están disponibles en PNG, PDF y SVG. Si necesitas regenerarlas sin volver a entrenar:
 

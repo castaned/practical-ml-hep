@@ -1,60 +1,23 @@
-# Bitácora del grupo
+# Bitácora de resultados
 
-El responsable del grupo completa la variación asignada, la hipótesis y las conclusiones. Al terminar, descarga la bitácora y el CSV del grupo en [Variaciones y resultados](variaciones.md#registro); súbelos desde JupyterLab a la carpeta compartida de entregas indicada por el instructor. El instructor reunirá los CSV para generar el resumen comparativo.
+1. Selecciona la **variación** que ejecutaste (o **Referencia** para el benchmark).
+2. Carga el `metrics.json` de esa ejecución: los indicadores se completan automáticamente. También puedes copiarlos a mano.
+3. Pulsa **Descargar registro CSV** y sube el archivo a la carpeta compartida de Yuca desde JupyterLab. El instructor reunirá estos archivos en la [tabla de resumen](variaciones.md#registro).
 
-<div id="workshop-notebook">
-<div class="notebook-fields">
-<label>Grupo o mesa<input name="group" maxlength="60" placeholder="g01 · mismo identificador que en la tabla"></label>
-<label>Variación asignada<select name="scenario"><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
-<label>Participantes<input name="participants" maxlength="300"></label>
+<div id="simple-log">
+<label class="md-button">Cargar metrics.json<input id="simple-metrics" type="file" accept=".json,application/json"></label>
+<form class="result-form">
+<label>Variación<select name="variation"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
+<label>AUC · roc_auc_unweighted<input name="auc" type="number" min="0" max="1" step="any" required></label>
+<label>AMS · ams_validation_tuned<input name="ams" type="number" min="0" step="any" required></label>
+<label>Tiempo (s) · fit_seconds<input name="seconds" type="number" min="0" step="any" required></label>
+<label>Épocas ejecutadas · epochs_run<input name="epochs" type="number" min="1" step="1" required></label>
+<label>Mejor época · best_epoch<input name="best" type="number" min="1" step="1" required></label>
+<div><button type="submit" class="md-button md-button--primary">Descargar registro CSV</button></div>
+</form>
+<p id="simple-log-status" role="status"></p>
 </div>
 
-<h2 id="antes-de-entrenar-que-informacion-tenemos">Antes de entrenar: observables físicos</h2>
-<div class="notebook-fields">
-<label>Variable elegida<input name="variable" maxlength="100" placeholder="Por ejemplo, DER_mass_vis"></label>
-<label class="notebook-wide">¿Qué representa y qué diferencias se observan entre señal y fondo?<textarea name="physics" rows="4"></textarea></label>
-</div>
+Un CSV corresponde a una ejecución. Registra por separado la referencia y cada variación; el nombre del archivo identifica la opción y el momento de descarga. Las conclusiones se discutirán con la tabla conjunta, sin escribirlas en este formulario.
 
-<h2>Hipótesis de trabajo</h2>
-<div class="notebook-fields">
-<label class="notebook-wide">Cambio propuesto<textarea name="change" rows="3" placeholder="Indicar el parámetro y sus valores antes y después"></textarea></label>
-<label class="notebook-wide">Resultado esperado y justificación<textarea name="hypothesis" rows="4"></textarea></label>
-<label>YAML de referencia<input name="baseline_yaml" maxlength="180" placeholder="atlas_baseline01.yaml"></label>
-<label>YAML de la variación<input name="variation_yaml" maxlength="180" placeholder="g05_E_dropout0p3.yaml"></label>
-<label>Carpeta de referencia<input name="baseline_dir" maxlength="300"></label>
-<label>Carpeta de la variación<input name="variation_dir" maxlength="300"></label>
-</div>
-
-<h2>Resultados del grupo</h2>
-<p>Las filas registradas en <a href="../variaciones/#registro">Variaciones y resultados</a> aparecen aquí al utilizar el mismo grupo y navegador. Introducir o corregir los números en esa tabla para mantener un único registro.</p>
-<button type="button" id="notebook-refresh" class="md-button">Actualizar resultados</button>
-<div class="result-table-wrap"><table id="notebook-metrics"><thead><tr><th>Corrida</th><th>Cambio</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Épocas / mejor</th></tr></thead><tbody></tbody></table></div>
-<p id="notebook-metrics-status"></p>
-
-<h2>Interpretación</h2>
-<div class="notebook-fields">
-<label class="notebook-wide">¿Los resultados respaldan la hipótesis? Citar una métrica o una figura.<textarea name="evidence" rows="4"></textarea></label>
-<label class="notebook-wide">¿AUC y AMS mejoraron juntas? ¿Cómo se interpreta la diferencia?<textarea name="metrics_interpretation" rows="4"></textarea></label>
-<label class="notebook-wide">¿Qué muestran las pérdidas de entrenamiento y validación?<textarea name="learning_curves" rows="4"></textarea></label>
-<label class="notebook-wide">¿La mejora justifica el tiempo de entrenamiento?<textarea name="cost" rows="3"></textarea></label>
-<label class="notebook-wide">Conclusiones<textarea name="conclusion" rows="5" placeholder="Resumir el cambio, el resultado y la conclusión respaldada por la comparación"></textarea></label>
-<label class="notebook-wide">¿Qué repetirían o comprobarían en una siguiente prueba?<textarea name="next_test" rows="3"></textarea></label>
-</div>
-
-<div class="result-controls">
-<button type="button" id="notebook-save" class="md-button md-button--primary">Guardar bitácora</button>
-<button type="button" id="notebook-download" class="md-button">Descargar para compartir (.md)</button>
-<button type="button" id="notebook-backup" class="md-button">Descargar copia editable (.json)</button>
-<label class="md-button">Abrir copia editable<input id="notebook-import" type="file" accept=".json,application/json"></label>
-</div>
-<p id="notebook-status" role="status" aria-live="polite"></p>
-</div>
-
-El archivo `.md` contiene las respuestas y la tabla del grupo y puede abrirse como texto o copiarse a un documento compartido. La copia `.json` permite continuar en otro navegador mediante **Abrir copia editable**. Las respuestas no se publican ni se sincronizan automáticamente con otros equipos.
-
-## Referencia externa: el challenge original {#referencia-externa-el-challenge-original}
-
-Los benchmarks publicados son **AMS 3.40 (MultiBoost)** y **3.81 (ganador)**. Nuestra AMS interna no se compara directamente: corresponde a otra evaluación. [Contexto y fuente de los números](referencia.md#benchmarks-publicados-del-higgs-challenge).
-
-[Volver a variaciones y resultados](variaciones.md){ .md-button }
-[Continuar: conclusiones](conclusiones.md){ .md-button .md-button--primary }
+[Volver a las variaciones](variaciones.md){ .md-button }

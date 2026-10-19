@@ -23,7 +23,7 @@ Las distribuciones se normalizan a área uno para comparar formas y se amplía l
 
 *Ejemplo real del conjunto de entrenamiento: no se emplean eventos del conjunto privado. Los nombres y unidades de cada variable se explican en el registro oficial.*
 
-Antes de seguir, completa la [tabla de exploración de variables](bitacora.md#antes-de-entrenar-que-informacion-tenemos). ¿Dónde se parecen señal y fondo? ¿Qué variables podrían ayudar a separarlos?
+Antes de seguir, compara las distribuciones: ¿dónde se parecen señal y fondo? ¿Qué variables podrían ayudar a separarlos?
 
 ## Consultar un entrenamiento
 
