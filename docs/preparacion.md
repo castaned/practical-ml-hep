@@ -28,7 +28,11 @@ Cuando aparezca `Password:`, escribe **la contraseña que se te proporcionó par
 
 #### Windows · Alternativa: PuTTY
 
-Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY** desde la [página oficial de descargas](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). Abre el programa y completa los campos como en la imagen:
+Si no cuentas con PowerShell o el comando `ssh` no está disponible, **descarga e instala PuTTY**:
+
+[Descargar PuTTY · Sitio oficial](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html){ .md-button }
+
+Abre el programa y completa los campos como en la imagen:
 
 - **Host Name:** `yuca.unison.mx`.
 - **Port:** `22`.
