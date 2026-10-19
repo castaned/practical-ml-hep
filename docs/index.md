@@ -12,6 +12,7 @@ hide:
 <p class="event-name">XXI Mexican School on Particles and Fields</p>
 <p class="event-details"><strong>19–23 de octubre de 2026</strong><span> · Puebla, México</span></p>
 <p class="event-venue">Edificio Carolino · Ciudad Universitaria 2</p>
+<a href="https://indico.nucleares.unam.mx/event/2675/timetable/">Agenda oficial del evento</a>
 </div>
 </div>
 
