@@ -39,6 +39,10 @@ cd "$HOME"
 git clone https://github.com/root-project/student-course.git
 ```
 
+Después de clonar, en el **explorador izquierdo de JupyterLab**, vuelve a tu carpeta personal. Debe aparecer una carpeta adicional llamada **`student-course`**, junto a `hep-workshop` y `ML-integration-CMSSW`, como en la imagen. Si aún no la ves, pulsa el botón **Actualizar** del explorador.
+
+![Carpeta student-course en el explorador de archivos de JupyterLab después de clonar el curso](assets/root-course/student-course-folder.png){ width="300" }
+
 Conserva la estructura de carpetas: los notebooks buscan los datos mediante rutas relativas.
 
 ## 2. Iniciar una sesión o cambiar de taller
