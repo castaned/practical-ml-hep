@@ -12,6 +12,7 @@ Usa **`gNN_escenario_cambio.yaml`**, sin espacios ni acentos. Sustituye `g01` po
 | --- | --- | --- |
 | Referencia | `atlas_baseline01.yaml` | Sin cambios: 40 épocas máximas y paciencia 10 |
 | A · Arquitectura | `g01_A_capas512-256-128-64.yaml` | Capas `[512, 256, 128, 64]` |
+| A · Profundidad (alternativa) | `g01_A_capas1024-1024-512-512-256-128-64-32.yaml` | Ocho capas ocultas; conservar dropout `0.1` |
 | B · Dropout | `g01_B_dropout0p3.yaml` | Dropout `0.3` |
 | C · Aprendizaje | `g01_C_lr0p0003.yaml` | Tasa de aprendizaje `0.0003` |
 | D · Duración | `g01_D_epochs100.yaml` | Máximo 100 épocas; conservar paciencia 10 |
@@ -24,7 +25,7 @@ Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la mi
 
 | Escenario | Modificación en el YAML | Pregunta de análisis |
 | --- | --- | --- |
-| A. Arquitectura | Cambiar `model.hidden_dims`, por ejemplo a `[512, 256, 128, 64]` | ¿La capacidad adicional mejora la validación y cuánto aumenta el tiempo? |
+| A. Arquitectura | Cambiar `model.hidden_dims`: elegir la red más ancha o la más profunda del selector; conservar dropout `0.1` | ¿La arquitectura mejora la validación y cuánto aumenta el tiempo? |
 | B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
 | C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
 | D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
@@ -32,6 +33,14 @@ Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la mi
 Conservar los demás parámetros, las variables y las particiones de datos. Guarda cada configuración en su YAML; cada envío crea automáticamente una subcarpeta numerada con sus resultados. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
 
 ### Explorar la arquitectura antes de modificar el YAML
+
+**El selector se utiliza según el escenario asignado:**
+
+- **A · Arquitectura:** elige **Más ancha** (más neuronas en cuatro capas) o **Más profunda** (ocho capas). Mantén dropout en `0.1` y usa el nombre de YAML correspondiente a las capas elegidas. Prueba una opción primero; si haces ambas, guarda cada una en un YAML diferente.
+- **B · Regularización:** conserva **Referencia · cuatro capas** y mueve únicamente dropout a `0.3`.
+- **C y D:** conserva **Referencia · cuatro capas** y dropout `0.1`. Los cambios se hacen en `training.learning_rate` o `training.epochs`, respectivamente, dentro del YAML.
+
+El selector actualiza el fragmento que ves, pero **no modifica tu archivo en Yuca**. Copia el bloque `model` en el YAML de tu variación, guarda el archivo y envíalo con el comando de la sección siguiente. Cambiar capas y dropout a la vez mezclaría los escenarios A y B.
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">
