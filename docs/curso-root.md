@@ -61,24 +61,32 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT student-
 
 Con el kernel **Python (ROOT student-course)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
-## 4. Ejemplo breve para el notebook 05
+## 4. Archivo compartido para el notebook 05
 
-En **`05-rdataframe-features.ipynb`**, sustituye la celda que abre el archivo remoto y suma `nMuon` por este ejemplo de **10 000 eventos sintéticos en memoria**. Ilustra el uso de `RDataFrame` y multihilo sin descargar datos ni conectarse a CERN.
+En **`05-rdataframe-features.ipynb`**, la celda que suma `nMuon` utiliza una dirección `root://eospublic.cern.ch/...`. **Sustituye esa llamada al servidor por la ubicación del archivo compartido en Yuca:**
 
-Interrumpe primero la celda anterior si sigue ejecutándose. Después ejecuta:
+```python
+filename = "/lustre/cursos/curso07/datos/root/Run2012BC_DoubleMuParked_Muons.root"
+```
+
+El instructor prepara una sola copia para todos: **no necesitas descargar el archivo ni copiarlo a tu cuenta**. El notebook conserva el ejemplo con datos reales y lee directamente desde el almacenamiento compartido.
+
+La celda completa queda así; utiliza dos hilos si reservaste al menos dos cores CPU:
 
 ```python
 import ROOT
 
 ROOT.DisableImplicitMT()
-ROOT.EnableImplicitMT(2)  # Si reservaste al menos 2 cores CPU
+ROOT.EnableImplicitMT(2)
 try:
-    df_demo = ROOT.RDataFrame(10_000).Define("nMuon", "int(rdfentry_ % 5)")
-    print("Suma ilustrativa de nMuon:", df_demo.Sum("nMuon").GetValue())
+    treename = "Events"
+    filename = "/lustre/cursos/curso07/datos/root/Run2012BC_DoubleMuParked_Muons.root"
+    df = ROOT.RDataFrame(treename, filename)
+    print("Total de muones:", df.Sum("nMuon").GetValue())
 finally:
     ROOT.DisableImplicitMT()
 ```
 
-El resultado esperado es **20 000**. `nMuon` recorre los valores 0, 1, 2, 3 y 4: son datos inventados para mostrar la operación, no eventos de CMS. Este ejemplo no mide una ganancia de rendimiento; con tan pocos eventos, preparar el multihilo puede costar más que el propio cálculo.
+Esta lectura evita depender de la conexión a CERN, aunque el cálculo sigue recorriendo todos los eventos del archivo.
 
 [Cambiar de taller](ambientes.md){ .md-button .md-button--primary }
