@@ -19,7 +19,7 @@ Completar la bitácora durante los entrenamientos. Las respuestas se guardan en 
 <label class="notebook-wide">Cambio propuesto<textarea name="change" rows="3" placeholder="Indicar el parámetro y sus valores antes y después"></textarea></label>
 <label class="notebook-wide">Resultado esperado y justificación<textarea name="hypothesis" rows="4"></textarea></label>
 <label>YAML de referencia<input name="baseline_yaml" maxlength="180" placeholder="atlas_baseline01.yaml"></label>
-<label>YAML de la variación<input name="variation_yaml" maxlength="180" placeholder="g01_B_dropout0p3.yaml"></label>
+<label>YAML de la variación<input name="variation_yaml" maxlength="180" placeholder="g05_E_dropout0p3.yaml"></label>
 <label>Carpeta de referencia<input name="baseline_dir" maxlength="300"></label>
 <label>Carpeta de la variación<input name="variation_dir" maxlength="300"></label>
 </div>

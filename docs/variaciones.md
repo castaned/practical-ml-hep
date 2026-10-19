@@ -4,43 +4,41 @@ Esta actividad corresponde al **bloque del miércoles de 17:00 a 18:30**. Utiliz
 
 Antes de preparar cambios, completar la [comparación del benchmark](laboratorio.md#comparar-benchmark), revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y registrar la corrida como **Referencia** en la [tabla](#registro). Las variaciones se compararán con esa ejecución personal, realizada con los mismos datos y particiones.
 
-### Nombres para identificar cada entrenamiento
+## 1. Ocho escenarios de trabajo {#1-escenarios-por-grupo}
 
-Usa **`gNN_escenario_cambio.yaml`**, sin espacios ni acentos. Sustituye `g01` por el identificador de tu grupo (`g02`, `g03`, etc.). Usa `p` para los decimales en el nombre del archivo; dentro del YAML conserva el punto decimal habitual.
+Para 80 estudiantes, se proponen **ocho grupos de unas diez personas**, `g01` a `g08`. Todos reproducen primero la referencia; después cada grupo estudia el escenario asignado.
 
-| Configuración | Archivo YAML · ejemplo para g01 | Cambio respecto a la referencia |
-| --- | --- | --- |
-| Referencia | `atlas_baseline01.yaml` | Sin cambios: 40 épocas máximas y paciencia 10 |
-| A · Arquitectura | `g01_A_capas512-256-128-64.yaml` | Capas `[512, 256, 128, 64]` |
-| A · Profundidad (alternativa) | `g01_A_capas1024-1024-512-512-256-128-64-32.yaml` | Ocho capas ocultas; conservar dropout `0.1` |
-| B · Dropout | `g01_B_dropout0p3.yaml` | Dropout `0.3` |
-| C · Aprendizaje | `g01_C_lr0p0003.yaml` | Tasa de aprendizaje `0.0003` |
-| D · Duración | `g01_D_epochs100.yaml` | Máximo 100 épocas; conservar paciencia 10 |
+Dentro de cada grupo, al menos **dos estudiantes o parejas** ejecutan de forma independiente la referencia y la variación en sus propias cuentas. Comparen sus resultados y registren cada ejecución; no hace falta enviar diez trabajos idénticos al mismo tiempo. Los demás integrantes pueden revisar las curvas, interpretar las métricas y completar la bitácora.
 
-**Una configuración, un YAML con nombre propio.** Copia siempre la referencia, cambia solo el parámetro asignado y conserva las demás condiciones. Si pruebas otro valor, crea otro archivo con ese valor en el nombre.
+Usa **`gNN_escenario_cambio.yaml`**, sin espacios ni acentos. Los nombres siguientes corresponden al reparto sugerido. Si repites un YAML, identifica la nueva corrida con su `run_XXXX` y el usuario que la ejecutó.
 
-## 1. Escenarios por grupo
+### Escenarios A–D · Arquitectura de la red
 
-Los participantes podrán organizarse por mesas o filas. Todos ejecutarán la misma referencia; cada grupo estudiará inicialmente uno de los siguientes factores. Si varias mesas comparten escenario, podrán contrastar la reproducibilidad de sus resultados.
+En estos cuatro escenarios cambia **solo `model.hidden_dims`**. Conserva dropout `0.1`, aprendizaje `0.001`, lote `4096`, máximo 40 épocas y paciencia 10. El número de elementos de la lista indica las capas ocultas; cada valor indica sus neuronas.
 
-| Escenario | Modificación en el YAML | Pregunta de análisis |
-| --- | --- | --- |
-| A. Arquitectura | Cambiar `model.hidden_dims`: elegir la red más ancha o la más profunda del selector; conservar dropout `0.1` | ¿La arquitectura mejora la validación y cuánto aumenta el tiempo? |
-| B. Regularización | Cambiar `model.dropout` de `0.1` a `0.3` | ¿Se reduce la diferencia entre entrenamiento y validación? |
-| C. Optimización | Reducir `training.learning_rate`, por ejemplo de `0.001` a `0.0003` | ¿Cambia la convergencia con el mismo límite de épocas? |
-| D. Duración | Aumentar `training.epochs` a `100` y fijar `training.patience` en `10` | ¿En qué época se alcanza la menor pérdida de validación y cuándo se detiene? |
+#### A · g01 · Red más ancha
 
-Conservar los demás parámetros, las variables y las particiones de datos. Guarda cada configuración en su YAML; cada envío crea automáticamente una subcarpeta numerada con sus resultados. Los valores iniciales deben comprobarse en el archivo de referencia antes de registrar el cambio.
+**YAML:** `g01_A_capas512-256-128-64.yaml`
+**Cambio:** `[128, 64, 32, 16]` → **`[512, 256, 128, 64]`**. Conserva cuatro capas, con más neuronas. ¿La capacidad adicional mejora la validación y cuánto cuesta en tiempo?
 
-### Explorar la arquitectura antes de modificar el YAML
+#### B · g02 · Red más profunda
 
-**El selector se utiliza según el escenario asignado:**
+**YAML:** `g02_B_capas1024-1024-512-512-256-128-64-32.yaml`
+**Cambio:** usar **`[1024, 1024, 512, 512, 256, 128, 64, 32]`**. Aumentan la profundidad y el número de parámetros; este escenario estudia la arquitectura completa, no aísla el efecto de añadir capas. ¿La mejora compensa el costo y el posible sobreajuste?
 
-- **A · Arquitectura:** elige **Más ancha** (más neuronas en cuatro capas) o **Más profunda** (ocho capas). Mantén dropout en `0.1` y usa el nombre de YAML correspondiente a las capas elegidas. Prueba una opción primero; si haces ambas, guarda cada una en un YAML diferente.
-- **B · Regularización:** conserva **Referencia · cuatro capas** y mueve únicamente dropout a `0.3`.
-- **C y D:** conserva **Referencia · cuatro capas** y dropout `0.1`. Los cambios se hacen en `training.learning_rate` o `training.epochs`, respectivamente, dentro del YAML.
+#### C · g03 · Red compacta
 
-El selector actualiza el fragmento que ves, pero **no modifica tu archivo en Yuca**. Copia el bloque `model` en el YAML de tu variación, guarda el archivo y envíalo con el comando de la sección siguiente. Cambiar capas y dropout a la vez mezclaría los escenarios A y B.
+**YAML:** `g03_C_capas64-32-16-8.yaml`
+**Cambio:** usar **`[64, 32, 16, 8]`**. Conserva cuatro capas con menos neuronas. ¿Se obtiene una clasificación comparable con menos parámetros?
+
+#### D · g04 · Capas de anchura uniforme
+
+**YAML:** `g04_D_capas128-128-128-128.yaml`
+**Cambio:** usar **`[128, 128, 128, 128]`**. Conserva cuatro capas sin reducir su anchura. ¿Cómo cambia el aprendizaje frente a la arquitectura decreciente de referencia?
+
+#### Selector para los escenarios A–D {#explorar-la-arquitectura-antes-de-modificar-el-yaml}
+
+Elige la opción de tu escenario y deja dropout en **`0.1`**. Copia el bloque `model` al YAML correspondiente en JupyterLab y guarda con **Ctrl+S**. El selector no modifica el archivo de Yuca ni envía un entrenamiento.
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">
@@ -50,8 +48,10 @@ El selector actualiza el fragmento que ves, pero **no modifica tu archivo en Yuc
 <label for="network-choice">Arquitectura</label>
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
-<option value="wide">Más ancha · cuatro capas</option>
-<option value="deep">Más profunda · ocho capas</option>
+<option value="wide">A · Más ancha · cuatro capas</option>
+<option value="deep">B · Más profunda · ocho capas</option>
+<option value="compact">C · Compacta · cuatro capas</option>
+<option value="uniform">D · Uniforme · cuatro capas</option>
 </select>
 <label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>
 <input id="dropout-choice" type="range" min="0" max="0.5" step="0.1" value="0.1">
@@ -67,6 +67,30 @@ El selector actualiza el fragmento que ves, pero **no modifica tu archivo en Yuc
 <p id="copy-status" role="status">Conserva el resto de tu YAML; cada ejecución crea su propia carpeta numerada.</p>
 </div>
 </div>
+
+### Escenarios E–H · Parámetros del entrenamiento
+
+Conserva las capas **`[128, 64, 32, 16]`**. Cambia únicamente el parámetro indicado en tu escenario; no uses otra arquitectura del selector.
+
+#### E · g05 · Regularización
+
+**YAML:** `g05_E_dropout0p3.yaml`
+**Cambio:** `model.dropout`: **`0.1` → `0.3`**. ¿Disminuye la diferencia entre entrenamiento y validación? Un dropout mayor también puede dificultar el aprendizaje.
+
+#### F · g06 · Tasa de aprendizaje
+
+**YAML:** `g06_F_lr0p0003.yaml`
+**Cambio:** `training.learning_rate`: **`0.001` → `0.0003`**. ¿La convergencia es más estable o necesita más épocas? En el nombre del archivo se usa `p`; dentro del YAML escribe `0.0003`.
+
+#### G · g07 · Tamaño de lote
+
+**YAML:** `g07_G_batch8192.yaml`
+**Cambio:** `training.batch_size`: **`4096` → `8192`**. ¿Cómo cambian el tiempo y la calidad de la clasificación? A igual número de épocas, un lote mayor implica menos actualizaciones de parámetros.
+
+#### H · g08 · Duración máxima
+
+**YAML:** `g08_H_epochs100.yaml`
+**Cambio:** `training.epochs`: **`40` → `100`**, conservando paciencia **`10`**. ¿La red aprovecha las épocas adicionales? Si la parada temprana ya se activaba antes de 40, aumentar el máximo puede no cambiar el resultado.
 
 ## 2. Preparar y ejecutar la variación
 
@@ -91,7 +115,7 @@ output:
   directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
 ```
 
-Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B, C o D, aplica únicamente los cambios de su fila en la tabla anterior.
+Actualiza estos bloques dentro del YAML completo; conserva las secciones de datos, entrenamiento y evaluación. Para los escenarios B–H, aplica únicamente el cambio de su apartado.
 
 **Guarda el archivo antes de enviar el trabajo.** La ejecución utilizará `g01_A_capas512-256-128-64.yaml` y creará la siguiente subcarpeta `run_XXXX` dentro de la ruta de salida. Allí se conserva también la configuración utilizada.
 
@@ -105,7 +129,7 @@ sbatch --output="$HOME/hep-workshop/logs/atlas_%j.out" \
 
 Al terminar, abrir la subcarpeta **run_XXXX** indicada en el log y revisar `training_loss.png`, `roc_curve.png` y `classifier_scores.png` y `metrics.json`. Comparar las pérdidas y la curva ROC con las de la referencia.
 
-Para el escenario B, C o D, sustituye el nombre del ejemplo en **la copia, el editor y el comando de envío** por el de tu escenario. Puedes conservar la carpeta base de salida: cada envío crea su propio `run_XXXX`.
+Para los escenarios B–H, sustituye el nombre del ejemplo en **la copia, el editor y el comando de envío** por el de tu escenario. Puedes conservar la carpeta base de salida: cada envío crea su propio `run_XXXX`.
 
 ## 3. Registrar y visualizar resultados {#registro}
 
@@ -114,7 +138,7 @@ Usa el mismo identificador de **Grupo** en la tabla y la bitácora, por ejemplo 
 - Referencia: `atlas_baseline01/run_0001`.
 - Variación A: `g01_A_capas512-256-128-64/run_0002`.
 
-Los números son ejemplos: copia el `run_XXXX` real que aparece en el visor. En la bitácora registra también los nombres de ambos YAML y las rutas completas de resultados. Si repites el mismo YAML, conserva su nombre y registra el nuevo número de ejecución.
+Los números son ejemplos: copia el `run_XXXX` real que aparece en el visor. Añade también tu usuario al nombre de corrida, por ejemplo `g01_A_capas512-256-128-64/docente_07/run_0002`, para distinguir ejecuciones de cuentas diferentes. En la bitácora registra también los nombres de ambos YAML y las rutas completas de resultados. Si repites el mismo YAML, conserva su nombre y registra el nuevo número de ejecución.
 
 [Completar la bitácora del grupo](bitacora.md){ .md-button }
 
@@ -125,9 +149,9 @@ Introducir una fila de referencia y otra de variación por grupo. Se puede carga
 <div id="results-board">
 <form id="result-form" class="result-form">
 <label>Grupo<input name="group" required maxlength="60" placeholder="g01"></label>
-<label>Corrida<input name="run" required maxlength="80" placeholder="g01_B_dropout0p3/run_0002"></label>
+<label>Corrida<input name="run" required maxlength="80" placeholder="g05_E_dropout0p3/run_0002"></label>
 <label>Tipo<select name="kind"><option value="Referencia">Referencia</option><option value="Variación">Variación</option></select></label>
-<label>Escenario<select name="scenario"><option>Referencia</option><option>A. Arquitectura</option><option>B. Regularización</option><option>C. Optimización</option><option>D. Duración</option></select></label>
+<label>Escenario<select name="scenario"><option>Referencia</option><option>A. Más ancha</option><option>B. Más profunda</option><option>C. Compacta</option><option>D. Uniforme</option><option>E. Dropout</option><option>F. Aprendizaje</option><option>G. Lote</option><option>H. Duración</option></select></label>
 <label>Equipo<select name="device"><option>GPU MI210</option><option>CPU</option></select></label>
 <label>AUC<input name="auc" type="number" min="0" max="1" step="any" required></label>
 <label>AMS interna<input name="ams" type="number" min="0" step="any" required></label>
