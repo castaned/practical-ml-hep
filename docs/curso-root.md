@@ -46,7 +46,9 @@ Si aparece `/apps/root/root-6.24.08/` o el error `libcppyy3_11`, todavía se est
 ```bash
 python -m ipykernel install --user \
   --name root-student-course \
-  --display-name "Python (ROOT student-course)"
+  --display-name "Python (ROOT student-course)" \
+  --env PATH "$CONDA_PREFIX/bin:$PATH" \
+  --env PYTHONPATH ""
 cd "$HOME"
 git clone https://github.com/root-project/student-course.git
 ```
@@ -70,6 +72,33 @@ print(ROOT.__file__)
 ```
 
 El notebook debe reconocer el mismo ambiente y ROOT 6.36.x que la terminal. Conserva la estructura del repositorio: los notebooks usan rutas relativas para encontrar `course/data`.
+
+### Si una celda `%%bash` no encuentra `rootls`
+
+El notebook puede importar ROOT correctamente y aun así mostrar `rootls: command not found`: las celdas de shell buscan ejecutables en `PATH`. El registro anterior incluye también la carpeta de ejecutables del ambiente.
+
+Si registraste el kernel sin esa opción, ejecuta en la terminal con el ambiente limpio:
+
+```bash
+conda activate root-student-course
+command -v rootls
+python -m ipykernel install --user \
+  --name root-student-course \
+  --display-name "Python (ROOT student-course)" \
+  --env PATH "$CONDA_PREFIX/bin:$PATH" \
+  --env PYTHONPATH ""
+```
+
+`command -v rootls` debe mostrar un archivo dentro de `root-student-course/bin`. Si no muestra una ruta, revisa la instalación antes de continuar. Cierra el kernel anterior y vuelve a seleccionar **Python (ROOT student-course)** para que lea la configuración nueva. Ejecuta de nuevo las celdas previas que crean los objetos y archivos.
+
+En una celda Python puedes verificar:
+
+```python
+import shutil
+print(shutil.which("rootls"))
+```
+
+La ruta debe pertenecer al mismo ambiente. Después repite la celda `%%bash` del curso.
 
 ## 4. Cambiar entre ROOT, ATLAS y CMS
 
