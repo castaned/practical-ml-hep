@@ -32,6 +32,8 @@ En el primer acceso, entra con **el usuario y la contraseña proporcionados** y 
 
     #### Activar Google Authenticator cuando aparezca el QR {#registrar-qr}
 
+    Yuca requiere **autenticación en dos pasos**, una medida de seguridad habitual: tu contraseña y un código temporal de la app. El QR permite activar ese segundo paso.
+
     **En cuanto Yuca muestre el código QR**, completa la activación antes de continuar:
 
     1. Abre **Google Authenticator** en tu teléfono (instala la app si aún no la tienes).
