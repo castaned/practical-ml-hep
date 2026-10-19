@@ -2,24 +2,6 @@
 
 Las prácticas se realizarán en **Yuca, el clúster de alto rendimiento de la Universidad de Sonora, operado por ACARUS**. En esta sección prepararás el acceso y el entorno para procesar los datos y entrenar las redes con el software [ML-integration-CMSSW](https://github.com/castaned/ML-integration-CMSSW).
 
-<div class="grid cards" markdown>
-
-- **Primera vez**
-
-    1. [Activar tu acceso y la doble verificación](#1-primer-acceso-antes-de-open-ondemand).
-
-    2. [Clonar el repositorio](#clonar-repositorio).
-
-    3. [Crear el ambiente de entrenamiento](#crear-ambiente).
-
-- **Cada sesión**
-
-    1. [Entrar a Open OnDemand y abrir una terminal en JupyterLab](#2-terminales-de-open-ondemand-y-jupyterlab).
-
-    2. [Activar el ambiente y entrar al repositorio](#4-inicio-de-una-sesion-de-trabajo).
-
-</div>
-
 ## 1. Primer acceso: antes de Open OnDemand
 
 La primera conexión se hace por **SSH desde tu computadora**. En ella se prepara tu directorio personal y se activa la doble verificación de la cuenta. Completa esta etapa antes de entrar a Open OnDemand.
