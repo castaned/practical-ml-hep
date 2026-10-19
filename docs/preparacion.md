@@ -118,6 +118,8 @@ El código de procesamiento y entrenamiento está en [ML-integration-CMSSW](http
 
 Ejecuta estos comandos **una sola vez en tu cuenta de Yuca** para descargar la herramienta y preparar tus carpetas personales:
 
+**Puedes copiar el bloque completo de comandos** con el botón de la esquina superior derecha, pegarlo en la terminal de JupyterLab y pulsar **Enter**. Sigue los bloques en el orden indicado y sustituye los datos que se señalen en cada paso.
+
 ```bash
 cd "$HOME"
 git clone --branch opendata_dev https://github.com/castaned/ML-integration-CMSSW.git
