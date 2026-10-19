@@ -19,7 +19,13 @@
     }));
     root.querySelector('#parameter-count').textContent = new Intl.NumberFormat('es-MX').format(count(dims));
     root.querySelector('#dropout-value').textContent = Number(slider.value).toFixed(1);
+    const training=root.dataset.scenarioBlock==='training';
+    const label=root.querySelector('label[for="dropout-choice"]');
+    label.hidden=training;slider.hidden=training;
+    select.disabled=training || root.dataset.scenarioField==='dropout';
+    root.querySelector('#network-scenario').textContent=root.dataset.scenarioLabel ? `${root.dataset.scenarioLabel} · ${root.dataset.scenarioField}: ${root.dataset.scenarioValue}` : '';
     code.textContent = `model:\n  hidden_dims: [${hidden.join(', ')}]\n  dropout: ${Number(slider.value).toFixed(1)}`;
+    if(training)code.textContent+=`\ntraining:\n  ${root.dataset.scenarioField}: ${root.dataset.scenarioValue}`;
     status.textContent='Conserva el resto de tu YAML; cada ejecución crea su propia carpeta numerada.';
   };
   select.addEventListener('change',update); slider.addEventListener('input',update);

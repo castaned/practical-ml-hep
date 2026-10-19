@@ -69,6 +69,7 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 <option value="compact">C · Compacta · dos capas</option>
 <option value="uniform">D · Uniforme · cuatro capas</option>
 </select>
+<p id="network-scenario" role="status"></p>
 <label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>
 <input id="dropout-choice" type="range" min="0" max="0.6" step="0.1" value="0.1">
 <p class="explorer-hint">El aumento del número de parámetros puede modificar el tiempo de entrenamiento y el sobreajuste. Su efecto sobre la clasificación se evaluará con las mismas particiones de datos.</p>
