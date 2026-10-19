@@ -144,13 +144,13 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 /* Event presentation spanning the workshop cover. */
 .md-typeset .course-hero {row-gap:1.5rem;}
 .event-presentation {grid-column:1/-1;display:flex;align-items:center;gap:1.2rem;padding-bottom:1.25rem;border-bottom:1px solid #ffffff35;}
-.md-typeset .course-hero .event-presentation img {display:block;flex:0 0 auto;width:76px;height:auto;border-radius:5px;}
-.course-hero .event-presentation .event-name {font-size:1.12rem;font-weight:650;line-height:1.35;margin:0 0 .4rem;color:#fff;}
-.course-hero .event-presentation .event-details {font-size:.8rem;margin:0 0 .2rem;color:#c8e6e3;}
+.md-typeset .course-hero .event-presentation img {display:block;flex:0 0 auto;width:100px;height:auto;border-radius:5px;}
+.course-hero .event-presentation .event-name {font-size:1.3rem;font-weight:650;line-height:1.35;margin:0 0 .4rem;color:#fff;}
+.course-hero .event-presentation .event-details {font-size:.92rem;margin:0 0 .2rem;color:#c8e6e3;}
 .course-hero .event-presentation .event-details strong {font-size:inherit;font-weight:600;color:#b9e9da;}
-.course-hero .event-presentation .event-venue {font-size:.68rem;margin:0 0 .25rem;color:#d6e8e8;}
+.course-hero .event-presentation .event-venue {font-size:.8rem;margin:0 0 .25rem;color:#d6e8e8;}
 .event-presentation a {font-size:.62rem;color:#b9e9da;text-decoration:underline;}
-@media(max-width:600px){.event-presentation{align-items:flex-start;gap:.75rem;}.md-typeset .course-hero .event-presentation img{width:60px;}.course-hero .event-presentation .event-name{font-size:.95rem;}.course-hero .event-presentation .event-details{font-size:.72rem;}}
+@media(max-width:600px){.event-presentation{align-items:flex-start;gap:.75rem;}.md-typeset .course-hero .event-presentation img{width:76px;}.course-hero .event-presentation .event-name{font-size:1.08rem;}.course-hero .event-presentation .event-details{font-size:.8rem;}}
 
 /* Readable physics distributions with vector enlargement. */
 .observable-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; margin:1.2rem 0; }

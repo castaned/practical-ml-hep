@@ -7,12 +7,11 @@ hide:
 <div class="course-hero" markdown>
 
 <div class="event-presentation">
-<img src="assets/event/dpyc-smf.png" alt="División de Partículas y Campos de la Sociedad Mexicana de Física" width="76" height="91">
+<img src="assets/event/dpyc-smf.png" alt="División de Partículas y Campos de la Sociedad Mexicana de Física" width="100" height="120">
 <div class="event-presentation-copy">
 <p class="event-name">XXI Mexican School on Particles and Fields</p>
 <p class="event-details"><strong>19–23 de octubre de 2026</strong><span> · Puebla, México</span></p>
 <p class="event-venue">Edificio Carolino · Ciudad Universitaria 2</p>
-<a href="https://indico.nucleares.unam.mx/event/2675/overview">Información oficial del evento</a>
 </div>
 </div>
 
