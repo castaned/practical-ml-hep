@@ -68,20 +68,21 @@ filename = "/lustre/cursos/curso07/datos/root/Run2012BC_DoubleMuParked_Muons.roo
 
 El instructor prepara una sola copia para todos: **no necesitas descargar el archivo ni copiarlo a tu cuenta**. El notebook conserva el ejemplo con datos reales y lee directamente desde el almacenamiento compartido.
 
-La celda completa queda así; utiliza dos hilos si reservaste al menos dos cores CPU:
+El bloque conserva el código original del notebook; **solo cambia `filename`** para leer la copia compartida:
 
 ```python
-import ROOT
+# Activate multithreading capabilities
+# By default takes all available cores on the machine
+ROOT.EnableImplicitMT()
 
+treename = "Events"
+filename = "/lustre/cursos/curso07/datos/root/Run2012BC_DoubleMuParked_Muons.root"
+df = ROOT.RDataFrame(treename, filename)
+
+df.Sum("nMuon").GetValue()
+
+# Disable implicit multithreading when done
 ROOT.DisableImplicitMT()
-ROOT.EnableImplicitMT(2)
-try:
-    treename = "Events"
-    filename = "/lustre/cursos/curso07/datos/root/Run2012BC_DoubleMuParked_Muons.root"
-    df = ROOT.RDataFrame(treename, filename)
-    print("Total de muones:", df.Sum("nMuon").GetValue())
-finally:
-    ROOT.DisableImplicitMT()
 ```
 
 Esta lectura evita depender de la conexión a CERN, aunque el cálculo sigue recorriendo todos los eventos del archivo.
