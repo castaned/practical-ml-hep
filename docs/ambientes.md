@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | Machine learning | ATLAS | `ml-hep-gpu` | No utiliza ROOT |
 | Machine learning | CMS | `ml-open-data` | ROOT 6.24.08 de Yuca |
-| ROOT | Notebooks | `root-student-course` | ROOT 6.36 de Conda |
+| ROOT | Notebooks | `root-student-course-640` | ROOT 6.40 de Conda |
 
 === "ATLAS"
 
@@ -46,11 +46,11 @@
     conda deactivate
     module unload root/6.24.08 rocm/6.4.3
     unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
-    conda activate root-student-course
+    conda activate root-student-course-640
     cd "$HOME/student-course"
     ```
 
-    En el notebook selecciona el kernel **Python (ROOT student-course)**.
+    En el notebook selecciona el kernel **Python (ROOT 6.40)**.
 
 
 **Terminal y notebook se cambian por separado:** los bloques activan el ambiente de la terminal; para el taller ROOT debes elegir además su kernel en el notebook. No mezcles el módulo ROOT de CMS con el ROOT de Conda. Los trabajos Slurm ya enviados continúan aunque cambies de ambiente.
