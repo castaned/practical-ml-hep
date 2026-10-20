@@ -2,6 +2,25 @@
 
 Ejecutaremos los notebooks del [curso de ROOT para estudiantes](https://github.com/root-project/student-course) con **ROOT 6.40 y Python 3.11**, en un ambiente independiente del taller de machine learning. El ambiente y el kernel ROOT 6.40 ya se probaron en Yuca.
 
+## Instructor · Stephan Hageboeck
+
+<div class="instructor-profile" markdown>
+<div class="instructor-photo" markdown>
+
+![Stephan Hageboeck, instructor del taller de ROOT](assets/instructor/stephan-hageboeck.jpg)
+
+</div>
+<div markdown>
+
+Stephan es físico de partículas y obtuvo su doctorado en la **Universidad de Bonn, Alemania**. Trabajó en ATLAS en la búsqueda de decaimientos **Higgs → bb̄** y fue responsable de RooFit en 2019 y 2020, donde impulsó su desarrollo con vectorización y GPU.
+
+Entre 2021 y 2024 trabajó en computación con GPU en el departamento de Tecnologías de la Información del CERN. Actualmente forma parte del **equipo ROOT**, trabajando en RDataFrame, computación con GPU e interfaces de análisis.
+
+[Semblanza y fotografía: equipo ROOT, CERN](https://root.cern/about/team/#Stephan%20Hageboeck).
+
+</div>
+</div>
+
 ## 1. Instalar y descargar · Solo la primera vez
 
 **Si ya tienes el ambiente, el kernel y el repositorio, pasa al paso 2.** Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
