@@ -41,7 +41,7 @@ git clone https://github.com/root-project/student-course.git
 
 Después de clonar, en el **explorador izquierdo de JupyterLab**, vuelve a tu carpeta personal. Debe aparecer una carpeta adicional llamada **`student-course`**, junto a `hep-workshop` y `ML-integration-CMSSW`, como en la imagen. Si aún no la ves, pulsa el botón **Actualizar** del explorador.
 
-![Ejemplo de JupyterLab con student-course en el explorador izquierdo y una terminal del taller ROOT](assets/root-course/jupyterlab-student-course-full.png)
+![JupyterLab con los notebooks del curso y el ambiente root-student-course-640 activo](assets/root-course/jupyterlab-root640.png)
 
 Conserva la estructura de carpetas: los notebooks buscan los datos mediante rutas relativas.
 
@@ -51,9 +51,8 @@ En el explorador izquierdo abre **student-course → course → notebooks → co
 
 En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT 6.40)** y pulsa **Select**. También puedes pulsar el nombre del kernel en la esquina superior derecha.
 
-![Ejemplo del selector de kernel en JupyterLab](assets/root-course/select-root-kernel.png)
+![Seleccionar el kernel Python (ROOT 6.40) en JupyterLab](assets/root-course/select-root640-kernel.png)
 
-La captura muestra la ubicación del selector con el nombre anterior. Para esta versión selecciona **Python (ROOT 6.40)**.
 
 Con el kernel **Python (ROOT 6.40)** seleccionado, ejecuta las celdas en orden con **Shift+Enter**.
 
