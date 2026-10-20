@@ -39,7 +39,9 @@ cd "$HOME"
 git clone https://github.com/root-project/student-course.git
 ```
 
-Después de clonar, en el **explorador izquierdo de JupyterLab**, vuelve a tu carpeta personal. Debe aparecer una carpeta adicional llamada **`student-course`**, junto a `hep-workshop` y `ML-integration-CMSSW`, como en la imagen. Si aún no la ves, pulsa el botón **Actualizar** del explorador.
+Después de clonar, en el **explorador izquierdo de JupyterLab**, vuelve a tu carpeta personal. Debe aparecer una carpeta adicional llamada **`student-course`**, junto a `hep-workshop` y `ML-integration-CMSSW`. Si aún no la ves, pulsa el botón **Actualizar** del explorador.
+
+La captura siguiente muestra los notebooks dentro de **student-course → course → notebooks → core** y el ambiente ROOT 6.40 activo en la terminal.
 
 ![JupyterLab con los notebooks del curso y el ambiente root-student-course-640 activo](assets/root-course/jupyterlab-root640.png)
 
