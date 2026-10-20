@@ -108,6 +108,20 @@ En JupyterLab, abrir **File → New → Terminal**, o utilizar **+** para abrir 
 
 Desde esta terminal podrás seguir las instrucciones del taller que elijas.
 
+### Paso 6. Verificar el acceso a la carpeta compartida
+
+En la terminal, copia y ejecuta:
+
+```bash
+ls /lustre/cursos/curso07/
+```
+
+Debes ver las carpetas **`configuracion`**, **`datos`** y **`variaciones`**, como en la captura. Esto comprueba que tu cuenta puede acceder al área compartida del curso; no necesitas activar ningún ambiente Conda para esta verificación.
+
+![Verificación en la terminal de JupyterLab: acceso a /lustre/cursos/curso07/ y sus carpetas compartidas](assets/yuca/06-verificar-carpeta-compartida.png)
+
+Si aparece **`Permission denied`** o **`No such file or directory`**, avisa al instructor antes de continuar con el taller.
+
 ## Acceso listo
 
 Ya puedes entrar a Open OnDemand, abrir JupyterLab y utilizar su terminal. **La clonación del software y la instalación de ambientes se realizan al iniciar cada taller**, siguiendo su sección correspondiente.
