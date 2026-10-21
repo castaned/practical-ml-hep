@@ -2,6 +2,28 @@
 
 ## 1. Activar CMS
 
+Necesitas el repositorio [clonado en tu cuenta](atlas-preparacion.md#clonar-repositorio). Si todavía no tienes el ambiente `ml-open-data`, créalo con este bloque una sola vez:
+
+??? info "Solo la primera vez: crear el ambiente CMS"
+
+    ```bash
+    source /apps/miniconda3/etc/profile.d/conda.sh
+    conda deactivate
+    module unload root/6.24.08 rocm/6.4.3
+    unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
+    module load root/6.24.08
+    cd "$HOME/ML-integration-CMSSW"
+    CMS_PYTHON="$(root-config --python3-version | cut -d. -f1,2)"
+    test -n "$CMS_PYTHON" &&
+      conda create -n ml-open-data -c conda-forge "python=$CMS_PYTHON" pip -y &&
+      conda activate ml-open-data &&
+      python -m pip install -r workshop/requirements-yuca.txt &&
+      python -m pip install torch --index-url https://download.pytorch.org/whl/cpu &&
+      PYTHONPATH="$PWD:$(root-config --libdir)" python -c "import ROOT, tables, torch, onnx; print('CMS listo: ROOT', ROOT.gROOT.GetVersion())"
+    ```
+
+    Al ver `CMS listo`, continúa con la activación de abajo.
+
 Copia este bloque en una terminal de JupyterLab, aunque vengas de ATLAS o ROOT:
 
 ```bash
@@ -20,14 +42,19 @@ export SBATCH_QOS=qoscurso07
 
 ## 2. Preparar la ejecución
 
-Define la etiqueta **solo aquí**. Si `baseline02` ya existe, usa otra, como `baseline03`. Se guardará para reutilizarla al entrenar.
+Usa la misma etiqueta en todo el recorrido. El bloque conserva los YAML de `baseline01` si ya existen. **Continúa solo si termina sin errores.**
 
 ```bash
-export CMS_TAG=baseline02
-python workshop/setup_cms.py \
-  --inputs /lustre/cursos/curso07/datos/autoencoder \
-  --tag "$CMS_TAG" &&
-  printf 'export CMS_TAG=%q\n' "$CMS_TAG" > "$HOME/hep-workshop/cms-session.sh"
+export CMS_TAG=baseline01
+if [ -f "$HOME/hep-workshop/configs/cms_processing_${CMS_TAG}.yaml" ] &&
+   [ -f "$HOME/hep-workshop/configs/cms_root2h5_${CMS_TAG}.yaml" ] &&
+   [ -f "$HOME/hep-workshop/configs/cms_autoencoder_${CMS_TAG}.yaml" ]; then
+  echo "YAML de $CMS_TAG ya preparados"
+else
+  python workshop/setup_cms.py \
+    --inputs /lustre/cursos/curso07/datos/autoencoder \
+    --tag "$CMS_TAG"
+fi && printf 'export CMS_TAG=%q\n' "$CMS_TAG" > "$HOME/hep-workshop/cms-session.sh"
 ```
 
 Mantén la misma terminal durante estos pasos. Si abres otra, activa CMS y ejecuta `source "$HOME/hep-workshop/cms-session.sh"`.
