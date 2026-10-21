@@ -116,15 +116,8 @@ Durante el entrenamiento, el visor muestra el avance y las pérdidas, como en es
 
 ![Monitor ATLAS con épocas, pérdidas de entrenamiento y validación, AUC y gráfica de evolución en la terminal](assets/benchmarks/atlas_training_monitor.png){ .benchmark-monitor }
 
-La imagen corresponde a una corrida anterior de **40 épocas**; la configuración actual permite hasta **100**, con paciencia **20**. El número del trabajo y la ruta de resultados serán los de tu ejecución.
-
-Deja el visor abierto: después de la primera época aparecerán las pérdidas, el AUC y la gráfica. **Resultados** indica la carpeta exacta de esa corrida.
-
-**Qué observar:** ¿disminuyen ambas pérdidas? ¿La validación deja de mejorar mientras entrenamiento sigue bajando? Al finalizar, el visor muestra la época del modelo conservado y la AMS interna. La parada temprana puede terminar antes de que la barra alcance el máximo.
-
-Si el trabajo aún está en cola o prepara los datos, aparecerá un mensaje de espera. **Ctrl+C cierra solamente el visor**; el trabajo continúa en Slurm. Puedes volver a abrirlo con el mismo comando, incluso cuando la corrida haya terminado. Si abriste una nueva terminal, sustituye `${JOB_ID}` por el número del trabajo que se mostró al enviarlo.
-
-Si el visor se cierra sin mostrar resultados finales o el avance se detiene, comprueba el estado con los comandos siguientes y revisa el log. Para consultar una sola captura del visor, añade `--once`. [Apoyo operativo](apoyo.md).
+El visor muestra pérdidas, AUC y la carpeta de resultados; la imagen ilustra una corrida de 40 épocas (ahora: máximo 100, paciencia 20).
+**Ctrl+C cierra solo el visor; el entrenamiento continúa.**
 
 ### Comprobar el estado del trabajo
 
