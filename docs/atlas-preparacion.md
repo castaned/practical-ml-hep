@@ -49,7 +49,10 @@ source /apps/miniconda3/etc/profile.d/conda.sh
 module load rocm/6.4.3
 conda activate ml-hep-gpu
 cd "$HOME/ML-integration-CMSSW"
+git pull --ff-only origin opendata_dev
 ```
+
+El último comando actualiza el repositorio **si hay cambios disponibles**; si ya está actualizado, mostrará `Already up to date.`. Tus YAML personales en `hep-workshop/configs` se conservan.
 
 La terminal debe mostrar `(ml-hep-gpu)`. Ya puedes seguir el laboratorio con tu YAML.
 
