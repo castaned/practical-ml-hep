@@ -1,6 +1,4 @@
-# ATLAS · Benchmark de referencia
-
-Reproduce la configuración inicial y revisa sus resultados antes de probar variaciones del YAML.
+# Benchmark red neuronal
 
 ## 1. Red neuronal de referencia {#red-neuronal-de-referencia}
 
