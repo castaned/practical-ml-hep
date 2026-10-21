@@ -195,12 +195,5 @@ Para interpretar tus resultados, revisa estos campos:
 
 El archivo también permite comprobar **200 000 eventos de entrenamiento**, **50 000 de validación**, las **30 variables**, la semilla (`seed`) y la GPU utilizada. `batches_per_epoch`, `mean_epoch_seconds` y `gpu_peak_allocated_mb` describen el trabajo por época, su tiempo medio y la memoria GPU máxima asignada. Úsalos para entender diferencias de coste entre escenarios; la bitácora reúne los seis indicadores principales.
 
-### Qué significa una mejora {#interpretar-ams}
-
-**AUC y AMS responden a preguntas distintas:** la AUC resume todos los umbrales; la AMS evalúa una selección concreta y sus rendimientos ponderados. Por eso pueden cambiar en sentidos diferentes.
-
-<span id="significado-fisico"></span>
-Una mejor separación puede ayudar a medir una señal con menor incertidumbre o aumentar la sensibilidad a procesos poco frecuentes. La conclusión física requiere también datos observados, normalizaciones e incertidumbres: **una AMS mayor no equivale a un descubrimiento**.
-
 [Anterior: procesos y variables](fisica.md){ .md-button }
 [Continuar: variaciones y resultados](variaciones.md){ .md-button .md-button--primary }
