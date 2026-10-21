@@ -1,33 +1,28 @@
 # CMS · Interpretación y perspectivas
 
-## Lectura de las gráficas
+## ¿Qué observamos?
 
-Revisa las pérdidas de entrenamiento y validación, las distribuciones de MSE por proceso y la ROC frente a W′.
+Las pérdidas de entrenamiento y validación SM disminuyen: la red aprende a reconstruir los eventos. W′ presenta una cola de errores mayores, aunque buena parte de sus eventos se solapa con el SM.
 
-| ATLAS: clasificación | CMS: reconstrucción |
+| Resultado de esta corrida | Interpretación |
 | --- | --- |
-| Aprende usando etiquetas de señal y fondo | Aprende a reconstruir eventos del Modelo Estándar |
-| La puntuación favorece señal o fondo | El MSE cuantifica el error de reconstrucción |
-| Se comparan AUC, AMS interna y tiempo | Se comparan pérdidas, errores por proceso y tiempo |
-| Higgs aparece durante el entrenamiento | W′ se utiliza únicamente para evaluación |
+| **AUC = 0.918** | Hay separación SM–W′ al recorrer los distintos umbrales |
+| **Umbral MSE = 2.564** | Corte fijado con el percentil 99 de validación SM balanceada |
+| **WZ de prueba: 2.76 % seleccionado** | Una fracción del fondo también supera el corte |
+| **W′ de evaluación: 17.95 % seleccionado** | El corte retiene parte de la señal, pero rechaza la mayoría |
 
-Un error elevado puede deberse a un evento diferente de la referencia, a una descripción insuficiente del fondo o a problemas de reconstrucción. No constituye por sí mismo evidencia de nueva física. Las muestras del piloto tienen tamaños distintos; los pesos iguales por proceso no representan tasas físicas por luminosidad.
+**Una AUC alta no implica una eficiencia alta en cualquier corte.** Bajar el umbral recuperaría más W′, a costa de aceptar más fondo. El 2.76 % corresponde solo a WZ; no es la aceptación conjunta del SM ni la aceptación balanceada usada en la ROC.
 
-Si W′ presenta errores mayores que los procesos SM, un umbral de MSE puede enriquecer una selección en esa señal. Para convertirlo en una búsqueda física harían falta las normalizaciones e incertidumbres del fondo y una evaluación estadística. La AUC de este ejemplo resume la separación frente a esta muestra W′; no mide una capacidad universal de descubrir cualquier anomalía.
+## ¿Qué concluimos?
 
-La muestra W′ permite ilustrar la respuesta del modelo. Si se consulta repetidamente para decidir arquitectura o variables, el resultado debe considerarse exploratorio.
+El autoencoder, entrenado únicamente con SM, selecciona una fracción mayor de W′ que de WZ al mismo umbral. Esto ilustra su utilidad para buscar eventos poco habituales. **Un evento seleccionado no queda identificado como nueva física.** Las muestras y sus normalizaciones no permiten deducir una pureza o significancia física a partir de estos porcentajes.
 
-### Posibles mejoras para una exploración posterior
+A diferencia del clasificador ATLAS, aquí W′ no participa en el entrenamiento: la puntuación es el **error de reconstrucción**, no una probabilidad de señal.
 
-| Variación posible | Qué permitiría investigar |
-| --- | --- |
-| Anchura de las capas y dimensión latente | Si cambia la reconstrucción SM y la capacidad de distinguir eventos diferentes |
-| Variables de entrada | Qué información física añade cada observable y cómo influye su escala |
-| Duración, tasa de aprendizaje y tamaño de lote | Si el entrenamiento converge y generaliza de forma estable |
-| Más simulación y composición del fondo | Si la respuesta se mantiene con mayor estadística y mejor representación de los procesos |
+## ¿Qué comprobaríamos después?
 
-Cada estudio requeriría conservar su configuración y una carpeta de resultados propia. Las decisiones se apoyarían primero en la validación SM; una evaluación independiente permitiría comprobar después si la mejora se mantiene frente a W′.
+- Recorrer el umbral y comparar eficiencia W′ con aceptación SM.
+- Repetir con otras semillas para comprobar la estabilidad.
+- Estudiar las variables y el espacio latente usando validación SM; reservar muestras independientes para la evaluación final.
 
-**Preguntas para la discusión:** ¿en qué paso se construyen las variables? ¿Qué información se necesita para entrenar cada red? ¿Por qué un error alto y una puntuación alta de clasificación tienen significados diferentes?
-
-[Anterior: Autoencoder y benchmark](cms-autoencoder.md){ .md-button }
+[Volver a las gráficas del benchmark](cms-autoencoder.md#benchmark-cms){ .md-button }
