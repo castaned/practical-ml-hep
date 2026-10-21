@@ -103,31 +103,17 @@ Los ROOT seleccionados quedan en **hep-workshop → cms → baseline01 → root*
 
 ## 4. Convertir los ROOT seleccionados a HDF5
 
-Después de completar la selección, comprueba que **PyTables** esté disponible en `ml-open-data`. El conversor lo importa con el nombre `tables` para escribir los archivos HDF5:
-
-```bash
-python -c "import tables; print('PyTables disponible:', tables.__version__)"
-```
-
-Si aparece **`ModuleNotFoundError: No module named 'tables'`**, instálalo una sola vez en el ambiente activo y repite la comprobación:
-
-```bash
-python -m pip install tables
-python -c "import tables; print('PyTables disponible:', tables.__version__)"
-```
-
-Este error ocurre antes del envío de los trabajos de conversión; **no necesitas repetir la selección NanoAOD**. Una vez disponible PyTables, envía la conversión:
+Cuando termine la selección, ejecuta lo siguiente (sustituye `baseline01` si usaste otra etiqueta):
 
 ```bash
 cd "$HOME/ML-integration-CMSSW/data_processing/convert_h5"
+python -m pip install tables
 python execute_convert_root2h5.py \
   -f "$HOME/hep-workshop/configs/cms_root2h5_baseline01.yaml" \
   --skip-empty-trees
 ```
 
-Este comando envía otro array a Slurm. Anota su número y comprueba su estado con `squeue` y `sacct`, como en el paso anterior. Sus registros están en **data_processing → convert_h5 → logs**. Se omiten los ROOT sin eventos seleccionados.
-
-Los resultados se guardan en **hep-workshop → cms → baseline01 → h5**, en `DYJets`, `WZ`, `ZZ` y `Wprime`. Cada archivo `.h5` contiene las variables seleccionadas y `Dataset_ID`; las ramas por canal permiten construir las diez entradas físicas del autoencoder.
+Anota el número del nuevo trabajo y espera a que **todas sus tareas indiquen `COMPLETED` y `0:0`**, como en el paso anterior. Los HDF5 quedan en **hep-workshop → cms → baseline01 → h5**; los registros, en **data_processing → convert_h5 → logs**.
 
 ### Producto del procesamiento: variables listas para el autoencoder
 
