@@ -24,11 +24,11 @@ Selecciona una variación para ver sus instrucciones.
 <p><strong>1. Crea la copia del YAML</strong> desde la terminal de JupyterLab:</p>
 <pre><code id="scenario-copy" class="language-bash"></code></pre>
 <p><strong>2. Ábrela en el explorador izquierdo:</strong> <code id="scenario-path"></code>.</p>
-<p>Actualiza el parámetro indicado y el bloque <code>output</code> como se muestra. Conserva los demás valores del YAML:</p>
+<p>Actualiza el parámetro indicado y la carpeta <code>output.directory</code> como se muestra. Conserva los demás valores del YAML:</p>
 <pre><code id="scenario-yaml" class="language-yaml"></code></pre>
 <p><strong>3. Guarda con Ctrl+S y envía el trabajo:</strong></p>
 <pre><code id="scenario-submit" class="language-bash"></code></pre>
-<p>La salida se crea dentro de <code>output.directory</code>, con el nombre de la variación y un número: por ejemplo <code>atlas_A_capas1024-512-256-128_0001</code>. Al repetirla se crea <code>..._0002</code>, sin sobrescribir resultados.</p>
+<p>Cada variación tiene su propia carpeta de resultados. Dentro se crean <code>run_0001</code>, <code>run_0002</code>, etc., sin sobrescribir ejecuciones.</p>
 <p><strong>4. Monitorea el entrenamiento</strong> en la misma terminal, usando el <code>JOB_ID</code> del trabajo que acabas de enviar:</p>
 <pre><code id="scenario-monitor" class="language-bash"></code></pre>
 <p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
