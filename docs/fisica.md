@@ -29,6 +29,25 @@ Usamos **eventos simulados** del Higgs Challenge, con una señal y tres procesos
 
 **El clasificador distingue Higgs frente a fondo: los tres fondos se agrupan en una sola clase.** No aprende una etiqueta independiente para cada proceso. [Documentación del dataset](https://opendata.cern.ch/record/329).
 
+### Cómo están organizados los datos
+
+El archivo es una tabla CSV: **cada fila corresponde a un evento simulado** y la primera fila nombra las columnas. Las **30 entradas de la red** son las columnas `PRI_` y `DER_`; las demás ayudan a identificar, etiquetar o evaluar el evento. [Descripción oficial del dataset](https://opendata.cern.ch/record/328).
+
+| Columnas | Función |
+| --- | --- |
+| `EventId` | Identificador del evento; no entra a la red. |
+| `PRI_` y `DER_` | 17 variables primarias y 13 derivadas; son las entradas físicas. |
+| `Label` | Clase conocida: `s` (señal) o `b` (fondo); es la respuesta que aprende la red. |
+| `Weight`, `KaggleWeight`, `KaggleSet` | Peso del evento, peso para la métrica y partición del challenge; no son entradas. |
+
+En esta práctica usamos los eventos con `KaggleSet=t` y separamos una parte para validación. Algunas celdas contienen **`-999`**, que indica una variable no definida, por ejemplo si faltan jets; la preparación sustituye esos valores antes del entrenamiento.
+
+??? example "Ver un extracto del CSV"
+
+    [![Cabecera y primeras filas del CSV del Higgs Challenge](assets/workshop/atlas_csv_terminal_excerpt.png)](assets/workshop/atlas_csv_terminal_excerpt.png)
+
+    La terminal parte las filas largas para mostrarlas en pantalla; cada `EventId` inicia un evento nuevo.
+
 ![La masa visible muestra una señal pequeña sobre fondos abundantes](assets/workshop/challenge_visible_mass.png){ width="460" }
 
 *Figura 1 extraída del [artículo del Higgs Challenge](https://proceedings.mlr.press/v42/cowa14.pdf), que reproduce el resultado ATLAS-CONF-2013-108. La línea roja de señal está multiplicada por **50**, como indica la leyenda. Esta figura publicada contiene datos y estimaciones de fondo; nuestros entrenamientos usan simulaciones del dataset. No confundir sus cantidades con las de nuestros histogramas normalizados.*
