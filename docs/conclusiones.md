@@ -1,6 +1,6 @@
 # Discusión de resultados
 
-Abre la [tabla de resumen](bitacora.md#resumen-de-resultados) de la bitácora. Si necesitas comparar resultados de otros estudiantes, importa sus CSV allí.
+Abre la [tabla de resumen](bitacora.md#resumen-de-resultados) de la bitácora. Puedes introducir allí también los valores de otros estudiantes para compararlos.
 
 1. Compara cada variación con la referencia: **AUC, AMS y tiempo de entrenamiento**.
 2. Revisa las figuras de pérdidas para interpretar diferencias y posibles casos de sobreajuste.
