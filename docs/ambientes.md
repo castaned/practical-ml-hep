@@ -18,6 +18,7 @@
     module load rocm/6.4.3
     conda activate ml-hep-gpu
     cd "$HOME/ML-integration-CMSSW"
+    git pull --ff-only origin opendata_dev
     ```
 
     [Continuar con ATLAS](laboratorio.md).
@@ -32,6 +33,7 @@
     conda activate ml-open-data
     module load root/6.24.08
     cd "$HOME/ML-integration-CMSSW"
+    git pull --ff-only origin opendata_dev
     export PYTHONPATH="$PWD:$(root-config --libdir):${PYTHONPATH:-}"
     export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
     export SBATCH_QOS=qoscurso07

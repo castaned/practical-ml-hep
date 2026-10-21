@@ -24,8 +24,8 @@ Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se trans
 | Optimizador | AdamW |
 | Tasa de aprendizaje | `0.001` |
 | Tamaño de lote | `4096` eventos |
-| Máximo de épocas | `40` |
-| Parada temprana | `10` épocas sin mejora de la pérdida de validación |
+| Máximo de épocas | `100` |
+| Parada temprana | `20` épocas sin mejora de la pérdida de validación |
 | Entrenamiento / validación | 200 000 / 50 000 eventos, de la partición `t` |
 
 Los valores ausentes se sustituyen por medianas y las variables se estandarizan. Ambas transformaciones se ajustan únicamente con los eventos de entrenamiento. El modelo conservado es el de menor pérdida de validación.
@@ -44,6 +44,8 @@ Antes de empezar, completa [ATLAS · Preparar el entorno](atlas-preparacion.md):
     cp -n workshop/configs/atlas_higgs_gpu.yaml "$HOME/hep-workshop/configs/atlas_baseline01.yaml"
     ```
 
+    `git pull` descarga las actualizaciones disponibles; si no hay cambios muestra `Already up to date.`. `cp -n` conserva tu YAML si ya existe: revisa los valores indicados abajo.
+
     Si falta configurar el ambiente, completar la [preparación inicial](atlas-preparacion.md). Para generar las comparaciones de las treinta variables, sigue el [apoyo de visualización](apoyo.md#3-mira-las-variables-antes-de-entrenar).
 
 ### Abrir y revisar el YAML en JupyterLab
@@ -51,14 +53,17 @@ Antes de empezar, completa [ATLAS · Preparar el entorno](atlas-preparacion.md):
 1. En el **explorador de archivos de la izquierda**, vuelve a tu carpeta personal y abre **hep-workshop → configs**.
 2. Haz doble clic en **atlas_baseline01.yaml** para abrirlo en el editor. Si no se abre como texto, haz clic derecho y selecciona **Open With → Editor**.
 3. Revisa `model` (capas y dropout) y `training` (épocas, tamaño de lote y tasa de aprendizaje). Para reproducir la referencia, conserva los valores de la copia inicial.
-4. Comprueba que `output.directory` coincida con la ruta siguiente. Si necesitas corregirla, edita el valor **después de los dos puntos**, conservando la sangría, y guarda con **Ctrl+S**.
+4. Comprueba que `output.directory` y `output.run_name` coincidan con el bloque siguiente. En una copia existente, ajusta también `training.epochs: 100` y `training.patience: 20`. Si necesitas corregirla, edita el valor **después de los dos puntos**, conservando la sangría, y guarda con **Ctrl+S**.
 
 ![JupyterLab: explorador izquierdo en hep-workshop/configs y atlas_baseline01.yaml abierto en el editor](assets/workshop/atlas_baseline_yaml_jupyterlab.png)
 
-Puedes conservar `output.directory` al repetir el entrenamiento. Cada envío crea una subcarpeta nueva: `run_0001`, `run_0002`, etc., sin sobrescribir las anteriores.
+La captura ilustra dónde editar el YAML; utiliza los valores actuales de esta página: **100 épocas y paciencia 20**.
+
+Puedes conservar `output.directory` al repetir el entrenamiento. Con `output.run_name: atlas_referencia`, cada envío crea una subcarpeta nueva: `atlas_referencia_0001`, `atlas_referencia_0002`, etc., sin sobrescribir las anteriores.
 
 ```yaml
 output:
+  run_name: atlas_referencia
   directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
 ```
 
@@ -93,9 +98,9 @@ Al comenzar, verás un mensaje como este:
 
 ```text
 Slurm: EN EJECUCIÓN | amdgpu-hpc-01
-[------------------------------] Sin épocas registradas / máximo 40
+[------------------------------] Sin épocas registradas / máximo 100
 Trabajo activo; aún no se ha completado la primera época.
-Resultados: /lustre/home/TU_USUARIO/hep-workshop/results/atlas_gpu_baseline01/run_0001
+Resultados: /lustre/home/TU_USUARIO/hep-workshop/results/atlas_gpu_baseline01/atlas_referencia_0001
 ```
 
 Deja el visor abierto: después de la primera época aparecerán las pérdidas, el AUC y la gráfica. **Resultados** indica la carpeta de esta ejecución.
@@ -118,7 +123,7 @@ En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. A
 
 ## 4. Revisar los resultados del entrenamiento
 
-En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → run_0001**. Cada corrida conserva los siguientes productos:
+En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → atlas_referencia_0001**. Cada corrida conserva los siguientes productos:
 
 | Archivo | Información que recuperas |
 | --- | --- |
@@ -129,7 +134,7 @@ En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicad
 | `config.yaml` | Copia de la configuración utilizada, para identificar y reproducir la corrida. |
 | `history.csv` / `validation_scores.csv` | Valores por época y puntuaciones de validación que permiten volver a analizar los resultados. |
 
-Las tres figuras se guardan también en **PDF y SVG**. Abre los PNG y `metrics.json` con doble clic en JupyterLab. Las imágenes siguientes corresponden a una ejecución del benchmark; tus valores pueden variar.
+Las tres figuras se guardan también en **PDF y SVG**. Abre los PNG y `metrics.json` con doble clic en JupyterLab. Las imágenes siguientes corresponden a una ejecución anterior de 40 épocas. La configuración actual permite hasta 100 épocas con paciencia 20; las imágenes sirven para explicar los resultados, no como cifras esperadas de la nueva configuración.
 
 ### Pérdidas y aprendizaje
 
@@ -143,7 +148,7 @@ En **`training_loss.png`**, observa las dos curvas:
 
 En este ejemplo ambas pérdidas siguen disminuyendo y el modelo conservado corresponde a la época 40. La validación puede quedar por debajo del entrenamiento porque dropout está activo al entrenar y se desactiva al evaluar; esa diferencia por sí sola no indica un problema.
 
-Si la pérdida de entrenamiento baja pero la de validación sube, puede haber **sobreajuste**. El máximo es 40 épocas; tras 10 sin mejora de validación, el entrenamiento se detiene.
+Si la pérdida de entrenamiento baja pero la de validación sube, puede haber **sobreajuste**. El máximo es 100 épocas; tras 20 épocas consecutivas sin mejorar la pérdida de validación, el entrenamiento se detiene.
 
 ### Separación entre señal y fondo {#leer-una-roc-como-fisico}
 

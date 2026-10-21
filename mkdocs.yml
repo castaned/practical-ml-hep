@@ -46,8 +46,8 @@ markdown_extensions:
 extra_css:
   - stylesheets/course.css?v=17
 extra_javascript:
-  - javascripts/explorer.js?v=7
-  - javascripts/scenarios.js?v=8
+  - javascripts/explorer.js?v=8
+  - javascripts/scenarios.js?v=9
   - javascripts/simple-records.js?v=3
 nav:
   - Introducción: index.md

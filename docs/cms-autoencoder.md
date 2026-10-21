@@ -41,6 +41,7 @@ En la terminal de JupyterLab, activa el mismo ambiente CMS y envía el entrenami
 source /apps/miniconda3/etc/profile.d/conda.sh
 conda activate ml-open-data
 cd "$HOME/ML-integration-CMSSW"
+git pull --ff-only origin opendata_dev
 mkdir -p "$HOME/hep-workshop/logs"
 export WORKSHOP_CONDA_ENV=ml-open-data
 JOB_ID=$(sbatch --parsable --account=curso07 --qos=qoscurso07 \
@@ -49,6 +50,8 @@ JOB_ID=$(sbatch --parsable --account=curso07 --qos=qoscurso07 \
   "$HOME/hep-workshop/configs/cms_autoencoder_baseline01.yaml")
 echo "Trabajo enviado: $JOB_ID"
 ```
+
+`git pull` incorpora las actualizaciones disponibles antes de enviar el entrenamiento. Tus YAML personales y resultados en `hep-workshop` se conservan.
 
 Esta red pequeña se ejecuta en CPU. El comando utiliza el YAML CMS indicado y no depende de la configuración del clasificador ATLAS ni de una asignación previa de grupos.
 
