@@ -7,11 +7,11 @@ Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después re
 Selecciona una variación para ver sus instrucciones.
 
 <div id="scenario-picker" class="result-table-wrap">
-<table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Elegir</th></tr></thead><tbody>
-<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[1024, 512, 256, 128]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="B"><td><strong>B · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="C"><td><strong>C · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="D"><td><strong>D · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.0005</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
+<table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Parámetros entrenables</th><th>Elegir</th></tr></thead><tbody>
+<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[1024, 512, 256, 128]</code></td><td>720 897</td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="B"><td><strong>B · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td>289</td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="C"><td><strong>C · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td>14 849</td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="D"><td><strong>D · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.0005</code></td><td>14 849</td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
 </tbody></table>
 </div>
 
@@ -34,41 +34,6 @@ Selecciona una variación para ver sus instrucciones.
 <p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
 <p><strong>5. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y registra sus indicadores en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
 </div>
-</div>
-
-<div id="scenario-network" hidden markdown>
-
-### Explorar las capas de esta variación {#explorar-la-arquitectura-antes-de-modificar-el-yaml}
-
-En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El explorador muestra la arquitectura del escenario seleccionado y sus parámetros entrenables. C usa dropout `0.6`; los demás escenarios usan `0.1`. Cambiar dropout no altera el número de parámetros.
-
-<div class="network-explorer" data-network-explorer>
-<div class="explorer-intro">
-<span class="eyebrow">ARQUITECTURAS DE REFERENCIA</span>
-<h3>Capas y parámetros entrenables</h3>
-<p>Elige una arquitectura para explorar sus capas, parámetros y configuración YAML.</p>
-<label for="network-choice">Arquitectura</label>
-<select id="network-choice">
-<option value="baseline">Referencia · cuatro capas</option>
-<option value="wide">A · Más ancha · cuatro capas</option>
-<option value="compact">B · Compacta · dos capas</option>
-</select>
-<p id="network-scenario" role="status"></p>
-<label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>
-<input id="dropout-choice" type="range" min="0" max="0.6" step="0.1" value="0.1">
-<p class="explorer-hint">El aumento del número de parámetros puede modificar el tiempo de entrenamiento y el sobreajuste. Su efecto sobre la clasificación se evaluará con las mismas particiones de datos.</p>
-</div>
-<div class="explorer-result">
-<div class="network-layers" id="network-layers" aria-label="Capas de la red elegida"></div>
-<p class="parameter-count"><strong id="parameter-count">14 849</strong> parámetros entrenables</p>
-<pre><code id="network-yaml">model:
-  hidden_dims: [128, 64, 32, 16]
-  dropout: 0.1</code></pre>
-<button type="button" id="copy-network">Copiar fragmento YAML</button>
-<p id="copy-status" role="status">Conserva el resto de tu YAML; cada ejecución crea una carpeta con su nombre y número.</p>
-</div>
-</div>
-
 </div>
 
 ## 2. Registrar resultados {#registro}

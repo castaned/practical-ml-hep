@@ -21,9 +21,7 @@
     picker.querySelectorAll('[data-scenario]').forEach(b=>{const active=b===button;b.setAttribute('aria-pressed',String(active));b.textContent=active?'Seleccionada':'Seleccionar';b.closest('tr').classList.toggle('scenario-selected',active);});
     document.getElementById('scenario-empty').hidden=true;
     document.getElementById('scenario-detail').hidden=false;
-    set('scenario-architecture',s.network==='baseline'?'Conserva la red del benchmark: 30 → 128 → 64 → 32 → 16 → 1, con 14 849 parámetros entrenables. Solo cambia el parámetro de este escenario.':'La arquitectura y su número de parámetros se muestran en el explorador de abajo.');set('scenario-title',s.label);set('scenario-question',s.question);set('scenario-copy',s.copy);
+    set('scenario-architecture',s.network==='baseline'?'Conserva la red del benchmark: 30 → 128 → 64 → 32 → 16 → 1, con 14 849 parámetros entrenables. Solo cambia el parámetro de este escenario.':'El número de parámetros entrenables se indica en la tabla.');set('scenario-title',s.label);set('scenario-question',s.question);set('scenario-copy',s.copy);
     set('scenario-path',`hep-workshop → configs → ${s.file}`);set('scenario-yaml',s.yaml);set('scenario-submit',s.submit);set('scenario-monitor',s.monitor);set('scenario-log-label',s.label);
-    const network=document.getElementById('scenario-network');network.hidden=!s.network;
-    if(s.network){const explorer=document.querySelector('[data-network-explorer]');explorer.dataset.scenarioLabel=s.label;explorer.dataset.scenarioBlock=s.block;explorer.dataset.scenarioField=s.field;explorer.dataset.scenarioValue=s.value;const select=document.getElementById('network-choice');select.value=s.network;document.getElementById('dropout-choice').value=String(s.dropout ?? 0.1);select.dispatchEvent(new Event('change'));}
   }));
 })();
