@@ -21,32 +21,25 @@ A partir de las colecciones y ramas NanoAOD, **el código selecciona leptones, a
 
 Los NanoAOD compartidos se conservan como fuente. Los ROOT seleccionados y los HDF5 se generan en tu cuenta; la lista exacta de archivos de entrada queda registrada para comparar ejecuciones.
 
-## 1. Localizar los datos y preparar el ambiente
+## 1. Activar el ambiente CMS
 
-Si vienes de ATLAS o del curso de ROOT, activa primero la pestaña **CMS** en [Cambiar de taller](ambientes.md). CMS usa el ROOT 6.24.08 de Yuca para procesar NanoAOD; el curso de ROOT utiliza su propia instalación 6.40.
-
-Los NanoAOD están en **`/lustre/cursos/curso07/datos/autoencoder/`**, en las carpetas `DYjets`, `WZ`, `ZZ` y `Wprime`. En Open OnDemand puedes encontrarlos en **Files → Curso: curso07 → datos → autoencoder**. No necesitas copiarlos a tu cuenta.
-
-Si todavía no tienes `ML-integration-CMSSW` en tu cuenta, realiza primero la [clonación del repositorio](atlas-preparacion.md#clonar-repositorio). Para CMS utiliza el ambiente `ml-open-data` indicado aquí.
-
-**En cada nueva terminal de JupyterLab, prepara ROOT y las herramientas de procesamiento antes de enviar los trabajos:**
+Ejecuta este bloque en cada terminal nueva, también si vienes de ATLAS o ROOT:
 
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
+conda deactivate
+module unload root/6.24.08 rocm/6.4.3
+unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
 conda activate ml-open-data
 module load root/6.24.08
-export PYTHONPATH="$(root-config --libdir):${PYTHONPATH:-}"
 cd "$HOME/ML-integration-CMSSW"
-export PYTHONPATH="$PWD:${PYTHONPATH:-}"
 git pull --ff-only origin opendata_dev
+export PYTHONPATH="$PWD:$(root-config --libdir)"
 export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
 export SBATCH_QOS=qoscurso07
-python -c "import ROOT, uproot, tables, h5py, torch, onnx, yaml; from mini_nanotools import PostProcessor, Module, Collection; print('Ambiente CMS disponible')"
 ```
 
-CMS utiliza **`ml-open-data`** y el **módulo ROOT instalado en Yuca**, necesario para seleccionar los NanoAOD desde Python. Es un ambiente distinto al utilizado para ATLAS. Activa el ambiente, carga el módulo y exporta `PYTHONPATH` en cada nueva terminal, antes de comprobar las dependencias y enviar los trabajos. Slurm hereda estas variables al enviar el array.
-
-**`mini_nanotools` está incluido en el repositorio; no requiere una instalación aparte.** `PostProcessor` recorre los eventos y coordina la salida; `Module` permite implementar el filtro y `Collection` da acceso a las colecciones de partículas. `filterNanoAOD.py` utiliza estas herramientas junto con PyROOT para seleccionar los eventos y escribir los ROOT resultantes. El `PYTHONPATH` anterior permite encontrar tanto ROOT como este paquete; el ejecutor de Slurm también añade la raíz del repositorio antes de lanzar el filtro.
+Los datos se leen directamente de `/lustre/cursos/curso07/datos/autoencoder/`; no necesitas copiarlos.
 
 ??? info "Solo si todavía no tienes el ambiente CMS"
 
