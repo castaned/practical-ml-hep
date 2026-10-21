@@ -6,16 +6,17 @@ La red aprende a reconstruir eventos del **Modelo Estándar**. W′ se utiliza s
 
 ## 1. Revisar la configuración
 
-Completa primero el [procesamiento NanoAOD y las gráficas de entrada](cms-procesamiento.md). En **hep-workshop → configs**, abre `cms_autoencoder_TU_ETIQUETA.yaml`.
+Completa primero el [procesamiento NanoAOD y las gráficas de entrada](cms-procesamiento.md). En **hep-workshop → configs**, abre el YAML `cms_autoencoder_` seguido de tu etiqueta.
 
 Conserva las diez variables, capas **[16, 8]**, espacio latente **2**, máximo **60 épocas** y paciencia **8**.
 
 ## 2. Enviar el entrenamiento
 
-En la misma terminal CMS, usa la etiqueta de tus HDF5:
+En una terminal con CMS activado, recupera la etiqueta guardada durante el procesamiento. **No elijas una nueva para entrenar:**
 
 ```bash
-export CMS_TAG=baseline02
+source "$HOME/hep-workshop/cms-session.sh"
+echo "Etiqueta CMS: $CMS_TAG"
 cd "$HOME/ML-integration-CMSSW"
 git pull --ff-only origin opendata_dev
 mkdir -p "$HOME/hep-workshop/logs"
@@ -43,7 +44,7 @@ Continúa cuando indique **`COMPLETED` y `0:0`**. Si falla, revisa el mismo log.
 
 ## 4. Abrir los resultados
 
-En JupyterLab abre **hep-workshop → results → cms_autoencoder_tu etiqueta**:
+En JupyterLab abre **hep-workshop → results → cms_autoencoder_ seguido de tu etiqueta**:
 
 | Archivo | Contenido |
 | --- | --- |

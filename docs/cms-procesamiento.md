@@ -20,14 +20,17 @@ export SBATCH_QOS=qoscurso07
 
 ## 2. Preparar la ejecución
 
-Elige una etiqueta nueva. **Si `baseline02` ya existe, usa `baseline03`.** Mantén esta misma terminal para los siguientes pasos.
+Define la etiqueta **solo aquí**. Si `baseline02` ya existe, usa otra, como `baseline03`. Se guardará para reutilizarla al entrenar.
 
 ```bash
 export CMS_TAG=baseline02
 python workshop/setup_cms.py \
   --inputs /lustre/cursos/curso07/datos/autoencoder \
-  --tag "$CMS_TAG"
+  --tag "$CMS_TAG" &&
+  printf 'export CMS_TAG=%q\n' "$CMS_TAG" > "$HOME/hep-workshop/cms-session.sh"
 ```
+
+Mantén la misma terminal durante estos pasos. Si abres otra, activa CMS y ejecuta `source "$HOME/hep-workshop/cms-session.sh"`.
 
 Se crean los tres YAML necesarios en **hep-workshop → configs**. Los datos compartidos se leen sin copiarlos.
 
