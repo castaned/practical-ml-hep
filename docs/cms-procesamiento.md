@@ -19,7 +19,7 @@ Necesitas el repositorio [clonado en tu cuenta](atlas-preparacion.md#clonar-repo
       conda activate ml-open-data &&
       python -m pip install -r workshop/requirements-yuca.txt &&
       python -m pip install torch --index-url https://download.pytorch.org/whl/cpu &&
-      PYTHONPATH="$PWD:$(root-config --libdir)" python -c "import ROOT, tables, torch, onnx; print('CMS listo: ROOT', ROOT.gROOT.GetVersion())"
+      PYTHONPATH="$PWD:$(root-config --libdir)" python -c "import ROOT, tables, torch, onnx, mini_nanotools; print('CMS listo: ROOT', ROOT.gROOT.GetVersion())"
     ```
 
     Al ver `CMS listo`, continúa con la activación de abajo.
@@ -38,6 +38,12 @@ git pull --ff-only origin opendata_dev
 export PYTHONPATH="$PWD:$(root-config --libdir)"
 export CONDA_SETUP_SCRIPT=/apps/miniconda3/etc/profile.d/conda.sh
 export SBATCH_QOS=qoscurso07
+```
+
+La selección usa `mini_nanotools`, incluido en el repositorio. Comprueba que quedó disponible:
+
+```bash
+python -c "import mini_nanotools; print('mini_nanotools listo')"
 ```
 
 ## 2. Preparar la ejecución
