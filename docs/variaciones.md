@@ -1,6 +1,6 @@
 # Variaciones del benchmark
 
-Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después registra sus indicadores en la [bitácora](bitacora.md). La comparación se hará con los CSV reunidos de las ejecuciones.
+Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después registra sus indicadores en la [bitácora](bitacora.md). La tabla de comparación se genera allí automáticamente.
 
 ## 1. Elige la variación asignada {#1-escenarios-por-grupo}
 
@@ -23,12 +23,8 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 </tbody></table>
 </div>
 
-## 2. Preparar y ejecutar la variación
-
-El primer bloque actualiza el repositorio antes de copiar el YAML. Revisa que tu referencia tenga `training.epochs: 100` y `training.patience: 20`; si ya existía, `cp -n` conserva sus valores anteriores. Usa estas mismas condiciones en la referencia y las cuatro variantes. La paciencia cuenta épocas **consecutivas** sin mejorar la pérdida de validación y se reinicia cuando mejora.
-
 <div id="scenario-instructions" aria-live="polite">
-<p id="scenario-empty">Elige una variación en la tabla de arriba.</p>
+<p id="scenario-empty" hidden></p>
 <div id="scenario-detail" hidden>
 <h3 id="scenario-title"></h3>
 <p id="scenario-question"></p>
@@ -44,7 +40,7 @@ El primer bloque actualiza el repositorio antes de copiar el YAML. Revisa que tu
 <p><strong>4. Monitorea el entrenamiento</strong> en la misma terminal, usando el <code>JOB_ID</code> del trabajo que acabas de enviar:</p>
 <pre><code id="scenario-monitor" class="language-bash"></code></pre>
 <p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
-<p><strong>5. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y carga su <code>metrics.json</code> en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
+<p><strong>5. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y registra sus indicadores en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
 </div>
 </div>
 
@@ -83,7 +79,7 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 
 </div>
 
-## 3. Registrar resultados {#registro}
+## 2. Registrar resultados {#registro}
 
 Abre la **Bitácora y resumen** para registrar la referencia y las variaciones. Allí se guardan los valores y se genera la tabla automáticamente.
 
