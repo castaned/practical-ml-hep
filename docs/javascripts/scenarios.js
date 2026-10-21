@@ -16,22 +16,11 @@
   if(typeof document==='undefined')return;
   const picker=document.querySelector('#scenario-picker');if(!picker)return;
   const set=(id,value)=>{document.getElementById(id).textContent=value;};
-  const copyStatus=document.getElementById('scenario-copy-status');
-  document.querySelectorAll('#scenario-detail [data-copy-code]').forEach(button=>button.addEventListener('click',async()=>{
-    const code=document.getElementById(button.dataset.copyCode);
-    try{
-      await navigator.clipboard.writeText(code.textContent);
-      copyStatus.textContent=`${button.textContent} de ${document.getElementById('scenario-title').textContent}: listo.`;
-    }catch(error){
-      copyStatus.textContent='No se pudo copiar automáticamente. Selecciona el texto del recuadro y cópialo con Ctrl+C.';
-    }
-  }));
   picker.querySelectorAll('[data-scenario]').forEach(button=>button.addEventListener('click',()=>{
     const s=instructions(button.dataset.scenario);
     picker.querySelectorAll('[data-scenario]').forEach(b=>{const active=b===button;b.setAttribute('aria-pressed',String(active));b.textContent=active?'Seleccionada':'Seleccionar';b.closest('tr').classList.toggle('scenario-selected',active);});
     document.getElementById('scenario-empty').hidden=true;
     document.getElementById('scenario-detail').hidden=false;
-    copyStatus.textContent='';
     set('scenario-architecture',s.network==='baseline'?'Conserva la red del benchmark: 30 → 128 → 64 → 32 → 16 → 1, con 14 849 parámetros entrenables. Solo cambia el parámetro de este escenario.':'El número de parámetros entrenables se indica en la tabla.');set('scenario-title',s.label);set('scenario-question',s.question);set('scenario-copy',s.copy);
     set('scenario-path',`hep-workshop → configs → ${s.file}`);set('scenario-yaml',s.yaml);set('scenario-submit',s.submit);set('scenario-monitor',s.monitor);set('scenario-log-label',s.label);
   }));

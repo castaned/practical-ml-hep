@@ -210,9 +210,6 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 [data-md-color-scheme=slate] #scenario-picker tr.scenario-selected { background:#204844; }
 #scenario-detail code { overflow-wrap:anywhere; }
 #scenario-detail { border-left:3px solid #00878a; padding:.2rem 1rem; margin:1rem 0; }
-#scenario-detail .md-clipboard { display:none; }
-#scenario-detail .scenario-copy-button { margin:.35rem 0 .8rem; font-size:.7rem; padding:.3rem .65rem; }
-#scenario-copy-status { min-height:1.2rem; font-size:.75rem; color:#006f73; }
 
 /* Keep benchmark results inside the article, with consistent readable sizes. */
 .md-typeset img.benchmark-plot,
