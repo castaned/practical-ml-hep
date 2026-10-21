@@ -83,6 +83,10 @@ sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode
 
 Sustituye `NUMERO_DEL_TRABAJO` por el recibido. **Espera a que todas las tareas indiquen `COMPLETED` y `0:0` antes de continuar.** Si alguna falla, revisa **data_processing → logs**.
 
+![Ejemplo de tareas NanoAOD terminadas: COMPLETED y 0:0](assets/cms/nanoaod_jobs_completed.png)
+
+El número de trabajo de la imagen es solo un ejemplo; consulta el tuyo.
+
 ## 4. Convertir a HDF5
 
 ```bash
