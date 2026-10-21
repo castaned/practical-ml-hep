@@ -172,6 +172,16 @@ En **`roc_curve.png`**, cada punto corresponde a un umbral distinto. El eje hori
 
 En el ejemplo, **AUC ≈ 0.9122**. La diagonal representa una clasificación aleatoria; interesa especialmente conservar señal con poca aceptación de fondo.
 
+### Cómo se relaciona AMS con el entrenamiento
+
+**La red no aprende maximizando AMS directamente.** La pérdida de clasificación permite ajustar los parámetros mediante gradientes; AMS depende de un corte discreto. El proceso tiene tres pasos:
+
+1. **Aprender:** las 30 variables producen una puntuación de señal. La red ajusta sus parámetros para reducir la *entropía cruzada binaria* entre esa puntuación y `Label`, sin usar los pesos de evento.
+2. **Elegir el modelo:** se guarda la época con menor pérdida de validación. AUC se muestra como diagnóstico, pero no decide qué época conservar.
+3. **Elegir el umbral:** con el modelo ya fijado, se prueban cortes sobre sus puntuaciones de validación. Para cada corte se suman los `KaggleWeight` de señal seleccionada (**s**) y fondo seleccionado (**b**), reescalados por clase; se elige el corte con mayor AMS. Este paso **no modifica la red**.
+
+Un corte más bajo suele aceptar más señal **y** más fondo. AMS busca un equilibrio entre ambos rendimientos ponderados, con regularización `bᵣ = 10` ([definición del challenge](https://opendata.cern.ch/record/328)). Por eso una AUC mayor o una pérdida menor **no garantizan** una AMS mayor. La AMS mostrada aquí es **interna y exploratoria**: el umbral se eligió sobre la misma validación, no sobre el conjunto privado del challenge.
+
 ### Indicadores que debes registrar {#comparar-benchmark}
 
 En **`metrics.json`** encontrarás los valores exactos que acompañan a las figuras:
