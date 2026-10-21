@@ -172,33 +172,17 @@ En **`roc_curve.png`**, cada punto corresponde a un umbral distinto. El eje hori
 
 En el ejemplo, **AUC ≈ 0.9122**. La diagonal representa una clasificación aleatoria; interesa especialmente conservar señal con poca aceptación de fondo.
 
-### Cómo se relaciona AMS con el entrenamiento
-
-**La red no aprende maximizando AMS directamente.** La pérdida de clasificación permite ajustar los parámetros mediante gradientes; AMS depende de un corte discreto. El proceso tiene tres pasos:
-
-1. **Aprender:** las 30 variables producen una puntuación de señal. La red ajusta sus parámetros para reducir la *entropía cruzada binaria* entre esa puntuación y `Label`, sin usar los pesos de evento.
-2. **Elegir el modelo:** se guarda la época con menor pérdida de validación. AUC se muestra como diagnóstico, pero no decide qué época conservar.
-3. **Elegir el umbral:** con el modelo ya fijado, se prueban cortes sobre sus puntuaciones de validación. Para cada corte se suman los `KaggleWeight` de señal seleccionada (**s**) y fondo seleccionado (**b**), reescalados por clase; se elige el corte con mayor AMS. Este paso **no modifica la red**.
-
-Un corte más bajo suele aceptar más señal **y** más fondo. AMS busca un equilibrio entre ambos rendimientos ponderados, con regularización `bᵣ = 10` ([definición del challenge](https://opendata.cern.ch/record/328)). Por eso una AUC mayor o una pérdida menor **no garantizan** una AMS mayor. La AMS mostrada aquí es **interna y exploratoria**: el umbral se eligió sobre la misma validación, no sobre el conjunto privado del challenge.
+La red aprende reduciendo la pérdida de clasificación. Se conserva la época con menor pérdida de validación; la **AUC** resume qué tan bien separa señal y fondo a lo largo de todos los umbrales.
 
 ### Indicadores que debes registrar {#comparar-benchmark}
 
-En **`metrics.json`** encontrarás los valores exactos que acompañan a las figuras:
-
-![Archivo metrics.json de la ejecución de referencia con métricas, tiempos y configuración del equipo](assets/benchmarks/atlas_reference_metrics.png){ .benchmark-metrics }
-
-En esta corrida se obtuvieron **AUC ≈ 0.9122**, **AMS interna ≈ 3.5713**, **49.36 segundos** de entrenamiento y **14 849 parámetros**; se ejecutaron 40 épocas y la mejor fue la 40. Son un ejemplo de lectura, no valores que deban coincidir exactamente con tu ejecución.
+En **`metrics.json`** encontrarás los valores exactos que acompañan a las figuras. En esta corrida se obtuvieron **AUC ≈ 0.9122**, **49.36 segundos** de entrenamiento y **14 849 parámetros**; se ejecutaron 40 épocas y la mejor fue la 40. Son un ejemplo de lectura, no valores que deban coincidir exactamente con tu ejecución.
 
 Para interpretar tus resultados, revisa estos campos:
 
 | Indicador · campo del archivo | Qué significa y cómo compararlo |
 | --- | --- |
 | **AUC** · `roc_auc_unweighted` | Resume la separación en toda la ROC: 0.5 corresponde a una clasificación aleatoria y 1 a una separación perfecta. Un valor mayor indica mejor separación global, pero no garantiza mejor selección en la región de bajo fondo. |
-| **AMS interna** · `ams_validation_tuned` | Sensibilidad aproximada de una selección, calculada con los rendimientos ponderados de señal y fondo. Mayor es mejor bajo las mismas condiciones de evaluación. No es una significancia observada. |
-| **Umbral** · `threshold` | Puntuación mínima elegida para maximizar la AMS en validación. Determina qué eventos se aceptan; un umbral mayor no implica por sí solo una mejora. |
-| **Eficiencia de señal** · `signal_efficiency` | Fracción de eventos de señal que supera ese umbral. Multiplica por 100 para expresarla como porcentaje. |
-| **Aceptación de fondo** · `background_acceptance` | Fracción de eventos de fondo que supera el mismo umbral. Busca reducirla conservando señal. Estas dos fracciones son conteos sin pesos; la AMS sí utiliza pesos. |
 | **Mejor época / épocas ejecutadas** · `best_epoch` / `epochs_run` | Cuándo se obtuvo el modelo conservado y cuánto duró el aprendizaje. Más épocas no garantizan mejor validación. |
 | **Parámetros** · `parameters` | Número de valores ajustables de la red. Permite valorar si una mejora requiere una arquitectura mucho mayor. |
 | **Tiempo de entrenamiento** · `fit_seconds` | Segundos del entrenamiento, sin incluir la espera en cola. Permite valorar el costo de una mejora y comparar CPU/GPU con la misma configuración. |

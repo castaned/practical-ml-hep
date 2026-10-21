@@ -1,6 +1,6 @@
 (() => {
   const scenarios={
-    A:{label:'A. Más ancha',file:'atlas_A_capas1024-512-256-128.yaml',block:'model',field:'hidden_dims',value:'[1024, 512, 256, 128]',network:'wide',question:'Cuatro capas, con ocho veces más neuronas por capa que la referencia. ¿Mejoran AUC y AMS? Compara el coste en tiempo y parámetros.'},
+    A:{label:'A. Más ancha',file:'atlas_A_capas1024-512-256-128.yaml',block:'model',field:'hidden_dims',value:'[1024, 512, 256, 128]',network:'wide',question:'Cuatro capas, con ocho veces más neuronas por capa que la referencia. ¿Mejora la AUC? Compara el coste en tiempo y parámetros.'},
     B:{label:'B. Compacta',file:'atlas_B_capas8-4.yaml',block:'model',field:'hidden_dims',value:'[8, 4]',network:'compact',question:'Solo dos capas de 8 y 4 neuronas. ¿Se mantienen resultados cercanos al benchmark con muchos menos parámetros?'},
     C:{label:'C. Dropout',file:'atlas_C_dropout0p6.yaml',block:'model',field:'dropout',value:'0.6',network:'baseline',dropout:0.6,question:'Dropout pasa de 0.1 a 0.6. ¿Reduce el sobreajuste o dificulta el aprendizaje? Revisa las pérdidas de entrenamiento y validación.'},
     D:{label:'D. Aprendizaje',file:'atlas_D_lr0p0005.yaml',block:'training',field:'learning_rate',value:'0.0005',network:'baseline',dropout:0.1,question:'La tasa de aprendizaje baja de 0.001 a 0.0005. ¿El aprendizaje más lento mejora la validación y cuántas épocas y segundos necesita?'}

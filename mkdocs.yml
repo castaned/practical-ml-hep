@@ -47,8 +47,8 @@ extra_css:
   - stylesheets/course.css?v=18
 extra_javascript:
   - javascripts/explorer.js?v=8
-  - javascripts/scenarios.js?v=12
-  - javascripts/simple-records.js?v=5
+  - javascripts/scenarios.js?v=13
+  - javascripts/simple-records.js?v=6
 nav:
   - Introducción: index.md
   - Activación de cuenta (Yuca): preparacion.md

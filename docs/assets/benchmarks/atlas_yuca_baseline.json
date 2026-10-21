@@ -23,15 +23,13 @@
       "device": "GPU MI210",
       "epochs_run": 20,
       "fit_seconds": 29.95,
-      "roc_auc_unweighted": 0.90999,
-      "ams_validation_tuned": 3.5229
+      "roc_auc_unweighted": 0.90999
     },
     {
       "device": "CPU (4 hilos)",
       "epochs_run": 20,
       "fit_seconds": 39.35,
-      "roc_auc_unweighted": 0.91048,
-      "ams_validation_tuned": 3.5629
+      "roc_auc_unweighted": 0.91048
     }
   ],
   "evaluation": "Validación interna de KaggleSet=t. No equivale a la evaluación privada histórica del challenge."

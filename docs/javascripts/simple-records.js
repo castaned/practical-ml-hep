@@ -1,14 +1,14 @@
 (() => {
-  const fields=['id','variation','auc','ams','seconds','epochs','best','parameters'];
+  const fields=['id','variation','auc','seconds','epochs','best','parameters'];
   function validate(row){
-    const r={...row};
+    const r=Object.fromEntries(fields.map(key=>[key,row[key]]));
     if(!r.id || !r.variation)throw Error('Falta identificar la variación.');
     for(const key of fields.slice(2)){
       if(key==='parameters' && (r[key]===undefined || r[key]===null || r[key]==='')){r[key]='';continue;}
       if(String(r[key]??'').trim()==='' || !Number.isFinite(Number(r[key])))throw Error(`Revisa ${key}.`);
       r[key]=Number(r[key]);
     }
-    if(r.auc<0 || r.auc>1 || r.ams<0 || r.seconds<0 || !Number.isInteger(r.epochs) || !Number.isInteger(r.best) || r.best<1 || r.best>r.epochs)throw Error('Revisa los indicadores y las épocas.');
+    if(r.auc<0 || r.auc>1 || r.seconds<0 || !Number.isInteger(r.epochs) || !Number.isInteger(r.best) || r.best<1 || r.best>r.epochs)throw Error('Revisa los indicadores y las épocas.');
     if(r.parameters!=='' && (!Number.isInteger(r.parameters)||r.parameters<1))throw Error('Revisa el número de parámetros.');
     return r;
   }
@@ -29,7 +29,7 @@
     const body=summary.querySelector('tbody');body.replaceChildren();
     for(const row of [...records.values()].sort((a,b)=>a.variation.localeCompare(b.variation))){
       const tr=document.createElement('tr');
-      for(const value of [row.variation,row.auc.toFixed(5),row.ams.toFixed(4),row.seconds.toFixed(2),row.parameters===''?'—':row.parameters,row.epochs,row.best]){
+      for(const value of [row.variation,row.auc.toFixed(5),row.seconds.toFixed(2),row.parameters===''?'—':row.parameters,row.epochs,row.best]){
         const td=document.createElement('td');td.textContent=value;tr.append(td);
       }
       const actions=document.createElement('td');
