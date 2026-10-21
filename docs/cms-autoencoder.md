@@ -12,7 +12,14 @@ El **codificador** comprime las diez variables a dos coordenadas latentes. El **
 
 Para cada evento calculamos el **error cuadrático medio (MSE)**:
 
-<p style="text-align:center"><strong>MSE = (1/10) ∑<sub>i=1…10</sub> (x<sub>i</sub> − x̂<sub>i</sub>)²</strong></p>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="MSE igual a un décimo de la suma, desde i igual a uno hasta diez, de x i menos x reconstruida i, al cuadrado">
+  <mrow>
+    <mi mathvariant="normal">MSE</mi><mo>=</mo>
+    <mfrac><mn>1</mn><mn>10</mn></mfrac>
+    <munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>10</mn></munderover>
+    <msup><mrow><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><msub><mover accent="true"><mi>x</mi><mo>^</mo></mover><mi>i</mi></msub><mo>)</mo></mrow><mn>2</mn></msup>
+  </mrow>
+</math>
 
 Aquí, **x** son las variables escaladas y **x̂** sus reconstrucciones. El escalado se calcula con el entrenamiento SM. Un error pequeño indica una reconstrucción cercana; uno grande, un evento que la red reconstruye peor.
 
