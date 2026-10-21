@@ -23,7 +23,7 @@ Entre 2021 y 2024 trabajó en computación con GPU en el departamento de Tecnolo
 
 ## 1. Instalar y descargar · Solo la primera vez
 
-**Si ya tienes el ambiente, el kernel y el repositorio, pasa al paso 2.** Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
+**Si ya tienes el ambiente y el repositorio, no los crees de nuevo:** activa el ambiente y vuelve a registrar el kernel con los bloques de abajo. Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
 
 Abre una terminal de JupyterLab y sitúate en tu **carpeta personal (`$HOME`)** antes de crear el ambiente. El curso ROOT se prepara desde allí, separado del repositorio `ML-integration-CMSSW`. El primer comando del bloque te lleva a esa ubicación:
 
@@ -50,19 +50,19 @@ module unload root/6.24.08 rocm/6.4.3
 unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
 conda activate root-student-course-640
 python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
-python -c "import ROOT; print('ROOT', ROOT.gROOT.GetVersion())"
-python -c "import torch; print('PyTorch', torch.__version__)"
+env LD_PRELOAD="$CONDA_PREFIX/lib/libstdc++.so.6" python -c "import torch; import ROOT; print('PyTorch', torch.__version__, '| ROOT', ROOT.gROOT.GetVersion())"
 ```
 
 En sesiones posteriores, repite solo las líneas hasta `conda activate root-student-course-640`; no reinstales PyTorch. Si el notebook ya estaba abierto durante la instalación, **reinicia su kernel**.
 
-Registra el kernel. La opción `PATH` permite que las celdas `%%bash` encuentren herramientas como `rootls`:
+Registra el kernel **también si ya lo tenías**. `LD_PRELOAD` hace que el notebook cargue la biblioteca C++ del ambiente; esto permite usar ROOT y PyTorch en el mismo proceso. `PATH` permite que las celdas `%%bash` encuentren herramientas como `rootls`:
 
 ```bash
 python -m ipykernel install --user \
   --name root-student-course-640 \
   --display-name "Python (ROOT 6.40)" \
   --env PATH "$CONDA_PREFIX/bin:$PATH" \
+  --env LD_PRELOAD "$CONDA_PREFIX/lib/libstdc++.so.6" \
   --env PYTHONPATH ""
 ```
 
@@ -90,12 +90,12 @@ En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT 6.40)** 
 Antes de ejecutar las celdas del curso, comprueba en una celda que el notebook usa el ambiente correcto:
 
 ```python
-import sys, torch
+import sys, torch, ROOT
 print(sys.executable)
-print(torch.__version__)
+print(torch.__version__, ROOT.gROOT.GetVersion())
 ```
 
-La primera línea debe contener `root-student-course-640`. Si aparece `No module named 'torch'`, ejecuta el bloque de activación e instalación del paso 1, selecciona de nuevo **Python (ROOT 6.40)** y reinicia el kernel.
+La primera línea debe contener `root-student-course-640`. Si falta `torch`, ejecuta su instalación del paso 1. Si aparece `GLIBCXX_3.4.31 not found`, vuelve a registrar el kernel con el bloque anterior. Después **reinicia el kernel** y repite la comprobación.
 
 ![Seleccionar el kernel Python (ROOT 6.40) en JupyterLab](assets/root-course/select-root640-kernel.png)
 
