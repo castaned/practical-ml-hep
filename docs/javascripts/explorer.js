@@ -1,7 +1,7 @@
 (() => {
   const root = document.querySelector('[data-network-explorer]');
   if (!root) return;
-  const choices = { baseline:[128,64,32,16], wide:[2048, 1024, 512, 256], deep:[128, 128, 128, 128, 128, 128, 128, 128, 128, 128], compact:[8, 4], uniform:[512, 512, 512, 512] };
+  const choices = { baseline:[128,64,32,16], wide:[512,256,128,64], compact:[8,4] };
   const select = root.querySelector('#network-choice');
   const slider = root.querySelector('#dropout-choice');
   const code = root.querySelector('#network-yaml');

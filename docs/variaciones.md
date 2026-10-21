@@ -4,26 +4,22 @@ Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después re
 
 ## 1. Elige la variación asignada {#1-escenarios-por-grupo}
 
-Cada escenario puede asignarse a unas diez personas. Al menos dos estudiantes o parejas ejecutan la referencia y la variación en sus cuentas; los demás apoyan en la revisión de las figuras.
+Trabajaremos con **cuatro variaciones**, además de la referencia. El instructor solicitará resultados de quienes puedan ejecutarlas; los demás pueden apoyar en la lectura de las figuras y la comparación de indicadores. Reúne repeticiones cuando estén disponibles.
 
 **Mantén las 30 variables de entrada (`all_physics`), los mismos datos y la partición con semilla 16.** Todas las pruebas conservan máximo 40 épocas y paciencia 10. Compara cada variación con tu referencia; no acumules cambios entre escenarios.
 
 Estos contrastes exploran capacidad, optimización y regularización. Una diferencia grande revela sensibilidad en las condiciones de esta prueba; confirma las tendencias con las repeticiones y las curvas de pérdidas.
 
-**En E–H se conserva la arquitectura del benchmark: `[128, 64, 32, 16]`, con 14 849 parámetros entrenables.** E cambia únicamente dropout; F–H conservan también dropout en `0.1`.
+**En C y D se conserva la arquitectura del benchmark: `[128, 64, 32, 16]`, con 14 849 parámetros entrenables.** C cambia solo dropout; D cambia solo la tasa de aprendizaje. En A, B y D se conserva dropout `0.1`.
 
 Selecciona una fila para ver las instrucciones de esa variación. Conserva los demás parámetros y las mismas particiones del benchmark.
 
 <div id="scenario-picker" class="result-table-wrap">
 <table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Elegir</th></tr></thead><tbody>
-<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[2048, 1024, 512, 256]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="B"><td><strong>B · Más profunda</strong></td><td><code>model.hidden_dims</code></td><td>10 capas de <code>128</code> neuronas</td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Más profunda" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="C"><td><strong>C · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="D"><td><strong>D · Anchura uniforme</strong></td><td><code>model.hidden_dims</code></td><td><code>[512, 512, 512, 512]</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Anchura uniforme" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="E"><td><strong>E · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td><button type="button" class="md-button" data-scenario="E" aria-label="Seleccionar E: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="F"><td><strong>F · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.03</code></td><td><button type="button" class="md-button" data-scenario="F" aria-label="Seleccionar F: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="G"><td><strong>G · Tamaño de lote</strong></td><td><code>training.batch_size</code></td><td><code>4096 → 256</code></td><td><button type="button" class="md-button" data-scenario="G" aria-label="Seleccionar G: Tamaño de lote" aria-pressed="false">Seleccionar</button></td></tr>
-<tr data-scenario-row="H"><td><strong>H · Regularización</strong></td><td><code>training.weight_decay</code></td><td><code>0.0001 → 0.1</code></td><td><button type="button" class="md-button" data-scenario="H" aria-label="Seleccionar H: Regularización" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="A"><td><strong>A · Más ancha</strong></td><td><code>model.hidden_dims</code></td><td><code>[512, 256, 128, 64]</code></td><td><button type="button" class="md-button" data-scenario="A" aria-label="Seleccionar A: Más ancha" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="B"><td><strong>B · Compacta</strong></td><td><code>model.hidden_dims</code></td><td><code>[8, 4]</code></td><td><button type="button" class="md-button" data-scenario="B" aria-label="Seleccionar B: Compacta" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="C"><td><strong>C · Dropout</strong></td><td><code>model.dropout</code></td><td><code>0.1 → 0.6</code></td><td><button type="button" class="md-button" data-scenario="C" aria-label="Seleccionar C: Dropout" aria-pressed="false">Seleccionar</button></td></tr>
+<tr data-scenario-row="D"><td><strong>D · Aprendizaje</strong></td><td><code>training.learning_rate</code></td><td><code>0.001 → 0.03</code></td><td><button type="button" class="md-button" data-scenario="D" aria-label="Seleccionar D: Aprendizaje" aria-pressed="false">Seleccionar</button></td></tr>
 </tbody></table>
 </div>
 
@@ -54,7 +50,7 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 
 ### Explorar las capas de esta variación {#explorar-la-arquitectura-antes-de-modificar-el-yaml}
 
-En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El explorador muestra la arquitectura del escenario seleccionado y sus parámetros entrenables. E usa dropout `0.6`; los demás escenarios usan `0.1`. Cambiar dropout no altera el número de parámetros.
+En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada sigue teniendo 30 variables y la salida una neurona. El explorador muestra la arquitectura del escenario seleccionado y sus parámetros entrenables. C usa dropout `0.6`; los demás escenarios usan `0.1`. Cambiar dropout no altera el número de parámetros.
 
 <div class="network-explorer" data-network-explorer>
 <div class="explorer-intro">
@@ -65,9 +61,7 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 <select id="network-choice">
 <option value="baseline">Referencia · cuatro capas</option>
 <option value="wide">A · Más ancha · cuatro capas</option>
-<option value="deep">B · Más profunda · diez capas</option>
-<option value="compact">C · Compacta · dos capas</option>
-<option value="uniform">D · Uniforme · cuatro capas</option>
+<option value="compact">B · Compacta · dos capas</option>
 </select>
 <p id="network-scenario" role="status"></p>
 <label for="dropout-choice">Dropout <output id="dropout-value">0.1</output></label>

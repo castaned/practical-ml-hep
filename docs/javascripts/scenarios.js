@@ -1,13 +1,9 @@
 (() => {
   const scenarios={
-    A:{label:'A. Más ancha',file:'atlas_A_ancha2048.yaml',block:'model',field:'hidden_dims',value:'[2048, 1024, 512, 256]',network:'wide',question:'Cuatro capas, con 16 veces más neuronas en cada una que la referencia. ¿La gran capacidad mejora AUC y AMS o aumenta sobreajuste y coste?'},
-    B:{label:'B. Más profunda',file:'atlas_B_profunda10x128.yaml',block:'model',field:'hidden_dims',value:'[128, 128, 128, 128, 128, 128, 128, 128, 128, 128]',network:'deep',question:'Diez capas de 128 neuronas. Cambian profundidad y número de parámetros: compara esta arquitectura completa, sin atribuir el efecto solo a la profundidad. ¿Aprende o se dificulta la optimización?'},
-    C:{label:'C. Compacta',file:'atlas_C_minima8-4.yaml',block:'model',field:'hidden_dims',value:'[8, 4]',network:'compact',question:'Solo dos capas de 8 y 4 neuronas. ¿Cuánta calidad se pierde al comprimir fuertemente la red y cuánto se ahorra?'},
-    D:{label:'D. Uniforme',file:'atlas_D_uniforme4x512.yaml',block:'model',field:'hidden_dims',value:'[512, 512, 512, 512]',network:'uniform',question:'Cuatro capas de 512 neuronas, sin estrechamiento. Cambian anchura y parámetros: ¿esta arquitectura aporta algo frente a la referencia y a A?'},
-    E:{network:'baseline',dropout:0.6,label:'E. Dropout',file:'atlas_E_dropout0p6.yaml',block:'model',field:'dropout',value:'0.6',question:'Dropout pasa de 0.1 a 0.6. ¿Disminuye la separación entre pérdidas de entrenamiento y validación o aparece subajuste?'},
-    F:{network:'baseline',dropout:0.1,label:'F. Aprendizaje',file:'atlas_F_lr0p03.yaml',block:'training',field:'learning_rate',value:'0.03',question:'La tasa de aprendizaje aumenta 30 veces: de 0.001 a 0.03. ¿Converge antes, oscila o pierde calidad?'},
-    G:{network:'baseline',dropout:0.1,label:'G. Lote',file:'atlas_G_batch256.yaml',block:'training',field:'batch_size',value:'256',question:'El lote baja de 4096 a 256: aproximadamente 16 veces más actualizaciones por época. ¿Compensa la calidad el tiempo adicional? No equivale al mismo presupuesto de optimización.'},
-    H:{network:'baseline',dropout:0.1,label:'H. Regularización',file:'atlas_H_weightdecay0p1.yaml',block:'training',field:'weight_decay',value:'0.1',question:'weight_decay aumenta de 0.0001 a 0.1 en AdamW. ¿La penalización más fuerte mejora la generalización o limita demasiado el aprendizaje?'}
+    A:{label:'A. Más ancha',file:'atlas_A_capas512-256-128-64.yaml',block:'model',field:'hidden_dims',value:'[512, 256, 128, 64]',network:'wide',question:'Cuatro capas, con cuatro veces más neuronas por capa que la referencia. ¿Mejoran AUC y AMS? Compara el coste en tiempo y parámetros.'},
+    B:{label:'B. Compacta',file:'atlas_B_capas8-4.yaml',block:'model',field:'hidden_dims',value:'[8, 4]',network:'compact',question:'Solo dos capas de 8 y 4 neuronas. ¿Se mantienen resultados cercanos al benchmark con muchos menos parámetros?'},
+    C:{label:'C. Dropout',file:'atlas_C_dropout0p6.yaml',block:'model',field:'dropout',value:'0.6',network:'baseline',dropout:0.6,question:'Dropout pasa de 0.1 a 0.6. ¿Reduce el sobreajuste o dificulta el aprendizaje? Revisa las pérdidas de entrenamiento y validación.'},
+    D:{label:'D. Aprendizaje',file:'atlas_D_lr0p03.yaml',block:'training',field:'learning_rate',value:'0.03',network:'baseline',dropout:0.1,question:'La tasa de aprendizaje aumenta de 0.001 a 0.03. ¿La red converge antes, oscila o pierde calidad?'}
   };
   function instructions(key){
     const s=scenarios[key];if(!s)throw Error('Variación desconocida');
