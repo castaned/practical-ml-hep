@@ -50,7 +50,8 @@ module unload root/6.24.08 rocm/6.4.3
 unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
 conda activate root-student-course-640
 python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
-python -c "import ROOT, torch; print('ROOT', ROOT.gROOT.GetVersion(), '| PyTorch', torch.__version__)"
+python -c "import ROOT; print('ROOT', ROOT.gROOT.GetVersion())"
+python -c "import torch; print('PyTorch', torch.__version__)"
 ```
 
 En sesiones posteriores, repite solo las líneas hasta `conda activate root-student-course-640`; no reinstales PyTorch. Si el notebook ya estaba abierto durante la instalación, **reinicia su kernel**.
