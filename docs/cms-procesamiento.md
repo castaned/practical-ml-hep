@@ -106,7 +106,18 @@ python execute_convert_root2h5.py \
   --skip-empty-trees
 ```
 
-Si aparece `numpy.dtype size changed` en un ambiente ya creado, ejecuta `conda install --force-reinstall -c conda-forge "numpy<2" pytables -y` dentro de `ml-open-data` y repite la comprobación. **No necesitas repetir la selección NanoAOD.**
+??? warning "Si aparece `numpy.dtype size changed`"
+
+    Reinstala NumPy y PyTables juntos en el ambiente CMS:
+
+    ```bash
+    source /apps/miniconda3/etc/profile.d/conda.sh
+    conda activate ml-open-data
+    conda install --force-reinstall -c conda-forge "numpy<2" pytables -y
+    python -c "import numpy, tables; print(numpy.__version__, tables.__version__)"
+    ```
+
+    Si la comprobación funciona, repite solo la conversión. **No necesitas repetir la selección NanoAOD.**
 
 Comprueba el **nuevo número de trabajo**:
 
