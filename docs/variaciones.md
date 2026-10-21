@@ -23,14 +23,19 @@ Selecciona una variación para ver sus instrucciones.
 <p id="scenario-architecture"></p>
 <p><strong>1. Crea la copia del YAML</strong> desde la terminal de JupyterLab:</p>
 <pre><code id="scenario-copy" class="language-bash"></code></pre>
+<button type="button" class="md-button scenario-copy-button" data-copy-code="scenario-copy">Copiar comando</button>
 <p><strong>2. Ábrela en el explorador izquierdo:</strong> <code id="scenario-path"></code>.</p>
 <p>Actualiza el parámetro indicado y la carpeta <code>output.directory</code> como se muestra. Conserva los demás valores del YAML:</p>
 <pre><code id="scenario-yaml" class="language-yaml"></code></pre>
+<button type="button" class="md-button scenario-copy-button" data-copy-code="scenario-yaml">Copiar fragmento YAML</button>
 <p><strong>3. Guarda con Ctrl+S y envía el trabajo:</strong></p>
 <pre><code id="scenario-submit" class="language-bash"></code></pre>
+<button type="button" class="md-button scenario-copy-button" data-copy-code="scenario-submit">Copiar comando</button>
 <p>Cada variación tiene su propia carpeta de resultados. Dentro se crean <code>run_0001</code>, <code>run_0002</code>, etc., sin sobrescribir ejecuciones.</p>
 <p><strong>4. Monitorea el entrenamiento</strong> en la misma terminal, usando el <code>JOB_ID</code> del trabajo que acabas de enviar:</p>
 <pre><code id="scenario-monitor" class="language-bash"></code></pre>
+<button type="button" class="md-button scenario-copy-button" data-copy-code="scenario-monitor">Copiar comando</button>
+<p id="scenario-copy-status" role="status" aria-live="polite"></p>
 <p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
 <p><strong>5. Al terminar:</strong> abre la carpeta que indique el log, revisa las figuras y registra sus indicadores en la bitácora, seleccionando <strong id="scenario-log-label"></strong>.</p>
 </div>
