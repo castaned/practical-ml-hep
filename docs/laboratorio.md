@@ -195,5 +195,5 @@ Para interpretar tus resultados, revisa estos campos:
 
 El archivo también permite comprobar **200 000 eventos de entrenamiento**, **50 000 de validación**, las **30 variables**, la semilla (`seed`) y la GPU utilizada. `batches_per_epoch`, `mean_epoch_seconds` y `gpu_peak_allocated_mb` describen el trabajo por época, su tiempo medio y la memoria GPU máxima asignada. Úsalos para entender diferencias de coste entre escenarios; la bitácora reúne los seis indicadores principales.
 
-[Anterior: procesos y variables](fisica.md){ .md-button }
+[Anterior: preparar el entorno](atlas-preparacion.md){ .md-button }
 [Continuar: variaciones y resultados](variaciones.md){ .md-button .md-button--primary }

@@ -5,17 +5,17 @@ El ejercicio principal consiste en distinguir la señal **Higgs → ττ** de lo
 Se estudiará el efecto de la arquitectura y de los parámetros de entrenamiento sobre la discriminación entre señal y fondo, el sobreajuste y el tiempo de cómputo. Cada configuración se conservará junto con sus resultados para comparar los experimentos.
 
 <div class="journey-grid">
-<a class="journey-card" href="../atlas-preparacion/">
-<span class="step-number">01 / PREPARACIÓN</span>
-<h3>Preparar el entorno</h3>
-<p>Clonar el repositorio, instalar el ambiente y preparar la sesión ATLAS.</p>
-<span class="card-link">Preparar el entorno →</span>
-</a>
 <a class="journey-card" href="../fisica/">
-<span class="step-number">02 / MOTIVACIÓN FÍSICA</span>
+<span class="step-number">01 / MOTIVACIÓN FÍSICA</span>
 <h3>Procesos y observables</h3>
 <p>Producción y decaimiento del Higgs, procesos de fondo y variables de entrada.</p>
 <span class="card-link">Consultar la física →</span>
+</a>
+<a class="journey-card" href="../atlas-preparacion/">
+<span class="step-number">02 / PREPARACIÓN</span>
+<h3>Preparar el entorno</h3>
+<p>Clonar el repositorio, instalar el ambiente y preparar la sesión ATLAS.</p>
+<span class="card-link">Preparar el entorno →</span>
 </a>
 <a class="journey-card" href="../laboratorio/">
 <span class="step-number">03 / BENCHMARK</span>
