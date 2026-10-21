@@ -4,15 +4,7 @@ Parte del benchmark y cambia **solo el parámetro de tu escenario**. Después re
 
 ## 1. Elige la variación asignada {#1-escenarios-por-grupo}
 
-Trabajaremos con **cuatro variaciones**, además de la referencia. El instructor solicitará resultados de quienes puedan ejecutarlas; los demás pueden apoyar en la lectura de las figuras y la comparación de indicadores. Reúne repeticiones cuando estén disponibles.
-
-**Mantén las 30 variables de entrada (`all_physics`), los mismos datos y la partición con semilla 16.** Todas las pruebas conservan máximo 100 épocas y paciencia 20. Compara cada variación con tu referencia; no acumules cambios entre escenarios.
-
-Estos contrastes exploran capacidad, optimización y regularización. Una diferencia grande revela sensibilidad en las condiciones de esta prueba; confirma las tendencias con las repeticiones y las curvas de pérdidas.
-
-**En C y D se conserva la arquitectura del benchmark: `[128, 64, 32, 16]`, con 14 849 parámetros entrenables.** C cambia solo dropout; D cambia solo la tasa de aprendizaje. En A, B y D se conserva dropout `0.1`.
-
-Selecciona una fila para ver las instrucciones de esa variación. Conserva los demás parámetros y las mismas particiones del benchmark.
+Selecciona una variación para ver sus instrucciones.
 
 <div id="scenario-picker" class="result-table-wrap">
 <table><thead><tr><th>Variación</th><th>Parámetro</th><th>Configuración nueva</th><th>Elegir</th></tr></thead><tbody>
