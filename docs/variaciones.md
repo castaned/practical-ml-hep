@@ -24,7 +24,7 @@ Selecciona una variación para ver sus instrucciones.
 <p><strong>1. Crea la copia del YAML</strong> desde la terminal de JupyterLab:</p>
 <pre><code id="scenario-copy" class="language-bash"></code></pre>
 <p><strong>2. Ábrela en el explorador izquierdo:</strong> <code id="scenario-path"></code>.</p>
-<p>Dentro del archivo completo, cambia el parámetro indicado y añade <code>output.run_name</code> para identificar los resultados. Conserva <code>output.directory</code> y los demás valores; no reemplaces secciones completas por este fragmento:</p>
+<p>Actualiza el parámetro indicado y el bloque <code>output</code> como se muestra. Conserva los demás valores del YAML:</p>
 <pre><code id="scenario-yaml" class="language-yaml"></code></pre>
 <p><strong>3. Guarda con Ctrl+S y envía el trabajo:</strong></p>
 <pre><code id="scenario-submit" class="language-bash"></code></pre>
