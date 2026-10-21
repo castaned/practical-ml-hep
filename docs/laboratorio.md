@@ -139,7 +139,7 @@ En **`training_loss.png`**, observa las dos curvas:
 - **Pérdida de validación:** el error sobre eventos que no se utilizan para ajustar sus parámetros. Es la curva que usamos para elegir el modelo.
 - **Mejor época (`best_epoch`):** la época con menor pérdida de validación; su modelo queda guardado. **Épocas ejecutadas (`epochs_run`)** indica cuántas se completaron en total.
 
-![Pérdidas de entrenamiento y validación del benchmark; mejor época 40](assets/benchmarks/atlas_reference_loss.png)
+![Pérdidas de entrenamiento y validación del benchmark; mejor época 40](assets/benchmarks/atlas_reference_loss.png){ .benchmark-plot }
 
 En este ejemplo ambas pérdidas siguen disminuyendo y el modelo conservado corresponde a la época 40. La validación puede quedar por debajo del entrenamiento porque dropout está activo al entrenar y se desactiva al evaluar; esa diferencia por sí sola no indica un problema.
 
@@ -149,13 +149,13 @@ Si la pérdida de entrenamiento baja pero la de validación sube, puede haber **
 
 En **`classifier_scores.png`**, la puntuación va de 0 a 1: los valores altos favorecen señal. Observa cuánto se solapan las distribuciones de Higgs y fondo. Al exigir una puntuación mínima, seleccionas parte de ambas muestras.
 
-![Puntuación del clasificador: fondo hacia cero y señal hacia uno, con solapamiento](assets/benchmarks/atlas_reference_scores.png)
+![Puntuación del clasificador: fondo hacia cero y señal hacia uno, con solapamiento](assets/benchmarks/atlas_reference_scores.png){ .benchmark-plot }
 
 Las distribuciones están normalizadas por clase: sus alturas comparan las formas, no la cantidad total de señal y fondo.
 
 En **`roc_curve.png`**, cada punto corresponde a un umbral distinto. El eje horizontal muestra la fracción de fondo aceptado y el vertical la fracción de señal conservada. Una curva más arriba conserva más señal para el mismo fondo; una más a la izquierda acepta menos fondo para la misma señal.
 
-![Curva ROC del benchmark con AUC de aproximadamente 0.9122](assets/benchmarks/atlas_reference_roc.png)
+![Curva ROC del benchmark con AUC de aproximadamente 0.9122](assets/benchmarks/atlas_reference_roc.png){ .benchmark-plot }
 
 En el ejemplo, **AUC ≈ 0.9122**. La diagonal representa una clasificación aleatoria; interesa especialmente conservar señal con poca aceptación de fondo.
 
@@ -163,7 +163,7 @@ En el ejemplo, **AUC ≈ 0.9122**. La diagonal representa una clasificación ale
 
 En **`metrics.json`** encontrarás los valores exactos que acompañan a las figuras:
 
-![Archivo metrics.json de la ejecución de referencia con métricas, tiempos y configuración del equipo](assets/benchmarks/atlas_reference_metrics.png)
+![Archivo metrics.json de la ejecución de referencia con métricas, tiempos y configuración del equipo](assets/benchmarks/atlas_reference_metrics.png){ .benchmark-metrics }
 
 En esta corrida se obtuvieron **AUC ≈ 0.9122**, **AMS interna ≈ 3.5713**, **49.36 segundos** de entrenamiento y **14 849 parámetros**; se ejecutaron 40 épocas y la mejor fue la 40. Son un ejemplo de lectura, no valores que deban coincidir exactamente con tu ejecución.
 
