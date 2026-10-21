@@ -121,5 +121,11 @@ En el explorador de JupyterLab abre **hep-workshop → cms → tu etiqueta → p
 
 Las gráficas comparan las formas de DYJets, WZ, ZZ y W′, normalizadas por proceso. **Todavía no se entrena la red.** Para repetir solo las gráficas, cambia la carpeta final `plots` por `plots02`.
 
+??? example "Ejemplo para verificar las diez distribuciones"
+
+    Comprueba que tu `variables_all.png` muestre los diez paneles y las cuatro muestras. Los conteos pueden variar entre ejecuciones.
+
+    [![Diez distribuciones de entrada CMS para DYJets, WZ, ZZ y W′](assets/cms/variables_all_reference.png)](assets/cms/variables_all_reference.png)
+
 [Anterior: Física y objetivo](cms-fisica.md){ .md-button }
 [Continuar: Autoencoder y benchmark](cms-autoencoder.md){ .md-button .md-button--primary }
