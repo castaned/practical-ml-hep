@@ -125,18 +125,3 @@ Identificar qué objetos se esperan en los eventos y qué representan las variab
 
 [Anterior: preparar el entorno](atlas-preparacion.md){ .md-button }
 [Continuar: ejecutar el benchmark](laboratorio.md){ .md-button .md-button--primary }
-
-
-<div class="image-credits" id="procedencia-de-las-imagenes" markdown>
-
-**Procedencia de las imágenes.**
-
-- `atlas_observables/`: distribuciones de los 250 000 eventos de entrenamiento del [dataset de CERN Open Data](https://opendata.cern.ch/record/328), utilizando `workshop/plot_atlas.py` del repositorio principal. [Condiciones de generación y conteos](assets/workshop/atlas_observables/provenance.json). No son figuras oficiales de ATLAS.
-
-- `higgs_ggf_vbf.png`: figura 1 de ATLAS y CMS, [arXiv:1606.02266](https://arxiv.org/abs/1606.02266), recortada para mostrar los diagramas.
-- `higgs_tautau_final_state.svg/png`: esquema original del taller de la cadena leptónica–hadrónica de H → ττ; no es una figura extraída del artículo.
-- `challenge_visible_mass.png`: figura 1 de Adam-Bourdarios et al., [PMLR 42 (2015)](https://proceedings.mlr.press/v42/cowa14.html), con el crédito original a ATLAS-CONF-2013-108 preservado.
-
-Los diagramas de producción se obtuvieron de la publicación conjunta, porque el artículo y la documentación del challenge no contienen ese tipo de diagramas. La cadena completa H → ττ se elaboró como esquema didáctico para este curso. Ninguna de estas figuras es un resultado de nuestros entrenamientos.
-
-</div>
