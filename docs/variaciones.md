@@ -83,23 +83,22 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 
 </div>
 
-## 3. Bitácora y entrega
+## 3. Registrar resultados
 
-1. Abre la [bitácora de resultados](bitacora.md), selecciona la variación y carga el `metrics.json` de la corrida.
-2. Comprueba los seis indicadores y descarga su **registro CSV**. Registra también el benchmark como **Referencia** en otro CSV.
-3. El responsable sube los CSV a **`/lustre/cursos/curso07/variaciones/`**. En Open OnDemand, abre **Files → Curso: curso07 → variaciones → Upload** y selecciona los archivos descargados.
+En la [bitácora](bitacora.md), selecciona la variación, introduce los indicadores de `metrics.json` y pulsa **Guardar ejecución**. Registra también la **Referencia**. La tabla se genera automáticamente y conserva los valores en el navegador; no necesitas descargar e importar un archivo para cada corrida.
 
-[Registrar indicadores](bitacora.md){ .md-button .md-button--primary }
+[Registrar indicadores y ver la tabla](bitacora.md){ .md-button .md-button--primary }
 
 ## 4. Tabla de resumen {#registro}
 
-El instructor descarga los CSV de **`/lustre/cursos/curso07/variaciones/`** y los selecciona juntos con **Reunir registros CSV**. La tabla se genera automáticamente; cada fila corresponde a una ejecución, sin promediar ni ocultar las repeticiones.
+Aquí aparecen los registros guardados desde la bitácora en **este mismo navegador**. Para añadir resultados de otros equipos, usa **Importar CSV**. Descarga una copia como respaldo; el guardado local no es una base compartida en línea.
 
 <div id="simple-summary">
-<label class="md-button">Reunir registros CSV<input id="simple-import" type="file" accept=".csv,text/csv" multiple></label>
-<button id="simple-clear" class="md-button" type="button">Vaciar resumen</button>
-<p id="simple-summary-status" role="status">Selecciona los CSV para mostrar la comparación.</p>
-<div class="result-table-wrap"><table><thead><tr><th>Variación</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Parámetros</th><th>Épocas</th><th>Mejor época</th><th>Registro</th></tr></thead><tbody></tbody></table></div>
+<button id="simple-export" class="md-button" type="button">Descargar tabla CSV</button>
+<label class="md-button">Importar CSV<input id="simple-import" type="file" accept=".csv,text/csv" multiple></label>
+<button id="simple-clear" class="md-button" type="button">Borrar todos los registros locales</button>
+<p id="simple-summary-status" role="status"></p>
+<div class="result-table-wrap"><table><thead><tr><th>Variación</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Parámetros</th><th>Épocas</th><th>Mejor época</th><th>Acción</th></tr></thead><tbody></tbody></table></div>
 </div>
 
 ### Discusión de la tabla

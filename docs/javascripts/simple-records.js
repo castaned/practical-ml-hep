@@ -29,11 +29,46 @@
     if(!header || fields.filter(k=>k!=='parameters').some(k=>!header.includes(k)))throw Error('Utiliza los CSV descargados de la nueva bitácora.');
     return rows.map(values=>{if(values.length!==header.length)throw Error('Fila incompleta.');return validate(Object.fromEntries(header.map((k,i)=>[k,values[i]])));});
   }
-  if(typeof module!=='undefined' && module.exports)module.exports={validate,encode,decode};
+  const storageKey='atlas-quantitative-records-v1',draftKey='atlas-quantitative-draft-v1';
+  const readRecords=storage=>JSON.parse(storage.getItem(storageKey)||'[]').map(validate);
+  const writeRecords=(storage,rows)=>storage.setItem(storageKey,JSON.stringify(rows.map(validate)));
+  if(typeof module!=='undefined' && module.exports)module.exports={validate,encode,decode,readRecords,writeRecords};
   if(typeof document==='undefined')return;
-  const log=document.querySelector('#simple-log');
+  let records=new Map();
+  const log=document.querySelector('#simple-log'),summary=document.querySelector('#simple-summary');
+  if(!log && !summary)return;
+  const status=summary?.querySelector('#simple-summary-status');
+  const logStatus=log?.querySelector('#simple-log-status');
+  try{for(const row of readRecords(localStorage))records.set(row.id,row);}
+  catch(e){if(status)status.textContent='No se pudieron recuperar los registros: '+e.message;}
+  const download=rows=>{
+    const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([encode(rows)],{type:'text/csv;charset=utf-8'}));
+    a.download='resultados_ATLAS_'+new Date().toISOString().replace(/[:.]/g,'-')+'.csv';
+    document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  };
+  const render=()=>{
+    if(!summary)return;
+    const body=summary.querySelector('tbody');body.replaceChildren();
+    for(const row of [...records.values()].sort((a,b)=>a.variation.localeCompare(b.variation))){
+      const tr=document.createElement('tr');
+      for(const value of [row.variation,row.auc.toFixed(5),row.ams.toFixed(4),row.seconds.toFixed(2),row.parameters===''?'—':row.parameters,row.epochs,row.best]){
+        const td=document.createElement('td');td.textContent=value;tr.append(td);
+      }
+      const actions=document.createElement('td');
+      const remove=document.createElement('button');remove.type='button';remove.className='md-button';remove.textContent='Eliminar';
+      remove.addEventListener('click',()=>{
+        try{const next=new Map(records);next.delete(row.id);writeRecords(localStorage,[...next.values()]);records=next;render();}
+        catch(e){status.textContent='No se pudo eliminar: '+e.message;}
+      });actions.append(remove);tr.append(actions);body.append(tr);
+    }
+    status.textContent=records.size ? `${records.size} ejecuciones guardadas en este navegador.` : 'Todavía no hay ejecuciones guardadas.';
+  };
   if(log){
-    const form=log.querySelector('form'),status=log.querySelector('#simple-log-status');
+    const form=log.querySelector('form');
+    try{const draft=JSON.parse(localStorage.getItem(draftKey)||'{}');for(const [k,v] of Object.entries(draft)){const el=form.elements.namedItem(k);if(el)el.value=v;}}
+    catch(e){logStatus.textContent='No se pudo recuperar el formulario pendiente.';}
+    const saveDraft=()=>{try{localStorage.setItem(draftKey,JSON.stringify(Object.fromEntries(new FormData(form))));}catch(e){logStatus.textContent='El navegador no permite guardar el borrador. Descarga una copia de tus registros.';}};
+    form.addEventListener('input',saveDraft);form.addEventListener('change',saveDraft);
     log.querySelector('#simple-metrics').addEventListener('change',async event=>{
       try{
         const file=event.target.files[0];if(!file)return;
@@ -41,40 +76,33 @@
         const map={auc:'roc_auc_unweighted',ams:'ams_validation_tuned',seconds:'fit_seconds',epochs:'epochs_run',best:'best_epoch',parameters:'parameters'};
         const values=Object.fromEntries(Object.entries(map).map(([k,v])=>[k,m[v]]));
         validate({id:'check',variation:'Referencia',...values});
-        for(const [k,v] of Object.entries(values))form.elements.namedItem(k).value=v;
-        status.textContent='Indicadores cargados. Selecciona la variación correcta y descarga el registro.';
-      }catch(e){status.textContent=e.message;}event.target.value='';
+        for(const [k,v] of Object.entries(values))form.elements.namedItem(k).value=v??'';
+        saveDraft();logStatus.textContent='Indicadores cargados. Selecciona la variación y pulsa Guardar ejecución.';
+      }catch(e){logStatus.textContent=e.message;}event.target.value='';
     });
     form.addEventListener('submit',event=>{
       event.preventDefault();
       try{
         const row=validate({id:crypto.randomUUID(),...Object.fromEntries(new FormData(form))});
-        const stamp=new Date().toISOString().replace(/[:.]/g,'-');
-        const label=row.variation==='Referencia'?'referencia':row.variation[0];
-        const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([encode([row])],{type:'text/csv;charset=utf-8'}));
-        a.download=`resultado_${label}_${stamp}.csv`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-        status.textContent='Registro descargado. Súbelo a /lustre/cursos/curso07/variaciones/ desde Open OnDemand: Files → Curso: curso07 → variaciones → Upload.';
-      }catch(e){status.textContent=e.message;}
+        const next=new Map(records);next.set(row.id,row);writeRecords(localStorage,[...next.values()]);records=next;
+        form.reset();saveDraft();render();logStatus.textContent='Ejecución guardada. Puedes registrar otra variación; el resumen se actualizó abajo.';
+      }catch(e){logStatus.textContent='No se guardó: '+e.message;}
     });
   }
-  const summary=document.querySelector('#simple-summary');
   if(summary){
-    let records=new Map();const status=summary.querySelector('#simple-summary-status');
-    const render=()=>{
-      const body=summary.querySelector('tbody');body.replaceChildren();
-      for(const row of [...records.values()].sort((a,b)=>a.variation.localeCompare(b.variation))){
-        const tr=document.createElement('tr');
-        for(const value of [row.variation,row.auc.toFixed(5),row.ams.toFixed(4),row.seconds.toFixed(2),row.parameters===''?'—':row.parameters,row.epochs,row.best,row.file]){
-          const td=document.createElement('td');td.textContent=value;tr.append(td);
-        }body.append(tr);
-      }status.textContent=`${records.size} ejecuciones en el resumen. Cada fila conserva sus indicadores originales.`;
-    };
     summary.querySelector('#simple-import').addEventListener('change',async event=>{
       try{
-        const incoming=[];for(const file of event.target.files)for(const row of decode(await file.text()))incoming.push({...row,file:file.name});
-        for(const row of incoming)records.set(row.id,row);render();
+        const incoming=[];for(const file of event.target.files)incoming.push(...decode(await file.text()));
+        const next=new Map(records);for(const row of incoming)next.set(row.id,row);
+        writeRecords(localStorage,[...next.values()]);records=next;render();
       }catch(e){status.textContent=`No se importaron registros: ${e.message}`;}event.target.value='';
     });
-    summary.querySelector('#simple-clear').addEventListener('click',()=>{records=new Map();render();});
+    summary.querySelector('#simple-clear').addEventListener('click',()=>{
+      try{writeRecords(localStorage,[]);records=new Map();render();}catch(e){status.textContent=e.message;}
+    });
+    summary.querySelector('#simple-export').addEventListener('click',()=>{
+      if(!records.size){status.textContent='Primero guarda una ejecución.';return;}download([...records.values()]);
+    });
   }
+  render();
 })();
