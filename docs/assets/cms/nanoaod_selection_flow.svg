@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 310" role="img" aria-labelledby="title description">
+  <title id="title">Selección esquemática de eventos trileptónicos en filterNanoAOD.py</title>
+  <desc id="description">De NanoAOD se seleccionan electrones y muones, se exige al menos tres leptones, se elige un par de igual sabor y carga opuesta para Z, un tercer leptón para W y se guardan cuatro canales. MET se usa para calcular variables, sin un corte de selección.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#537086"/>
+    </marker>
+    <style>
+      .box { fill: #f4f8fa; stroke: #c6d9df; stroke-width: 2; }
+      .input { fill: #e6f4f2; stroke: #8bc8c2; }
+      .final { fill: #fff1e2; stroke: #e4b97f; }
+      .head { font: 700 20px Arial, sans-serif; fill: #173245; }
+      .line { font: 16px Arial, sans-serif; fill: #334b5d; }
+      .note { font: 16px Arial, sans-serif; fill: #3d5c70; }
+      .arrow { fill: none; stroke: #537086; stroke-width: 3; marker-end: url(#arrow); }
+      .met { fill: none; stroke: #0d8784; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="12" y="32" width="190" height="150" rx="16" class="box input"/>
+  <text x="30" y="71" class="head">NanoAOD</text>
+  <text x="30" y="106" class="line">Electrones, muones</text>
+  <text x="30" y="137" class="line">y MET</text>
+
+  <path d="M202 107H233" class="arrow"/>
+  <rect x="234" y="32" width="190" height="150" rx="16" class="box"/>
+  <text x="252" y="71" class="head">Preselección</text>
+  <text x="252" y="106" class="line">Calidad cinemática</text>
+  <text x="252" y="137" class="line">≥ 3 leptones</text>
+
+  <path d="M424 107H455" class="arrow"/>
+  <rect x="456" y="32" width="190" height="150" rx="16" class="box"/>
+  <text x="474" y="71" class="head">Candidato Z</text>
+  <text x="474" y="106" class="line">Par de igual sabor</text>
+  <text x="474" y="137" class="line">y carga opuesta</text>
+  <text x="474" y="163" class="note">m más cercana a mZ</text>
+
+  <path d="M646 107H677" class="arrow"/>
+  <rect x="678" y="32" width="190" height="150" rx="16" class="box"/>
+  <text x="696" y="71" class="head">Candidato W</text>
+  <text x="696" y="106" class="line">Otro leptón con</text>
+  <text x="696" y="137" class="line">selección más estricta</text>
+
+  <path d="M868 107H899" class="arrow"/>
+  <rect x="900" y="32" width="188" height="150" rx="16" class="box final"/>
+  <text x="918" y="71" class="head">Salida</text>
+  <text x="918" y="106" class="line">eee · eeμ</text>
+  <text x="918" y="137" class="line">μμe · μμμ</text>
+
+  <path d="M107 183V240H994V184" class="met"/>
+  <rect x="280" y="223" width="540" height="40" rx="10" fill="#ffffff"/>
+  <text x="550" y="249" text-anchor="middle" class="note">MET entra en las variables del evento; no hay corte de MET</text>
+</svg>

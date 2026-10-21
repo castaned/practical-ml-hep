@@ -69,7 +69,13 @@ Se crean los tres YAML necesarios en **hep-workshop → configs**. Los datos com
 
 ## 3. Procesar los NanoAOD
 
-El filtrado de eventos lo hace **`example_files/main_process/filterNanoAOD.py`**. Si estudias otro análisis o estado final, puedes reemplazar ese script de selección; indica la nueva ruta en `data_processing.processing_script` del YAML.
+### Qué selecciona `filterNanoAOD.py`
+
+**`example_files/main_process/filterNanoAOD.py` define la selección física**, no el comando que envía los trabajos. Parte de los electrones y muones del NanoAOD, exige al menos tres leptones preseleccionados y elige para Z el par de igual sabor y carga opuesta cuya masa se acerca más a la del bosón Z. Entre los leptones restantes busca uno con criterios más estrictos para W.
+
+![Esquema de la selección trileptónica: leptones, candidato Z, candidato W y uso de MET](assets/cms/nanoaod_selection_flow.svg)
+
+La salida conserva los canales **eee, eeμ, μμe y μμμ**. MET se usa para calcular variables del candidato W; **este script no exige un valor mínimo de MET**. Si estudias **otro análisis o estado final**, reemplaza la lógica de este script e indica su ruta en `data_processing.processing_script` del YAML.
 
 ```bash
 cd "$HOME/ML-integration-CMSSW/data_processing"
