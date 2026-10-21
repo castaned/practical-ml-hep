@@ -54,7 +54,31 @@ En JupyterLab abre **hep-workshop → results → cms_autoencoder_tu etiqueta**:
 
 ## Resultados del benchmark {#benchmark-cms}
 
-**Pendiente de completar con la nueva corrida verificada:** gráficas de las variables más informativas y cifras representativas de AUC, aceptación SM y eficiencia W′.
+Gráficas de la corrida realizada en Yuca. Pulsa una imagen para ampliarla.
+
+### Pérdidas de entrenamiento y validación
+
+[![Pérdidas de entrenamiento y validación SM frente a la época](assets/cms/benchmark_loss_20261020.png){ .benchmark-plot }](assets/cms/benchmark_loss_20261020.png)
+
+Ambas pérdidas disminuyen durante el entrenamiento.
+
+### Error de reconstrucción por proceso
+
+[![Distribuciones del error para DYJets, WZ, ZZ y Wprime, con umbral 2.564](assets/cms/benchmark_scores_process_20261020.png){ .benchmark-plot }](assets/cms/benchmark_scores_process_20261020.png)
+
+W′ presenta una cola de errores altos. La línea discontinua marca el umbral **2.564**.
+
+### Comparación SM–W′
+
+[![Error de reconstrucción SM con igual peso por proceso y Wprime](assets/cms/benchmark_scores_sm_20261020.png){ .benchmark-plot }](assets/cms/benchmark_scores_sm_20261020.png)
+
+El conjunto SM se representa con igual peso total por proceso.
+
+### Eventos seleccionados por el umbral
+
+[![Errores por evento en validación SM y evaluación Wprime, con eventos seleccionados en rojo](assets/cms/benchmark_events_20261020.png){ .benchmark-plot }](assets/cms/benchmark_events_20261020.png)
+
+En validación superan el umbral **0 % de DYJets, 1.71 % de WZ y 1.47 % de ZZ**; en evaluación, **17.95 % de los 7 421 eventos W′**. Estas fracciones corresponden a las muestras indicadas en la figura; los resultados de prueba y la AUC se añadirán al revisar las métricas.
 
 [Anterior: Procesamiento NanoAOD](cms-procesamiento.md){ .md-button }
 [Continuar: Interpretación y perspectivas](cms-resultados.md){ .md-button .md-button--primary }
