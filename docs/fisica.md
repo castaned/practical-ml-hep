@@ -87,6 +87,8 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
 
     Si no hay dos jets, algunas variables no están definidas. El valor `-999` lo señala: no es una masa o un momento físico. La preparación automática lo trata antes del entrenamiento. Las columnas de etiqueta, pesos, identificador y partición no cuentan entre las 30 entradas.
 
+<span id="distribuciones-de-las-variables"></span>
+
 ??? info "Distribuciones de las variables: ver gráficos"
 
     Las siguientes ocho variables ilustran la información que recibe la red: los objetos reconstruidos, el momento transversal faltante y sus combinaciones físicas. **El entrenamiento conserva las treinta variables** descritas arriba.
@@ -116,12 +118,6 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
     </div>
 
     **Para discutir:** ¿qué variables presentan diferencias más visibles? ¿Por qué podría ayudar a la red combinar observables que por separado se parecen?
-
-## Del proceso físico al entrenamiento
-
-La red utilizará las treinta variables para distinguir la señal de los procesos de fondo. En el siguiente ejercicio se reproducirá una configuración de referencia, se identificarán los archivos de resultados y, después, se estudiarán modificaciones del modelo.
-
-El canal **H → ττ ya fue observado en el LHC**. Una mejor separación entre señal y fondo puede ayudar a reducir las incertidumbres en la medición de su sección eficaz. [ATLAS](https://atlas.cern/updates/briefing/higgs-couples-heaviest-lepton).
 
 ## Siguiente paso
 
