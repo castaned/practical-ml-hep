@@ -23,7 +23,9 @@ Entre 2021 y 2024 trabajó en computación con GPU en el departamento de Tecnolo
 
 ## 1. Instalar y descargar · Solo la primera vez
 
-**Si ya tienes el ambiente y el repositorio, no los crees de nuevo:** activa el ambiente y vuelve a registrar el kernel con los bloques de abajo. Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
+**Si ya tienes el ambiente y el repositorio, no los crees de nuevo.** Activa el ambiente; si registraste el kernel antes de esta actualización, repite una vez el bloque «Registrar el kernel» de abajo. Para una primera prueba con Dask puedes reservar 4 cores CPU y 8 GB de memoria, sin GPU.
+
+### Crear el ambiente · Solo la primera vez
 
 Abre una terminal de JupyterLab y sitúate en tu **carpeta personal (`$HOME`)** antes de crear el ambiente. El curso ROOT se prepara desde allí, separado del repositorio `ML-integration-CMSSW`. El primer comando del bloque te lleva a esa ubicación:
 
@@ -41,7 +43,9 @@ conda create -n root-student-course-640 \
 conda activate root-student-course-640
 ```
 
-Después de crear el ambiente, actívalo e instala **PyTorch para CPU** una sola vez:
+### Activar el ambiente e instalar PyTorch
+
+En una terminal nueva, activa el ambiente e instala **PyTorch para CPU**. Si PyTorch ya está instalado, omite la línea `python -m pip install`:
 
 ```bash
 source /apps/miniconda3/etc/profile.d/conda.sh
@@ -53,9 +57,13 @@ python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/
 env LD_PRELOAD="$CONDA_PREFIX/lib/libstdc++.so.6" python -c "import torch; import ROOT; print('PyTorch', torch.__version__, '| ROOT', ROOT.gROOT.GetVersion())"
 ```
 
-En sesiones posteriores, repite solo las líneas hasta `conda activate root-student-course-640`; no reinstales PyTorch. Si el notebook ya estaba abierto durante la instalación, **reinicia su kernel**.
+En sesiones posteriores, repite solo las líneas hasta `conda activate root-student-course-640`; no reinstales PyTorch.
 
-Registra el kernel **también si ya lo tenías**. `LD_PRELOAD` hace que el notebook cargue la biblioteca C++ del ambiente; esto permite usar ROOT y PyTorch en el mismo proceso. `PATH` permite que las celdas `%%bash` encuentren herramientas como `rootls`:
+### Registrar el kernel de JupyterLab
+
+**Sí, hay que registrarlo una vez por cuenta:** activar el ambiente en la terminal no cambia el Python del notebook. Si ya tenías el kernel **Python (ROOT 6.40)**, repite este registro **una vez** para aplicarle la corrección que permite usar ROOT y PyTorch juntos. Después no necesitas volver a registrarlo en cada sesión.
+
+Ejecuta el bloque con `root-student-course-640` activo. `LD_PRELOAD` carga la biblioteca C++ del ambiente y `PATH` permite que las celdas `%%bash` encuentren herramientas como `rootls`:
 
 ```bash
 python -m ipykernel install --user \
@@ -65,6 +73,8 @@ python -m ipykernel install --user \
   --env LD_PRELOAD "$CONDA_PREFIX/lib/libstdc++.so.6" \
   --env PYTHONPATH ""
 ```
+
+Si el notebook estaba abierto, **reinicia el kernel** después de registrarlo.
 
 Desde **`$HOME`**, descarga el repositorio completo **si todavía no lo tienes**. Se creará **`$HOME/student-course`**, al mismo nivel que `$HOME/ML-integration-CMSSW`:
 
