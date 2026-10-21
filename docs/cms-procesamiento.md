@@ -69,6 +69,8 @@ Se crean los tres YAML necesarios en **hep-workshop → configs**. Los datos com
 
 ## 3. Procesar los NanoAOD
 
+El filtrado de eventos lo hace **`example_files/main_process/filterNanoAOD.py`**. Si estudias otro análisis o estado final, puedes reemplazar ese script de selección; indica la nueva ruta en `data_processing.processing_script` del YAML.
+
 ```bash
 cd "$HOME/ML-integration-CMSSW/data_processing"
 python execute_data_processing.py \
