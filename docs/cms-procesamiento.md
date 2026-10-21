@@ -86,37 +86,20 @@ python execute_data_processing.py \
   -f "$HOME/hep-workshop/configs/cms_processing_baseline01.yaml"
 ```
 
-**Este comando ya envía un array a Slurm**, con una tarea por archivo ROOT. No lo envuelvas en otro `sbatch`. Anota el número del trabajo que aparece al enviarlo.
+El comando envía las tareas a Slurm. **Anota el número del trabajo; no añadas otro `sbatch`.** Si usaste otra etiqueta, sustituye `baseline01` en la ruta del YAML.
 
-La **lógica de selección de eventos está en [`example_files/main_process/filterNanoAOD.py`](https://github.com/castaned/ML-integration-CMSSW/blob/opendata_dev/example_files/main_process/filterNanoAOD.py)**, dentro del software del análisis. Allí se definen los requisitos sobre los leptones, los filtros por evento, la construcción de candidatos W/Z y las variables de cada canal.
-
-El YAML indica qué muestras procesar, qué script ejecutar y dónde guardar los resultados; **los criterios físicos de selección están actualmente en el código Python**. Para otro análisis, se puede adaptar ese archivo o crear otro módulo de selección e indicarlo en `data_processing.processing_script`. Así se reutiliza el flujo NanoAOD → ROOT seleccionado → HDF5 con una selección y observables distintos. Para reproducir este benchmark, conserva el script y sus criterios originales.
-
- Los identificadores son **DYJets: 4, WZ: 5, ZZ: 6 y Wprime: 1**; `Dataset_ID` identifica el proceso y no es una entrada de la red.
-
-### Monitorear el procesamiento
+### Comprobar el procesamiento
 
 ```bash
 squeue -u "$USER"
+sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode
 ```
 
-Los registros de cada tarea están en **ML-integration-CMSSW → data_processing → logs**, como `job_<número>_<tarea>.out` y `.err`. Abre el `.out` para revisar el **cutflow**: cuántos eventos entran y cuántos superan las selecciones. El `.err` permite localizar errores.
-
-Al terminar, comprueba el array con su número real:
-
-```bash
-sacct -j NUMERO_DEL_TRABAJO --format=JobID,State,ExitCode -X
-```
-
-**Continúa cuando todas las tareas terminen correctamente (`COMPLETED`, `0:0`).** Los ROOT seleccionados estarán en **hep-workshop → cms → baseline01 → root**, separados por proceso. No vuelvas a enviar la selección mientras el primer array esté pendiente o activo: comparte su mapa de procesos dentro de tu copia del repositorio.
-
-### Antes de convertir: comprobar todas las tareas
-
-**No inicies la conversión a HDF5 hasta que todas las tareas de selección NanoAOD aparezcan en `COMPLETED` con `ExitCode` igual a `0:0`.** Revisa la salida completa de `sacct`, no solo las últimas filas. Que el trabajo desaparezca de `squeue` no confirma que haya terminado correctamente.
+Sustituye `NUMERO_DEL_TRABAJO` por el recibido. **Continúa solo cuando todas las tareas indiquen `COMPLETED` y `0:0`.** Si alguna falla, revisa `data_processing/logs/`.
 
 ![Ejemplo en JupyterLab: tareas del array NanoAOD en COMPLETED y código de salida 0:0](assets/cms/nanoaod_jobs_completed.png)
 
-En esta captura, `2096094` es el número de una ejecución de ejemplo; utiliza el número de tu propio array. Si alguna tarea está pendiente, ejecutándose o ha fallado, espera o revisa sus registros `.out` y `.err` antes de continuar. Convertir antes de completar la selección puede dejar fuera archivos y producir una muestra incompleta.
+Los ROOT seleccionados quedan en **hep-workshop → cms → baseline01 → root**, separados por proceso. Usa tu etiqueta si es distinta y no repitas el envío mientras esté activo.
 
 ## 4. Convertir los ROOT seleccionados a HDF5
 
