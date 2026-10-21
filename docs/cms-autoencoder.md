@@ -4,6 +4,22 @@ La red aprende a reconstruir eventos del **Modelo Estándar**. W′ se utiliza s
 
 ![Autoencoder: diez entradas, espacio latente de dos dimensiones y diez salidas reconstruidas](assets/cms/autoencoder_network.svg)
 
+### ¿Cómo aprende?
+
+El **codificador** comprime las diez variables a dos coordenadas latentes. El **decodificador** intenta recuperar las diez entradas. Durante el entrenamiento, la red ajusta sus parámetros para reducir la diferencia entre entrada y reconstrucción, usando únicamente eventos SM.
+
+### Error de reconstrucción
+
+Para cada evento calculamos el **error cuadrático medio (MSE)**:
+
+<p style="text-align:center"><strong>MSE = (1/10) ∑<sub>i=1…10</sub> (x<sub>i</sub> − x̂<sub>i</sub>)²</strong></p>
+
+Aquí, **x** son las variables escaladas y **x̂** sus reconstrucciones. El escalado se calcula con el entrenamiento SM. Un error pequeño indica una reconstrucción cercana; uno grande, un evento que la red reconstruye peor.
+
+### ¿Cuándo se selecciona un evento?
+
+El umbral se fija en el **percentil 99 del error de validación SM, balanceando los procesos**. Seleccionamos eventos con **MSE ≥ umbral**. Después evaluamos W′ sin usarlo para entrenar ni fijar el corte: un error alto señala una anomalía para el modelo, no identifica por sí solo una nueva partícula.
+
 ## 1. Revisar la configuración
 
 Completa primero el [procesamiento NanoAOD y las gráficas de entrada](cms-procesamiento.md). En **hep-workshop → configs**, abre el YAML `cms_autoencoder_` seguido de tu etiqueta.
