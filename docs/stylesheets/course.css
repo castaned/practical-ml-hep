@@ -227,3 +227,5 @@ body { font-family:Inter,"Segoe UI",Arial,sans-serif; }
 }
 .md-typeset img.benchmark-plot { max-height:430px; }
 .md-typeset img.benchmark-metrics { max-height:480px; }
+
+.md-typeset img.benchmark-monitor { display:block; width:100%; max-width:900px; height:auto; margin:1.2rem auto; border-radius:4px; }

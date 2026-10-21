@@ -94,16 +94,13 @@ El visor muestra el **estado de Slurm**, una **barra de épocas**, las pérdidas
 
 Antes de la primera época, indica si el trabajo está en cola o activo y muestra las últimas líneas del log. Si el trabajo falla, muestra el estado y el registro para identificar el problema.
 
-Al comenzar, verás un mensaje como este:
+Durante el entrenamiento, el visor muestra el avance y las pérdidas, como en esta captura:
 
-```text
-Slurm: EN EJECUCIÓN | amdgpu-hpc-01
-[------------------------------] Sin épocas registradas / máximo 100
-Trabajo activo; aún no se ha completado la primera época.
-Resultados: /lustre/home/TU_USUARIO/hep-workshop/results/atlas_gpu_baseline01/atlas_referencia_0001
-```
+![Monitor ATLAS con épocas, pérdidas de entrenamiento y validación, AUC y gráfica de evolución en la terminal](assets/benchmarks/atlas_training_monitor.png){ .benchmark-monitor }
 
-Deja el visor abierto: después de la primera época aparecerán las pérdidas, el AUC y la gráfica. **Resultados** indica la carpeta de esta ejecución.
+La imagen corresponde a una corrida anterior de **40 épocas**; la configuración actual permite hasta **100**, con paciencia **20**. El número del trabajo y la ruta de resultados serán los de tu ejecución.
+
+Deja el visor abierto: después de la primera época aparecerán las pérdidas, el AUC y la gráfica. **Resultados** indica la carpeta exacta de esa corrida.
 
 **Qué observar:** ¿disminuyen ambas pérdidas? ¿La validación deja de mejorar mientras entrenamiento sigue bajando? Al finalizar, el visor muestra la época del modelo conservado y la AMS interna. La parada temprana puede terminar antes de que la barra alcance el máximo.
 

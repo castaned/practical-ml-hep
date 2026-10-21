@@ -44,7 +44,7 @@ markdown_extensions:
   - attr_list
   - md_in_html
 extra_css:
-  - stylesheets/course.css?v=17
+  - stylesheets/course.css?v=18
 extra_javascript:
   - javascripts/explorer.js?v=8
   - javascripts/scenarios.js?v=9
