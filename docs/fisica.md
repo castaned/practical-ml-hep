@@ -12,11 +12,11 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
 
 ![Cadena completa del Higgs a dos taus y sus productos de decaimiento](assets/workshop/higgs_tautau_final_state.svg)
 
-*Un tau decae a electrón o muón y dos neutrinos; el otro a hadrones y un neutrino. Se muestra un ejemplo de corriente hadrónica con u y anti-d, que forman hadrones; no observamos quarks libres. Los W son virtuales. También se incluye el proceso con cargas opuestas.*
+*Un tau decae a electrón o muón y dos neutrinos; el otro, a hadrones y un neutrino.*
 
-**Lo visible:** un electrón o muón y un tau hadrónico reconstruido. **Lo invisible:** tres neutrinos, que contribuyen al momento transversal faltante. Por eso usamos variables del leptón, del tau y del MET. El estado completo no se reconstruye con la masa visible solamente.
+**Observamos un leptón y un tau hadrónico.** Los tres neutrinos contribuyen al momento transversal faltante (MET), por lo que la masa visible no describe todo el decaimiento.
 
-Los fondos imitan esos objetos: **Z → ττ** produce taus reales; los pares de top pueden generar leptones, taus y jets; **W + jets** puede entrar cuando un objeto se identifica incorrectamente. Una misma apariencia final puede tener distintos orígenes.
+**Fondos principales:** Z → ττ, pares de top y W + jets, que pueden producir objetos similares a la señal.
 
 ![La masa visible muestra una señal pequeña sobre fondos abundantes](assets/workshop/challenge_visible_mass.png){ width="460" }
 
