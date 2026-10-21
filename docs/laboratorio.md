@@ -8,6 +8,32 @@ El benchmark del taller es una red completamente conectada de clasificación bin
 
 ![Arquitectura del benchmark: treinta entradas, cuatro capas ocultas de 128, 64, 32 y 16 neuronas, y una salida](assets/workshop/atlas_baseline_network.svg)
 
+<div class="network-explorer">
+<div class="explorer-intro">
+<span class="eyebrow">RED DE REFERENCIA</span>
+<h3>Capas y parámetros entrenables</h3>
+<p>Las 30 entradas se conectan a cuatro capas ocultas y una salida. Cada conexión tiene un peso y cada neurona de las capas siguientes añade un sesgo.</p>
+</div>
+<div class="explorer-result">
+<div class="network-layers" aria-label="30 entradas, capas ocultas de 128, 64, 32 y 16 neuronas, y una salida"><span>30</span><span class="hidden">128</span><span class="hidden">64</span><span class="hidden">32</span><span class="hidden">16</span><span>1</span></div>
+<p class="parameter-count"><strong>14 849</strong> parámetros entrenables</p>
+<p class="explorer-hint">Dropout 0.1 · El dropout y las activaciones no añaden parámetros entrenables.</p>
+</div>
+</div>
+
+??? info "Ver el cálculo por capa"
+
+    Cada capa conectada aporta **entradas × neuronas + sesgos**:
+
+    | Conexión | Pesos + sesgos | Parámetros |
+    | --- | --- | ---: |
+    | 30 → 128 | 30 × 128 + 128 | 3 968 |
+    | 128 → 64 | 128 × 64 + 64 | 8 256 |
+    | 64 → 32 | 64 × 32 + 32 | 2 080 |
+    | 32 → 16 | 32 × 16 + 16 | 528 |
+    | 16 → 1 | 16 × 1 + 1 | 17 |
+    | **Total** | | **14 849** |
+
 Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se transforma mediante una función sigmoide en una puntuación entre cero y uno; los valores altos favorecen la clasificación como señal.
 
 | Parámetro | Configuración de referencia |
