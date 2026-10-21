@@ -13,9 +13,10 @@ Necesitas el repositorio [clonado en tu cuenta](atlas-preparacion.md#clonar-repo
     unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
     module load root/6.24.08
     cd "$HOME/ML-integration-CMSSW"
+    git pull --ff-only origin opendata_dev
     CMS_PYTHON="$(root-config --python3-version | cut -d. -f1,2)"
     test -n "$CMS_PYTHON" &&
-      conda create -n ml-open-data -c conda-forge "python=$CMS_PYTHON" pip -y &&
+      conda create -n ml-open-data -c conda-forge "python=$CMS_PYTHON" "numpy<2" pytables pip -y &&
       conda activate ml-open-data &&
       python -m pip install -r workshop/requirements-yuca.txt &&
       python -m pip install torch --index-url https://download.pytorch.org/whl/cpu &&
@@ -99,11 +100,13 @@ El número de trabajo de la imagen es solo un ejemplo; consulta el tuyo.
 
 ```bash
 cd "$HOME/ML-integration-CMSSW/data_processing/convert_h5"
-python -m pip install tables
+python -c "import numpy, tables; print('NumPy', numpy.__version__, '· PyTables', tables.__version__)" &&
 python execute_convert_root2h5.py \
   -f "$HOME/hep-workshop/configs/cms_root2h5_${CMS_TAG}.yaml" \
   --skip-empty-trees
 ```
+
+Si aparece `numpy.dtype size changed` en un ambiente ya creado, ejecuta `conda install --force-reinstall -c conda-forge "numpy<2" pytables -y` dentro de `ml-open-data` y repite la comprobación. **No necesitas repetir la selección NanoAOD.**
 
 Comprueba el **nuevo número de trabajo**:
 
