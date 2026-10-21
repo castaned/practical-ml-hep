@@ -16,7 +16,18 @@ La señal del reto es **H → τ⁺τ⁻**. Un tau decae a electrón o muón y n
 
 **Observamos un leptón y un tau hadrónico.** Los tres neutrinos contribuyen al momento transversal faltante (MET), por lo que la masa visible no describe todo el decaimiento.
 
-**Fondos principales:** Z → ττ, pares de top y W + jets, que pueden producir objetos similares a la señal.
+### ¿Qué procesos contiene el dataset?
+
+Usamos **eventos simulados** del Higgs Challenge, con una señal y tres procesos de fondo:
+
+| Clase para la red | Proceso incluido | Qué produce o imita |
+| --- | --- | --- |
+| **Señal** | **H → τ⁺τ⁻**, con masa de Higgs de 125 GeV | Un leptón, un tau hadrónico y neutrinos |
+| **Fondo** | **Z → τ⁺τ⁻** | Taus reales, con un estado final similar |
+| **Fondo** | **Top–antitop (tt̄)** | Leptones, taus y jets en sus decaimientos |
+| **Fondo** | **W + jets** | Un jet puede identificarse incorrectamente como tau hadrónico |
+
+**El clasificador distingue Higgs frente a fondo: los tres fondos se agrupan en una sola clase.** No aprende una etiqueta independiente para cada proceso. [Documentación del dataset](https://opendata.cern.ch/record/329).
 
 ![La masa visible muestra una señal pequeña sobre fondos abundantes](assets/workshop/challenge_visible_mass.png){ width="460" }
 
