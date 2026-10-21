@@ -37,9 +37,23 @@ conda create -n root-student-course-640 \
   --override-channels -c conda-forge --strict-channel-priority \
   python=3.11 'root>=6.40,<6.41' \
   numpy matplotlib mplhep dask distributed \
-  jupyterlab ipykernel ipywidgets metakernel -y
+  jupyterlab ipykernel ipywidgets metakernel pip -y
 conda activate root-student-course-640
 ```
+
+Después de crear el ambiente, actívalo e instala **PyTorch para CPU** una sola vez:
+
+```bash
+source /apps/miniconda3/etc/profile.d/conda.sh
+conda deactivate
+module unload root/6.24.08 rocm/6.4.3
+unset PYTHONPATH PYTHONHOME ROOTSYS ROOT_INCLUDE_PATH
+conda activate root-student-course-640
+python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+python -c "import ROOT, torch; print('ROOT', ROOT.gROOT.GetVersion(), '| PyTorch', torch.__version__)"
+```
+
+En sesiones posteriores, repite solo las líneas hasta `conda activate root-student-course-640`; no reinstales PyTorch. Si el notebook ya estaba abierto durante la instalación, **reinicia su kernel**.
 
 Registra el kernel. La opción `PATH` permite que las celdas `%%bash` encuentren herramientas como `rootls`:
 
@@ -71,6 +85,16 @@ Conserva la estructura de carpetas: los notebooks buscan los datos mediante ruta
 En el explorador izquierdo abre **student-course → course → notebooks → core**. Comienza con `00-root-intro.ipynb` y sigue con `01-histograms-and-graphs.ipynb`.
 
 En cada notebook selecciona **Kernel → Change Kernel → Python (ROOT 6.40)** y pulsa **Select**. También puedes pulsar el nombre del kernel en la esquina superior derecha.
+
+Antes de ejecutar las celdas del curso, comprueba en una celda que el notebook usa el ambiente correcto:
+
+```python
+import sys, torch
+print(sys.executable)
+print(torch.__version__)
+```
+
+La primera línea debe contener `root-student-course-640`. Si aparece `No module named 'torch'`, ejecuta el bloque de activación e instalación del paso 1, selecciona de nuevo **Python (ROOT 6.40)** y reinicia el kernel.
 
 ![Seleccionar el kernel Python (ROOT 6.40) en JupyterLab](assets/root-course/select-root640-kernel.png)
 
