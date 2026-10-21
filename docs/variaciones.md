@@ -34,11 +34,11 @@ Selecciona una fila para ver las instrucciones de esa variación. Conserva los d
 <p><strong>1. Crea la copia del YAML</strong> desde la terminal de JupyterLab:</p>
 <pre><code id="scenario-copy" class="language-bash"></code></pre>
 <p><strong>2. Ábrela en el explorador izquierdo:</strong> <code id="scenario-path"></code>.</p>
-<p>Dentro del archivo completo, modifica <strong>solo el campo indicado</strong>. No reemplaces toda la sección por este fragmento:</p>
+<p>Dentro del archivo completo, cambia el parámetro indicado y añade <code>output.run_name</code> para identificar los resultados. Conserva <code>output.directory</code> y los demás valores; no reemplaces secciones completas por este fragmento:</p>
 <pre><code id="scenario-yaml" class="language-yaml"></code></pre>
 <p><strong>3. Guarda con Ctrl+S y envía el trabajo:</strong></p>
 <pre><code id="scenario-submit" class="language-bash"></code></pre>
-<p>La salida se crea en una nueva carpeta <code>run_XXXX</code>; no necesitas cambiar <code>output.directory</code>.</p>
+<p>La salida se crea dentro de <code>output.directory</code>, con el nombre de la variación y un número: por ejemplo <code>atlas_A_capas512-256-128-64_0001</code>. Al repetirla se crea <code>..._0002</code>, sin sobrescribir resultados.</p>
 <p><strong>4. Monitorea el entrenamiento</strong> en la misma terminal, usando el <code>JOB_ID</code> del trabajo que acabas de enviar:</p>
 <pre><code id="scenario-monitor" class="language-bash"></code></pre>
 <p>El visor muestra el estado del trabajo, el avance de las épocas y la carpeta de resultados. <strong>Ctrl+C cierra solo el visor;</strong> el entrenamiento continúa en Slurm.</p>
@@ -75,7 +75,7 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
   hidden_dims: [128, 64, 32, 16]
   dropout: 0.1</code></pre>
 <button type="button" id="copy-network">Copiar fragmento YAML</button>
-<p id="copy-status" role="status">Conserva el resto de tu YAML; cada ejecución crea su propia carpeta numerada.</p>
+<p id="copy-status" role="status">Conserva el resto de tu YAML; cada ejecución crea una carpeta con su nombre y número.</p>
 </div>
 </div>
 

@@ -7,9 +7,9 @@
   };
   function instructions(key){
     const s=scenarios[key];if(!s)throw Error('Variación desconocida');
-    return {...s,copy:`cp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/${s.file}"`,
+    return {...s,copy:`cd "$HOME/ML-integration-CMSSW"\ngit pull --ff-only origin opendata_dev\ncp -n "$HOME/hep-workshop/configs/atlas_baseline01.yaml" "$HOME/hep-workshop/configs/${s.file}"`,
       monitor:`python workshop/monitor_atlas.py \\\n  -f "$HOME/hep-workshop/configs/${s.file}" \\\n  --job-id "$JOB_ID" \\\n  --log "$HOME/hep-workshop/logs/atlas_\${JOB_ID}.out"`,
-      yaml:`${s.block}:\n  ${s.field}: ${s.value}`,
+      yaml:`${s.block}:\n  ${s.field}: ${s.value}\noutput:\n  run_name: ${s.file.replace(/\.yaml$/, '')}`,
       submit:`cd "$HOME/ML-integration-CMSSW"\nJOB_ID=$(sbatch --parsable --output="$HOME/hep-workshop/logs/atlas_%j.out" \\\n  workshop/run_atlas_gpu.slurm "$HOME/hep-workshop/configs/${s.file}")\necho "Trabajo enviado: $JOB_ID"`};
   }
   if(typeof module!=='undefined' && module.exports)module.exports={scenarios,instructions};
