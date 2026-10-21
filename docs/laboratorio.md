@@ -71,19 +71,9 @@ Antes de empezar, completa [ATLAS · Preparar el entorno](atlas-preparacion.md):
 1. En el **explorador de archivos de la izquierda**, vuelve a tu carpeta personal y abre **hep-workshop → configs**.
 2. Haz doble clic en **atlas_baseline01.yaml** para abrirlo en el editor. Si no se abre como texto, haz clic derecho y selecciona **Open With → Editor**.
 3. Revisa `model` (capas y dropout) y `training` (épocas, tamaño de lote y tasa de aprendizaje). Para reproducir la referencia, conserva los valores de la copia inicial.
-4. Comprueba que `output.directory` y `output.run_name` coincidan con el bloque siguiente. En una copia existente, ajusta también `training.epochs: 100` y `training.patience: 20`. Si necesitas corregirla, edita el valor **después de los dos puntos**, conservando la sangría, y guarda con **Ctrl+S**.
+4. Si tu copia es anterior, actualiza `training.epochs` a **100** y `training.patience` a **20**. Guarda con **Ctrl+S**.
 
 ![JupyterLab: explorador izquierdo en hep-workshop/configs y atlas_baseline01.yaml abierto en el editor](assets/workshop/atlas_baseline_yaml_jupyterlab.png)
-
-La captura ilustra dónde editar el YAML; utiliza los valores actuales de esta página: **100 épocas y paciencia 20**.
-
-Puedes conservar `output.directory` al repetir el entrenamiento. Con `output.run_name: atlas_referencia`, cada envío crea una subcarpeta nueva: `atlas_referencia_0001`, `atlas_referencia_0002`, etc., sin sobrescribir las anteriores.
-
-```yaml
-output:
-  run_name: atlas_referencia
-  directory: $HOME/hep-workshop/results/atlas_gpu_baseline01
-```
 
 ### Enviar el benchmark
 
