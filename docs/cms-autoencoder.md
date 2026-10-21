@@ -74,5 +74,11 @@ Compara cada proceso SM con W′: su cola se extiende hacia errores mayores. La 
 
 El conjunto SM se representa con igual peso total por proceso.
 
+### Eventos W′ seleccionados
+
+[![Error de reconstrucción de 7421 eventos Wprime: umbral 2.564 y 17.95 por ciento seleccionados](assets/cms/benchmark_events_wprime_20261020.png){ .benchmark-plot }](assets/cms/benchmark_events_wprime_20261020.png)
+
+Cada punto es un evento W′ de evaluación. El umbral **2.564** selecciona el **17.95 % de los 7 421 eventos**, marcados en rojo.
+
 [Anterior: Procesamiento NanoAOD](cms-procesamiento.md){ .md-button }
 [Continuar: Interpretación y perspectivas](cms-resultados.md){ .md-button .md-button--primary }
