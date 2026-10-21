@@ -98,11 +98,23 @@ Compara cada proceso SM con W′: su cola se extiende hacia errores mayores. La 
 
 El conjunto SM se representa con igual peso total por proceso.
 
+### Eventos de fondo WZ
+
+[![Error por evento WZ de prueba: 1050 eventos y 2.76 por ciento seleccionados con umbral 2.564](assets/cms/benchmark_events_wz_20261020.png){ .benchmark-plot }](assets/cms/benchmark_events_wz_20261020.png)
+
+Con el mismo umbral **2.564**, se selecciona el **2.76 % de los 1 050 eventos WZ de prueba**. Compara esta fracción con la de W′; los tamaños de las muestras son distintos.
+
 ### Eventos W′ seleccionados
 
 [![Error de reconstrucción de 7421 eventos Wprime: umbral 2.564 y 17.95 por ciento seleccionados](assets/cms/benchmark_events_wprime_20261020.png){ .benchmark-plot }](assets/cms/benchmark_events_wprime_20261020.png)
 
 Cada punto es un evento W′ de evaluación. El umbral **2.564** selecciona el **17.95 % de los 7 421 eventos**, marcados en rojo.
+
+### Curva ROC
+
+[![Curva ROC del autoencoder con AUC 0.918](assets/cms/benchmark_roc_20261020.png){ .benchmark-plot }](assets/cms/benchmark_roc_20261020.png)
+
+La **AUC de 0.918** resume la separación SM–W′ al recorrer todos los umbrales. El **17.95 % de eficiencia W′** corresponde al corte concreto **2.564**: bajar el corte recupera más señal y acepta más fondo. El **2.76 %** anterior corresponde solo a WZ, no al conjunto SM de la ROC.
 
 [Anterior: Procesamiento NanoAOD](cms-procesamiento.md){ .md-button }
 [Continuar: Interpretación y perspectivas](cms-resultados.md){ .md-button .md-button--primary }
