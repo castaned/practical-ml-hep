@@ -127,7 +127,7 @@ El canal **H → ττ ya fue observado en el LHC**. Una mejor separación entre 
 
 Identificar qué objetos se esperan en los eventos y qué representan las variables de entrada. A continuación, reproducir la red de referencia y localizar los archivos generados.
 
-[Anterior: introducción ATLAS](atlas.md){ .md-button }
+[Anterior: preparar el entorno](atlas-preparacion.md){ .md-button }
 [Continuar: ejecutar el benchmark](laboratorio.md){ .md-button .md-button--primary }
 
 

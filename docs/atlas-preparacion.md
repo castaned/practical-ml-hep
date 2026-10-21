@@ -64,6 +64,6 @@ ls -lh /lustre/cursos/curso07/datos/ATLAS_HiggsChallenge/
 
 No necesitas descargarlos ni modificarlos. Tus YAML, registros y resultados se guardan en `hep-workshop` dentro de tu cuenta.
 
-Con el ambiente `ml-hep-gpu` activo y los datos accesibles, continúa con el benchmark.
+Con el ambiente `ml-hep-gpu` activo y los datos accesibles, continúa con los procesos físicos y las variables de entrada.
 
-[Continuar: benchmark ATLAS](laboratorio.md){ .md-button .md-button--primary }
+[Continuar: procesos y variables](fisica.md){ .md-button .md-button--primary }

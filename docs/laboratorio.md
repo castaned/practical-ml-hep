@@ -2,13 +2,7 @@
 
 Reproduce la configuración inicial y revisa sus resultados antes de probar variaciones del YAML.
 
-## 1. Procesos y variables de entrada
-
-En el menú izquierdo del taller, abre **ATLAS → Procesos y variables**. Allí encontrarás los diagramas del Higgs, las treinta variables y sus distribuciones. Revisa ese contenido en el navegador y después regresa a **Benchmark** para continuar.
-
-[Revisar procesos y variables](fisica.md){ .md-button }
-
-## 2. Red neuronal de referencia {#red-neuronal-de-referencia}
+## 1. Red neuronal de referencia {#red-neuronal-de-referencia}
 
 El benchmark del taller es una red completamente conectada de clasificación binaria. Esta configuración proporciona el punto de comparación para los ejercicios posteriores; no corresponde al modelo ganador del challenge.
 
@@ -30,7 +24,7 @@ Las cuatro capas ocultas utilizan activación ReLU y dropout. La salida se trans
 
 Los valores ausentes se sustituyen por medianas y las variables se estandarizan. Ambas transformaciones se ajustan únicamente con los eventos de entrenamiento. El modelo conservado es el de menor pérdida de validación.
 
-## 3. Reproducir el entrenamiento de referencia
+## 2. Reproducir el entrenamiento de referencia
 
 Antes de empezar, completa [ATLAS · Preparar el entorno](atlas-preparacion.md): clona el repositorio, instala el ambiente una sola vez y actívalo. Después ejecutaremos todos la misma configuración; los datos están compartidos en Yuca y cada cuenta guarda sus resultados.
 
@@ -118,7 +112,7 @@ sacct -j "$JOB_ID" --format=JobID,State,ExitCode,Elapsed -X
 En la cola, **PD** indica que espera recursos y **R** que está ejecutándose. Al terminar, `COMPLETED` con código `0:0` indica que finalizó sin error. No envíes otra copia mientras la primera espera. Si necesitas detener esa ejecución, utiliza `scancel "$JOB_ID"`. En una nueva terminal, sustituye `$JOB_ID` por el número recibido al enviar el trabajo.
 
 
-## 4. Revisar los resultados del entrenamiento
+## 3. Revisar los resultados del entrenamiento
 
 En el explorador izquierdo de JupyterLab, abre la carpeta **Resultados** indicada por el visor, por ejemplo **hep-workshop → results → atlas_gpu_baseline01 → atlas_referencia_0001**. Cada corrida conserva los siguientes productos:
 

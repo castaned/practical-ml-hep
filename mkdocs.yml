@@ -55,8 +55,8 @@ nav:
   - Taller Machine learning:
       - ATLAS:
           - Introducción: atlas.md
-          - Procesos y variables: fisica.md
           - Preparar el entorno: atlas-preparacion.md
+          - Procesos y variables: fisica.md
           - Benchmark: laboratorio.md
           - Variaciones y resultados: variaciones.md
           - Conclusiones: conclusiones.md
