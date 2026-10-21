@@ -1,4 +1,4 @@
-# Bitácora de resultados
+# Bitácora y resumen
 
 1. Selecciona **Referencia** o la variación que ejecutaste.
 2. Introduce los seis indicadores de `metrics.json`, o carga el archivo para completarlos automáticamente.
@@ -38,3 +38,5 @@ Cada fila corresponde a una ejecución. Puedes conservar repeticiones de la mism
 **Para reunir resultados del grupo:** descarga la tabla CSV. El instructor puede importar los CSV de otros estudiantes para añadirlos al mismo resumen, sin volver a introducir sus indicadores. Si se utiliza la carpeta de entrega, súbelos a `/lustre/cursos/curso07/variaciones/` desde Open OnDemand.
 
 [Volver a las variaciones](variaciones.md){ .md-button }
+
+[Continuar: conclusiones](conclusiones.md){ .md-button .md-button--primary }

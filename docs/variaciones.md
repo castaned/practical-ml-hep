@@ -83,32 +83,11 @@ En la referencia, `[128, 64, 32, 16]` describe cuatro capas ocultas; la entrada 
 
 </div>
 
-## 3. Registrar resultados
+## 3. Registrar resultados {#registro}
 
-En la [bitácora](bitacora.md), selecciona la variación, introduce los indicadores de `metrics.json` y pulsa **Guardar ejecución**. Registra también la **Referencia**. La tabla se genera automáticamente y conserva los valores en el navegador; no necesitas descargar e importar un archivo para cada corrida.
+Abre la **Bitácora y resumen** para registrar la referencia y las variaciones. Allí se guardan los valores y se genera la tabla automáticamente.
 
-[Registrar indicadores y ver la tabla](bitacora.md){ .md-button .md-button--primary }
-
-## 4. Tabla de resumen {#registro}
-
-Aquí aparecen los registros guardados desde la bitácora en **este mismo navegador**. Para añadir resultados de otros equipos, usa **Importar CSV**. Descarga una copia como respaldo; el guardado local no es una base compartida en línea.
-
-<div id="simple-summary">
-<button id="simple-export" class="md-button" type="button">Descargar tabla CSV</button>
-<label class="md-button">Importar CSV<input id="simple-import" type="file" accept=".csv,text/csv" multiple></label>
-<button id="simple-clear" class="md-button" type="button">Borrar todos los registros locales</button>
-<p id="simple-summary-status" role="status"></p>
-<div class="result-table-wrap"><table><thead><tr><th>Variación</th><th>AUC</th><th>AMS interna</th><th>Tiempo (s)</th><th>Parámetros</th><th>Épocas</th><th>Mejor época</th><th>Acción</th></tr></thead><tbody></tbody></table></div>
-</div>
-
-### Discusión de la tabla
-
-- ¿Qué variaciones mejoran AUC y AMS respecto a la referencia?
-- ¿La mejora compensa el tiempo y el número de parámetros?
-- ¿Las repeticiones de la misma variación dan resultados parecidos?
-- ¿Las curvas de pérdidas muestran sobreajuste?
-
-Compara tiempos obtenidos en equipos y condiciones equivalentes. La AMS es una medida de sensibilidad interna en simulación, no una significancia observada.
+[Registrar valores y ver la tabla](bitacora.md){ .md-button .md-button--primary }
 
 [Anterior: benchmark](laboratorio.md){ .md-button }
 [Continuar: conclusiones](conclusiones.md){ .md-button .md-button--primary }

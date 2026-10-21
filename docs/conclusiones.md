@@ -1,6 +1,6 @@
 # Discusión de resultados
 
-Abre la [tabla de resumen](variaciones.md#registro) y reúne los CSV entregados en Yuca.
+Abre la [tabla de resumen](bitacora.md#resumen-de-resultados) de la bitácora. Si necesitas comparar resultados de otros estudiantes, importa sus CSV allí.
 
 1. Compara cada variación con la referencia: **AUC, AMS y tiempo de entrenamiento**.
 2. Revisa las figuras de pérdidas para interpretar diferencias y posibles casos de sobreajuste.
@@ -9,4 +9,4 @@ Abre la [tabla de resumen](variaciones.md#registro) y reúne los CSV entregados 
 
 Una diferencia pequeña en una sola ejecución no basta para concluir que una configuración es mejor. La conclusión debe apoyarse en las métricas y las figuras.
 
-[Ver tabla de resumen](variaciones.md#registro){ .md-button .md-button--primary }
+[Ver tabla de resumen](bitacora.md#resumen-de-resultados){ .md-button .md-button--primary }

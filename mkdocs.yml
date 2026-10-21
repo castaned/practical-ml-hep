@@ -59,6 +59,7 @@ nav:
           - Procesos y variables: fisica.md
           - Benchmark: laboratorio.md
           - Variaciones y resultados: variaciones.md
+          - Bitácora y resumen: bitacora.md
           - Conclusiones: conclusiones.md
       - CMS:
           - Introducción: autoencoder.md
